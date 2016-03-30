@@ -1,9 +1,9 @@
 Connect v2 SDKs
 ===============
 
-This repository contains the released Ruby client SDK. Check out our [other
-repository](https://github.com/square/connect-api-specification) for the
-specification and template files we used to generate this.
+This repository contains the released Ruby client SDK. Check out our [API
+specification repository](https://github.com/square/connect-api-specification)
+for the specification and template files we used to generate this.
 
 Usage
 -----
