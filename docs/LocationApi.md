@@ -1,0 +1,56 @@
+# SquareConnect::LocationApi
+
+All URIs are relative to *https://connect.squareup.com*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**list_locations**](LocationApi.md#list_locations) | **GET** /v2/locations | ListLocations
+
+
+# **list_locations**
+> ListLocationsResponse list_locations(authorization)
+
+ListLocations
+
+Provides summary information for all of a business's locations.
+
+### Example
+```ruby
+# load the gem
+require 'square_connect'
+
+api_instance = SquareConnect::LocationApi.new
+
+authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
+
+
+begin
+  #ListLocations
+  result = api_instance.list_locations(authorization)
+  p result
+rescue SquareConnect::ApiError => e
+  puts "Exception when calling LocationApi->list_locations: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
+
+### Return type
+
+[**ListLocationsResponse**](ListLocationsResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
