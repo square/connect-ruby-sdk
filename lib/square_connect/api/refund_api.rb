@@ -47,16 +47,16 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling create_refund" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling create_refund") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling create_refund" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling create_refund") if location_id.nil?
       
       # verify the required parameter 'transaction_id' is set
-      fail "Missing the required parameter 'transaction_id' when calling create_refund" if transaction_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'transaction_id' when calling create_refund") if transaction_id.nil?
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling create_refund" if body.nil?
+      raise ArgumentError.new("Missing the required parameter 'body' when calling create_refund") if body.nil?
       
       # resource path
       path = "/v2/locations/{location_id}/transactions/{transaction_id}/refund".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
@@ -126,10 +126,10 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling list_refunds" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling list_refunds") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling list_refunds" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling list_refunds") if location_id.nil?
       
       if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
         fail 'invalid value for "sort_order", must be one of DESC, ASC'

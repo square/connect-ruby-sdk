@@ -109,10 +109,6 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def status=(status)
-      allowed_values = ["PENDING", "APPROVED", "REJECTED", "FAILED"]
-      if status && !allowed_values.include?(status)
-        fail "invalid value for 'status', must be one of #{allowed_values}"
-      end
       @status = status
     end
 

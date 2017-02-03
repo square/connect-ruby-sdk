@@ -79,10 +79,6 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def capabilities=(capabilities)
-      allowed_values = ["CREDIT_CARD_PROCESSING"]
-      if capabilities && !allowed_values.include?(capabilities)
-        fail "invalid value for 'capabilities', must be one of #{allowed_values}"
-      end
       @capabilities = capabilities
     end
 

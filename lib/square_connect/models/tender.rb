@@ -125,10 +125,6 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def type=(type)
-      allowed_values = ["CARD", "CASH", "THIRD_PARTY_CARD", "SQUARE_GIFT_CARD", "NO_SALE", "OTHER"]
-      if type && !allowed_values.include?(type)
-        fail "invalid value for 'type', must be one of #{allowed_values}"
-      end
       @type = type
     end
 

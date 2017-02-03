@@ -41,7 +41,7 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling list_locations" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling list_locations") if authorization.nil?
       
       # resource path
       path = "/v2/locations".sub('{format}','json')

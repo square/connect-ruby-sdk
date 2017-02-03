@@ -61,19 +61,11 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def status=(status)
-      allowed_values = ["AUTHORIZED", "CAPTURED", "VOIDED", "FAILED"]
-      if status && !allowed_values.include?(status)
-        fail "invalid value for 'status', must be one of #{allowed_values}"
-      end
       @status = status
     end
 
     # Custom attribute writer method checking allowed values (enum).
     def entry_method=(entry_method)
-      allowed_values = ["SWIPED", "KEYED", "EMV", "ON_FILE", "CONTACTLESS"]
-      if entry_method && !allowed_values.include?(entry_method)
-        fail "invalid value for 'entry_method', must be one of #{allowed_values}"
-      end
       @entry_method = entry_method
     end
 
