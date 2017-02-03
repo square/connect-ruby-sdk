@@ -45,13 +45,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling create_customer_card" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling create_customer_card") if authorization.nil?
       
       # verify the required parameter 'customer_id' is set
-      fail "Missing the required parameter 'customer_id' when calling create_customer_card" if customer_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'customer_id' when calling create_customer_card") if customer_id.nil?
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling create_customer_card" if body.nil?
+      raise ArgumentError.new("Missing the required parameter 'body' when calling create_customer_card") if body.nil?
       
       # resource path
       path = "/v2/customers/{customer_id}/cards".sub('{format}','json').sub('{' + 'customer_id' + '}', customer_id.to_s)
@@ -115,13 +115,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling delete_customer_card" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling delete_customer_card") if authorization.nil?
       
       # verify the required parameter 'customer_id' is set
-      fail "Missing the required parameter 'customer_id' when calling delete_customer_card" if customer_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'customer_id' when calling delete_customer_card") if customer_id.nil?
       
       # verify the required parameter 'card_id' is set
-      fail "Missing the required parameter 'card_id' when calling delete_customer_card" if card_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'card_id' when calling delete_customer_card") if card_id.nil?
       
       # resource path
       path = "/v2/customers/{customer_id}/cards/{card_id}".sub('{format}','json').sub('{' + 'customer_id' + '}', customer_id.to_s).sub('{' + 'card_id' + '}', card_id.to_s)

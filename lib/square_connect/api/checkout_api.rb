@@ -45,13 +45,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling create_checkout" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling create_checkout") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling create_checkout" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling create_checkout") if location_id.nil?
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling create_checkout" if body.nil?
+      raise ArgumentError.new("Missing the required parameter 'body' when calling create_checkout") if body.nil?
       
       # resource path
       path = "/v2/locations/{location_id}/checkouts".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)

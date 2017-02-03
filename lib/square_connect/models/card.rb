@@ -93,10 +93,6 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def card_brand=(card_brand)
-      allowed_values = ["OTHER_BRAND", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"]
-      if card_brand && !allowed_values.include?(card_brand)
-        fail "invalid value for 'card_brand', must be one of #{allowed_values}"
-      end
       @card_brand = card_brand
     end
 

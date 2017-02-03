@@ -69,10 +69,6 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def sort_order=(sort_order)
-      allowed_values = ["DESC", "ASC"]
-      if sort_order && !allowed_values.include?(sort_order)
-        fail "invalid value for 'sort_order', must be one of #{allowed_values}"
-      end
       @sort_order = sort_order
     end
 

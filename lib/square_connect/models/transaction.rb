@@ -121,10 +121,6 @@ module SquareConnect
 
     # Custom attribute writer method checking allowed values (enum).
     def product=(product)
-      allowed_values = ["REGISTER", "EXTERNAL_API", "BILLING", "APPOINTMENTS", "INVOICES", "ONLINE_STORE", "PAYROLL", "OTHER"]
-      if product && !allowed_values.include?(product)
-        fail "invalid value for 'product', must be one of #{allowed_values}"
-      end
       @product = product
     end
 

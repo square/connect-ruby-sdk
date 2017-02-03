@@ -43,10 +43,10 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling create_customer" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling create_customer") if authorization.nil?
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling create_customer" if body.nil?
+      raise ArgumentError.new("Missing the required parameter 'body' when calling create_customer") if body.nil?
       
       # resource path
       path = "/v2/customers".sub('{format}','json')
@@ -108,10 +108,10 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling delete_customer" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling delete_customer") if authorization.nil?
       
       # verify the required parameter 'customer_id' is set
-      fail "Missing the required parameter 'customer_id' when calling delete_customer" if customer_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'customer_id' when calling delete_customer") if customer_id.nil?
       
       # resource path
       path = "/v2/customers/{customer_id}".sub('{format}','json').sub('{' + 'customer_id' + '}', customer_id.to_s)
@@ -173,7 +173,7 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling list_customers" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling list_customers") if authorization.nil?
       
       # resource path
       path = "/v2/customers".sub('{format}','json')
@@ -236,10 +236,10 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling retrieve_customer" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling retrieve_customer") if authorization.nil?
       
       # verify the required parameter 'customer_id' is set
-      fail "Missing the required parameter 'customer_id' when calling retrieve_customer" if customer_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'customer_id' when calling retrieve_customer") if customer_id.nil?
       
       # resource path
       path = "/v2/customers/{customer_id}".sub('{format}','json').sub('{' + 'customer_id' + '}', customer_id.to_s)
@@ -303,13 +303,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling update_customer" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling update_customer") if authorization.nil?
       
       # verify the required parameter 'customer_id' is set
-      fail "Missing the required parameter 'customer_id' when calling update_customer" if customer_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'customer_id' when calling update_customer") if customer_id.nil?
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling update_customer" if body.nil?
+      raise ArgumentError.new("Missing the required parameter 'body' when calling update_customer") if body.nil?
       
       # resource path
       path = "/v2/customers/{customer_id}".sub('{format}','json').sub('{' + 'customer_id' + '}', customer_id.to_s)

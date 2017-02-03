@@ -45,13 +45,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling capture_transaction" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling capture_transaction") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling capture_transaction" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling capture_transaction") if location_id.nil?
       
       # verify the required parameter 'transaction_id' is set
-      fail "Missing the required parameter 'transaction_id' when calling capture_transaction" if transaction_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'transaction_id' when calling capture_transaction") if transaction_id.nil?
       
       # resource path
       path = "/v2/locations/{location_id}/transactions/{transaction_id}/capture".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
@@ -115,13 +115,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling charge" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling charge") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling charge" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling charge") if location_id.nil?
       
       # verify the required parameter 'body' is set
-      fail "Missing the required parameter 'body' when calling charge" if body.nil?
+      raise ArgumentError.new("Missing the required parameter 'body' when calling charge") if body.nil?
       
       # resource path
       path = "/v2/locations/{location_id}/transactions".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
@@ -191,10 +191,10 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling list_transactions" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling list_transactions") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling list_transactions" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling list_transactions") if location_id.nil?
       
       if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
         fail 'invalid value for "sort_order", must be one of DESC, ASC'
@@ -266,13 +266,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling retrieve_transaction" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling retrieve_transaction") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling retrieve_transaction" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling retrieve_transaction") if location_id.nil?
       
       # verify the required parameter 'transaction_id' is set
-      fail "Missing the required parameter 'transaction_id' when calling retrieve_transaction" if transaction_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'transaction_id' when calling retrieve_transaction") if transaction_id.nil?
       
       # resource path
       path = "/v2/locations/{location_id}/transactions/{transaction_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
@@ -336,13 +336,13 @@ module SquareConnect
       end
       
       # verify the required parameter 'authorization' is set
-      fail "Missing the required parameter 'authorization' when calling void_transaction" if authorization.nil?
+      raise ArgumentError.new("Missing the required parameter 'authorization' when calling void_transaction") if authorization.nil?
       
       # verify the required parameter 'location_id' is set
-      fail "Missing the required parameter 'location_id' when calling void_transaction" if location_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'location_id' when calling void_transaction") if location_id.nil?
       
       # verify the required parameter 'transaction_id' is set
-      fail "Missing the required parameter 'transaction_id' when calling void_transaction" if transaction_id.nil?
+      raise ArgumentError.new("Missing the required parameter 'transaction_id' when calling void_transaction") if transaction_id.nil?
       
       # resource path
       path = "/v2/locations/{location_id}/transactions/{transaction_id}/void".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
