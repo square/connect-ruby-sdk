@@ -88,6 +88,13 @@ module SquareConnect
       http_method = http_method.to_sym.downcase
 
       header_params = @default_headers.merge(opts[:header_params] || {})
+
+      if header_params.has_key?(:Authorization)
+        if !header_params[:Authorization].start_with?("Bearer ")
+          header_params[:Authorization] = "Bearer " + header_params[:Authorization]
+        end
+      end
+
       query_params = opts[:query_params] || {}
       form_params = opts[:form_params] || {}
 
