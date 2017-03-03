@@ -109,3 +109,7 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def load_accounts()
+  open('./travis-ci/accounts.json') { |f| JSON.load(f) }
+end
