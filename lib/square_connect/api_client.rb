@@ -28,10 +28,20 @@ module SquareConnect
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      @user_agent = "Swagger-Codegen/#{VERSION}/ruby"
+      
+      # Construct user agent string. Returns slightly different string for JRuby
+      @user_agent = "square_connect/#{VERSION} "
+      if defined? JRUBY_VERSION
+        @user_agent += "(#{RUBY_ENGINE}/#{JRUBY_VERSION}:ruby/#{RUBY_VERSION})"
+      else
+        @user_agent += "(#{RUBY_ENGINE}/#{RUBY_VERSION}; #{RUBY_PLATFORM})"
+      end
+      
+      
       @default_headers = {
         'Content-Type' => "application/json",
-        'User-Agent' => @user_agent
+        'User-Agent' => @user_agent,
+        'Accept' => "application/json"
       }
     end
 
@@ -62,7 +72,7 @@ module SquareConnect
           fail ApiError.new(:code => response.code,
                             :response_headers => response.headers,
                             :response_body => response.body),
-               response.status_message
+               "#{response.status_message} - #{response.body}"
         end
       end
 
