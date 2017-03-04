@@ -15,6 +15,7 @@ require "square_connect/version"
 Gem::Specification.new do |s|
   s.name        = "square_connect"
   s.version     = SquareConnect::VERSION
+  s.version     = "#{s.version}.#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Square, Inc."]
   s.email       = [""]
