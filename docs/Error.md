@@ -1,5 +1,9 @@
 # SquareConnect::Error
 
+### Description
+
+Represents an error encountered during a request to the Connect API.  See [Handling errors](#handlingerrors) for more information.
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
