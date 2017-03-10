@@ -1,0 +1,15 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.2
+install:
+- openssl aes-256-cbc -K $encrypted_6b4a5e8db617_key -iv $encrypted_6b4a5e8db617_iv -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
+- bundle install --jobs=3 --retry=3
+deploy:
+  provider: rubygems
+  api_key:
+    secure: TuTN2Jg42bXv9lfeqFIqoK492qJWX/b8e3G9OeauxUmnoHfM8z/4/X2SuADeIBZ7SYrkTJnCBEYphLeMpzbi4ne4wM5Te1S6++paV4FBM/0K7WOicYTDQwAY0aYOfXCwygQ+M88fxmVtjg2wLU0gklEAj6BzdlP2RWLlbxG4U3ySL1Bydlf8e9/bohGZRRXL3APCfXaDZSAuq3stmNyeZrVdhaKD1akfySOr5L18Zdq/e6p6MVCGoB/DQRzfoz/n11zY40rJbpheRKBuU+9vpCzvQBh5MjdFC7PyfyfTih1ItrVgsHbGJjgCgZIZaYd1fGyfdsL3rc3QO1UaA/weJL5M6BghCRItjKcfleAlFLt0yrDXGslDuSMjQK+MWvUWoVIzFPSdsmibYSF9VQreqHhm5FxNKIVKDrBiR/AYu0cBJ8+d4S50rW4k4lZPZQzeMQrRzp3VgIN7VFHAIBUfPVbz2qpvR94GG/KqBaFEaJs7tGabJnjvOTg6wtB/cztZ+kLW3NsfCdzlt1eAOtuD6I+1CSR1+Zkp0e2Cq1aQKNL0IivorF7DsPxID/fJRdUa7uDrm8FLyu9OvLbnpUDIuR0wb81Uokl0lRlbRB+6AR/KWJtQJeJfDA9wlvxTaP977XfKLag5tlQ+ASFCt2+7rpo0lYXkOQrKcHuYMnPrJ9s=
+  gem: square_connect
+  on:
+    branch: master
+    repo: square/connect-ruby-sdk
