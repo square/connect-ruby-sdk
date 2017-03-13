@@ -30,7 +30,7 @@ module SquareConnect
       @config = config
       
       # Construct user agent string. Returns slightly different string for JRuby
-      @user_agent = "Square-Connect-Ruby/2.0.2"
+      @user_agent = "Square-Connect-Ruby/3.0.0"
       
       @default_headers = {
         'Content-Type' => "application/json",

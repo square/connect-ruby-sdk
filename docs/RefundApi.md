@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **create_refund**
-> CreateRefundResponse create_refund(authorization, location_id, transaction_id, body)
+> CreateRefundResponse create_refund(location_id, transaction_id, body)
 
 CreateRefund
 
@@ -19,10 +19,13 @@ Initiates a refund for a previously charged tender.
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::RefundApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | The ID of the original transaction's associated location.
 
@@ -33,7 +36,7 @@ body = SquareConnect::CreateRefundRequest.new # CreateRefundRequest | An object 
 
 begin
   #CreateRefund
-  result = api_instance.create_refund(authorization, location_id, transaction_id, body)
+  result = api_instance.create_refund(location_id, transaction_id, body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling RefundApi->create_refund: #{e}"
@@ -44,7 +47,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**| The ID of the original transaction&#39;s associated location. | 
  **transaction_id** | **String**| The ID of the original transaction that includes the tender to refund. | 
  **body** | [**CreateRefundRequest**](CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
@@ -55,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -65,7 +67,7 @@ No authorization required
 
 
 # **list_refunds**
-> ListRefundsResponse list_refunds(authorization, location_id, opts)
+> ListRefundsResponse list_refunds(location_id, opts)
 
 ListRefunds
 
@@ -75,10 +77,13 @@ Lists refunds for one of a business's locations.  Refunds with a `status` of `PE
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::RefundApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | The ID of the location to list refunds for.
 
@@ -91,7 +96,7 @@ opts = {
 
 begin
   #ListRefunds
-  result = api_instance.list_refunds(authorization, location_id, opts)
+  result = api_instance.list_refunds(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling RefundApi->list_refunds: #{e}"
@@ -102,7 +107,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**| The ID of the location to list refunds for. | 
  **begin_time** | **String**| The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. | [optional] 
  **end_time** | **String**| The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. | [optional] 
@@ -115,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
