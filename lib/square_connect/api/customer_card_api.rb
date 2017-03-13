@@ -19,29 +19,25 @@ module SquareConnect
 
     # CreateCustomerCard
     # Adds a card on file to an existing customer.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param customer_id The ID of the customer to link the card on file to.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [CreateCustomerCardResponse]
-    def create_customer_card(authorization, customer_id, body, opts = {})
-      data, _status_code, _headers = create_customer_card_with_http_info(authorization, customer_id, body, opts)
+    def create_customer_card(customer_id, body, opts = {})
+      data, _status_code, _headers = create_customer_card_with_http_info(customer_id, body, opts)
       return data
     end
 
     # CreateCustomerCard
     # Adds a card on file to an existing customer.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param customer_id The ID of the customer to link the card on file to.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreateCustomerCardResponse, Fixnum, Hash)>] CreateCustomerCardResponse data, response status code and response headers
-    def create_customer_card_with_http_info(authorization, customer_id, body, opts = {})
+    def create_customer_card_with_http_info(customer_id, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: CustomerCardApi.create_customer_card ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling CustomerCardApi.create_customer_card" if authorization.nil?
       # verify the required parameter 'customer_id' is set
       fail ArgumentError, "Missing the required parameter 'customer_id' when calling CustomerCardApi.create_customer_card" if customer_id.nil?
       # verify the required parameter 'body' is set
@@ -58,14 +54,13 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
-      auth_names = []
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -81,29 +76,25 @@ module SquareConnect
 
     # DeleteCustomerCard
     # Removes a card on file from a customer.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param customer_id The ID of the customer that the card on file belongs to.
     # @param card_id The ID of the card on file to delete.
     # @param [Hash] opts the optional parameters
     # @return [DeleteCustomerCardResponse]
-    def delete_customer_card(authorization, customer_id, card_id, opts = {})
-      data, _status_code, _headers = delete_customer_card_with_http_info(authorization, customer_id, card_id, opts)
+    def delete_customer_card(customer_id, card_id, opts = {})
+      data, _status_code, _headers = delete_customer_card_with_http_info(customer_id, card_id, opts)
       return data
     end
 
     # DeleteCustomerCard
     # Removes a card on file from a customer.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param customer_id The ID of the customer that the card on file belongs to.
     # @param card_id The ID of the card on file to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(DeleteCustomerCardResponse, Fixnum, Hash)>] DeleteCustomerCardResponse data, response status code and response headers
-    def delete_customer_card_with_http_info(authorization, customer_id, card_id, opts = {})
+    def delete_customer_card_with_http_info(customer_id, card_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: CustomerCardApi.delete_customer_card ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling CustomerCardApi.delete_customer_card" if authorization.nil?
       # verify the required parameter 'customer_id' is set
       fail ArgumentError, "Missing the required parameter 'customer_id' when calling CustomerCardApi.delete_customer_card" if customer_id.nil?
       # verify the required parameter 'card_id' is set
@@ -120,14 +111,13 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

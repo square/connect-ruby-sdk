@@ -19,25 +19,21 @@ module SquareConnect
 
     # ListLocations
     # Provides the details for all of a business's locations.  Most other Connect API endpoints have a required `location_id` path parameter. The `id` field of the [`Location`](#type-location) objects returned by this endpoint correspond to that `location_id` parameter.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param [Hash] opts the optional parameters
     # @return [ListLocationsResponse]
-    def list_locations(authorization, opts = {})
-      data, _status_code, _headers = list_locations_with_http_info(authorization, opts)
+    def list_locations(opts = {})
+      data, _status_code, _headers = list_locations_with_http_info(opts)
       return data
     end
 
     # ListLocations
     # Provides the details for all of a business&#39;s locations.  Most other Connect API endpoints have a required &#x60;location_id&#x60; path parameter. The &#x60;id&#x60; field of the [&#x60;Location&#x60;](#type-location) objects returned by this endpoint correspond to that &#x60;location_id&#x60; parameter.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param [Hash] opts the optional parameters
     # @return [Array<(ListLocationsResponse, Fixnum, Hash)>] ListLocationsResponse data, response status code and response headers
-    def list_locations_with_http_info(authorization, opts = {})
+    def list_locations_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: LocationApi.list_locations ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling LocationApi.list_locations" if authorization.nil?
       # resource path
       local_var_path = "/v2/locations".sub('{format}','json')
 
@@ -50,14 +46,13 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

@@ -19,31 +19,27 @@ module SquareConnect
 
     # CreateRefund
     # Initiates a refund for a previously charged tender.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param location_id The ID of the original transaction&#39;s associated location.
     # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [CreateRefundResponse]
-    def create_refund(authorization, location_id, transaction_id, body, opts = {})
-      data, _status_code, _headers = create_refund_with_http_info(authorization, location_id, transaction_id, body, opts)
+    def create_refund(location_id, transaction_id, body, opts = {})
+      data, _status_code, _headers = create_refund_with_http_info(location_id, transaction_id, body, opts)
       return data
     end
 
     # CreateRefund
     # Initiates a refund for a previously charged tender.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param location_id The ID of the original transaction&#39;s associated location.
     # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreateRefundResponse, Fixnum, Hash)>] CreateRefundResponse data, response status code and response headers
-    def create_refund_with_http_info(authorization, location_id, transaction_id, body, opts = {})
+    def create_refund_with_http_info(location_id, transaction_id, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: RefundApi.create_refund ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling RefundApi.create_refund" if authorization.nil?
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling RefundApi.create_refund" if location_id.nil?
       # verify the required parameter 'transaction_id' is set
@@ -62,14 +58,13 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
-      auth_names = []
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
@@ -85,7 +80,6 @@ module SquareConnect
 
     # ListRefunds
     # Lists refunds for one of a business's locations.  Refunds with a `status` of `PENDING` are not currently included in this endpoint's response.  Max results per [page](#paginatingresults): 50
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param location_id The ID of the location to list refunds for.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
@@ -93,14 +87,13 @@ module SquareConnect
     # @option opts [String] :sort_order The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60;
     # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
     # @return [ListRefundsResponse]
-    def list_refunds(authorization, location_id, opts = {})
-      data, _status_code, _headers = list_refunds_with_http_info(authorization, location_id, opts)
+    def list_refunds(location_id, opts = {})
+      data, _status_code, _headers = list_refunds_with_http_info(location_id, opts)
       return data
     end
 
     # ListRefunds
     # Lists refunds for one of a business&#39;s locations.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param location_id The ID of the location to list refunds for.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
@@ -108,12 +101,10 @@ module SquareConnect
     # @option opts [String] :sort_order The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60;
     # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
     # @return [Array<(ListRefundsResponse, Fixnum, Hash)>] ListRefundsResponse data, response status code and response headers
-    def list_refunds_with_http_info(authorization, location_id, opts = {})
+    def list_refunds_with_http_info(location_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: RefundApi.list_refunds ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling RefundApi.list_refunds" if authorization.nil?
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling RefundApi.list_refunds" if location_id.nil?
       if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
@@ -135,14 +126,13 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = nil
-      auth_names = []
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
         :header_params => header_params,
         :query_params => query_params,

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **create_customer**
-> CreateCustomerResponse create_customer(authorization, body)
+> CreateCustomerResponse create_customer(body)
 
 CreateCustomer
 
@@ -22,17 +22,20 @@ Creates a new customer for a business, which can have associated cards on file. 
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CustomerApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::CreateCustomerRequest.new # CreateCustomerRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #CreateCustomer
-  result = api_instance.create_customer(authorization, body)
+  result = api_instance.create_customer(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CustomerApi->create_customer: #{e}"
@@ -43,7 +46,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**CreateCustomerRequest**](CreateCustomerRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -52,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -62,7 +64,7 @@ No authorization required
 
 
 # **delete_customer**
-> DeleteCustomerResponse delete_customer(authorization, customer_id)
+> DeleteCustomerResponse delete_customer(customer_id)
 
 DeleteCustomer
 
@@ -72,17 +74,20 @@ Deletes a customer from a business, along with any linked cards on file.
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CustomerApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 customer_id = "customer_id_example" # String | The ID of the customer to delete.
 
 
 begin
   #DeleteCustomer
-  result = api_instance.delete_customer(authorization, customer_id)
+  result = api_instance.delete_customer(customer_id)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CustomerApi->delete_customer: #{e}"
@@ -93,7 +98,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **customer_id** | **String**| The ID of the customer to delete. | 
 
 ### Return type
@@ -102,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -112,7 +116,7 @@ No authorization required
 
 
 # **list_customers**
-> ListCustomersResponse list_customers(authorization, opts)
+> ListCustomersResponse list_customers(opts)
 
 ListCustomers
 
@@ -122,10 +126,13 @@ Lists a business's customers.
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CustomerApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 opts = { 
   cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
@@ -133,7 +140,7 @@ opts = {
 
 begin
   #ListCustomers
-  result = api_instance.list_customers(authorization, opts)
+  result = api_instance.list_customers(opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CustomerApi->list_customers: #{e}"
@@ -144,7 +151,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
 
 ### Return type
@@ -153,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -163,7 +169,7 @@ No authorization required
 
 
 # **retrieve_customer**
-> RetrieveCustomerResponse retrieve_customer(authorization, customer_id)
+> RetrieveCustomerResponse retrieve_customer(customer_id)
 
 RetrieveCustomer
 
@@ -173,17 +179,20 @@ Returns details for a single customer.
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CustomerApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 customer_id = "customer_id_example" # String | The ID of the customer to retrieve.
 
 
 begin
   #RetrieveCustomer
-  result = api_instance.retrieve_customer(authorization, customer_id)
+  result = api_instance.retrieve_customer(customer_id)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CustomerApi->retrieve_customer: #{e}"
@@ -194,7 +203,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **customer_id** | **String**| The ID of the customer to retrieve. | 
 
 ### Return type
@@ -203,7 +211,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -213,7 +221,7 @@ No authorization required
 
 
 # **update_customer**
-> UpdateCustomerResponse update_customer(authorization, customer_id, body)
+> UpdateCustomerResponse update_customer(customer_id, body)
 
 UpdateCustomer
 
@@ -223,10 +231,13 @@ Updates the details of an existing customer.  You cannot edit a customer's cards
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CustomerApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 customer_id = "customer_id_example" # String | The ID of the customer to update.
 
@@ -235,7 +246,7 @@ body = SquareConnect::UpdateCustomerRequest.new # UpdateCustomerRequest | An obj
 
 begin
   #UpdateCustomer
-  result = api_instance.update_customer(authorization, customer_id, body)
+  result = api_instance.update_customer(customer_id, body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CustomerApi->update_customer: #{e}"
@@ -246,7 +257,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **customer_id** | **String**| The ID of the customer to update. | 
  **body** | [**UpdateCustomerRequest**](UpdateCustomerRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
@@ -256,7 +266,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

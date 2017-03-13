@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **capture_transaction**
-> CaptureTransactionResponse capture_transaction(authorization, location_id, transaction_id)
+> CaptureTransactionResponse capture_transaction(location_id, transaction_id)
 
 CaptureTransaction
 
@@ -22,10 +22,13 @@ Captures a transaction that was created with the [Charge](#endpoint-charge) endp
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::TransactionApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | 
 
@@ -34,7 +37,7 @@ transaction_id = "transaction_id_example" # String |
 
 begin
   #CaptureTransaction
-  result = api_instance.capture_transaction(authorization, location_id, transaction_id)
+  result = api_instance.capture_transaction(location_id, transaction_id)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling TransactionApi->capture_transaction: #{e}"
@@ -45,7 +48,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**|  | 
  **transaction_id** | **String**|  | 
 
@@ -55,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -65,7 +67,7 @@ No authorization required
 
 
 # **charge**
-> ChargeResponse charge(authorization, location_id, body)
+> ChargeResponse charge(location_id, body)
 
 Charge
 
@@ -75,10 +77,13 @@ Charges a card represented by a card nonce or a customer's card on file.  Your r
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::TransactionApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | The ID of the location to associate the created transaction with.
 
@@ -87,7 +92,7 @@ body = SquareConnect::ChargeRequest.new # ChargeRequest | An object containing t
 
 begin
   #Charge
-  result = api_instance.charge(authorization, location_id, body)
+  result = api_instance.charge(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling TransactionApi->charge: #{e}"
@@ -98,7 +103,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**| The ID of the location to associate the created transaction with. | 
  **body** | [**ChargeRequest**](ChargeRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -118,7 +122,7 @@ No authorization required
 
 
 # **list_transactions**
-> ListTransactionsResponse list_transactions(authorization, location_id, opts)
+> ListTransactionsResponse list_transactions(location_id, opts)
 
 ListTransactions
 
@@ -128,10 +132,13 @@ Lists transactions for a particular location.  Max results per [page](#paginatin
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::TransactionApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | The ID of the location to list transactions for.
 
@@ -144,7 +151,7 @@ opts = {
 
 begin
   #ListTransactions
-  result = api_instance.list_transactions(authorization, location_id, opts)
+  result = api_instance.list_transactions(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling TransactionApi->list_transactions: #{e}"
@@ -155,7 +162,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**| The ID of the location to list transactions for. | 
  **begin_time** | **String**| The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. | [optional] 
  **end_time** | **String**| The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. | [optional] 
@@ -168,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -178,7 +184,7 @@ No authorization required
 
 
 # **retrieve_transaction**
-> RetrieveTransactionResponse retrieve_transaction(authorization, location_id, transaction_id)
+> RetrieveTransactionResponse retrieve_transaction(location_id, transaction_id)
 
 RetrieveTransaction
 
@@ -188,10 +194,13 @@ Retrieves details for a single transaction.
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::TransactionApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | The ID of the transaction's associated location.
 
@@ -200,7 +209,7 @@ transaction_id = "transaction_id_example" # String | The ID of the transaction t
 
 begin
   #RetrieveTransaction
-  result = api_instance.retrieve_transaction(authorization, location_id, transaction_id)
+  result = api_instance.retrieve_transaction(location_id, transaction_id)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling TransactionApi->retrieve_transaction: #{e}"
@@ -211,7 +220,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**| The ID of the transaction&#39;s associated location. | 
  **transaction_id** | **String**| The ID of the transaction to retrieve. | 
 
@@ -221,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -231,7 +239,7 @@ No authorization required
 
 
 # **void_transaction**
-> VoidTransactionResponse void_transaction(authorization, location_id, transaction_id)
+> VoidTransactionResponse void_transaction(location_id, transaction_id)
 
 VoidTransaction
 
@@ -241,10 +249,13 @@ Cancels a transaction that was created with the [Charge](#endpoint-charge) endpo
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::TransactionApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | 
 
@@ -253,7 +264,7 @@ transaction_id = "transaction_id_example" # String |
 
 begin
   #VoidTransaction
-  result = api_instance.void_transaction(authorization, location_id, transaction_id)
+  result = api_instance.void_transaction(location_id, transaction_id)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling TransactionApi->void_transaction: #{e}"
@@ -264,7 +275,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**|  | 
  **transaction_id** | **String**|  | 
 
@@ -274,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
