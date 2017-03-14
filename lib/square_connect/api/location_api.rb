@@ -65,5 +65,103 @@ module SquareConnect
       end
       return data, status_code, headers
     end
+
+    # Provides details for a business's locations, including their IDs.
+    # Provides details for a business's locations, including their IDs.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<V1Merchant>]
+    def v1_list_locations(opts = {})
+      data, _status_code, _headers = v1_list_locations_with_http_info(opts)
+      return data
+    end
+
+    # Provides details for a business&#39;s locations, including their IDs.
+    # Provides details for a business&#39;s locations, including their IDs.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<V1Merchant>, Fixnum, Hash)>] Array<V1Merchant> data, response status code and response headers
+    def v1_list_locations_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: LocationApi.v1_list_locations ..."
+      end
+      # resource path
+      local_var_path = "/v1/me/locations".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Array<V1Merchant>')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LocationApi#v1_list_locations\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a business's information.
+    # Get a business's information.
+    # @param [Hash] opts the optional parameters
+    # @return [V1Merchant]
+    def v1_retrieve_business(opts = {})
+      data, _status_code, _headers = v1_retrieve_business_with_http_info(opts)
+      return data
+    end
+
+    # Get a business&#39;s information.
+    # Get a business&#39;s information.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(V1Merchant, Fixnum, Hash)>] V1Merchant data, response status code and response headers
+    def v1_retrieve_business_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: LocationApi.v1_retrieve_business ..."
+      end
+      # resource path
+      local_var_path = "/v1/me".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'V1Merchant')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: LocationApi#v1_retrieve_business\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

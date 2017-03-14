@@ -1,0 +1,33 @@
+# SquareConnect::V1Payment
+
+### Description
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **String** | The payment&#39;s unique identifier. | [optional] 
+**merchant_id** | **String** | The unique identifier of the merchant that took the payment. | [optional] 
+**created_at** | **String** | The time when the payment was created, in ISO 8601 format. | [optional] 
+**creator_id** | **BOOLEAN** | The unique identifier of the Square account that took the payment. | [optional] 
+**device** | [**Device**](Device.md) | The device that took the payment. | [optional] 
+**payment_url** | **String** | The URL of the payment&#39;s detail page in the merchant dashboard. The merchant must be signed in to the merchant dashboard to view this page. | [optional] 
+**receipt_url** | **String** | The URL of the receipt for the payment. Note that for split tender payments, this URL corresponds to the receipt for the first tender listed in the payment&#39;s tender field. Each Tender object has its own receipt_url field you can use to get the other receipts associated with a split tender payment. | [optional] 
+**inclusive_tax_money** | [**V1Money**](V1Money.md) | The sum of all inclusive taxes associated with the payment. | [optional] 
+**additive_tax_money** | [**V1Money**](V1Money.md) | The sum of all additive taxes associated with the payment. | [optional] 
+**tax_money** | [**V1Money**](V1Money.md) | The total of all taxes applied to the payment. This is always the sum of inclusive_tax_money and additive_tax_money. | [optional] 
+**tip_money** | [**V1Money**](V1Money.md) | The total of all tips applied to the payment. | [optional] 
+**discount_money** | [**V1Money**](V1Money.md) | The total of all discounts applied to the payment. | [optional] 
+**total_collected_money** | [**V1Money**](V1Money.md) | The total of all discounts applied to the payment. | [optional] 
+**processing_fee_money** | [**V1Money**](V1Money.md) | The total of all processing fees collected by Square for the payment. | [optional] 
+**net_total_money** | [**V1Money**](V1Money.md) | The amount to be deposited into the merchant&#39;s bank account for the payment. | [optional] 
+**refunded_money** | [**V1Money**](V1Money.md) | The total of all refunds applied to the payment. | [optional] 
+**swedish_rounding_money** | [**V1Money**](V1Money.md) |  | [optional] 
+**gross_sales_money** | [**V1Money**](V1Money.md) |  | [optional] 
+**net_sales_money** | [**V1Money**](V1Money.md) |  | [optional] 
+**inclusive_tax** | [**Array&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | All of the inclusive taxes associated with the payment. | [optional] 
+**additive_tax** | [**Array&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | All of the additive taxes associated with the payment. | [optional] 
+**tender** | [**Array&lt;V1Tender&gt;**](V1Tender.md) | All of the additive taxes associated with the payment. | [optional] 
+**refunds** | [**Array&lt;V1Refund&gt;**](V1Refund.md) | All of the refunds applied to the payment. | [optional] 
+**itemizations** | [**Array&lt;V1PaymentItemization&gt;**](V1PaymentItemization.md) | The items purchased in the payment. | [optional] 
+
+
