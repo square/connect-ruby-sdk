@@ -1,29 +1,29 @@
-# SquareConnect::EmployeesApi
+# SquareConnect::V1EmployeesApi
 
 All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_create_employee**](EmployeesApi.md#v1_create_employee) | **POST** /v1/me/employees | Creates an employee for a business.
-[**v1_create_employee_role**](EmployeesApi.md#v1_create_employee_role) | **POST** /v1/me/roles | Creates an employee role you can then assign to employees.
-[**v1_create_timecard**](EmployeesApi.md#v1_create_timecard) | **POST** /v1/me/timecards | Creates a timecard for an employee. Each timecard corresponds to a single shift.
-[**v1_delete_timecard**](EmployeesApi.md#v1_delete_timecard) | **DELETE** /v1/me/timecards/{timecard_id} | Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-[**v1_list_cash_drawer_shifts**](EmployeesApi.md#v1_list_cash_drawer_shifts) | **GET** /v1/{location_id}/cash-drawer-shifts | Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
-[**v1_list_employee_roles**](EmployeesApi.md#v1_list_employee_roles) | **GET** /v1/me/roles | Provides summary information for all of a business&#39;s employee roles.
-[**v1_list_employees**](EmployeesApi.md#v1_list_employees) | **GET** /v1/me/employees | Provides summary information for all of a business&#39;s employees.
-[**v1_list_timecard_events**](EmployeesApi.md#v1_list_timecard_events) | **GET** /v1/me/timecards/{timecard_id}/events | Provides summary information for all events associated with a particular timecard.
-[**v1_list_timecards**](EmployeesApi.md#v1_list_timecards) | **GET** /v1/me/timecards | Provides summary information for all of a business&#39;s employee timecards.
-[**v1_retrieve_cash_drawer_shift**](EmployeesApi.md#v1_retrieve_cash_drawer_shift) | **GET** /v1/{location_id}/cash-drawer-shifts/{shift_id} | Provides the details for a single cash drawer shift, including all events that occurred during the shift.
-[**v1_retrieve_employee**](EmployeesApi.md#v1_retrieve_employee) | **GET** /v1/me/employees/{employee_id} | Provides the details for a single employee.
-[**v1_retrieve_employee_role**](EmployeesApi.md#v1_retrieve_employee_role) | **GET** /v1/me/roles/{role_id} | Provides the details for a single employee role.
-[**v1_retrieve_timecard**](EmployeesApi.md#v1_retrieve_timecard) | **GET** /v1/me/timecards/{timecard_id} | Provides the details for a single timecard.
-[**v1_update_employee**](EmployeesApi.md#v1_update_employee) | **PUT** /v1/me/employees/{employee_id} | v1UpdateEmployee
-[**v1_update_employee_role**](EmployeesApi.md#v1_update_employee_role) | **PUT** /v1/me/roles/{role_id} | Modifies the details of an employee role.
-[**v1_update_timecard**](EmployeesApi.md#v1_update_timecard) | **PUT** /v1/me/timecards/{timecard_id} | Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+[**create_employee**](V1EmployeesApi.md#create_employee) | **POST** /v1/me/employees | Creates an employee for a business.
+[**create_employee_role**](V1EmployeesApi.md#create_employee_role) | **POST** /v1/me/roles | Creates an employee role you can then assign to employees.
+[**create_timecard**](V1EmployeesApi.md#create_timecard) | **POST** /v1/me/timecards | Creates a timecard for an employee. Each timecard corresponds to a single shift.
+[**delete_timecard**](V1EmployeesApi.md#delete_timecard) | **DELETE** /v1/me/timecards/{timecard_id} | Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+[**list_cash_drawer_shifts**](V1EmployeesApi.md#list_cash_drawer_shifts) | **GET** /v1/{location_id}/cash-drawer-shifts | Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+[**list_employee_roles**](V1EmployeesApi.md#list_employee_roles) | **GET** /v1/me/roles | Provides summary information for all of a business&#39;s employee roles.
+[**list_employees**](V1EmployeesApi.md#list_employees) | **GET** /v1/me/employees | Provides summary information for all of a business&#39;s employees.
+[**list_timecard_events**](V1EmployeesApi.md#list_timecard_events) | **GET** /v1/me/timecards/{timecard_id}/events | Provides summary information for all events associated with a particular timecard.
+[**list_timecards**](V1EmployeesApi.md#list_timecards) | **GET** /v1/me/timecards | Provides summary information for all of a business&#39;s employee timecards.
+[**retrieve_cash_drawer_shift**](V1EmployeesApi.md#retrieve_cash_drawer_shift) | **GET** /v1/{location_id}/cash-drawer-shifts/{shift_id} | Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+[**retrieve_employee**](V1EmployeesApi.md#retrieve_employee) | **GET** /v1/me/employees/{employee_id} | Provides the details for a single employee.
+[**retrieve_employee_role**](V1EmployeesApi.md#retrieve_employee_role) | **GET** /v1/me/roles/{role_id} | Provides the details for a single employee role.
+[**retrieve_timecard**](V1EmployeesApi.md#retrieve_timecard) | **GET** /v1/me/timecards/{timecard_id} | Provides the details for a single timecard.
+[**update_employee**](V1EmployeesApi.md#update_employee) | **PUT** /v1/me/employees/{employee_id} | V1 UpdateEmployee
+[**update_employee_role**](V1EmployeesApi.md#update_employee_role) | **PUT** /v1/me/roles/{role_id} | Modifies the details of an employee role.
+[**update_timecard**](V1EmployeesApi.md#update_timecard) | **PUT** /v1/me/timecards/{timecard_id} | Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
 
 
-# **v1_create_employee**
-> V1Employee v1_create_employee(body)
+# **create_employee**
+> V1Employee create_employee(body)
 
 Creates an employee for a business.
 
@@ -39,17 +39,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 body = SquareConnect::V1Employee.new # V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #Creates an employee for a business.
-  result = api_instance.v1_create_employee(body)
+  result = api_instance.create_employee(body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_create_employee: #{e}"
+  puts "Exception when calling V1EmployeesApi->create_employee: #{e}"
 end
 ```
 
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_create_employee_role**
-> V1EmployeeRole v1_create_employee_role(employee_role)
+# **create_employee_role**
+> V1EmployeeRole create_employee_role(employee_role)
 
 Creates an employee role you can then assign to employees.
 
@@ -91,17 +91,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 employee_role = SquareConnect::V1EmployeeRole.new # V1EmployeeRole | An EmployeeRole object with a name and permissions, and an optional owner flag.
 
 
 begin
   #Creates an employee role you can then assign to employees.
-  result = api_instance.v1_create_employee_role(employee_role)
+  result = api_instance.create_employee_role(employee_role)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_create_employee_role: #{e}"
+  puts "Exception when calling V1EmployeesApi->create_employee_role: #{e}"
 end
 ```
 
@@ -126,8 +126,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_create_timecard**
-> V1Timecard v1_create_timecard(body)
+# **create_timecard**
+> V1Timecard create_timecard(body)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -143,17 +143,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #Creates a timecard for an employee. Each timecard corresponds to a single shift.
-  result = api_instance.v1_create_timecard(body)
+  result = api_instance.create_timecard(body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_create_timecard: #{e}"
+  puts "Exception when calling V1EmployeesApi->create_timecard: #{e}"
 end
 ```
 
@@ -178,8 +178,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_delete_timecard**
-> Object v1_delete_timecard(timecard_id)
+# **delete_timecard**
+> Object delete_timecard(timecard_id)
 
 Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
 
@@ -195,17 +195,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 timecard_id = "timecard_id_example" # String | The ID of the timecard to delete.
 
 
 begin
   #Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-  result = api_instance.v1_delete_timecard(timecard_id)
+  result = api_instance.delete_timecard(timecard_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_delete_timecard: #{e}"
+  puts "Exception when calling V1EmployeesApi->delete_timecard: #{e}"
 end
 ```
 
@@ -230,8 +230,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_cash_drawer_shifts**
-> Array&lt;V1CashDrawerShift&gt; v1_list_cash_drawer_shifts(location_id, opts)
+# **list_cash_drawer_shifts**
+> Array&lt;V1CashDrawerShift&gt; list_cash_drawer_shifts(location_id, opts)
 
 Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
 
@@ -247,7 +247,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 location_id = "location_id_example" # String | The ID of the location to list cash drawer shifts for.
 
@@ -259,10 +259,10 @@ opts = {
 
 begin
   #Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
-  result = api_instance.v1_list_cash_drawer_shifts(location_id, opts)
+  result = api_instance.list_cash_drawer_shifts(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_list_cash_drawer_shifts: #{e}"
+  puts "Exception when calling V1EmployeesApi->list_cash_drawer_shifts: #{e}"
 end
 ```
 
@@ -290,8 +290,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_employee_roles**
-> Array&lt;V1EmployeeRole&gt; v1_list_employee_roles(opts)
+# **list_employee_roles**
+> Array&lt;V1EmployeeRole&gt; list_employee_roles(opts)
 
 Provides summary information for all of a business's employee roles.
 
@@ -307,7 +307,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 opts = { 
   order: "order_example", # String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
@@ -317,10 +317,10 @@ opts = {
 
 begin
   #Provides summary information for all of a business's employee roles.
-  result = api_instance.v1_list_employee_roles(opts)
+  result = api_instance.list_employee_roles(opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_list_employee_roles: #{e}"
+  puts "Exception when calling V1EmployeesApi->list_employee_roles: #{e}"
 end
 ```
 
@@ -347,8 +347,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_employees**
-> Array&lt;V1Employee&gt; v1_list_employees(opts)
+# **list_employees**
+> Array&lt;V1Employee&gt; list_employees(opts)
 
 Provides summary information for all of a business's employees.
 
@@ -364,7 +364,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 opts = { 
   order: "order_example", # String | The order in which employees are listed in the response, based on their created_at field.      Default value: ASC 
@@ -379,10 +379,10 @@ opts = {
 
 begin
   #Provides summary information for all of a business's employees.
-  result = api_instance.v1_list_employees(opts)
+  result = api_instance.list_employees(opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_list_employees: #{e}"
+  puts "Exception when calling V1EmployeesApi->list_employees: #{e}"
 end
 ```
 
@@ -414,8 +414,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_timecard_events**
-> Array&lt;V1TimecardEvent&gt; v1_list_timecard_events(timecard_id)
+# **list_timecard_events**
+> Array&lt;V1TimecardEvent&gt; list_timecard_events(timecard_id)
 
 Provides summary information for all events associated with a particular timecard.
 
@@ -431,17 +431,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 timecard_id = "timecard_id_example" # String | The ID of the timecard to list events for.
 
 
 begin
   #Provides summary information for all events associated with a particular timecard.
-  result = api_instance.v1_list_timecard_events(timecard_id)
+  result = api_instance.list_timecard_events(timecard_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_list_timecard_events: #{e}"
+  puts "Exception when calling V1EmployeesApi->list_timecard_events: #{e}"
 end
 ```
 
@@ -466,8 +466,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_timecards**
-> Array&lt;V1Timecard&gt; v1_list_timecards(opts)
+# **list_timecards**
+> Array&lt;V1Timecard&gt; list_timecards(opts)
 
 Provides summary information for all of a business's employee timecards.
 
@@ -483,7 +483,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 opts = { 
   order: "order_example", # String | The order in which timecards are listed in the response, based on their created_at field.
@@ -501,10 +501,10 @@ opts = {
 
 begin
   #Provides summary information for all of a business's employee timecards.
-  result = api_instance.v1_list_timecards(opts)
+  result = api_instance.list_timecards(opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_list_timecards: #{e}"
+  puts "Exception when calling V1EmployeesApi->list_timecards: #{e}"
 end
 ```
 
@@ -539,8 +539,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_retrieve_cash_drawer_shift**
-> V1CashDrawerShift v1_retrieve_cash_drawer_shift(location_id, shift_id)
+# **retrieve_cash_drawer_shift**
+> V1CashDrawerShift retrieve_cash_drawer_shift(location_id, shift_id)
 
 Provides the details for a single cash drawer shift, including all events that occurred during the shift.
 
@@ -556,7 +556,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 location_id = "location_id_example" # String | The ID of the location to list cash drawer shifts for.
 
@@ -565,10 +565,10 @@ shift_id = "shift_id_example" # String | The shift's ID.
 
 begin
   #Provides the details for a single cash drawer shift, including all events that occurred during the shift.
-  result = api_instance.v1_retrieve_cash_drawer_shift(location_id, shift_id)
+  result = api_instance.retrieve_cash_drawer_shift(location_id, shift_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_retrieve_cash_drawer_shift: #{e}"
+  puts "Exception when calling V1EmployeesApi->retrieve_cash_drawer_shift: #{e}"
 end
 ```
 
@@ -594,8 +594,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_retrieve_employee**
-> V1Employee v1_retrieve_employee(employee_id)
+# **retrieve_employee**
+> V1Employee retrieve_employee(employee_id)
 
 Provides the details for a single employee.
 
@@ -611,17 +611,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 employee_id = "employee_id_example" # String | The employee's ID.
 
 
 begin
   #Provides the details for a single employee.
-  result = api_instance.v1_retrieve_employee(employee_id)
+  result = api_instance.retrieve_employee(employee_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_retrieve_employee: #{e}"
+  puts "Exception when calling V1EmployeesApi->retrieve_employee: #{e}"
 end
 ```
 
@@ -646,8 +646,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_retrieve_employee_role**
-> V1EmployeeRole v1_retrieve_employee_role(role_id)
+# **retrieve_employee_role**
+> V1EmployeeRole retrieve_employee_role(role_id)
 
 Provides the details for a single employee role.
 
@@ -663,17 +663,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 role_id = "role_id_example" # String | The role's ID.
 
 
 begin
   #Provides the details for a single employee role.
-  result = api_instance.v1_retrieve_employee_role(role_id)
+  result = api_instance.retrieve_employee_role(role_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_retrieve_employee_role: #{e}"
+  puts "Exception when calling V1EmployeesApi->retrieve_employee_role: #{e}"
 end
 ```
 
@@ -698,8 +698,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_retrieve_timecard**
-> V1Timecard v1_retrieve_timecard(timecard_id)
+# **retrieve_timecard**
+> V1Timecard retrieve_timecard(timecard_id)
 
 Provides the details for a single timecard.
 
@@ -715,17 +715,17 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 timecard_id = "timecard_id_example" # String | The timecard's ID.
 
 
 begin
   #Provides the details for a single timecard.
-  result = api_instance.v1_retrieve_timecard(timecard_id)
+  result = api_instance.retrieve_timecard(timecard_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_retrieve_timecard: #{e}"
+  puts "Exception when calling V1EmployeesApi->retrieve_timecard: #{e}"
 end
 ```
 
@@ -750,10 +750,10 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_update_employee**
-> V1Employee v1_update_employee(employee_id, body)
+# **update_employee**
+> V1Employee update_employee(employee_id, body)
 
-v1UpdateEmployee
+V1 UpdateEmployee
 
 ### Example
 ```ruby
@@ -765,7 +765,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 employee_id = "employee_id_example" # String | The ID of the role to modify.
 
@@ -773,11 +773,11 @@ body = SquareConnect::V1Employee.new # V1Employee | An object containing the fie
 
 
 begin
-  #v1UpdateEmployee
-  result = api_instance.v1_update_employee(employee_id, body)
+  #V1 UpdateEmployee
+  result = api_instance.update_employee(employee_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_update_employee: #{e}"
+  puts "Exception when calling V1EmployeesApi->update_employee: #{e}"
 end
 ```
 
@@ -803,8 +803,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_update_employee_role**
-> V1EmployeeRole v1_update_employee_role(role_id, body)
+# **update_employee_role**
+> V1EmployeeRole update_employee_role(role_id, body)
 
 Modifies the details of an employee role.
 
@@ -820,7 +820,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 role_id = "role_id_example" # String | The ID of the role to modify.
 
@@ -829,10 +829,10 @@ body = SquareConnect::V1EmployeeRole.new # V1EmployeeRole | An object containing
 
 begin
   #Modifies the details of an employee role.
-  result = api_instance.v1_update_employee_role(role_id, body)
+  result = api_instance.update_employee_role(role_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_update_employee_role: #{e}"
+  puts "Exception when calling V1EmployeesApi->update_employee_role: #{e}"
 end
 ```
 
@@ -858,8 +858,8 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_update_timecard**
-> V1Timecard v1_update_timecard(timecard_id, body)
+# **update_timecard**
+> V1Timecard update_timecard(timecard_id, body)
 
 Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.
 
@@ -875,7 +875,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::EmployeesApi.new
+api_instance = SquareConnect::V1EmployeesApi.new
 
 timecard_id = "timecard_id_example" # String | TThe ID of the timecard to modify.
 
@@ -884,10 +884,10 @@ body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fie
 
 begin
   #Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.
-  result = api_instance.v1_update_timecard(timecard_id, body)
+  result = api_instance.update_timecard(timecard_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling EmployeesApi->v1_update_timecard: #{e}"
+  puts "Exception when calling V1EmployeesApi->update_timecard: #{e}"
 end
 ```
 

@@ -119,14 +119,13 @@ require 'square_connect/models/void_transaction_response'
 
 # APIs
 require 'square_connect/api/checkout_api'
-require 'square_connect/api/customer_api'
-require 'square_connect/api/customer_card_api'
-require 'square_connect/api/employees_api'
-require 'square_connect/api/items_api'
-require 'square_connect/api/location_api'
-require 'square_connect/api/refund_api'
-require 'square_connect/api/transaction_api'
+require 'square_connect/api/customers_api'
+require 'square_connect/api/locations_api'
 require 'square_connect/api/transactions_api'
+require 'square_connect/api/v1_employees_api'
+require 'square_connect/api/v1_items_api'
+require 'square_connect/api/v1_location_api'
+require 'square_connect/api/v1_transactions_api'
 
 module SquareConnect
   class << self
