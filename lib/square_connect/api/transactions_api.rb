@@ -17,33 +17,90 @@ module SquareConnect
       @api_client = api_client
     end
 
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-    # @param location_id The ID of the original payment&#39;s associated location.
-    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # CaptureTransaction
+    # Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
+    # @param location_id 
+    # @param transaction_id 
     # @param [Hash] opts the optional parameters
-    # @return [V1Refund]
-    def v1_create_refund(location_id, body, opts = {})
-      data, _status_code, _headers = v1_create_refund_with_http_info(location_id, body, opts)
+    # @return [CaptureTransactionResponse]
+    def capture_transaction(location_id, transaction_id, opts = {})
+      data, _status_code, _headers = capture_transaction_with_http_info(location_id, transaction_id, opts)
       return data
     end
 
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-    # @param location_id The ID of the original payment&#39;s associated location.
-    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # CaptureTransaction
+    # Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
+    # @param location_id 
+    # @param transaction_id 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(V1Refund, Fixnum, Hash)>] V1Refund data, response status code and response headers
-    def v1_create_refund_with_http_info(location_id, body, opts = {})
+    # @return [Array<(CaptureTransactionResponse, Fixnum, Hash)>] CaptureTransactionResponse data, response status code and response headers
+    def capture_transaction_with_http_info(location_id, transaction_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_create_refund ..."
+        @api_client.config.logger.debug "Calling API: TransactionsApi.capture_transaction ..."
       end
       # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_create_refund" if location_id.nil?
-      # verify the required parameter 'body' is set
-      fail ArgumentError, "Missing the required parameter 'body' when calling TransactionsApi.v1_create_refund" if body.nil?
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.capture_transaction" if location_id.nil?
+      # verify the required parameter 'transaction_id' is set
+      fail ArgumentError, "Missing the required parameter 'transaction_id' when calling TransactionsApi.capture_transaction" if transaction_id.nil?
       # resource path
-      local_var_path = "/v1/{location_id}/refunds".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
+      local_var_path = "/v2/locations/{location_id}/transactions/{transaction_id}/capture".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'CaptureTransactionResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionsApi#capture_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Charge
+    # Charges a card represented by a card nonce or a customer's card on file.  Your request to this endpoint must include _either_:  - A value for the `card_nonce` parameter (to charge a card nonce generated with the `SqPaymentForm`) - Values for the `customer_card_id` and `customer_id` parameters (to charge a customer's card on file)  In order for an e-commerce payment to potentially qualify for [Square chargeback protection](https://squareup.com/help/article/5394), you _must_ provide values for the following parameters in your request:  - `buyer_email_address` - At least one of `billing_address` or `shipping_address`  When this response is returned, the amount of Square's processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money` field of each [Tender included](#type-tender) in the transaction.
+    # @param location_id The ID of the location to associate the created transaction with.
+    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # @param [Hash] opts the optional parameters
+    # @return [ChargeResponse]
+    def charge(location_id, body, opts = {})
+      data, _status_code, _headers = charge_with_http_info(location_id, body, opts)
+      return data
+    end
+
+    # Charge
+    # Charges a card represented by a card nonce or a customer&#39;s card on file.  Your request to this endpoint must include _either_:  - A value for the &#x60;card_nonce&#x60; parameter (to charge a card nonce generated with the &#x60;SqPaymentForm&#x60;) - Values for the &#x60;customer_card_id&#x60; and &#x60;customer_id&#x60; parameters (to charge a customer&#39;s card on file)  In order for an e-commerce payment to potentially qualify for [Square chargeback protection](https://squareup.com/help/article/5394), you _must_ provide values for the following parameters in your request:  - &#x60;buyer_email_address&#x60; - At least one of &#x60;billing_address&#x60; or &#x60;shipping_address&#x60;  When this response is returned, the amount of Square&#39;s processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-retrievetransaction). See the &#x60;processing_fee_money&#x60; field of each [Tender included](#type-tender) in the transaction.
+    # @param location_id The ID of the location to associate the created transaction with.
+    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ChargeResponse, Fixnum, Hash)>] ChargeResponse data, response status code and response headers
+    def charge_with_http_info(location_id, body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: TransactionsApi.charge ..."
+      end
+      # verify the required parameter 'location_id' is set
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.charge" if location_id.nil?
+      # verify the required parameter 'body' is set
+      fail ArgumentError, "Missing the required parameter 'body' when calling TransactionsApi.charge" if body.nil?
+      # resource path
+      local_var_path = "/v2/locations/{location_id}/transactions".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
       # query parameters
       query_params = {}
@@ -67,613 +124,44 @@ module SquareConnect
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'V1Refund')
+        :return_type => 'ChargeResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_create_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TransactionsApi#charge\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
 
-    # Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # @param location_id The ID of the location to list bank accounts for.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<V1BankAccount>]
-    def v1_list_bank_accounts(location_id, opts = {})
-      data, _status_code, _headers = v1_list_bank_accounts_with_http_info(location_id, opts)
-      return data
-    end
-
-    # Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # @param location_id The ID of the location to list bank accounts for.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<V1BankAccount>, Fixnum, Hash)>] Array<V1BankAccount> data, response status code and response headers
-    def v1_list_bank_accounts_with_http_info(location_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_list_bank_accounts ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_list_bank_accounts" if location_id.nil?
-      # resource path
-      local_var_path = "/v1/{location_id}/bank-accounts".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<V1BankAccount>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_list_bank_accounts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides summary information for a merchant's online store orders.
-    # Provides summary information for a merchant's online store orders.
-    # @param location_id The ID of the location to list online store orders for.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order TThe order in which payments are listed in the response.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @return [Array<V1Order>]
-    def v1_list_orders(location_id, opts = {})
-      data, _status_code, _headers = v1_list_orders_with_http_info(location_id, opts)
-      return data
-    end
-
-    # Provides summary information for a merchant&#39;s online store orders.
-    # Provides summary information for a merchant&#39;s online store orders.
-    # @param location_id The ID of the location to list online store orders for.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order TThe order in which payments are listed in the response.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @return [Array<(Array<V1Order>, Fixnum, Hash)>] Array<V1Order> data, response status code and response headers
-    def v1_list_orders_with_http_info(location_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_list_orders ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_list_orders" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
-      end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling TransactionsApi.v1_list_orders, must be smaller than or equal to 200.'
-      end
-
-      # resource path
-      local_var_path = "/v1/{location_id}/orders".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'order'] = opts[:'order'] if !opts[:'order'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<V1Order>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_list_orders\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-    # Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-    # @param location_id The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order The order in which payments are listed in the response.
-    # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-    # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @return [Array<V1Payment>]
-    def v1_list_payments(location_id, opts = {})
-      data, _status_code, _headers = v1_list_payments_with_http_info(location_id, opts)
-      return data
-    end
-
-    # Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-    # Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-    # @param location_id The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order The order in which payments are listed in the response.
-    # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-    # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @return [Array<(Array<V1Payment>, Fixnum, Hash)>] Array<V1Payment> data, response status code and response headers
-    def v1_list_payments_with_http_info(location_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_list_payments ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_list_payments" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
-      end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling TransactionsApi.v1_list_payments, must be smaller than or equal to 200.'
-      end
-
-      # resource path
-      local_var_path = "/v1/{location_id}/payments".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'order'] = opts[:'order'] if !opts[:'order'].nil?
-      query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
-      query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<V1Payment>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_list_payments\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
-    # Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
-    # @param location_id The ID of the location to list refunds for.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order TThe order in which payments are listed in the response.
-    # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-    # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @return [Array<V1Refund>]
-    def v1_list_refunds(location_id, opts = {})
-      data, _status_code, _headers = v1_list_refunds_with_http_info(location_id, opts)
-      return data
-    end
-
-    # Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-    # Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-    # @param location_id The ID of the location to list refunds for.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order TThe order in which payments are listed in the response.
-    # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-    # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @return [Array<(Array<V1Refund>, Fixnum, Hash)>] Array<V1Refund> data, response status code and response headers
-    def v1_list_refunds_with_http_info(location_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_list_refunds ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_list_refunds" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
-      end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling TransactionsApi.v1_list_refunds, must be smaller than or equal to 200.'
-      end
-
-      # resource path
-      local_var_path = "/v1/{location_id}/refunds".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'order'] = opts[:'order'] if !opts[:'order'].nil?
-      query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
-      query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<V1Refund>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_list_refunds\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. 
-    # @param location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order TThe order in which payments are listed in the response.
-    # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-    # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @option opts [String] :status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).
-    # @return [Array<V1Settlement>]
-    def v1_list_settlements(location_id, opts = {})
-      data, _status_code, _headers = v1_list_settlements_with_http_info(location_id, opts)
-      return data
-    end
-
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
-    # @param location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :order TThe order in which payments are listed in the response.
-    # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-    # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
-    # @option opts [String] :status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).
-    # @return [Array<(Array<V1Settlement>, Fixnum, Hash)>] Array<V1Settlement> data, response status code and response headers
-    def v1_list_settlements_with_http_info(location_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_list_settlements ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_list_settlements" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
-      end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling TransactionsApi.v1_list_settlements, must be smaller than or equal to 200.'
-      end
-
-      if opts[:'status'] && !['SENT', 'FAILED'].include?(opts[:'status'])
-        fail ArgumentError, 'invalid value for "status", must be one of SENT, FAILED'
-      end
-      # resource path
-      local_var_path = "/v1/{location_id}/settlements".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'order'] = opts[:'order'] if !opts[:'order'].nil?
-      query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
-      query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
-      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-      query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'Array<V1Settlement>')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_list_settlements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # @param location_id The ID of the bank account&#39;s associated location.
-    # @param bank_account_id The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned.
-    # @param [Hash] opts the optional parameters
-    # @return [V1BankAccount]
-    def v1_retrieve_bank_account(location_id, bank_account_id, opts = {})
-      data, _status_code, _headers = v1_retrieve_bank_account_with_http_info(location_id, bank_account_id, opts)
-      return data
-    end
-
-    # Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-    # @param location_id The ID of the bank account&#39;s associated location.
-    # @param bank_account_id The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(V1BankAccount, Fixnum, Hash)>] V1BankAccount data, response status code and response headers
-    def v1_retrieve_bank_account_with_http_info(location_id, bank_account_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_retrieve_bank_account ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_retrieve_bank_account" if location_id.nil?
-      # verify the required parameter 'bank_account_id' is set
-      fail ArgumentError, "Missing the required parameter 'bank_account_id' when calling TransactionsApi.v1_retrieve_bank_account" if bank_account_id.nil?
-      # resource path
-      local_var_path = "/v1/{location_id}/bank-accounts/{bank_account_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'bank_account_id' + '}', bank_account_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'V1BankAccount')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_retrieve_bank_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides comprehensive information for a single online store order, including the order's history.
-    # Provides comprehensive information for a single online store order, including the order's history.
-    # @param location_id The ID of the order&#39;s associated location.
-    # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
-    # @param [Hash] opts the optional parameters
-    # @return [V1Order]
-    def v1_retrieve_order(location_id, order_id, opts = {})
-      data, _status_code, _headers = v1_retrieve_order_with_http_info(location_id, order_id, opts)
-      return data
-    end
-
-    # Provides comprehensive information for a single online store order, including the order&#39;s history.
-    # Provides comprehensive information for a single online store order, including the order&#39;s history.
-    # @param location_id The ID of the order&#39;s associated location.
-    # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(V1Order, Fixnum, Hash)>] V1Order data, response status code and response headers
-    def v1_retrieve_order_with_http_info(location_id, order_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_retrieve_order ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_retrieve_order" if location_id.nil?
-      # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling TransactionsApi.v1_retrieve_order" if order_id.nil?
-      # resource path
-      local_var_path = "/v1/{location_id}/orders/{order_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'order_id' + '}', order_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'V1Order')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_retrieve_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides comprehensive information for a single payment.
-    # Provides comprehensive information for a single payment.
-    # @param location_id The ID of the payment&#39;s associated location.
-    # @param payment_id The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [V1Payment]
-    def v1_retrieve_payment(location_id, payment_id, opts = {})
-      data, _status_code, _headers = v1_retrieve_payment_with_http_info(location_id, payment_id, opts)
-      return data
-    end
-
-    # Provides comprehensive information for a single payment.
-    # Provides comprehensive information for a single payment.
-    # @param location_id The ID of the payment&#39;s associated location.
-    # @param payment_id The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(V1Payment, Fixnum, Hash)>] V1Payment data, response status code and response headers
-    def v1_retrieve_payment_with_http_info(location_id, payment_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_retrieve_payment ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_retrieve_payment" if location_id.nil?
-      # verify the required parameter 'payment_id' is set
-      fail ArgumentError, "Missing the required parameter 'payment_id' when calling TransactionsApi.v1_retrieve_payment" if payment_id.nil?
-      # resource path
-      local_var_path = "/v1/{location_id}/payments/{payment_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'payment_id' + '}', payment_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'V1Payment')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_retrieve_payment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
-    # @param location_id The ID of the settlements&#39;s associated location.
-    # @param settlement_id The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [V1Settlement]
-    def v1_retrieve_settlement(location_id, settlement_id, opts = {})
-      data, _status_code, _headers = v1_retrieve_settlement_with_http_info(location_id, settlement_id, opts)
-      return data
-    end
-
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-    # @param location_id The ID of the settlements&#39;s associated location.
-    # @param settlement_id The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(V1Settlement, Fixnum, Hash)>] V1Settlement data, response status code and response headers
-    def v1_retrieve_settlement_with_http_info(location_id, settlement_id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_retrieve_settlement ..."
-      end
-      # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_retrieve_settlement" if location_id.nil?
-      # verify the required parameter 'settlement_id' is set
-      fail ArgumentError, "Missing the required parameter 'settlement_id' when calling TransactionsApi.v1_retrieve_settlement" if settlement_id.nil?
-      # resource path
-      local_var_path = "/v1/{location_id}/settlements/{settlement_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'settlement_id' + '}', settlement_id.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'V1Settlement')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_retrieve_settlement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-    # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-    # @param location_id The ID of the order&#39;s associated location.
-    # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
+    # CreateRefund
+    # Initiates a refund for a previously charged tender.
+    # @param location_id The ID of the original transaction&#39;s associated location.
+    # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
-    # @return [V1Order]
-    def v1_update_order(location_id, order_id, body, opts = {})
-      data, _status_code, _headers = v1_update_order_with_http_info(location_id, order_id, body, opts)
+    # @return [CreateRefundResponse]
+    def create_refund(location_id, transaction_id, body, opts = {})
+      data, _status_code, _headers = create_refund_with_http_info(location_id, transaction_id, body, opts)
       return data
     end
 
-    # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-    # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-    # @param location_id The ID of the order&#39;s associated location.
-    # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
+    # CreateRefund
+    # Initiates a refund for a previously charged tender.
+    # @param location_id The ID of the original transaction&#39;s associated location.
+    # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(V1Order, Fixnum, Hash)>] V1Order data, response status code and response headers
-    def v1_update_order_with_http_info(location_id, order_id, body, opts = {})
+    # @return [Array<(CreateRefundResponse, Fixnum, Hash)>] CreateRefundResponse data, response status code and response headers
+    def create_refund_with_http_info(location_id, transaction_id, body, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: TransactionsApi.v1_update_order ..."
+        @api_client.config.logger.debug "Calling API: TransactionsApi.create_refund ..."
       end
       # verify the required parameter 'location_id' is set
-      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.v1_update_order" if location_id.nil?
-      # verify the required parameter 'order_id' is set
-      fail ArgumentError, "Missing the required parameter 'order_id' when calling TransactionsApi.v1_update_order" if order_id.nil?
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.create_refund" if location_id.nil?
+      # verify the required parameter 'transaction_id' is set
+      fail ArgumentError, "Missing the required parameter 'transaction_id' when calling TransactionsApi.create_refund" if transaction_id.nil?
       # verify the required parameter 'body' is set
-      fail ArgumentError, "Missing the required parameter 'body' when calling TransactionsApi.v1_update_order" if body.nil?
+      fail ArgumentError, "Missing the required parameter 'body' when calling TransactionsApi.create_refund" if body.nil?
       # resource path
-      local_var_path = "/v1/{location_id}/orders/{order_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'order_id' + '}', order_id.to_s)
+      local_var_path = "/v2/locations/{location_id}/transactions/{transaction_id}/refund".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
 
       # query parameters
       query_params = {}
@@ -691,15 +179,265 @@ module SquareConnect
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
       auth_names = ['oauth2']
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'V1Order')
+        :return_type => 'CreateRefundResponse')
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: TransactionsApi#v1_update_order\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: TransactionsApi#create_refund\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # ListRefunds
+    # Lists refunds for one of a business's locations.  Refunds with a `status` of `PENDING` are not currently included in this endpoint's response.  Max results per [page](#paginatingresults): 50
+    # @param location_id The ID of the location to list refunds for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
+    # @option opts [String] :end_time The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
+    # @option opts [String] :sort_order The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60;
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @return [ListRefundsResponse]
+    def list_refunds(location_id, opts = {})
+      data, _status_code, _headers = list_refunds_with_http_info(location_id, opts)
+      return data
+    end
+
+    # ListRefunds
+    # Lists refunds for one of a business&#39;s locations.  Refunds with a &#x60;status&#x60; of &#x60;PENDING&#x60; are not currently included in this endpoint&#39;s response.  Max results per [page](#paginatingresults): 50
+    # @param location_id The ID of the location to list refunds for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
+    # @option opts [String] :end_time The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
+    # @option opts [String] :sort_order The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60;
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @return [Array<(ListRefundsResponse, Fixnum, Hash)>] ListRefundsResponse data, response status code and response headers
+    def list_refunds_with_http_info(location_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: TransactionsApi.list_refunds ..."
+      end
+      # verify the required parameter 'location_id' is set
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.list_refunds" if location_id.nil?
+      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
+        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
+      end
+      # resource path
+      local_var_path = "/v2/locations/{location_id}/refunds".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
+      query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
+      query_params[:'sort_order'] = opts[:'sort_order'] if !opts[:'sort_order'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ListRefundsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionsApi#list_refunds\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # ListTransactions
+    # Lists transactions for a particular location.  Max results per [page](#paginatingresults): 50
+    # @param location_id The ID of the location to list transactions for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
+    # @option opts [String] :end_time The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
+    # @option opts [String] :sort_order The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60;
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @return [ListTransactionsResponse]
+    def list_transactions(location_id, opts = {})
+      data, _status_code, _headers = list_transactions_with_http_info(location_id, opts)
+      return data
+    end
+
+    # ListTransactions
+    # Lists transactions for a particular location.  Max results per [page](#paginatingresults): 50
+    # @param location_id The ID of the location to list transactions for.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
+    # @option opts [String] :end_time The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
+    # @option opts [String] :sort_order The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60;
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @return [Array<(ListTransactionsResponse, Fixnum, Hash)>] ListTransactionsResponse data, response status code and response headers
+    def list_transactions_with_http_info(location_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: TransactionsApi.list_transactions ..."
+      end
+      # verify the required parameter 'location_id' is set
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.list_transactions" if location_id.nil?
+      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
+        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
+      end
+      # resource path
+      local_var_path = "/v2/locations/{location_id}/transactions".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
+      query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
+      query_params[:'sort_order'] = opts[:'sort_order'] if !opts[:'sort_order'].nil?
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'ListTransactionsResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionsApi#list_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # RetrieveTransaction
+    # Retrieves details for a single transaction.
+    # @param location_id The ID of the transaction&#39;s associated location.
+    # @param transaction_id The ID of the transaction to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [RetrieveTransactionResponse]
+    def retrieve_transaction(location_id, transaction_id, opts = {})
+      data, _status_code, _headers = retrieve_transaction_with_http_info(location_id, transaction_id, opts)
+      return data
+    end
+
+    # RetrieveTransaction
+    # Retrieves details for a single transaction.
+    # @param location_id The ID of the transaction&#39;s associated location.
+    # @param transaction_id The ID of the transaction to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(RetrieveTransactionResponse, Fixnum, Hash)>] RetrieveTransactionResponse data, response status code and response headers
+    def retrieve_transaction_with_http_info(location_id, transaction_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: TransactionsApi.retrieve_transaction ..."
+      end
+      # verify the required parameter 'location_id' is set
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.retrieve_transaction" if location_id.nil?
+      # verify the required parameter 'transaction_id' is set
+      fail ArgumentError, "Missing the required parameter 'transaction_id' when calling TransactionsApi.retrieve_transaction" if transaction_id.nil?
+      # resource path
+      local_var_path = "/v2/locations/{location_id}/transactions/{transaction_id}".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'RetrieveTransactionResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionsApi#retrieve_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # VoidTransaction
+    # Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
+    # @param location_id 
+    # @param transaction_id 
+    # @param [Hash] opts the optional parameters
+    # @return [VoidTransactionResponse]
+    def void_transaction(location_id, transaction_id, opts = {})
+      data, _status_code, _headers = void_transaction_with_http_info(location_id, transaction_id, opts)
+      return data
+    end
+
+    # VoidTransaction
+    # Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
+    # @param location_id 
+    # @param transaction_id 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(VoidTransactionResponse, Fixnum, Hash)>] VoidTransactionResponse data, response status code and response headers
+    def void_transaction_with_http_info(location_id, transaction_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: TransactionsApi.void_transaction ..."
+      end
+      # verify the required parameter 'location_id' is set
+      fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.void_transaction" if location_id.nil?
+      # verify the required parameter 'transaction_id' is set
+      fail ArgumentError, "Missing the required parameter 'transaction_id' when calling TransactionsApi.void_transaction" if transaction_id.nil?
+      # resource path
+      local_var_path = "/v2/locations/{location_id}/transactions/{transaction_id}/void".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s).sub('{' + 'transaction_id' + '}', transaction_id.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'VoidTransactionResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: TransactionsApi#void_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

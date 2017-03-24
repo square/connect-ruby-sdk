@@ -1,14 +1,16 @@
-# SquareConnect::CustomerApi
+# SquareConnect::CustomersApi
 
 All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_customer**](CustomerApi.md#create_customer) | **POST** /v2/customers | CreateCustomer
-[**delete_customer**](CustomerApi.md#delete_customer) | **DELETE** /v2/customers/{customer_id} | DeleteCustomer
-[**list_customers**](CustomerApi.md#list_customers) | **GET** /v2/customers | ListCustomers
-[**retrieve_customer**](CustomerApi.md#retrieve_customer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
-[**update_customer**](CustomerApi.md#update_customer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
+[**create_customer**](CustomersApi.md#create_customer) | **POST** /v2/customers | CreateCustomer
+[**create_customer_card**](CustomersApi.md#create_customer_card) | **POST** /v2/customers/{customer_id}/cards | CreateCustomerCard
+[**delete_customer**](CustomersApi.md#delete_customer) | **DELETE** /v2/customers/{customer_id} | DeleteCustomer
+[**delete_customer_card**](CustomersApi.md#delete_customer_card) | **DELETE** /v2/customers/{customer_id}/cards/{card_id} | DeleteCustomerCard
+[**list_customers**](CustomersApi.md#list_customers) | **GET** /v2/customers | ListCustomers
+[**retrieve_customer**](CustomersApi.md#retrieve_customer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
+[**update_customer**](CustomersApi.md#update_customer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 
 
 # **create_customer**
@@ -28,7 +30,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::CustomerApi.new
+api_instance = SquareConnect::CustomersApi.new
 
 body = SquareConnect::CreateCustomerRequest.new # CreateCustomerRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
@@ -38,7 +40,7 @@ begin
   result = api_instance.create_customer(body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling CustomerApi->create_customer: #{e}"
+  puts "Exception when calling CustomersApi->create_customer: #{e}"
 end
 ```
 
@@ -51,6 +53,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CreateCustomerResponse**](CreateCustomerResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **create_customer_card**
+> CreateCustomerCardResponse create_customer_card(customer_id, body)
+
+CreateCustomerCard
+
+Adds a card on file to an existing customer.
+
+### Example
+```ruby
+# load the gem
+require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = SquareConnect::CustomersApi.new
+
+customer_id = "customer_id_example" # String | The ID of the customer to link the card on file to.
+
+body = SquareConnect::CreateCustomerCardRequest.new # CreateCustomerCardRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+
+
+begin
+  #CreateCustomerCard
+  result = api_instance.create_customer_card(customer_id, body)
+  p result
+rescue SquareConnect::ApiError => e
+  puts "Exception when calling CustomersApi->create_customer_card: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **String**| The ID of the customer to link the card on file to. | 
+ **body** | [**CreateCustomerCardRequest**](CreateCustomerCardRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+
+### Return type
+
+[**CreateCustomerCardResponse**](CreateCustomerCardResponse.md)
 
 ### Authorization
 
@@ -80,7 +137,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::CustomerApi.new
+api_instance = SquareConnect::CustomersApi.new
 
 customer_id = "customer_id_example" # String | The ID of the customer to delete.
 
@@ -90,7 +147,7 @@ begin
   result = api_instance.delete_customer(customer_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling CustomerApi->delete_customer: #{e}"
+  puts "Exception when calling CustomersApi->delete_customer: #{e}"
 end
 ```
 
@@ -103,6 +160,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeleteCustomerResponse**](DeleteCustomerResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **delete_customer_card**
+> DeleteCustomerCardResponse delete_customer_card(customer_id, card_id)
+
+DeleteCustomerCard
+
+Removes a card on file from a customer.
+
+### Example
+```ruby
+# load the gem
+require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = SquareConnect::CustomersApi.new
+
+customer_id = "customer_id_example" # String | The ID of the customer that the card on file belongs to.
+
+card_id = "card_id_example" # String | The ID of the card on file to delete.
+
+
+begin
+  #DeleteCustomerCard
+  result = api_instance.delete_customer_card(customer_id, card_id)
+  p result
+rescue SquareConnect::ApiError => e
+  puts "Exception when calling CustomersApi->delete_customer_card: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customer_id** | **String**| The ID of the customer that the card on file belongs to. | 
+ **card_id** | **String**| The ID of the card on file to delete. | 
+
+### Return type
+
+[**DeleteCustomerCardResponse**](DeleteCustomerCardResponse.md)
 
 ### Authorization
 
@@ -132,7 +244,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::CustomerApi.new
+api_instance = SquareConnect::CustomersApi.new
 
 opts = { 
   cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
@@ -143,7 +255,7 @@ begin
   result = api_instance.list_customers(opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling CustomerApi->list_customers: #{e}"
+  puts "Exception when calling CustomersApi->list_customers: #{e}"
 end
 ```
 
@@ -185,7 +297,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::CustomerApi.new
+api_instance = SquareConnect::CustomersApi.new
 
 customer_id = "customer_id_example" # String | The ID of the customer to retrieve.
 
@@ -195,7 +307,7 @@ begin
   result = api_instance.retrieve_customer(customer_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling CustomerApi->retrieve_customer: #{e}"
+  puts "Exception when calling CustomersApi->retrieve_customer: #{e}"
 end
 ```
 
@@ -237,7 +349,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::CustomerApi.new
+api_instance = SquareConnect::CustomersApi.new
 
 customer_id = "customer_id_example" # String | The ID of the customer to update.
 
@@ -249,7 +361,7 @@ begin
   result = api_instance.update_customer(customer_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling CustomerApi->update_customer: #{e}"
+  puts "Exception when calling CustomersApi->update_customer: #{e}"
 end
 ```
 

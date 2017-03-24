@@ -4,25 +4,21 @@ All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**v1_create_refund**](TransactionsApi.md#v1_create_refund) | **POST** /v1/{location_id}/refunds | Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-[**v1_list_bank_accounts**](TransactionsApi.md#v1_list_bank_accounts) | **GET** /v1/{location_id}/bank-accounts | Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-[**v1_list_orders**](TransactionsApi.md#v1_list_orders) | **GET** /v1/{location_id}/orders | Provides summary information for a merchant&#39;s online store orders.
-[**v1_list_payments**](TransactionsApi.md#v1_list_payments) | **GET** /v1/{location_id}/payments | Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-[**v1_list_refunds**](TransactionsApi.md#v1_list_refunds) | **GET** /v1/{location_id}/refunds | Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-[**v1_list_settlements**](TransactionsApi.md#v1_list_settlements) | **GET** /v1/{location_id}/settlements | Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-[**v1_retrieve_bank_account**](TransactionsApi.md#v1_retrieve_bank_account) | **GET** /v1/{location_id}/bank-accounts/{bank_account_id} | Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-[**v1_retrieve_order**](TransactionsApi.md#v1_retrieve_order) | **GET** /v1/{location_id}/orders/{order_id} | Provides comprehensive information for a single online store order, including the order&#39;s history.
-[**v1_retrieve_payment**](TransactionsApi.md#v1_retrieve_payment) | **GET** /v1/{location_id}/payments/{payment_id} | Provides comprehensive information for a single payment.
-[**v1_retrieve_settlement**](TransactionsApi.md#v1_retrieve_settlement) | **GET** /v1/{location_id}/settlements/{settlement_id} | Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-[**v1_update_order**](TransactionsApi.md#v1_update_order) | **PUT** /v1/{location_id}/orders/{order_id} | Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+[**capture_transaction**](TransactionsApi.md#capture_transaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
+[**charge**](TransactionsApi.md#charge) | **POST** /v2/locations/{location_id}/transactions | Charge
+[**create_refund**](TransactionsApi.md#create_refund) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/refund | CreateRefund
+[**list_refunds**](TransactionsApi.md#list_refunds) | **GET** /v2/locations/{location_id}/refunds | ListRefunds
+[**list_transactions**](TransactionsApi.md#list_transactions) | **GET** /v2/locations/{location_id}/transactions | ListTransactions
+[**retrieve_transaction**](TransactionsApi.md#retrieve_transaction) | **GET** /v2/locations/{location_id}/transactions/{transaction_id} | RetrieveTransaction
+[**void_transaction**](TransactionsApi.md#void_transaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/void | VoidTransaction
 
 
-# **v1_create_refund**
-> V1Refund v1_create_refund(location_id, body)
+# **capture_transaction**
+> CaptureTransactionResponse capture_transaction(location_id, transaction_id)
 
-Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+CaptureTransaction
 
-Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
 
 ### Example
 ```ruby
@@ -36,17 +32,17 @@ end
 
 api_instance = SquareConnect::TransactionsApi.new
 
-location_id = "location_id_example" # String | The ID of the original payment's associated location.
+location_id = "location_id_example" # String | 
 
-body = SquareConnect::V1CreateRefundRequest.new # V1CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+transaction_id = "transaction_id_example" # String | 
 
 
 begin
-  #Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-  result = api_instance.v1_create_refund(location_id, body)
+  #CaptureTransaction
+  result = api_instance.capture_transaction(location_id, transaction_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_create_refund: #{e}"
+  puts "Exception when calling TransactionsApi->capture_transaction: #{e}"
 end
 ```
 
@@ -54,12 +50,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the original payment&#39;s associated location. | 
- **body** | [**V1CreateRefundRequest**](V1CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **location_id** | **String**|  | 
+ **transaction_id** | **String**|  | 
 
 ### Return type
 
-[**V1Refund**](V1Refund.md)
+[**CaptureTransactionResponse**](CaptureTransactionResponse.md)
 
 ### Authorization
 
@@ -72,12 +68,12 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_bank_accounts**
-> Array&lt;V1BankAccount&gt; v1_list_bank_accounts(location_id)
+# **charge**
+> ChargeResponse charge(location_id, body)
 
-Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+Charge
 
-Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+Charges a card represented by a card nonce or a customer's card on file.  Your request to this endpoint must include _either_:  - A value for the `card_nonce` parameter (to charge a card nonce generated with the `SqPaymentForm`) - Values for the `customer_card_id` and `customer_id` parameters (to charge a customer's card on file)  In order for an e-commerce payment to potentially qualify for [Square chargeback protection](https://squareup.com/help/article/5394), you _must_ provide values for the following parameters in your request:  - `buyer_email_address` - At least one of `billing_address` or `shipping_address`  When this response is returned, the amount of Square's processing fee might not yet be calculated. To obtain the processing fee, wait about ten seconds and call [RetrieveTransaction](#endpoint-retrievetransaction). See the `processing_fee_money` field of each [Tender included](#type-tender) in the transaction.
 
 ### Example
 ```ruby
@@ -91,15 +87,17 @@ end
 
 api_instance = SquareConnect::TransactionsApi.new
 
-location_id = "location_id_example" # String | The ID of the location to list bank accounts for.
+location_id = "location_id_example" # String | The ID of the location to associate the created transaction with.
+
+body = SquareConnect::ChargeRequest.new # ChargeRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
-  #Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-  result = api_instance.v1_list_bank_accounts(location_id)
+  #Charge
+  result = api_instance.charge(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_list_bank_accounts: #{e}"
+  puts "Exception when calling TransactionsApi->charge: #{e}"
 end
 ```
 
@@ -107,11 +105,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the location to list bank accounts for. | 
+ **location_id** | **String**| The ID of the location to associate the created transaction with. | 
+ **body** | [**ChargeRequest**](ChargeRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
-[**Array&lt;V1BankAccount&gt;**](V1BankAccount.md)
+[**ChargeResponse**](ChargeResponse.md)
 
 ### Authorization
 
@@ -124,12 +123,12 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_orders**
-> Array&lt;V1Order&gt; v1_list_orders(location_id, opts)
+# **create_refund**
+> CreateRefundResponse create_refund(location_id, transaction_id, body)
 
-Provides summary information for a merchant's online store orders.
+CreateRefund
 
-Provides summary information for a merchant's online store orders.
+Initiates a refund for a previously charged tender.
 
 ### Example
 ```ruby
@@ -143,19 +142,19 @@ end
 
 api_instance = SquareConnect::TransactionsApi.new
 
-location_id = "location_id_example" # String | The ID of the location to list online store orders for.
+location_id = "location_id_example" # String | The ID of the original transaction's associated location.
 
-opts = { 
-  order: "order_example", # String | TThe order in which payments are listed in the response.
-  limit: 56 # Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
-}
+transaction_id = "transaction_id_example" # String | The ID of the original transaction that includes the tender to refund.
+
+body = SquareConnect::CreateRefundRequest.new # CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+
 
 begin
-  #Provides summary information for a merchant's online store orders.
-  result = api_instance.v1_list_orders(location_id, opts)
+  #CreateRefund
+  result = api_instance.create_refund(location_id, transaction_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_list_orders: #{e}"
+  puts "Exception when calling TransactionsApi->create_refund: #{e}"
 end
 ```
 
@@ -163,13 +162,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the location to list online store orders for. | 
- **order** | **String**| TThe order in which payments are listed in the response. | [optional] 
- **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional] 
+ **location_id** | **String**| The ID of the original transaction&#39;s associated location. | 
+ **transaction_id** | **String**| The ID of the original transaction that includes the tender to refund. | 
+ **body** | [**CreateRefundRequest**](CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
-[**Array&lt;V1Order&gt;**](V1Order.md)
+[**CreateRefundResponse**](CreateRefundResponse.md)
 
 ### Authorization
 
@@ -182,74 +181,12 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_payments**
-> Array&lt;V1Payment&gt; v1_list_payments(location_id, opts)
+# **list_refunds**
+> ListRefundsResponse list_refunds(location_id, opts)
 
-Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+ListRefunds
 
-Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-
-### Example
-```ruby
-# load the gem
-require 'square_connect'
-# setup authorization
-SquareConnect.configure do |config|
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = SquareConnect::TransactionsApi.new
-
-location_id = "location_id_example" # String | The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business's locations.
-
-opts = { 
-  order: "order_example", # String | The order in which payments are listed in the response.
-  begin_time: "begin_time_example", # String | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-  end_time: "end_time_example", # String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-  limit: 56 # Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
-}
-
-begin
-  #Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-  result = api_instance.v1_list_payments(location_id, opts)
-  p result
-rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_list_payments: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. | 
- **order** | **String**| The order in which payments are listed in the response. | [optional] 
- **begin_time** | **String**| The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. | [optional] 
- **end_time** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional] 
- **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional] 
-
-### Return type
-
-[**Array&lt;V1Payment&gt;**](V1Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **v1_list_refunds**
-> Array&lt;V1Refund&gt; v1_list_refunds(location_id, opts)
-
-Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
-
-Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
+Lists refunds for one of a business's locations.  Refunds with a `status` of `PENDING` are not currently included in this endpoint's response.  Max results per [page](#paginatingresults): 50
 
 ### Example
 ```ruby
@@ -266,18 +203,18 @@ api_instance = SquareConnect::TransactionsApi.new
 location_id = "location_id_example" # String | The ID of the location to list refunds for.
 
 opts = { 
-  order: "order_example", # String | TThe order in which payments are listed in the response.
-  begin_time: "begin_time_example", # String | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-  end_time: "end_time_example", # String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-  limit: 56 # Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
+  begin_time: "begin_time_example", # String | The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
+  end_time: "end_time_example", # String | The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
+  sort_order: "sort_order_example", # String | The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
+  cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
 }
 
 begin
-  #Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
-  result = api_instance.v1_list_refunds(location_id, opts)
+  #ListRefunds
+  result = api_instance.list_refunds(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_list_refunds: #{e}"
+  puts "Exception when calling TransactionsApi->list_refunds: #{e}"
 end
 ```
 
@@ -286,14 +223,14 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to list refunds for. | 
- **order** | **String**| TThe order in which payments are listed in the response. | [optional] 
- **begin_time** | **String**| The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. | [optional] 
- **end_time** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional] 
- **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional] 
+ **begin_time** | **String**| The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. | [optional] 
+ **end_time** | **String**| The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. | [optional] 
+ **sort_order** | **String**| The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60; | [optional] 
+ **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
 
 ### Return type
 
-[**Array&lt;V1Refund&gt;**](V1Refund.md)
+[**ListRefundsResponse**](ListRefundsResponse.md)
 
 ### Authorization
 
@@ -306,12 +243,12 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_list_settlements**
-> Array&lt;V1Settlement&gt; v1_list_settlements(location_id, opts)
+# **list_transactions**
+> ListTransactionsResponse list_transactions(location_id, opts)
 
-Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.
+ListTransactions
 
-Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. 
+Lists transactions for a particular location.  Max results per [page](#paginatingresults): 50
 
 ### Example
 ```ruby
@@ -325,22 +262,21 @@ end
 
 api_instance = SquareConnect::TransactionsApi.new
 
-location_id = "location_id_example" # String | The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business's locations.
+location_id = "location_id_example" # String | The ID of the location to list transactions for.
 
 opts = { 
-  order: "order_example", # String | TThe order in which payments are listed in the response.
-  begin_time: "begin_time_example", # String | The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
-  end_time: "end_time_example", # String | The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-  limit: 56, # Integer | The maximum number of payments to return in a single response. This value cannot exceed 200.
-  status: "status_example" # String | Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).
+  begin_time: "begin_time_example", # String | The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
+  end_time: "end_time_example", # String | The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time.
+  sort_order: "sort_order_example", # String | The order in which results are listed in the response (`ASC` for oldest first, `DESC` for newest first).  Default value: `DESC`
+  cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
 }
 
 begin
-  #Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.
-  result = api_instance.v1_list_settlements(location_id, opts)
+  #ListTransactions
+  result = api_instance.list_transactions(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_list_settlements: #{e}"
+  puts "Exception when calling TransactionsApi->list_transactions: #{e}"
 end
 ```
 
@@ -348,16 +284,15 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations. | 
- **order** | **String**| TThe order in which payments are listed in the response. | [optional] 
- **begin_time** | **String**| The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year. | [optional] 
- **end_time** | **String**| The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time. | [optional] 
- **limit** | **Integer**| The maximum number of payments to return in a single response. This value cannot exceed 200. | [optional] 
- **status** | **String**| Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED). | [optional] 
+ **location_id** | **String**| The ID of the location to list transactions for. | 
+ **begin_time** | **String**| The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year. | [optional] 
+ **end_time** | **String**| The end of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time. | [optional] 
+ **sort_order** | **String**| The order in which results are listed in the response (&#x60;ASC&#x60; for oldest first, &#x60;DESC&#x60; for newest first).  Default value: &#x60;DESC&#x60; | [optional] 
+ **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
 
 ### Return type
 
-[**Array&lt;V1Settlement&gt;**](V1Settlement.md)
+[**ListTransactionsResponse**](ListTransactionsResponse.md)
 
 ### Authorization
 
@@ -370,12 +305,12 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_retrieve_bank_account**
-> V1BankAccount v1_retrieve_bank_account(location_id, bank_account_id)
+# **retrieve_transaction**
+> RetrieveTransactionResponse retrieve_transaction(location_id, transaction_id)
 
-Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+RetrieveTransaction
 
-Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+Retrieves details for a single transaction.
 
 ### Example
 ```ruby
@@ -389,17 +324,17 @@ end
 
 api_instance = SquareConnect::TransactionsApi.new
 
-location_id = "location_id_example" # String | The ID of the bank account's associated location.
+location_id = "location_id_example" # String | The ID of the transaction's associated location.
 
-bank_account_id = "bank_account_id_example" # String | The bank account's Square-issued ID. You obtain this value from Settlement objects returned.
+transaction_id = "transaction_id_example" # String | The ID of the transaction to retrieve.
 
 
 begin
-  #Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-  result = api_instance.v1_retrieve_bank_account(location_id, bank_account_id)
+  #RetrieveTransaction
+  result = api_instance.retrieve_transaction(location_id, transaction_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_retrieve_bank_account: #{e}"
+  puts "Exception when calling TransactionsApi->retrieve_transaction: #{e}"
 end
 ```
 
@@ -407,12 +342,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the bank account&#39;s associated location. | 
- **bank_account_id** | **String**| The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned. | 
+ **location_id** | **String**| The ID of the transaction&#39;s associated location. | 
+ **transaction_id** | **String**| The ID of the transaction to retrieve. | 
 
 ### Return type
 
-[**V1BankAccount**](V1BankAccount.md)
+[**RetrieveTransactionResponse**](RetrieveTransactionResponse.md)
 
 ### Authorization
 
@@ -425,12 +360,12 @@ Name | Type | Description  | Notes
 
 
 
-# **v1_retrieve_order**
-> V1Order v1_retrieve_order(location_id, order_id)
+# **void_transaction**
+> VoidTransactionResponse void_transaction(location_id, transaction_id)
 
-Provides comprehensive information for a single online store order, including the order's history.
+VoidTransaction
 
-Provides comprehensive information for a single online store order, including the order's history.
+Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
 
 ### Example
 ```ruby
@@ -444,17 +379,17 @@ end
 
 api_instance = SquareConnect::TransactionsApi.new
 
-location_id = "location_id_example" # String | The ID of the order's associated location.
+location_id = "location_id_example" # String | 
 
-order_id = "order_id_example" # String | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
+transaction_id = "transaction_id_example" # String | 
 
 
 begin
-  #Provides comprehensive information for a single online store order, including the order's history.
-  result = api_instance.v1_retrieve_order(location_id, order_id)
+  #VoidTransaction
+  result = api_instance.void_transaction(location_id, transaction_id)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_retrieve_order: #{e}"
+  puts "Exception when calling TransactionsApi->void_transaction: #{e}"
 end
 ```
 
@@ -462,180 +397,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the order&#39;s associated location. | 
- **order_id** | **String**| The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint | 
+ **location_id** | **String**|  | 
+ **transaction_id** | **String**|  | 
 
 ### Return type
 
-[**V1Order**](V1Order.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **v1_retrieve_payment**
-> V1Payment v1_retrieve_payment(location_id, payment_id)
-
-Provides comprehensive information for a single payment.
-
-Provides comprehensive information for a single payment.
-
-### Example
-```ruby
-# load the gem
-require 'square_connect'
-# setup authorization
-SquareConnect.configure do |config|
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = SquareConnect::TransactionsApi.new
-
-location_id = "location_id_example" # String | The ID of the payment's associated location.
-
-payment_id = "payment_id_example" # String | The payment's Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.
-
-
-begin
-  #Provides comprehensive information for a single payment.
-  result = api_instance.v1_retrieve_payment(location_id, payment_id)
-  p result
-rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_retrieve_payment: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the payment&#39;s associated location. | 
- **payment_id** | **String**| The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint. | 
-
-### Return type
-
-[**V1Payment**](V1Payment.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **v1_retrieve_settlement**
-> V1Settlement v1_retrieve_settlement(location_id, settlement_id)
-
-Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
-
-Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
-
-### Example
-```ruby
-# load the gem
-require 'square_connect'
-# setup authorization
-SquareConnect.configure do |config|
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = SquareConnect::TransactionsApi.new
-
-location_id = "location_id_example" # String | The ID of the settlements's associated location.
-
-settlement_id = "settlement_id_example" # String | The settlement's Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint.
-
-
-begin
-  #Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
-  result = api_instance.v1_retrieve_settlement(location_id, settlement_id)
-  p result
-rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_retrieve_settlement: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the settlements&#39;s associated location. | 
- **settlement_id** | **String**| The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint. | 
-
-### Return type
-
-[**V1Settlement**](V1Settlement.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-
-# **v1_update_order**
-> V1Order v1_update_order(location_id, order_id, body)
-
-Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-
-Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-
-### Example
-```ruby
-# load the gem
-require 'square_connect'
-# setup authorization
-SquareConnect.configure do |config|
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
-
-api_instance = SquareConnect::TransactionsApi.new
-
-location_id = "location_id_example" # String | The ID of the order's associated location.
-
-order_id = "order_id_example" # String | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
-
-body = SquareConnect::V1UpdateOrderRequest.new # V1UpdateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
-
-
-begin
-  #Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
-  result = api_instance.v1_update_order(location_id, order_id, body)
-  p result
-rescue SquareConnect::ApiError => e
-  puts "Exception when calling TransactionsApi->v1_update_order: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **location_id** | **String**| The ID of the order&#39;s associated location. | 
- **order_id** | **String**| The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint | 
- **body** | [**V1UpdateOrderRequest**](V1UpdateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
-
-### Return type
-
-[**V1Order**](V1Order.md)
+[**VoidTransactionResponse**](VoidTransactionResponse.md)
 
 ### Authorization
 
