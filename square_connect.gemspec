@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.version     = "#{s.version}.#{ENV['TRAVIS_BUILD_NUMBER']}" if ENV['TRAVIS']
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Square, Inc."]
-  s.email       = [""]
+  s.email       = ["developers@squareup.com"]
   s.homepage    = "https://github.com/square/connect-ruby-sdk"
   s.summary     = "Square Connect API Ruby Gem"
   s.description = "Ruby client library for the Square Connect API"
