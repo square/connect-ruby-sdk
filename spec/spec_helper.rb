@@ -55,6 +55,16 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.before :suite do
+    @accounts = load_accounts()
+    @account = @accounts["US-Prod-Sandbox"]
+    # Setup authorization
+    SquareConnect.configure do |config|
+      # Configure OAuth2 access token for authorization: oauth2
+      config.access_token = @account["access_token"]
+    end
+  end
+  
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
