@@ -1,11 +1,11 @@
-# SquareConnect::V1LocationApi
+# SquareConnect::V1LocationsApi
 
 All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_locations**](V1LocationApi.md#list_locations) | **GET** /v1/me/locations | Provides details for a business&#39;s locations, including their IDs.
-[**retrieve_business**](V1LocationApi.md#retrieve_business) | **GET** /v1/me | Get a business&#39;s information.
+[**list_locations**](V1LocationsApi.md#list_locations) | **GET** /v1/me/locations | Provides details for a business&#39;s locations, including their IDs.
+[**retrieve_business**](V1LocationsApi.md#retrieve_business) | **GET** /v1/me | Get a business&#39;s information.
 
 
 # **list_locations**
@@ -25,14 +25,14 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::V1LocationApi.new
+api_instance = SquareConnect::V1LocationsApi.new
 
 begin
   #Provides details for a business's locations, including their IDs.
   result = api_instance.list_locations
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling V1LocationApi->list_locations: #{e}"
+  puts "Exception when calling V1LocationsApi->list_locations: #{e}"
 end
 ```
 
@@ -71,14 +71,14 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::V1LocationApi.new
+api_instance = SquareConnect::V1LocationsApi.new
 
 begin
   #Get a business's information.
   result = api_instance.retrieve_business
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling V1LocationApi->retrieve_business: #{e}"
+  puts "Exception when calling V1LocationsApi->retrieve_business: #{e}"
 end
 ```
 

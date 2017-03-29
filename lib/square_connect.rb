@@ -124,7 +124,7 @@ require 'square_connect/api/locations_api'
 require 'square_connect/api/transactions_api'
 require 'square_connect/api/v1_employees_api'
 require 'square_connect/api/v1_items_api'
-require 'square_connect/api/v1_location_api'
+require 'square_connect/api/v1_locations_api'
 require 'square_connect/api/v1_transactions_api'
 
 module SquareConnect
