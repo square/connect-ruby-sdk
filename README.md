@@ -1,5 +1,5 @@
 Square Connect Ruby SDKs [![Build Status](https://travis-ci.org/square/connect-ruby-sdk.svg?branch=master)](https://travis-ci.org/square/connect-ruby-sdk)[![Gem Version](https://badge.fury.io/rb/square_connect.svg)](https://badge.fury.io/rb/square_connect)
-===============
+==================
 
 This repository contains the released Ruby client SDK. Check out our [API
 specification repository](https://github.com/square/connect-api-specification)
@@ -150,8 +150,8 @@ Class | Method | HTTP request | Description
 *SquareConnect::V1ItemsApi* | [**update_page**](docs/V1ItemsApi.md#update_page) | **PUT** /v1/{location_id}/pages/{page_id} | Modifies the details of a Favorites page in Square Register.
 *SquareConnect::V1ItemsApi* | [**update_page_cell**](docs/V1ItemsApi.md#update_page_cell) | **PUT** /v1/{location_id}/pages/{page_id}/cells | Modifies a cell of a Favorites page in Square Register.
 *SquareConnect::V1ItemsApi* | [**update_variation**](docs/V1ItemsApi.md#update_variation) | **PUT** /v1/{location_id}/items/{item_id}/variations/{variation_id} | Modifies the details of an existing item variation.
-*SquareConnect::V1LocationApi* | [**list_locations**](docs/V1LocationApi.md#list_locations) | **GET** /v1/me/locations | Provides details for a business's locations, including their IDs.
-*SquareConnect::V1LocationApi* | [**retrieve_business**](docs/V1LocationApi.md#retrieve_business) | **GET** /v1/me | Get a business's information.
+*SquareConnect::V1LocationsApi* | [**list_locations**](docs/V1LocationsApi.md#list_locations) | **GET** /v1/me/locations | Provides details for a business's locations, including their IDs.
+*SquareConnect::V1LocationsApi* | [**retrieve_business**](docs/V1LocationsApi.md#retrieve_business) | **GET** /v1/me | Get a business's information.
 *SquareConnect::V1TransactionsApi* | [**create_refund**](docs/V1TransactionsApi.md#create_refund) | **POST** /v1/{location_id}/refunds | Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
 *SquareConnect::V1TransactionsApi* | [**list_bank_accounts**](docs/V1TransactionsApi.md#list_bank_accounts) | **GET** /v1/{location_id}/bank-accounts | Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
 *SquareConnect::V1TransactionsApi* | [**list_orders**](docs/V1TransactionsApi.md#list_orders) | **GET** /v1/{location_id}/orders | Provides summary information for a merchant's online store orders.
