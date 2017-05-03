@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **create_checkout**
-> CreateCheckoutResponse create_checkout(location_id, body)
+> CreateCheckoutResponse create_checkout(authorization, location_id, body)
 
 CreateCheckout
 
@@ -18,13 +18,10 @@ Creates a [Checkout](#type-checkout) response that links a `checkoutId` and `che
 ```ruby
 # load the gem
 require 'square_connect'
-# setup authorization
-SquareConnect.configure do |config|
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
 
 api_instance = SquareConnect::CheckoutApi.new
+
+authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 location_id = "location_id_example" # String | The ID of the business location to associate the checkout with.
 
@@ -33,7 +30,7 @@ body = SquareConnect::CreateCheckoutRequest.new # CreateCheckoutRequest | An obj
 
 begin
   #CreateCheckout
-  result = api_instance.create_checkout(location_id, body)
+  result = api_instance.create_checkout(authorization, location_id, body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CheckoutApi->create_checkout: #{e}"
@@ -44,6 +41,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **location_id** | **String**| The ID of the business location to associate the checkout with. | 
  **body** | [**CreateCheckoutRequest**](CreateCheckoutRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
@@ -53,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 

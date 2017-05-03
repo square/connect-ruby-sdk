@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **list_locations**
-> ListLocationsResponse list_locations
+> ListLocationsResponse list_locations(authorization)
 
 ListLocations
 
@@ -18,17 +18,15 @@ Provides the details for all of a business's locations.  Most other Connect API 
 ```ruby
 # load the gem
 require 'square_connect'
-# setup authorization
-SquareConnect.configure do |config|
-  # Configure OAuth2 access token for authorization: oauth2
-  config.access_token = 'YOUR ACCESS TOKEN'
-end
 
 api_instance = SquareConnect::LocationsApi.new
 
+authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
+
+
 begin
   #ListLocations
-  result = api_instance.list_locations
+  result = api_instance.list_locations(authorization)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling LocationsApi->list_locations: #{e}"
@@ -36,7 +34,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
 
 ### Return type
 
@@ -44,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[oauth2](../README.md#oauth2)
+No authorization required
 
 ### HTTP request headers
 
