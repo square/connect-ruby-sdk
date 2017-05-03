@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **batch_delete_catalog_objects**
-> BatchDeleteCatalogObjectsResponse batch_delete_catalog_objects(authorization, body)
+> BatchDeleteCatalogObjectsResponse batch_delete_catalog_objects(body)
 
 BatchDeleteCatalogObjects
 
@@ -28,17 +28,20 @@ Deletes a set of [CatalogItem](#type-catalogitem)s based on the provided list of
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::BatchDeleteCatalogObjectsRequest.new # BatchDeleteCatalogObjectsRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #BatchDeleteCatalogObjects
-  result = api_instance.batch_delete_catalog_objects(authorization, body)
+  result = api_instance.batch_delete_catalog_objects(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->batch_delete_catalog_objects: #{e}"
@@ -49,7 +52,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**BatchDeleteCatalogObjectsRequest**](BatchDeleteCatalogObjectsRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -58,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -68,7 +70,7 @@ No authorization required
 
 
 # **batch_retrieve_catalog_objects**
-> BatchRetrieveCatalogObjectsResponse batch_retrieve_catalog_objects(authorization, body)
+> BatchRetrieveCatalogObjectsResponse batch_retrieve_catalog_objects(body)
 
 BatchRetrieveCatalogObjects
 
@@ -78,17 +80,20 @@ Returns a set of objects based on the provided ID. [CatalogItem](#type-catalogit
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::BatchRetrieveCatalogObjectsRequest.new # BatchRetrieveCatalogObjectsRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #BatchRetrieveCatalogObjects
-  result = api_instance.batch_retrieve_catalog_objects(authorization, body)
+  result = api_instance.batch_retrieve_catalog_objects(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->batch_retrieve_catalog_objects: #{e}"
@@ -99,7 +104,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**BatchRetrieveCatalogObjectsRequest**](BatchRetrieveCatalogObjectsRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -108,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -118,7 +122,7 @@ No authorization required
 
 
 # **batch_upsert_catalog_objects**
-> BatchUpsertCatalogObjectsResponse batch_upsert_catalog_objects(authorization, body)
+> BatchUpsertCatalogObjectsResponse batch_upsert_catalog_objects(body)
 
 BatchUpsertCatalogObjects
 
@@ -128,17 +132,20 @@ Creates or updates up to 10,000 target objects based on the provided list of obj
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::BatchUpsertCatalogObjectsRequest.new # BatchUpsertCatalogObjectsRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #BatchUpsertCatalogObjects
-  result = api_instance.batch_upsert_catalog_objects(authorization, body)
+  result = api_instance.batch_upsert_catalog_objects(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->batch_upsert_catalog_objects: #{e}"
@@ -149,7 +156,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**BatchUpsertCatalogObjectsRequest**](BatchUpsertCatalogObjectsRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -158,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -168,7 +174,7 @@ No authorization required
 
 
 # **catalog_info**
-> CatalogInfoResponse catalog_info(authorization)
+> CatalogInfoResponse catalog_info
 
 CatalogInfo
 
@@ -178,15 +184,17 @@ Returns information about the Square Catalog API, such as batch size limits for 
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
 
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
-
-
 begin
   #CatalogInfo
-  result = api_instance.catalog_info(authorization)
+  result = api_instance.catalog_info
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->catalog_info: #{e}"
@@ -194,10 +202,7 @@ end
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -205,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -215,7 +220,7 @@ No authorization required
 
 
 # **delete_catalog_object**
-> DeleteCatalogObjectResponse delete_catalog_object(authorization, object_id)
+> DeleteCatalogObjectResponse delete_catalog_object(object_id)
 
 DeleteCatalogObject
 
@@ -225,17 +230,20 @@ Deletes a single [CatalogObject](#type-catalogobject) based on the provided ID a
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 object_id = "object_id_example" # String | The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).
 
 
 begin
   #DeleteCatalogObject
-  result = api_instance.delete_catalog_object(authorization, object_id)
+  result = api_instance.delete_catalog_object(object_id)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->delete_catalog_object: #{e}"
@@ -246,7 +254,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **object_id** | **String**| The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s). | 
 
 ### Return type
@@ -255,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -265,7 +272,7 @@ No authorization required
 
 
 # **list_catalog**
-> ListCatalogResponse list_catalog(authorization, opts)
+> ListCatalogResponse list_catalog(opts)
 
 ListCatalog
 
@@ -275,10 +282,13 @@ Returns a list of [CatalogObject](#type-catalogobject)s that includes all object
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 opts = { 
   cursor: "cursor_example", # String | The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information.
@@ -287,7 +297,7 @@ opts = {
 
 begin
   #ListCatalog
-  result = api_instance.list_catalog(authorization, opts)
+  result = api_instance.list_catalog(opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->list_catalog: #{e}"
@@ -298,7 +308,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **cursor** | **String**| The pagination cursor returned in the previous response. Leave unset for an initial request. See [Paginating results](#paginatingresults) for more information. | [optional] 
  **types** | **String**| An optional case-insensitive, comma-separated list of object types to retrieve, for example &#x60;ITEM,ITEM_VARIATION,CATEGORY&#x60;.  The legal values are taken from the [CatalogObjectType](#type-catalogobjecttype) enumeration, namely &#x60;\&quot;ITEM\&quot;&#x60;, &#x60;\&quot;ITEM_VARIATION\&quot;&#x60;, &#x60;\&quot;CATEGORY\&quot;&#x60;, &#x60;\&quot;DISCOUNT\&quot;&#x60;, &#x60;\&quot;TAX\&quot;&#x60;, &#x60;\&quot;MODIFIER\&quot;&#x60;, or &#x60;\&quot;MODIFIER_LIST\&quot;&#x60;. | [optional] 
 
@@ -308,7 +317,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -318,7 +327,7 @@ No authorization required
 
 
 # **retrieve_catalog_object**
-> RetrieveCatalogObjectResponse retrieve_catalog_object(authorization, object_id, opts)
+> RetrieveCatalogObjectResponse retrieve_catalog_object(object_id, opts)
 
 RetrieveCatalogObject
 
@@ -328,10 +337,13 @@ Returns a single [CatalogItem](#type-catalogitem) as a [CatalogObject](#type-cat
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 object_id = "object_id_example" # String | The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.
 
@@ -341,7 +353,7 @@ opts = {
 
 begin
   #RetrieveCatalogObject
-  result = api_instance.retrieve_catalog_object(authorization, object_id, opts)
+  result = api_instance.retrieve_catalog_object(object_id, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->retrieve_catalog_object: #{e}"
@@ -352,7 +364,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **object_id** | **String**| The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved. | 
  **include_related_objects** | **BOOLEAN**| If &#x60;true&#x60;, the response will include additional objects that are related to the requested object, as follows:  If the &#x60;object&#x60; field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the &#x60;related_objects&#x60; field of the response. If the &#x60;object&#x60; field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the &#x60;related_objects&#x60; field of the response. | [optional] 
 
@@ -362,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -372,7 +383,7 @@ No authorization required
 
 
 # **search_catalog_objects**
-> SearchCatalogObjectsResponse search_catalog_objects(authorization, body)
+> SearchCatalogObjectsResponse search_catalog_objects(body)
 
 SearchCatalogObjects
 
@@ -382,17 +393,20 @@ Queries the targeted catalog using a variety of query types ([CatalogQuerySorted
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::SearchCatalogObjectsRequest.new # SearchCatalogObjectsRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #SearchCatalogObjects
-  result = api_instance.search_catalog_objects(authorization, body)
+  result = api_instance.search_catalog_objects(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->search_catalog_objects: #{e}"
@@ -403,7 +417,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**SearchCatalogObjectsRequest**](SearchCatalogObjectsRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -412,7 +425,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -422,7 +435,7 @@ No authorization required
 
 
 # **update_item_modifier_lists**
-> UpdateItemModifierListsResponse update_item_modifier_lists(authorization, body)
+> UpdateItemModifierListsResponse update_item_modifier_lists(body)
 
 UpdateItemModifierLists
 
@@ -432,17 +445,20 @@ Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply 
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::UpdateItemModifierListsRequest.new # UpdateItemModifierListsRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #UpdateItemModifierLists
-  result = api_instance.update_item_modifier_lists(authorization, body)
+  result = api_instance.update_item_modifier_lists(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->update_item_modifier_lists: #{e}"
@@ -453,7 +469,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**UpdateItemModifierListsRequest**](UpdateItemModifierListsRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -462,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -472,7 +487,7 @@ No authorization required
 
 
 # **update_item_taxes**
-> UpdateItemTaxesResponse update_item_taxes(authorization, body)
+> UpdateItemTaxesResponse update_item_taxes(body)
 
 UpdateItemTaxes
 
@@ -482,17 +497,20 @@ Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [C
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::UpdateItemTaxesRequest.new # UpdateItemTaxesRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #UpdateItemTaxes
-  result = api_instance.update_item_taxes(authorization, body)
+  result = api_instance.update_item_taxes(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->update_item_taxes: #{e}"
@@ -503,7 +521,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**UpdateItemTaxesRequest**](UpdateItemTaxesRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -512,7 +529,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 
@@ -522,7 +539,7 @@ No authorization required
 
 
 # **upsert_catalog_object**
-> UpsertCatalogObjectResponse upsert_catalog_object(authorization, body)
+> UpsertCatalogObjectResponse upsert_catalog_object(body)
 
 UpsertCatalogObject
 
@@ -532,17 +549,20 @@ Creates or updates the target [CatalogObject](#type-catalogobject).
 ```ruby
 # load the gem
 require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
 
 api_instance = SquareConnect::CatalogApi.new
-
-authorization = "authorization_example" # String | The value to provide in the Authorization header of your request. This value should follow the format `Bearer YOUR_ACCESS_TOKEN_HERE`.
 
 body = SquareConnect::UpsertCatalogObjectRequest.new # UpsertCatalogObjectRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
   #UpsertCatalogObject
-  result = api_instance.upsert_catalog_object(authorization, body)
+  result = api_instance.upsert_catalog_object(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling CatalogApi->upsert_catalog_object: #{e}"
@@ -553,7 +573,6 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authorization** | **String**| The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;. | 
  **body** | [**UpsertCatalogObjectRequest**](UpsertCatalogObjectRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
@@ -562,7 +581,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oauth2](../README.md#oauth2)
 
 ### HTTP request headers
 

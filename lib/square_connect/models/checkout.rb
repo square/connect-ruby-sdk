@@ -65,7 +65,7 @@ module SquareConnect
         :'pre_populate_buyer_email' => :'String',
         :'pre_populate_shipping_address' => :'Address',
         :'redirect_url' => :'String',
-        :'order' => :'Order',
+        :'order' => :'Squareupconnectv2ordersOrder',
         :'created_at' => :'String'
       }
     end
