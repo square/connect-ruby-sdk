@@ -90,7 +90,7 @@ module SquareConnect
         :'id' => :'String',
         :'name' => :'String',
         :'item_id' => :'String',
-        :'ordinal' => :'String',
+        :'ordinal' => :'Integer',
         :'pricing_type' => :'String',
         :'price_money' => :'V1Money',
         :'sku' => :'String',
