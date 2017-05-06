@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **color** | **String** | The color of the discount&#39;s display label in Square Register, if not the default color. The default color is 9da2a6. | [optional] 
 **abbreviation** | **String** | The text of the item&#39;s display label in Square Register. Only up to the first five characters of the string are used. | [optional] 
 **visibility** | **String** | Indicates whether the item is viewable from the merchant&#39;s online store (PUBLIC) or PRIVATE. | [optional] 
-**available_online** | **String** | If true, the item can be added to shipping orders from the merchant&#39;s online store. | [optional] 
+**available_online** | **BOOLEAN** | If true, the item can be added to shipping orders from the merchant&#39;s online store. | [optional] 
 **master_image** | [**V1ItemImage**](V1ItemImage.md) | The item&#39;s master image, if any. | [optional] 
 **category** | [**V1Category**](V1Category.md) | The category the item belongs to, if any. | [optional] 
 **variations** | [**Array&lt;V1Variation&gt;**](V1Variation.md) | The item&#39;s variations. You must specify at least one variation. | [optional] 
