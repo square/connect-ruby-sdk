@@ -91,7 +91,7 @@ module SquareConnect
         :'reference_id' => :'String',
         :'product' => :'String',
         :'client_id' => :'String',
-        :'order' => :'Squareupconnectv2ordersOrder',
+        :'order' => :'Order',
         :'shipping_address' => :'Address'
       }
     end

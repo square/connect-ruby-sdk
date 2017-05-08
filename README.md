@@ -226,7 +226,6 @@ Class | Method | HTTP request | Description
  - [SquareConnect::CreateCustomerCardResponse](docs/CreateCustomerCardResponse.md)
  - [SquareConnect::CreateCustomerRequest](docs/CreateCustomerRequest.md)
  - [SquareConnect::CreateCustomerResponse](docs/CreateCustomerResponse.md)
- - [SquareConnect::CreateOrderRequest](docs/CreateOrderRequest.md)
  - [SquareConnect::CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
  - [SquareConnect::CreateOrderRequestOrder](docs/CreateOrderRequestOrder.md)
  - [SquareConnect::CreateRefundRequest](docs/CreateRefundRequest.md)
