@@ -12,9 +12,6 @@ require 'date'
 module SquareConnect
   # 
   class RetrieveCatalogObjectRequest
-    # The object ID of any type of [CatalogObject](#type-catalogobject)s to be retrieved.
-    attr_accessor :object_id
-
     # If `true`, the response will include additional objects that are related to the requested object, as follows:  If the `object` field of the response contains a [CatalogItem](#type-catalogitem), its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be returned in the `related_objects` field of the response. If the `object` field of the response contains a [CatalogItemVariation](#type-catalogitemvariation), its parent [CatalogItem](#type-catalogitem) will be returned in the `related_objects` field of the response.
     attr_accessor :include_related_objects
 
@@ -22,7 +19,6 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'object_id' => :'object_id',
         :'include_related_objects' => :'include_related_objects'
       }
     end
@@ -30,7 +26,6 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'object_id' => :'String',
         :'include_related_objects' => :'BOOLEAN'
       }
     end
@@ -43,10 +38,6 @@ module SquareConnect
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'object_id')
-        self.object_id = attributes[:'object_id']
-      end
-
       if attributes.has_key?(:'include_related_objects')
         self.include_related_objects = attributes[:'include_related_objects']
       end
@@ -57,37 +48,13 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @object_id.nil?
-        invalid_properties.push("invalid value for 'object_id', object_id cannot be nil.")
-      end
-
-      if @object_id.to_s.length < 1
-        invalid_properties.push("invalid value for 'object_id', the character length must be great than or equal to 1.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @object_id.nil?
-      return false if @object_id.to_s.length < 1
       return true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] object_id Value to be assigned
-    def object_id=(object_id)
-      if object_id.nil?
-        fail ArgumentError, "object_id cannot be nil"
-      end
-
-      if object_id.to_s.length < 1
-        fail ArgumentError, "invalid value for 'object_id', the character length must be great than or equal to 1."
-      end
-
-      @object_id = object_id
     end
 
     # Checks equality by comparing each attribute.
@@ -95,7 +62,6 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          object_id == o.object_id &&
           include_related_objects == o.include_related_objects
     end
 
@@ -108,7 +74,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [object_id, include_related_objects].hash
+      [include_related_objects].hash
     end
 
     # Builds the object from hash

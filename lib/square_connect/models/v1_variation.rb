@@ -21,9 +21,6 @@ module SquareConnect
     # The ID of the variation's associated item.
     attr_accessor :item_id
 
-    # ndicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order
-    attr_accessor :ordinal
-
     # Indicates whether the item variation's price is fixed or determined at the time of sale.
     attr_accessor :pricing_type
 
@@ -73,7 +70,6 @@ module SquareConnect
         :'id' => :'id',
         :'name' => :'name',
         :'item_id' => :'item_id',
-        :'ordinal' => :'ordinal',
         :'pricing_type' => :'pricing_type',
         :'price_money' => :'price_money',
         :'sku' => :'sku',
@@ -90,7 +86,6 @@ module SquareConnect
         :'id' => :'String',
         :'name' => :'String',
         :'item_id' => :'String',
-        :'ordinal' => :'String',
         :'pricing_type' => :'String',
         :'price_money' => :'V1Money',
         :'sku' => :'String',
@@ -119,10 +114,6 @@ module SquareConnect
 
       if attributes.has_key?(:'item_id')
         self.item_id = attributes[:'item_id']
-      end
-
-      if attributes.has_key?(:'ordinal')
-        self.ordinal = attributes[:'ordinal']
       end
 
       if attributes.has_key?(:'pricing_type')
@@ -200,7 +191,6 @@ module SquareConnect
           id == o.id &&
           name == o.name &&
           item_id == o.item_id &&
-          ordinal == o.ordinal &&
           pricing_type == o.pricing_type &&
           price_money == o.price_money &&
           sku == o.sku &&
@@ -219,7 +209,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, item_id, ordinal, pricing_type, price_money, sku, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data].hash
+      [id, name, item_id, pricing_type, price_money, sku, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data].hash
     end
 
     # Builds the object from hash

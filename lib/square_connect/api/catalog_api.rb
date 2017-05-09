@@ -247,11 +247,10 @@ module SquareConnect
       # verify the required parameter 'object_id' is set
       fail ArgumentError, "Missing the required parameter 'object_id' when calling CatalogApi.delete_catalog_object" if object_id.nil?
       # resource path
-      local_var_path = "/v2/catalog/object/{object_id}".sub('{format}','json')
+      local_var_path = "/v2/catalog/object/{object_id}".sub('{format}','json').sub('{' + 'object_id' + '}', object_id.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'object_id'] = object_id
 
       # header parameters
       header_params = {}
@@ -358,11 +357,10 @@ module SquareConnect
       # verify the required parameter 'object_id' is set
       fail ArgumentError, "Missing the required parameter 'object_id' when calling CatalogApi.retrieve_catalog_object" if object_id.nil?
       # resource path
-      local_var_path = "/v2/catalog/object/{object_id}".sub('{format}','json')
+      local_var_path = "/v2/catalog/object/{object_id}".sub('{format}','json').sub('{' + 'object_id' + '}', object_id.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'object_id'] = object_id
       query_params[:'include_related_objects'] = opts[:'include_related_objects'] if !opts[:'include_related_objects'].nil?
 
       # header parameters

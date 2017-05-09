@@ -12,21 +12,16 @@ require 'date'
 module SquareConnect
   # 
   class DeleteCatalogObjectRequest
-    # The ID of the [CatalogObject](#type-catalogobject) to be deleted. When an object is deleted, other objects in the graph that depend on that object will be deleted as well (for example, deleting a [CatalogItem](#type-catalogitem) will delete its [CatalogItemVariation](#type-catalogitemvariation)s).
-    attr_accessor :object_id
-
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'object_id' => :'object_id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'object_id' => :'String'
       }
     end
 
@@ -38,55 +33,26 @@ module SquareConnect
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'object_id')
-        self.object_id = attributes[:'object_id']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @object_id.nil?
-        invalid_properties.push("invalid value for 'object_id', object_id cannot be nil.")
-      end
-
-      if @object_id.to_s.length < 1
-        invalid_properties.push("invalid value for 'object_id', the character length must be great than or equal to 1.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @object_id.nil?
-      return false if @object_id.to_s.length < 1
       return true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] object_id Value to be assigned
-    def object_id=(object_id)
-      if object_id.nil?
-        fail ArgumentError, "object_id cannot be nil"
-      end
-
-      if object_id.to_s.length < 1
-        fail ArgumentError, "invalid value for 'object_id', the character length must be great than or equal to 1."
-      end
-
-      @object_id = object_id
     end
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          object_id == o.object_id
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -98,7 +64,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [object_id].hash
+      [].hash
     end
 
     # Builds the object from hash
