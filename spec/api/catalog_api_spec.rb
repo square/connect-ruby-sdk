@@ -228,11 +228,12 @@ describe 'CatalogApi' do
   let(:accounts) { load_accounts() }
   let(:account) { accounts['US-Prod'] }
   let(:instance) do
-    SquareConnect.configure do |config|
+    configuration = SquareConnect::Configuration.new do |config|
       config.access_token = account["access_token"]
     end
+    client = SquareConnect::ApiClient.new(configuration)
 
-    SquareConnect::CatalogApi.new
+    SquareConnect::CatalogApi.new(client)
   end
 
   let!(:id_map) do
