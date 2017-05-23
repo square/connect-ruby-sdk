@@ -19,29 +19,25 @@ module SquareConnect
 
     # CreateCheckout
     # Creates a [Checkout](#type-checkout) response that links a `checkoutId` and `checkout_page_url` that customers can be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param location_id The ID of the business location to associate the checkout with.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [CreateCheckoutResponse]
-    def create_checkout(authorization, location_id, body, opts = {})
-      data, _status_code, _headers = create_checkout_with_http_info(authorization, location_id, body, opts)
+    def create_checkout(location_id, body, opts = {})
+      data, _status_code, _headers = create_checkout_with_http_info(location_id, body, opts)
       return data
     end
 
     # CreateCheckout
     # Creates a [Checkout](#type-checkout) response that links a &#x60;checkoutId&#x60; and &#x60;checkout_page_url&#x60; that customers can be directed to in order to provide their payment information using a payment processing workflow hosted on connect.squareup.com.
-    # @param authorization The value to provide in the Authorization header of your request. This value should follow the format &#x60;Bearer YOUR_ACCESS_TOKEN_HERE&#x60;.
     # @param location_id The ID of the business location to associate the checkout with.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreateCheckoutResponse, Fixnum, Hash)>] CreateCheckoutResponse data, response status code and response headers
-    def create_checkout_with_http_info(authorization, location_id, body, opts = {})
+    def create_checkout_with_http_info(location_id, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: CheckoutApi.create_checkout ..."
       end
-      # verify the required parameter 'authorization' is set
-      fail ArgumentError, "Missing the required parameter 'authorization' when calling CheckoutApi.create_checkout" if authorization.nil?
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling CheckoutApi.create_checkout" if location_id.nil?
       # verify the required parameter 'body' is set
@@ -58,14 +54,13 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      header_params[:'Authorization'] = authorization
 
       # form parameters
       form_params = {}
 
       # http body (model)
       post_body = @api_client.object_to_http_body(body)
-      auth_names = []
+      auth_names = ['oauth2']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
         :header_params => header_params,
         :query_params => query_params,
