@@ -51,7 +51,7 @@ module SquareConnect
     def self.swagger_types
       {
         :'idempotency_key' => :'String',
-        :'order' => :'CreateOrderRequestOrder',
+        :'order' => :'CreateOrderRequest',
         :'ask_for_shipping_address' => :'BOOLEAN',
         :'merchant_support_email' => :'String',
         :'pre_populate_buyer_email' => :'String',

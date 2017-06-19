@@ -21,13 +21,21 @@ module SquareConnect
     # The base price for a single unit of the line item's associated variation. If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.
     attr_accessor :base_price_money
 
+    # The taxes include the custom taxes.
+    attr_accessor :taxes
+
+    # The discounts include the custom discounts.
+    attr_accessor :discounts
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'quantity' => :'quantity',
-        :'base_price_money' => :'base_price_money'
+        :'base_price_money' => :'base_price_money',
+        :'taxes' => :'taxes',
+        :'discounts' => :'discounts'
       }
     end
 
@@ -36,7 +44,9 @@ module SquareConnect
       {
         :'name' => :'String',
         :'quantity' => :'String',
-        :'base_price_money' => :'Money'
+        :'base_price_money' => :'Money',
+        :'taxes' => :'Array<CreateOrderRequestTax>',
+        :'discounts' => :'Array<CreateOrderRequestDiscount>'
       }
     end
 
@@ -60,22 +70,26 @@ module SquareConnect
         self.base_price_money = attributes[:'base_price_money']
       end
 
+      if attributes.has_key?(:'taxes')
+        if (value = attributes[:'taxes']).is_a?(Array)
+          self.taxes = value
+        end
+      end
+
+      if attributes.has_key?(:'discounts')
+        if (value = attributes[:'discounts']).is_a?(Array)
+          self.discounts = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push("invalid value for 'name', name cannot be nil.")
-      end
-
-      if @name.to_s.length > 500
+      if !@name.nil? && @name.to_s.length > 500
         invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 500.")
-      end
-
-      if @name.to_s.length < 1
-        invalid_properties.push("invalid value for 'name', the character length must be great than or equal to 1.")
       end
 
       if @quantity.nil?
@@ -86,38 +100,24 @@ module SquareConnect
         invalid_properties.push("invalid value for 'quantity', the character length must be great than or equal to 1.")
       end
 
-      if @base_price_money.nil?
-        invalid_properties.push("invalid value for 'base_price_money', base_price_money cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if @name.to_s.length > 500
-      return false if @name.to_s.length < 1
+      return false if !@name.nil? && @name.to_s.length > 500
       return false if @quantity.nil?
       return false if @quantity.to_s.length < 1
-      return false if @base_price_money.nil?
       return true
     end
 
     # Custom attribute writer method with validation
     # @param [Object] name Value to be assigned
     def name=(name)
-      if name.nil?
-        fail ArgumentError, "name cannot be nil"
-      end
 
-      if name.to_s.length > 500
+      if !name.nil? && name.to_s.length > 500
         fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 500."
-      end
-
-      if name.to_s.length < 1
-        fail ArgumentError, "invalid value for 'name', the character length must be great than or equal to 1."
       end
 
       @name = name
@@ -144,7 +144,9 @@ module SquareConnect
       self.class == o.class &&
           name == o.name &&
           quantity == o.quantity &&
-          base_price_money == o.base_price_money
+          base_price_money == o.base_price_money &&
+          taxes == o.taxes &&
+          discounts == o.discounts
     end
 
     # @see the `==` method
@@ -156,7 +158,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, quantity, base_price_money].hash
+      [name, quantity, base_price_money, taxes, discounts].hash
     end
 
     # Builds the object from hash

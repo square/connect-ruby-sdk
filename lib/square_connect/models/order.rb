@@ -27,6 +27,12 @@ module SquareConnect
     # The total amount of money to collect for the order.
     attr_accessor :total_money
 
+    # The total tax amount of money to collect for the order.
+    attr_accessor :total_tax_money
+
+    # The total discount amount of money to collect for the order.
+    attr_accessor :total_discount_money
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -35,7 +41,9 @@ module SquareConnect
         :'location_id' => :'location_id',
         :'reference_id' => :'reference_id',
         :'line_items' => :'line_items',
-        :'total_money' => :'total_money'
+        :'total_money' => :'total_money',
+        :'total_tax_money' => :'total_tax_money',
+        :'total_discount_money' => :'total_discount_money'
       }
     end
 
@@ -46,7 +54,9 @@ module SquareConnect
         :'location_id' => :'String',
         :'reference_id' => :'String',
         :'line_items' => :'Array<OrderLineItem>',
-        :'total_money' => :'Money'
+        :'total_money' => :'Money',
+        :'total_tax_money' => :'Money',
+        :'total_discount_money' => :'Money'
       }
     end
 
@@ -80,6 +90,14 @@ module SquareConnect
         self.total_money = attributes[:'total_money']
       end
 
+      if attributes.has_key?(:'total_tax_money')
+        self.total_tax_money = attributes[:'total_tax_money']
+      end
+
+      if attributes.has_key?(:'total_discount_money')
+        self.total_discount_money = attributes[:'total_discount_money']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -104,7 +122,9 @@ module SquareConnect
           location_id == o.location_id &&
           reference_id == o.reference_id &&
           line_items == o.line_items &&
-          total_money == o.total_money
+          total_money == o.total_money &&
+          total_tax_money == o.total_tax_money &&
+          total_discount_money == o.total_discount_money
     end
 
     # @see the `==` method
@@ -116,7 +136,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, reference_id, line_items, total_money].hash
+      [id, location_id, reference_id, line_items, total_money, total_tax_money, total_discount_money].hash
     end
 
     # Builds the object from hash

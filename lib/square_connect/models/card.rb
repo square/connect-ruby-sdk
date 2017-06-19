@@ -33,6 +33,9 @@ module SquareConnect
     # The card's billing address. This value is present only if this object represents a customer's card on file.
     attr_accessor :billing_address
 
+    # The unique string fingerprint for the card.  The fingerprint is based on the credit card number and is unique to the merchant.  If a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case. Note: Fingerprint may not exist on old transactions.
+    attr_accessor :fingerprint
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -64,7 +67,8 @@ module SquareConnect
         :'exp_month' => :'exp_month',
         :'exp_year' => :'exp_year',
         :'cardholder_name' => :'cardholder_name',
-        :'billing_address' => :'billing_address'
+        :'billing_address' => :'billing_address',
+        :'fingerprint' => :'fingerprint'
       }
     end
 
@@ -77,7 +81,8 @@ module SquareConnect
         :'exp_month' => :'Integer',
         :'exp_year' => :'Integer',
         :'cardholder_name' => :'String',
-        :'billing_address' => :'Address'
+        :'billing_address' => :'Address',
+        :'fingerprint' => :'String'
       }
     end
 
@@ -115,6 +120,10 @@ module SquareConnect
 
       if attributes.has_key?(:'billing_address')
         self.billing_address = attributes[:'billing_address']
+      end
+
+      if attributes.has_key?(:'fingerprint')
+        self.fingerprint = attributes[:'fingerprint']
       end
 
     end
@@ -155,7 +164,8 @@ module SquareConnect
           exp_month == o.exp_month &&
           exp_year == o.exp_year &&
           cardholder_name == o.cardholder_name &&
-          billing_address == o.billing_address
+          billing_address == o.billing_address &&
+          fingerprint == o.fingerprint
     end
 
     # @see the `==` method
@@ -167,7 +177,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, card_brand, last_4, exp_month, exp_year, cardholder_name, billing_address].hash
+      [id, card_brand, last_4, exp_month, exp_year, cardholder_name, billing_address, fingerprint].hash
     end
 
     # Builds the object from hash
