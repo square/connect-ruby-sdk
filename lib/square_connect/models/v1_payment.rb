@@ -118,7 +118,7 @@ module SquareConnect
         :'id' => :'String',
         :'merchant_id' => :'String',
         :'created_at' => :'String',
-        :'creator_id' => :'BOOLEAN',
+        :'creator_id' => :'String',
         :'device' => :'Device',
         :'payment_url' => :'String',
         :'receipt_url' => :'String',
