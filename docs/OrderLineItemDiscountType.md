@@ -1,4 +1,4 @@
-# SquareConnect::OrderLineItemDiscountDiscountType
+# SquareConnect::OrderLineItemDiscountType
 
 ### Description
 

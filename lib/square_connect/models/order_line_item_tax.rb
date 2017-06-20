@@ -18,7 +18,7 @@ module SquareConnect
     # The type of a tax is either INCLUSIVE or ADDITIVE.
     attr_accessor :type
 
-    # The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.
+    # The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
     attr_accessor :percentage
 
     # The amount of the money applied by the tax in an order.

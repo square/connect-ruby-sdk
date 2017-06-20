@@ -15,10 +15,10 @@ module SquareConnect
     # The discount's name.
     attr_accessor :name
 
-    # The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT as VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.
+    # The type of the discount. If it is created by API, it would be either FIXED_PERCENTAGE or FIXED_AMOUNT.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified.
     attr_accessor :type
 
-    # The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.
+    # The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
     attr_accessor :percentage
 
     # The amount of the discount.
@@ -122,7 +122,7 @@ module SquareConnect
     def valid?
       type_validator = EnumAttributeValidator.new('String', ["UNKNOWN", "FIXED_PERCENTAGE", "FIXED_AMOUNT", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
       return false unless type_validator.valid?(@type)
-      scope_validator = EnumAttributeValidator.new('String', ["LINEITEM", "ORDER"])
+      scope_validator = EnumAttributeValidator.new('String', ["LINE_ITEM", "ORDER"])
       return false unless scope_validator.valid?(@scope)
       return true
     end
@@ -140,7 +140,7 @@ module SquareConnect
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] scope Object to be assigned
     def scope=(scope)
-      validator = EnumAttributeValidator.new('String', ["LINEITEM", "ORDER"])
+      validator = EnumAttributeValidator.new('String', ["LINE_ITEM", "ORDER"])
       unless validator.valid?(scope)
         fail ArgumentError, "invalid value for 'scope', must be one of #{validator.allowable_values}."
       end

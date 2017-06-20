@@ -1,4 +1,4 @@
-# SquareConnect::OrderLineItemTaxTaxType
+# SquareConnect::OrderLineItemTaxType
 
 ### Description
 
