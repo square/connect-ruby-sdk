@@ -125,6 +125,7 @@ describe 'CheckoutApi' do
           locality: 'San Francisco',
           administrative_district_level_1: 'CA',
           postal_code: '94103',
+          country: 'US',
           first_name: 'Jane',
           last_name: 'Doe'
         },
