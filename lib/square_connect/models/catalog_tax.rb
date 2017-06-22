@@ -21,7 +21,7 @@ module SquareConnect
     # Whether the tax is `ADDITIVE` or `INCLUSIVE`. See [TaxInclusionType](#type-taxinclusiontype) for all possible values.
     attr_accessor :inclusion_type
 
-    # The percentage of the tax in decimal form, using a '.' as the decimal separator and without a '%' sign. A value of `7.5` corresponds to 7.5%.
+    # The percentage of the tax in decimal form, using a `'.'` as the decimal separator and without a `'%'` sign. A value of `7.5` corresponds to 7.5%.
     attr_accessor :percentage
 
     # If `true`, the fee applies to custom amounts entered into the Square Point of Sale app that are not associated with a particular [CatalogItem](#type-catalogitem).
