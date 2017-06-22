@@ -21,7 +21,7 @@ module SquareConnect
     # The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable.
     attr_accessor :abbreviation
 
-    # The color of the item's display label in the Square Point of Sale app.  Searchable.
+    # The color of the item's display label in the Square Point of Sale app.
     attr_accessor :label_color
 
     # If `true`, the item can be added to shipping orders from the merchant's online store.

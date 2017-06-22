@@ -12,9 +12,6 @@ require 'date'
 module SquareConnect
   # Contains all information related to a single order to process with Square, including line items that specify the products to purchase
   class Order
-    # The order's unique ID.  This value is not present if the order was not created with the [CreateOrder](#endpoint-createorder) endpoint.
-    attr_accessor :id
-
     # The ID of the merchant location this order is associated with.
     attr_accessor :location_id
 
@@ -27,26 +24,34 @@ module SquareConnect
     # The total amount of money to collect for the order.
     attr_accessor :total_money
 
+    # The total tax amount of money to collect for the order.
+    attr_accessor :total_tax_money
+
+    # The total discount amount of money to collect for the order.
+    attr_accessor :total_discount_money
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'location_id' => :'location_id',
         :'reference_id' => :'reference_id',
         :'line_items' => :'line_items',
-        :'total_money' => :'total_money'
+        :'total_money' => :'total_money',
+        :'total_tax_money' => :'total_tax_money',
+        :'total_discount_money' => :'total_discount_money'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
         :'location_id' => :'String',
         :'reference_id' => :'String',
         :'line_items' => :'Array<OrderLineItem>',
-        :'total_money' => :'Money'
+        :'total_money' => :'Money',
+        :'total_tax_money' => :'Money',
+        :'total_discount_money' => :'Money'
       }
     end
 
@@ -57,10 +62,6 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
-
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
 
       if attributes.has_key?(:'location_id')
         self.location_id = attributes[:'location_id']
@@ -78,6 +79,14 @@ module SquareConnect
 
       if attributes.has_key?(:'total_money')
         self.total_money = attributes[:'total_money']
+      end
+
+      if attributes.has_key?(:'total_tax_money')
+        self.total_tax_money = attributes[:'total_tax_money']
+      end
+
+      if attributes.has_key?(:'total_discount_money')
+        self.total_discount_money = attributes[:'total_discount_money']
       end
 
     end
@@ -100,11 +109,12 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           location_id == o.location_id &&
           reference_id == o.reference_id &&
           line_items == o.line_items &&
-          total_money == o.total_money
+          total_money == o.total_money &&
+          total_tax_money == o.total_tax_money &&
+          total_discount_money == o.total_discount_money
     end
 
     # @see the `==` method
@@ -116,7 +126,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, reference_id, line_items, total_money].hash
+      [location_id, reference_id, line_items, total_money, total_tax_money, total_discount_money].hash
     end
 
     # Builds the object from hash
