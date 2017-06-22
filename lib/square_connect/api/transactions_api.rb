@@ -132,7 +132,7 @@ module SquareConnect
     end
 
     # CreateRefund
-    # Initiates a refund for a previously charged tender.
+    # Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See (this article)[https://squareup.com/help/us/en/article/5060] for more information on refund behavior.
     # @param location_id The ID of the original transaction&#39;s associated location.
     # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -144,7 +144,7 @@ module SquareConnect
     end
 
     # CreateRefund
-    # Initiates a refund for a previously charged tender.
+    # Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See (this article)[https://squareup.com/help/us/en/article/5060] for more information on refund behavior.
     # @param location_id The ID of the original transaction&#39;s associated location.
     # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.

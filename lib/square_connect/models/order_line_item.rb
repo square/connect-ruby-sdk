@@ -12,17 +12,26 @@ require 'date'
 module SquareConnect
   # Represents a line item in an order. Each line item describes a different product to purchase, with its own quantity and price details.
   class OrderLineItem
-    # The line item's ID, unique only within this order.
-    attr_accessor :id
-
     # The name of the line item.
     attr_accessor :name
 
     # The quantity of the product to purchase. Currently, this string must have an integer value.
     attr_accessor :quantity
 
-    # The base price for a single unit of the line item's associated variation.  If a line item represents a Custom Amount instead of a particular product, this field indicates that amount.
+    # The taxes applied to this line item.
+    attr_accessor :taxes
+
+    # The discounts applied to this line item.
+    attr_accessor :discounts
+
+    # The base price for a single unit of the line item.
     attr_accessor :base_price_money
+
+    # The total tax amount of money to collect for the line item.
+    attr_accessor :total_tax_money
+
+    # The total discount amount of money to collect for the line item.
+    attr_accessor :total_discount_money
 
     # The total amount of money to collect for this line item.
     attr_accessor :total_money
@@ -31,10 +40,13 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'name' => :'name',
         :'quantity' => :'quantity',
+        :'taxes' => :'taxes',
+        :'discounts' => :'discounts',
         :'base_price_money' => :'base_price_money',
+        :'total_tax_money' => :'total_tax_money',
+        :'total_discount_money' => :'total_discount_money',
         :'total_money' => :'total_money'
       }
     end
@@ -42,10 +54,13 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
         :'name' => :'String',
         :'quantity' => :'String',
+        :'taxes' => :'Array<OrderLineItemTax>',
+        :'discounts' => :'Array<OrderLineItemDiscount>',
         :'base_price_money' => :'Money',
+        :'total_tax_money' => :'Money',
+        :'total_discount_money' => :'Money',
         :'total_money' => :'Money'
       }
     end
@@ -58,10 +73,6 @@ module SquareConnect
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
@@ -70,8 +81,28 @@ module SquareConnect
         self.quantity = attributes[:'quantity']
       end
 
+      if attributes.has_key?(:'taxes')
+        if (value = attributes[:'taxes']).is_a?(Array)
+          self.taxes = value
+        end
+      end
+
+      if attributes.has_key?(:'discounts')
+        if (value = attributes[:'discounts']).is_a?(Array)
+          self.discounts = value
+        end
+      end
+
       if attributes.has_key?(:'base_price_money')
         self.base_price_money = attributes[:'base_price_money']
+      end
+
+      if attributes.has_key?(:'total_tax_money')
+        self.total_tax_money = attributes[:'total_tax_money']
+      end
+
+      if attributes.has_key?(:'total_discount_money')
+        self.total_discount_money = attributes[:'total_discount_money']
       end
 
       if attributes.has_key?(:'total_money')
@@ -98,10 +129,13 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           name == o.name &&
           quantity == o.quantity &&
+          taxes == o.taxes &&
+          discounts == o.discounts &&
           base_price_money == o.base_price_money &&
+          total_tax_money == o.total_tax_money &&
+          total_discount_money == o.total_discount_money &&
           total_money == o.total_money
     end
 
@@ -114,7 +148,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, quantity, base_price_money, total_money].hash
+      [name, quantity, taxes, discounts, base_price_money, total_tax_money, total_discount_money, total_money].hash
     end
 
     # Builds the object from hash
