@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 
 # **create_item**
-> V1Item create_item(location_id, body)
+> V1Item create_item(location_id, body, opts)
 
 Creates an item and at least one variation for it.
 
@@ -408,10 +408,13 @@ location_id = "location_id_example" # String | The ID of the location to create 
 
 body = SquareConnect::V1Item.new # V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
+opts = { 
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+}
 
 begin
   #Creates an item and at least one variation for it.
-  result = api_instance.create_item(location_id, body)
+  result = api_instance.create_item(location_id, body, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling V1ItemsApi->create_item: #{e}"
@@ -424,6 +427,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create an item for. | 
  **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 

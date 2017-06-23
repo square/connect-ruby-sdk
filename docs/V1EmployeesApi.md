@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 
 # **create_timecard**
-> V1Timecard create_timecard(body)
+> V1Timecard create_timecard(body, opts)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -147,10 +147,13 @@ api_instance = SquareConnect::V1EmployeesApi.new
 
 body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
+opts = { 
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+}
 
 begin
   #Creates a timecard for an employee. Each timecard corresponds to a single shift.
-  result = api_instance.create_timecard(body)
+  result = api_instance.create_timecard(body, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling V1EmployeesApi->create_timecard: #{e}"
@@ -162,6 +165,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
