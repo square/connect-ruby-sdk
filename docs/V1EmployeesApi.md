@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 
 # **create_timecard**
-> V1Timecard create_timecard(body)
+> V1Timecard create_timecard(body, opts)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -147,10 +147,13 @@ api_instance = SquareConnect::V1EmployeesApi.new
 
 body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
+opts = { 
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+}
 
 begin
   #Creates a timecard for an employee. Each timecard corresponds to a single shift.
-  result = api_instance.create_timecard(body)
+  result = api_instance.create_timecard(body, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling V1EmployeesApi->create_timecard: #{e}"
@@ -162,6 +165,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
@@ -312,7 +316,7 @@ api_instance = SquareConnect::V1EmployeesApi.new
 opts = { 
   order: "order_example", # String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
   limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-  cursor: "cursor_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 }
 
 begin
@@ -330,7 +334,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | **String**| The order in which employees are listed in the response, based on their created_at field.Default value: ASC  | [optional] 
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional] 
- **cursor** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
@@ -374,7 +378,8 @@ opts = {
   end_created_at: "end_created_at_example", # String | If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format.
   status: "status_example", # String | If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).
   external_id: "external_id_example", # String | If provided, the endpoint returns only employee entities with the specified external_id.
-  limit: 56 # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+  limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 }
 
 begin
@@ -398,6 +403,7 @@ Name | Type | Description  | Notes
  **status** | **String**| If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). | [optional] 
  **external_id** | **String**| If provided, the endpoint returns only employee entities with the specified external_id. | [optional] 
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional] 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 

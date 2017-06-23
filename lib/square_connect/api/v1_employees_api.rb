@@ -127,6 +127,7 @@ module SquareConnect
     # Creates a timecard for an employee. Each timecard corresponds to a single shift.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [V1Timecard]
     def create_timecard(body, opts = {})
       data, _status_code, _headers = create_timecard_with_http_info(body, opts)
@@ -137,6 +138,7 @@ module SquareConnect
     # Creates a timecard for an employee. Each timecard corresponds to a single shift.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(V1Timecard, Fixnum, Hash)>] V1Timecard data, response status code and response headers
     def create_timecard_with_http_info(body, opts = {})
       if @api_client.config.debugging
@@ -149,6 +151,7 @@ module SquareConnect
 
       # query parameters
       query_params = {}
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
@@ -299,7 +302,7 @@ module SquareConnect
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-    # @option opts [String] :cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1EmployeeRole>]
     def list_employee_roles(opts = {})
       data, _status_code, _headers = list_employee_roles_with_http_info(opts)
@@ -311,7 +314,7 @@ module SquareConnect
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-    # @option opts [String] :cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1EmployeeRole>, Fixnum, Hash)>] Array<V1EmployeeRole> data, response status code and response headers
     def list_employee_roles_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -331,7 +334,7 @@ module SquareConnect
       query_params = {}
       query_params[:'order'] = opts[:'order'] if !opts[:'order'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
@@ -370,6 +373,7 @@ module SquareConnect
     # @option opts [String] :status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).
     # @option opts [String] :external_id If provided, the endpoint returns only employee entities with the specified external_id.
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Employee>]
     def list_employees(opts = {})
       data, _status_code, _headers = list_employees_with_http_info(opts)
@@ -387,6 +391,7 @@ module SquareConnect
     # @option opts [String] :status If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).
     # @option opts [String] :external_id If provided, the endpoint returns only employee entities with the specified external_id.
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Employee>, Fixnum, Hash)>] Array<V1Employee> data, response status code and response headers
     def list_employees_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -415,6 +420,7 @@ module SquareConnect
       query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
       query_params[:'external_id'] = opts[:'external_id'] if !opts[:'external_id'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
