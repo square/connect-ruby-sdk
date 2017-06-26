@@ -386,7 +386,7 @@ Name | Type | Description  | Notes
 
 
 # **create_item**
-> V1Item create_item(location_id, body, opts)
+> V1Item create_item(location_id, body)
 
 Creates an item and at least one variation for it.
 
@@ -408,13 +408,10 @@ location_id = "location_id_example" # String | The ID of the location to create 
 
 body = SquareConnect::V1Item.new # V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
-opts = { 
-  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
-}
 
 begin
   #Creates an item and at least one variation for it.
-  result = api_instance.create_item(location_id, body, opts)
+  result = api_instance.create_item(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling V1ItemsApi->create_item: #{e}"
@@ -427,7 +424,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create an item for. | 
  **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
- **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
@@ -1392,7 +1388,7 @@ Name | Type | Description  | Notes
 
 
 # **list_items**
-> Array&lt;V1Item&gt; list_items(location_id)
+> Array&lt;V1Item&gt; list_items(location_id, opts)
 
 Provides summary information for all of a location's items.
 
@@ -1412,10 +1408,13 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to list items for.
 
+opts = { 
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+}
 
 begin
   #Provides summary information for all of a location's items.
-  result = api_instance.list_items(location_id)
+  result = api_instance.list_items(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling V1ItemsApi->list_items: #{e}"
@@ -1427,6 +1426,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to list items for. | 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 

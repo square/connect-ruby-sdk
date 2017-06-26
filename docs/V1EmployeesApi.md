@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 
 # **create_timecard**
-> V1Timecard create_timecard(body, opts)
+> V1Timecard create_timecard(body)
 
 Creates a timecard for an employee. Each timecard corresponds to a single shift.
 
@@ -147,13 +147,10 @@ api_instance = SquareConnect::V1EmployeesApi.new
 
 body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
-opts = { 
-  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
-}
 
 begin
   #Creates a timecard for an employee. Each timecard corresponds to a single shift.
-  result = api_instance.create_timecard(body, opts)
+  result = api_instance.create_timecard(body)
   p result
 rescue SquareConnect::ApiError => e
   puts "Exception when calling V1EmployeesApi->create_timecard: #{e}"
@@ -165,7 +162,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
- **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
@@ -502,7 +498,7 @@ opts = {
   end_updated_at: "end_updated_at_example", # String | If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.
   deleted: true, # BOOLEAN | If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don't provide this parameter, both valid and deleted timecards are returned.
   limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-  cursor: "cursor_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 }
 
 begin
@@ -528,7 +524,7 @@ Name | Type | Description  | Notes
  **end_updated_at** | **String**| If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. | [optional] 
  **deleted** | **BOOLEAN**| If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. | [optional] 
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional] 
- **cursor** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 

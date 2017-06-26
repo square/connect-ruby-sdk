@@ -127,7 +127,6 @@ module SquareConnect
     # Creates a timecard for an employee. Each timecard corresponds to a single shift.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [V1Timecard]
     def create_timecard(body, opts = {})
       data, _status_code, _headers = create_timecard_with_http_info(body, opts)
@@ -138,7 +137,6 @@ module SquareConnect
     # Creates a timecard for an employee. Each timecard corresponds to a single shift.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(V1Timecard, Fixnum, Hash)>] V1Timecard data, response status code and response headers
     def create_timecard_with_http_info(body, opts = {})
       if @api_client.config.debugging
@@ -151,7 +149,6 @@ module SquareConnect
 
       # query parameters
       query_params = {}
-      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
@@ -514,7 +511,7 @@ module SquareConnect
     # @option opts [String] :end_updated_at If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.
     # @option opts [BOOLEAN] :deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned.
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-    # @option opts [String] :cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Timecard>]
     def list_timecards(opts = {})
       data, _status_code, _headers = list_timecards_with_http_info(opts)
@@ -534,7 +531,7 @@ module SquareConnect
     # @option opts [String] :end_updated_at If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.
     # @option opts [BOOLEAN] :deleted If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned.
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-    # @option opts [String] :cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Timecard>, Fixnum, Hash)>] Array<V1Timecard> data, response status code and response headers
     def list_timecards_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -562,7 +559,7 @@ module SquareConnect
       query_params[:'end_updated_at'] = opts[:'end_updated_at'] if !opts[:'end_updated_at'].nil?
       query_params[:'deleted'] = opts[:'deleted'] if !opts[:'deleted'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
-      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
