@@ -376,7 +376,6 @@ module SquareConnect
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [V1Item]
     def create_item(location_id, body, opts = {})
       data, _status_code, _headers = create_item_with_http_info(location_id, body, opts)
@@ -388,7 +387,6 @@ module SquareConnect
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(V1Item, Fixnum, Hash)>] V1Item data, response status code and response headers
     def create_item_with_http_info(location_id, body, opts = {})
       if @api_client.config.debugging
@@ -403,7 +401,6 @@ module SquareConnect
 
       # query parameters
       query_params = {}
-      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
