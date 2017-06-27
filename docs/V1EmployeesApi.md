@@ -41,7 +41,7 @@ end
 
 api_instance = SquareConnect::V1EmployeesApi.new
 
-body = SquareConnect::V1Employee.new # V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Employee.new # V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -57,7 +57,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Employee**](V1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Employee**](v1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -93,7 +93,7 @@ end
 
 api_instance = SquareConnect::V1EmployeesApi.new
 
-employee_role = SquareConnect::V1EmployeeRole.new # V1EmployeeRole | An EmployeeRole object with a name and permissions, and an optional owner flag.
+employee_role = SquareConnect::v1EmployeeRole.new # V1EmployeeRole | An EmployeeRole object with a name and permissions, and an optional owner flag.
 
 
 begin
@@ -109,7 +109,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **employee_role** | [**V1EmployeeRole**](V1EmployeeRole.md)| An EmployeeRole object with a name and permissions, and an optional owner flag. | 
+ **employee_role** | [**V1EmployeeRole**](v1EmployeeRole.md)| An EmployeeRole object with a name and permissions, and an optional owner flag. | 
 
 ### Return type
 
@@ -145,7 +145,7 @@ end
 
 api_instance = SquareConnect::V1EmployeesApi.new
 
-body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -161,7 +161,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Timecard**](v1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -771,7 +771,7 @@ api_instance = SquareConnect::V1EmployeesApi.new
 
 employee_id = "employee_id_example" # String | The ID of the role to modify.
 
-body = SquareConnect::V1Employee.new # V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Employee.new # V1Employee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -788,7 +788,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **employee_id** | **String**| The ID of the role to modify. | 
- **body** | [**V1Employee**](V1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Employee**](v1Employee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -826,7 +826,7 @@ api_instance = SquareConnect::V1EmployeesApi.new
 
 role_id = "role_id_example" # String | The ID of the role to modify.
 
-body = SquareConnect::V1EmployeeRole.new # V1EmployeeRole | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1EmployeeRole.new # V1EmployeeRole | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -843,7 +843,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **role_id** | **String**| The ID of the role to modify. | 
- **body** | [**V1EmployeeRole**](V1EmployeeRole.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1EmployeeRole**](v1EmployeeRole.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -881,7 +881,7 @@ api_instance = SquareConnect::V1EmployeesApi.new
 
 timecard_id = "timecard_id_example" # String | TThe ID of the timecard to modify.
 
-body = SquareConnect::V1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Timecard.new # V1Timecard | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -898,7 +898,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **timecard_id** | **String**| TThe ID of the timecard to modify. | 
- **body** | [**V1Timecard**](V1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Timecard**](v1Timecard.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
