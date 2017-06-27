@@ -69,7 +69,7 @@ location_id = "location_id_example" # String | The ID of the item's associated l
 
 variation_id = "variation_id_example" # String | The ID of the variation to adjust inventory information for.
 
-body = SquareConnect::V1AdjustInventoryRequest.new # V1AdjustInventoryRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1AdjustInventoryRequest.new # V1AdjustInventoryRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **variation_id** | **String**| The ID of the variation to adjust inventory information for. | 
- **body** | [**V1AdjustInventoryRequest**](V1AdjustInventoryRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1AdjustInventoryRequest**](v1AdjustInventoryRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -241,7 +241,7 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to create an item for.
 
-body = SquareConnect::V1Category.new # V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Category.new # V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -258,7 +258,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create an item for. | 
- **body** | [**V1Category**](V1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Category**](v1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -296,7 +296,7 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to create an item for.
 
-body = SquareConnect::V1Discount.new # V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Discount.new # V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -313,7 +313,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create an item for. | 
- **body** | [**V1Discount**](V1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Discount**](v1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -351,7 +351,7 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to create a fee for.
 
-body = SquareConnect::V1Fee.new # V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Fee.new # V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -368,7 +368,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create a fee for. | 
- **body** | [**V1Fee**](V1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Fee**](v1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -406,7 +406,7 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to create an item for.
 
-body = SquareConnect::V1Item.new # V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Item.new # V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -423,7 +423,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create an item for. | 
- **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Item**](v1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -461,7 +461,7 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to create a modifier list for.
 
-body = SquareConnect::V1ModifierList.new # V1ModifierList | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1ModifierList.new # V1ModifierList | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -478,7 +478,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create a modifier list for. | 
- **body** | [**V1ModifierList**](V1ModifierList.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1ModifierList**](v1ModifierList.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -518,7 +518,7 @@ location_id = "location_id_example" # String | The ID of the item's associated l
 
 modifier_list_id = "modifier_list_id_example" # String | The ID of the modifier list to edit.
 
-body = SquareConnect::V1ModifierOption.new # V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1ModifierOption.new # V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -536,7 +536,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **modifier_list_id** | **String**| The ID of the modifier list to edit. | 
- **body** | [**V1ModifierOption**](V1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1ModifierOption**](v1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -574,7 +574,7 @@ api_instance = SquareConnect::V1ItemsApi.new
 
 location_id = "location_id_example" # String | The ID of the location to create an item for.
 
-body = SquareConnect::V1Page.new # V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Page.new # V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -591,7 +591,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the location to create an item for. | 
- **body** | [**V1Page**](V1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Page**](v1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -631,7 +631,7 @@ location_id = "location_id_example" # String | The ID of the item's associated l
 
 item_id = "item_id_example" # String | The item's ID.
 
-body = SquareConnect::V1Variation.new # V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Variation.new # V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -649,7 +649,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **item_id** | **String**| The item&#39;s ID. | 
- **body** | [**V1Variation**](V1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Variation**](v1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -1790,7 +1790,7 @@ location_id = "location_id_example" # String | The ID of the category's associat
 
 category_id = "category_id_example" # String | The ID of the category to edit.
 
-body = SquareConnect::V1Category.new # V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Category.new # V1Category | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -1808,7 +1808,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the category&#39;s associated location. | 
  **category_id** | **String**| The ID of the category to edit. | 
- **body** | [**V1Category**](V1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Category**](v1Category.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -1848,7 +1848,7 @@ location_id = "location_id_example" # String | The ID of the category's associat
 
 discount_id = "discount_id_example" # String | The ID of the discount to edit.
 
-body = SquareConnect::V1Discount.new # V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Discount.new # V1Discount | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -1866,7 +1866,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the category&#39;s associated location. | 
  **discount_id** | **String**| The ID of the discount to edit. | 
- **body** | [**V1Discount**](V1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Discount**](v1Discount.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -1906,7 +1906,7 @@ location_id = "location_id_example" # String | The ID of the fee's associated lo
 
 fee_id = "fee_id_example" # String | The ID of the fee to edit.
 
-body = SquareConnect::V1Fee.new # V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Fee.new # V1Fee | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -1924,7 +1924,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the fee&#39;s associated location. | 
  **fee_id** | **String**| The ID of the fee to edit. | 
- **body** | [**V1Fee**](V1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Fee**](v1Fee.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -1964,7 +1964,7 @@ location_id = "location_id_example" # String | The ID of the item's associated l
 
 item_id = "item_id_example" # String | The ID of the item to modify.
 
-body = SquareConnect::V1Item.new # V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Item.new # V1Item | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -1982,7 +1982,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **item_id** | **String**| The ID of the item to modify. | 
- **body** | [**V1Item**](V1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Item**](v1Item.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -2022,7 +2022,7 @@ location_id = "location_id_example" # String | The ID of the item's associated l
 
 modifier_list_id = "modifier_list_id_example" # String | The ID of the modifier list to edit.
 
-body = SquareConnect::V1UpdateModifierListRequest.new # V1UpdateModifierListRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1UpdateModifierListRequest.new # V1UpdateModifierListRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -2040,7 +2040,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **modifier_list_id** | **String**| The ID of the modifier list to edit. | 
- **body** | [**V1UpdateModifierListRequest**](V1UpdateModifierListRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1UpdateModifierListRequest**](v1UpdateModifierListRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -2082,7 +2082,7 @@ modifier_list_id = "modifier_list_id_example" # String | The ID of the modifier 
 
 modifier_option_id = "modifier_option_id_example" # String | The ID of the modifier list to edit.
 
-body = SquareConnect::V1ModifierOption.new # V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1ModifierOption.new # V1ModifierOption | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -2101,7 +2101,7 @@ Name | Type | Description  | Notes
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **modifier_list_id** | **String**| The ID of the modifier list to edit. | 
  **modifier_option_id** | **String**| The ID of the modifier list to edit. | 
- **body** | [**V1ModifierOption**](V1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1ModifierOption**](v1ModifierOption.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -2141,7 +2141,7 @@ location_id = "location_id_example" # String | The ID of the Favorites page's as
 
 page_id = "page_id_example" # String | The ID of the page to modify.
 
-body = SquareConnect::V1Page.new # V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Page.new # V1Page | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -2159,7 +2159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the Favorites page&#39;s associated location | 
  **page_id** | **String**| The ID of the page to modify. | 
- **body** | [**V1Page**](V1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Page**](v1Page.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -2199,7 +2199,7 @@ location_id = "location_id_example" # String | The ID of the Favorites page's as
 
 page_id = "page_id_example" # String | The ID of the page the cell belongs to.
 
-body = SquareConnect::V1PageCell.new # V1PageCell | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1PageCell.new # V1PageCell | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -2217,7 +2217,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the Favorites page&#39;s associated location. | 
  **page_id** | **String**| The ID of the page the cell belongs to. | 
- **body** | [**V1PageCell**](V1PageCell.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1PageCell**](v1PageCell.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -2259,7 +2259,7 @@ item_id = "item_id_example" # String | The ID of the item to modify.
 
 variation_id = "variation_id_example" # String | The ID of the variation to modify.
 
-body = SquareConnect::V1Variation.new # V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::v1Variation.new # V1Variation | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -2278,7 +2278,7 @@ Name | Type | Description  | Notes
  **location_id** | **String**| The ID of the item&#39;s associated location. | 
  **item_id** | **String**| The ID of the item to modify. | 
  **variation_id** | **String**| The ID of the variation to modify. | 
- **body** | [**V1Variation**](V1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1Variation**](v1Variation.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
