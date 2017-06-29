@@ -378,7 +378,7 @@ Headers. They are named as their simple counterpart with a `with_http_info` suff
 Hence `listEmployeeRoles` would be called `list_employee_roles_with_http_info`. This
 method returns an array with 3 parameters: `response`, `http_status`, and
 `http_headers`.
-2. Use `batch_token = SquareConnect::ApiClient.get_v1_batch_token_from_headers(http_headers)`
+2. Use `batch_token = api_client.get_v1_batch_token_from_headers(http_headers)`
 to extract the token and proceed to get the following page if a token is present.
 
 ### Example
@@ -397,7 +397,7 @@ api_client = api_instance.api_client
 
 opts = {
   order: "order_example", # String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC
-  limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+  limit: 56 # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
 }
 
 roles = []
