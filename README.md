@@ -409,7 +409,7 @@ rescue SquareConnect::ApiError => e
   puts "Exception when calling V1EmployeesApi#list_employee_roles_with_http_info: #{e}"
 end while opts[:batch_token]
 
-p result
+p roles
 ```
 
 Contributing
