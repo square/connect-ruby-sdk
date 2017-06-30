@@ -38,7 +38,7 @@ api_instance = SquareConnect::V1TransactionsApi.new
 
 location_id = "location_id_example" # String | The ID of the original payment's associated location.
 
-body = SquareConnect::v1CreateRefundRequest.new # V1CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::V1CreateRefundRequest.new # V1CreateRefundRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -55,7 +55,7 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the original payment&#39;s associated location. | 
- **body** | [**V1CreateRefundRequest**](v1CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1CreateRefundRequest**](V1CreateRefundRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
@@ -613,7 +613,7 @@ location_id = "location_id_example" # String | The ID of the order's associated 
 
 order_id = "order_id_example" # String | The order's Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
 
-body = SquareConnect::v1UpdateOrderRequest.new # V1UpdateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+body = SquareConnect::V1UpdateOrderRequest.new # V1UpdateOrderRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
 
 begin
@@ -631,7 +631,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **location_id** | **String**| The ID of the order&#39;s associated location. | 
  **order_id** | **String**| The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint | 
- **body** | [**V1UpdateOrderRequest**](v1UpdateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+ **body** | [**V1UpdateOrderRequest**](V1UpdateOrderRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
 
