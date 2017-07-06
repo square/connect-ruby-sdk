@@ -312,7 +312,7 @@ api_instance = SquareConnect::V1EmployeesApi.new
 opts = { 
   order: "order_example", # String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
   limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-  cursor: "cursor_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 }
 
 begin
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | **String**| The order in which employees are listed in the response, based on their created_at field.Default value: ASC  | [optional] 
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional] 
- **cursor** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
@@ -374,7 +374,8 @@ opts = {
   end_created_at: "end_created_at_example", # String | If filtering results by their created_at field, the end of the requested reporting period, in ISO 8601 format.
   status: "status_example", # String | If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE).
   external_id: "external_id_example", # String | If provided, the endpoint returns only employee entities with the specified external_id.
-  limit: 56 # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+  limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 }
 
 begin
@@ -398,6 +399,7 @@ Name | Type | Description  | Notes
  **status** | **String**| If provided, the endpoint returns only employee entities with the specified status (ACTIVE or INACTIVE). | [optional] 
  **external_id** | **String**| If provided, the endpoint returns only employee entities with the specified external_id. | [optional] 
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional] 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
@@ -496,7 +498,7 @@ opts = {
   end_updated_at: "end_updated_at_example", # String | If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format.
   deleted: true, # BOOLEAN | If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don't provide this parameter, both valid and deleted timecards are returned.
   limit: 56, # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
-  cursor: "cursor_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+  batch_token: "batch_token_example" # String | A pagination cursor to retrieve the next set of results for your original query to the endpoint.
 }
 
 begin
@@ -522,7 +524,7 @@ Name | Type | Description  | Notes
  **end_updated_at** | **String**| If filtering results by their updated_at field, the end of the requested reporting period, in ISO 8601 format. | [optional] 
  **deleted** | **BOOLEAN**| If true, only deleted timecards are returned. If false, only valid timecards are returned.If you don&#39;t provide this parameter, both valid and deleted timecards are returned. | [optional] 
  **limit** | **Integer**| The maximum integer number of employee entities to return in a single response. Default 100, maximum 200. | [optional] 
- **cursor** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
+ **batch_token** | **String**| A pagination cursor to retrieve the next set of results for your original query to the endpoint. | [optional] 
 
 ### Return type
 
