@@ -28,10 +28,10 @@ module SquareConnect
     # @option config [Configuration] Configuration for initializing the object, default to Configuration.default
     def initialize(config = Configuration.default)
       @config = config
-      
+
       # Construct user agent string. Returns slightly different string for JRuby
       @user_agent = "Square-Connect-Ruby/2.2.0"
-      
+
       @default_headers = {
         'Content-Type' => "application/json",
         'User-Agent' => @user_agent,
@@ -379,6 +379,20 @@ module SquareConnect
         param
       else
         fail "unknown collection format: #{collection_format.inspect}"
+      end
+    end
+
+    # Extract batch_token from Link header if present
+    # @param [Hash] headers hash with response headers
+    # @return [String] batch_token or nil if no token is present
+    def get_v1_batch_token_from_headers(headers)
+      if headers.is_a?(Hash) && headers.has_key?('Link')
+        match = /^<([^>]+)>;rel='next'$/.match(headers['Link'])
+        if match
+          uri = URI.parse(match[1])
+          params = CGI.parse(uri.query)
+          return params['batch_token'][0]
+        end
       end
     end
   end

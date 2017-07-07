@@ -133,6 +133,7 @@ module SquareConnect
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order TThe order in which payments are listed in the response.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Order>]
     def list_orders(location_id, opts = {})
       data, _status_code, _headers = list_orders_with_http_info(location_id, opts)
@@ -145,6 +146,7 @@ module SquareConnect
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order TThe order in which payments are listed in the response.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Order>, Fixnum, Hash)>] Array<V1Order> data, response status code and response headers
     def list_orders_with_http_info(location_id, opts = {})
       if @api_client.config.debugging
@@ -166,6 +168,7 @@ module SquareConnect
       query_params = {}
       query_params[:'order'] = opts[:'order'] if !opts[:'order'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
@@ -201,6 +204,7 @@ module SquareConnect
     # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Payment>]
     def list_payments(location_id, opts = {})
       data, _status_code, _headers = list_payments_with_http_info(location_id, opts)
@@ -215,6 +219,7 @@ module SquareConnect
     # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Payment>, Fixnum, Hash)>] Array<V1Payment> data, response status code and response headers
     def list_payments_with_http_info(location_id, opts = {})
       if @api_client.config.debugging
@@ -238,6 +243,7 @@ module SquareConnect
       query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
       query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
@@ -273,6 +279,7 @@ module SquareConnect
     # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Refund>]
     def list_refunds(location_id, opts = {})
       data, _status_code, _headers = list_refunds_with_http_info(location_id, opts)
@@ -287,6 +294,7 @@ module SquareConnect
     # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Refund>, Fixnum, Hash)>] Array<V1Refund> data, response status code and response headers
     def list_refunds_with_http_info(location_id, opts = {})
       if @api_client.config.debugging
@@ -310,6 +318,7 @@ module SquareConnect
       query_params[:'begin_time'] = opts[:'begin_time'] if !opts[:'begin_time'].nil?
       query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
@@ -346,6 +355,7 @@ module SquareConnect
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
     # @option opts [String] :status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Settlement>]
     def list_settlements(location_id, opts = {})
       data, _status_code, _headers = list_settlements_with_http_info(location_id, opts)
@@ -361,6 +371,7 @@ module SquareConnect
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
     # @option opts [String] :status Provide this parameter to retrieve only settlements with a particular status (SENT or FAILED).
+    # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Settlement>, Fixnum, Hash)>] Array<V1Settlement> data, response status code and response headers
     def list_settlements_with_http_info(location_id, opts = {})
       if @api_client.config.debugging
@@ -388,6 +399,7 @@ module SquareConnect
       query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
+      query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
 
       # header parameters
       header_params = {}
