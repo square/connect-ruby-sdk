@@ -1,10 +1,10 @@
-# SquareConnect::OrderApi
+# SquareConnect::OrdersApi
 
 All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_order**](OrderApi.md#create_order) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+[**create_order**](OrdersApi.md#create_order) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 
 
 # **create_order**
@@ -24,7 +24,7 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::OrderApi.new
+api_instance = SquareConnect::OrdersApi.new
 
 location_id = "location_id_example" # String | The ID of the business location to associate the order with.
 
@@ -36,7 +36,7 @@ begin
   result = api_instance.create_order(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling OrderApi->create_order: #{e}"
+  puts "Exception when calling OrdersApi->create_order: #{e}"
 end
 ```
 

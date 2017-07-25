@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 *SquareConnect::CustomersApi* | [**retrieve_customer**](docs/CustomersApi.md#retrieve_customer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
 *SquareConnect::CustomersApi* | [**update_customer**](docs/CustomersApi.md#update_customer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 *SquareConnect::LocationsApi* | [**list_locations**](docs/LocationsApi.md#list_locations) | **GET** /v2/locations | ListLocations
-*SquareConnect::OrderApi* | [**create_order**](docs/OrderApi.md#create_order) | **POST** /v2/locations/{location_id}/orders | CreateOrder
+*SquareConnect::OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 *SquareConnect::TransactionsApi* | [**capture_transaction**](docs/TransactionsApi.md#capture_transaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
 *SquareConnect::TransactionsApi* | [**charge**](docs/TransactionsApi.md#charge) | **POST** /v2/locations/{location_id}/transactions | Charge
 *SquareConnect::TransactionsApi* | [**create_refund**](docs/TransactionsApi.md#create_refund) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/refund | CreateRefund
