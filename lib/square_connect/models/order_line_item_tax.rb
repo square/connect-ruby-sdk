@@ -12,6 +12,9 @@ require 'date'
 module SquareConnect
   # Represents a tax that applies to one or more line items in an order.
   class OrderLineItemTax
+    # The catalog object id referencing [CatalogTax](#type-catalogtax).
+    attr_accessor :catalog_object_id
+
     # The tax's name.
     attr_accessor :name
 
@@ -49,6 +52,7 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'catalog_object_id' => :'catalog_object_id',
         :'name' => :'name',
         :'type' => :'type',
         :'percentage' => :'percentage',
@@ -59,6 +63,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'catalog_object_id' => :'String',
         :'name' => :'String',
         :'type' => :'String',
         :'percentage' => :'String',
@@ -73,6 +78,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'catalog_object_id')
+        self.catalog_object_id = attributes[:'catalog_object_id']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -122,6 +131,7 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          catalog_object_id == o.catalog_object_id &&
           name == o.name &&
           type == o.type &&
           percentage == o.percentage &&
@@ -137,7 +147,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, type, percentage, applied_money].hash
+      [catalog_object_id, name, type, percentage, applied_money].hash
     end
 
     # Builds the object from hash

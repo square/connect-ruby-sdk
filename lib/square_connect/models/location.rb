@@ -27,6 +27,9 @@ module SquareConnect
     # Indicates which Square features are enabled for the location.  See [LocationCapability](#type-locationcapability) for possible values.
     attr_accessor :capabilities
 
+    # The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+    attr_accessor :status
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -56,7 +59,8 @@ module SquareConnect
         :'name' => :'name',
         :'address' => :'address',
         :'timezone' => :'timezone',
-        :'capabilities' => :'capabilities'
+        :'capabilities' => :'capabilities',
+        :'status' => :'status'
       }
     end
 
@@ -67,7 +71,8 @@ module SquareConnect
         :'name' => :'String',
         :'address' => :'Address',
         :'timezone' => :'String',
-        :'capabilities' => :'Array<String>'
+        :'capabilities' => :'Array<String>',
+        :'status' => :'String'
       }
     end
 
@@ -101,6 +106,10 @@ module SquareConnect
         end
       end
 
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -113,7 +122,19 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      status_validator = EnumAttributeValidator.new('String', ["ACTIVE", "INACTIVE"])
+      return false unless status_validator.valid?(@status)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["ACTIVE", "INACTIVE"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for 'status', must be one of #{validator.allowable_values}."
+      end
+      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -125,7 +146,8 @@ module SquareConnect
           name == o.name &&
           address == o.address &&
           timezone == o.timezone &&
-          capabilities == o.capabilities
+          capabilities == o.capabilities &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -137,7 +159,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, address, timezone, capabilities].hash
+      [id, name, address, timezone, capabilities, status].hash
     end
 
     # Builds the object from hash

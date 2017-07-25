@@ -12,6 +12,9 @@ require 'date'
 module SquareConnect
   # Represents a tax that applies to either a single line item or an entire order.
   class CreateOrderRequestTax
+    # The catalog object id from existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for a custom tax.
+    attr_accessor :catalog_object_id
+
     # The tax's name.
     attr_accessor :name
 
@@ -46,6 +49,7 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'catalog_object_id' => :'catalog_object_id',
         :'name' => :'name',
         :'type' => :'type',
         :'percentage' => :'percentage'
@@ -55,6 +59,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'catalog_object_id' => :'String',
         :'name' => :'String',
         :'type' => :'String',
         :'percentage' => :'String'
@@ -68,6 +73,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'catalog_object_id')
+        self.catalog_object_id = attributes[:'catalog_object_id']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -87,8 +96,16 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 30
+        invalid_properties.push("invalid value for 'catalog_object_id', the character length must be smaller than or equal to 30.")
+      end
+
       if !@name.nil? && @name.to_s.length > 255
         invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 255.")
+      end
+
+      if !@percentage.nil? && @percentage.to_s.length > 8
+        invalid_properties.push("invalid value for 'percentage', the character length must be smaller than or equal to 8.")
       end
 
       return invalid_properties
@@ -97,10 +114,23 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 30
       return false if !@name.nil? && @name.to_s.length > 255
       type_validator = EnumAttributeValidator.new('String', ["UNKNOWN", "ADDITIVE", "INCLUSIVE"])
       return false unless type_validator.valid?(@type)
+      return false if !@percentage.nil? && @percentage.to_s.length > 8
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] catalog_object_id Value to be assigned
+    def catalog_object_id=(catalog_object_id)
+
+      if !catalog_object_id.nil? && catalog_object_id.to_s.length > 30
+        fail ArgumentError, "invalid value for 'catalog_object_id', the character length must be smaller than or equal to 30."
+      end
+
+      @catalog_object_id = catalog_object_id
     end
 
     # Custom attribute writer method with validation
@@ -124,11 +154,23 @@ module SquareConnect
       @type = type
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] percentage Value to be assigned
+    def percentage=(percentage)
+
+      if !percentage.nil? && percentage.to_s.length > 8
+        fail ArgumentError, "invalid value for 'percentage', the character length must be smaller than or equal to 8."
+      end
+
+      @percentage = percentage
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          catalog_object_id == o.catalog_object_id &&
           name == o.name &&
           type == o.type &&
           percentage == o.percentage
@@ -143,7 +185,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, type, percentage].hash
+      [catalog_object_id, name, type, percentage].hash
     end
 
     # Builds the object from hash

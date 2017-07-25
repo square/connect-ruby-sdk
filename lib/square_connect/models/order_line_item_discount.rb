@@ -12,6 +12,9 @@ require 'date'
 module SquareConnect
   # Represents a discount that applies to one or more line items in an order.  Fixed-amount, order-level discounts are distributed across all non-zero line item totals. The amount distributed to each line item is relative to that item’s contribution to the order subtotal.
   class OrderLineItemDiscount
+    # The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).
+    attr_accessor :catalog_object_id
+
     # The discount's name.
     attr_accessor :name
 
@@ -55,6 +58,7 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'catalog_object_id' => :'catalog_object_id',
         :'name' => :'name',
         :'type' => :'type',
         :'percentage' => :'percentage',
@@ -67,6 +71,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'catalog_object_id' => :'String',
         :'name' => :'String',
         :'type' => :'String',
         :'percentage' => :'String',
@@ -83,6 +88,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'catalog_object_id')
+        self.catalog_object_id = attributes[:'catalog_object_id']
+      end
 
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
@@ -122,7 +131,7 @@ module SquareConnect
     def valid?
       type_validator = EnumAttributeValidator.new('String', ["UNKNOWN", "FIXED_PERCENTAGE", "FIXED_AMOUNT", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
       return false unless type_validator.valid?(@type)
-      scope_validator = EnumAttributeValidator.new('String', ["LINE_ITEM", "ORDER"])
+      scope_validator = EnumAttributeValidator.new('String', ["OTHER_DISCOUNT_SCOPE", "LINE_ITEM", "ORDER"])
       return false unless scope_validator.valid?(@scope)
       return true
     end
@@ -140,7 +149,7 @@ module SquareConnect
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] scope Object to be assigned
     def scope=(scope)
-      validator = EnumAttributeValidator.new('String', ["LINE_ITEM", "ORDER"])
+      validator = EnumAttributeValidator.new('String', ["OTHER_DISCOUNT_SCOPE", "LINE_ITEM", "ORDER"])
       unless validator.valid?(scope)
         fail ArgumentError, "invalid value for 'scope', must be one of #{validator.allowable_values}."
       end
@@ -152,6 +161,7 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          catalog_object_id == o.catalog_object_id &&
           name == o.name &&
           type == o.type &&
           percentage == o.percentage &&
@@ -169,7 +179,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, type, percentage, amount_money, applied_money, scope].hash
+      [catalog_object_id, name, type, percentage, amount_money, applied_money, scope].hash
     end
 
     # Builds the object from hash

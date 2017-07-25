@@ -30,7 +30,7 @@ module SquareConnect
     # The item variation's price, if fixed pricing is used.
     attr_accessor :price_money
 
-    # Per-[location][#type-location] price and inventory overrides.
+    # Per-[location](#type-location) price and inventory overrides.
     attr_accessor :location_overrides
 
     # If `true`, inventory tracking is active for the variation.
