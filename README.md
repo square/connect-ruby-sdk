@@ -348,7 +348,7 @@ Class | Method | HTTP request | Description
 
 - **Type**: OAuth
 - **Flow**: accessCode
-- **Authorization URL**: `https://connect.squareup.com/oauth2/authorize?<PARAMETERS>`
+- **Authorization URL**: `https://connect.squareup.com/oauth2/authorize`
 - **Scopes**: 
   - MERCHANT_PROFILE_READ: GET endpoints related to a merchant&#39;s business and location entities. Almost all Connect API applications need this permission in order to obtain a merchant&#39;s location IDs
   - PAYMENTS_READ: GET endpoints related to transactions and refunds
@@ -366,6 +366,51 @@ Class | Method | HTTP request | Description
   - TIMECARDS_READ: GET endpoints related to employee timecards
   - TIMECARDS_WRITE: POST, PUT, and DELETE endpoints related to employee timecards
 
+
+## Pagination of V1 Endpoints
+
+V1 Endpoints return pagination information via HTTP headers. In order to obtain
+response headers and extract the `batch_token` parameter you will need to follow
+the following steps:
+
+1. Use the full information endpoint methods of each API to get the response HTTP
+Headers. They are named as their simple counterpart with a `with_http_info` suffix.
+Hence `listEmployeeRoles` would be called `list_employee_roles_with_http_info`. This
+method returns an array with 3 parameters: `response`, `http_status`, and
+`http_headers`.
+2. Use `batch_token = api_client.get_v1_batch_token_from_headers(http_headers)`
+to extract the token and proceed to get the following page if a token is present.
+
+### Example
+
+```ruby
+# load the gem
+require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = SquareConnect::V1EmployeesApi.new
+api_client = api_instance.api_client
+
+opts = {
+  order: "order_example", # String | The order in which employees are listed in the response, based on their created_at field.Default value: ASC
+  limit: 56 # Integer | The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
+}
+
+roles = []
+begin
+  result, status, headers = api_instance.list_employee_roles_with_http_info(opts)
+  roles = roles + result
+  opts[:batch_token] = api_client.get_v1_batch_token_from_headers(headers)
+rescue SquareConnect::ApiError => e
+  puts "Exception when calling V1EmployeesApi#list_employee_roles_with_http_info: #{e}"
+end while opts[:batch_token]
+
+p roles
+```
 
 Contributing
 ------------
