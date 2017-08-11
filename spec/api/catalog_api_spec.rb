@@ -382,7 +382,7 @@ describe 'CatalogApi' do
               batch.objects.push({
                   type: SquareConnect::CatalogObjectType::ITEM,
                   id: item_id,
-                  itemData: {
+                  item_data: {
                       name: "Item-#{batch_num}-#{i}",
                       variations: [
                         {
