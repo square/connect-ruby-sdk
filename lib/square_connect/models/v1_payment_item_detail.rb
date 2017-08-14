@@ -39,7 +39,7 @@ module SquareConnect
     def self.swagger_types
       {
         :'category_name' => :'String',
-        :'sku' => :'Float',
+        :'sku' => :'String',
         :'item_id' => :'String',
         :'item_variation_id' => :'String'
       }
