@@ -98,6 +98,8 @@ Class | Method | HTTP request | Description
 *SquareConnect::CustomersApi* | [**retrieve_customer**](docs/CustomersApi.md#retrieve_customer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
 *SquareConnect::CustomersApi* | [**update_customer**](docs/CustomersApi.md#update_customer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 *SquareConnect::LocationsApi* | [**list_locations**](docs/LocationsApi.md#list_locations) | **GET** /v2/locations | ListLocations
+*SquareConnect::OrdersApi* | [**batch_retrieve_orders**](docs/OrdersApi.md#batch_retrieve_orders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve | BatchRetrieveOrders
+*SquareConnect::OrdersApi* | [**create_order**](docs/OrdersApi.md#create_order) | **POST** /v2/locations/{location_id}/orders | CreateOrder
 *SquareConnect::TransactionsApi* | [**capture_transaction**](docs/TransactionsApi.md#capture_transaction) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/capture | CaptureTransaction
 *SquareConnect::TransactionsApi* | [**charge**](docs/TransactionsApi.md#charge) | **POST** /v2/locations/{location_id}/transactions | Charge
 *SquareConnect::TransactionsApi* | [**create_refund**](docs/TransactionsApi.md#create_refund) | **POST** /v2/locations/{location_id}/transactions/{transaction_id}/refund | CreateRefund
@@ -179,10 +181,14 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [SquareConnect::Address](docs/Address.md)
+ - [SquareConnect::ApplicationReceivable](docs/ApplicationReceivable.md)
+ - [SquareConnect::ApplicationReceivableRefund](docs/ApplicationReceivableRefund.md)
  - [SquareConnect::BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
  - [SquareConnect::BatchDeleteCatalogObjectsResponse](docs/BatchDeleteCatalogObjectsResponse.md)
  - [SquareConnect::BatchRetrieveCatalogObjectsRequest](docs/BatchRetrieveCatalogObjectsRequest.md)
  - [SquareConnect::BatchRetrieveCatalogObjectsResponse](docs/BatchRetrieveCatalogObjectsResponse.md)
+ - [SquareConnect::BatchRetrieveOrdersRequest](docs/BatchRetrieveOrdersRequest.md)
+ - [SquareConnect::BatchRetrieveOrdersResponse](docs/BatchRetrieveOrdersResponse.md)
  - [SquareConnect::BatchUpsertCatalogObjectsRequest](docs/BatchUpsertCatalogObjectsRequest.md)
  - [SquareConnect::BatchUpsertCatalogObjectsResponse](docs/BatchUpsertCatalogObjectsResponse.md)
  - [SquareConnect::CaptureTransactionRequest](docs/CaptureTransactionRequest.md)
@@ -231,7 +237,9 @@ Class | Method | HTTP request | Description
  - [SquareConnect::CreateOrderRequest](docs/CreateOrderRequest.md)
  - [SquareConnect::CreateOrderRequestDiscount](docs/CreateOrderRequestDiscount.md)
  - [SquareConnect::CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
+ - [SquareConnect::CreateOrderRequestModifier](docs/CreateOrderRequestModifier.md)
  - [SquareConnect::CreateOrderRequestTax](docs/CreateOrderRequestTax.md)
+ - [SquareConnect::CreateOrderResponse](docs/CreateOrderResponse.md)
  - [SquareConnect::CreateRefundRequest](docs/CreateRefundRequest.md)
  - [SquareConnect::CreateRefundResponse](docs/CreateRefundResponse.md)
  - [SquareConnect::Currency](docs/Currency.md)
@@ -262,12 +270,14 @@ Class | Method | HTTP request | Description
  - [SquareConnect::ListTransactionsResponse](docs/ListTransactionsResponse.md)
  - [SquareConnect::Location](docs/Location.md)
  - [SquareConnect::LocationCapability](docs/LocationCapability.md)
+ - [SquareConnect::LocationStatus](docs/LocationStatus.md)
  - [SquareConnect::Money](docs/Money.md)
  - [SquareConnect::Order](docs/Order.md)
  - [SquareConnect::OrderLineItem](docs/OrderLineItem.md)
  - [SquareConnect::OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
  - [SquareConnect::OrderLineItemDiscountScope](docs/OrderLineItemDiscountScope.md)
  - [SquareConnect::OrderLineItemDiscountType](docs/OrderLineItemDiscountType.md)
+ - [SquareConnect::OrderLineItemModifier](docs/OrderLineItemModifier.md)
  - [SquareConnect::OrderLineItemTax](docs/OrderLineItemTax.md)
  - [SquareConnect::OrderLineItemTaxType](docs/OrderLineItemTaxType.md)
  - [SquareConnect::Refund](docs/Refund.md)

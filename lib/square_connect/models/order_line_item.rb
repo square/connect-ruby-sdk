@@ -15,8 +15,20 @@ module SquareConnect
     # The name of the line item.
     attr_accessor :name
 
-    # The quantity of the product to purchase. Currently, this string must have an integer value.
+    # The quantity purchased, as a string representation of a number.
     attr_accessor :quantity
+
+    # The note of the line item.
+    attr_accessor :note
+
+    # The [CatalogItemVariation](#type-catalogitemvariation) id applied to this line item.
+    attr_accessor :catalog_object_id
+
+    # The name of the variation applied to this line item.
+    attr_accessor :variation_name
+
+    # The [CatalogModifier](#type-catalogmodifier)s applied to this line item.
+    attr_accessor :modifiers
 
     # The taxes applied to this line item.
     attr_accessor :taxes
@@ -26,6 +38,9 @@ module SquareConnect
 
     # The base price for a single unit of the line item.
     attr_accessor :base_price_money
+
+    # The gross sales amount of money calculated as (item base price + modifiers price) * quantity.
+    attr_accessor :gross_sales_money
 
     # The total tax amount of money to collect for the line item.
     attr_accessor :total_tax_money
@@ -42,9 +57,14 @@ module SquareConnect
       {
         :'name' => :'name',
         :'quantity' => :'quantity',
+        :'note' => :'note',
+        :'catalog_object_id' => :'catalog_object_id',
+        :'variation_name' => :'variation_name',
+        :'modifiers' => :'modifiers',
         :'taxes' => :'taxes',
         :'discounts' => :'discounts',
         :'base_price_money' => :'base_price_money',
+        :'gross_sales_money' => :'gross_sales_money',
         :'total_tax_money' => :'total_tax_money',
         :'total_discount_money' => :'total_discount_money',
         :'total_money' => :'total_money'
@@ -56,9 +76,14 @@ module SquareConnect
       {
         :'name' => :'String',
         :'quantity' => :'String',
+        :'note' => :'String',
+        :'catalog_object_id' => :'String',
+        :'variation_name' => :'String',
+        :'modifiers' => :'Array<OrderLineItemModifier>',
         :'taxes' => :'Array<OrderLineItemTax>',
         :'discounts' => :'Array<OrderLineItemDiscount>',
         :'base_price_money' => :'Money',
+        :'gross_sales_money' => :'Money',
         :'total_tax_money' => :'Money',
         :'total_discount_money' => :'Money',
         :'total_money' => :'Money'
@@ -81,6 +106,24 @@ module SquareConnect
         self.quantity = attributes[:'quantity']
       end
 
+      if attributes.has_key?(:'note')
+        self.note = attributes[:'note']
+      end
+
+      if attributes.has_key?(:'catalog_object_id')
+        self.catalog_object_id = attributes[:'catalog_object_id']
+      end
+
+      if attributes.has_key?(:'variation_name')
+        self.variation_name = attributes[:'variation_name']
+      end
+
+      if attributes.has_key?(:'modifiers')
+        if (value = attributes[:'modifiers']).is_a?(Array)
+          self.modifiers = value
+        end
+      end
+
       if attributes.has_key?(:'taxes')
         if (value = attributes[:'taxes']).is_a?(Array)
           self.taxes = value
@@ -95,6 +138,10 @@ module SquareConnect
 
       if attributes.has_key?(:'base_price_money')
         self.base_price_money = attributes[:'base_price_money']
+      end
+
+      if attributes.has_key?(:'gross_sales_money')
+        self.gross_sales_money = attributes[:'gross_sales_money']
       end
 
       if attributes.has_key?(:'total_tax_money')
@@ -131,9 +178,14 @@ module SquareConnect
       self.class == o.class &&
           name == o.name &&
           quantity == o.quantity &&
+          note == o.note &&
+          catalog_object_id == o.catalog_object_id &&
+          variation_name == o.variation_name &&
+          modifiers == o.modifiers &&
           taxes == o.taxes &&
           discounts == o.discounts &&
           base_price_money == o.base_price_money &&
+          gross_sales_money == o.gross_sales_money &&
           total_tax_money == o.total_tax_money &&
           total_discount_money == o.total_discount_money &&
           total_money == o.total_money
@@ -148,7 +200,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, quantity, taxes, discounts, base_price_money, total_tax_money, total_discount_money, total_money].hash
+      [name, quantity, note, catalog_object_id, variation_name, modifiers, taxes, discounts, base_price_money, gross_sales_money, total_tax_money, total_discount_money, total_money].hash
     end
 
     # Builds the object from hash

@@ -126,6 +126,10 @@ module SquareConnect
         invalid_properties.push("invalid value for 'pre_populate_buyer_email', the character length must be smaller than or equal to 254.")
       end
 
+      if !@redirect_url.nil? && @redirect_url.to_s.length > 800
+        invalid_properties.push("invalid value for 'redirect_url', the character length must be smaller than or equal to 800.")
+      end
+
       return invalid_properties
     end
 
@@ -138,6 +142,7 @@ module SquareConnect
       return false if @order.nil?
       return false if !@merchant_support_email.nil? && @merchant_support_email.to_s.length > 254
       return false if !@pre_populate_buyer_email.nil? && @pre_populate_buyer_email.to_s.length > 254
+      return false if !@redirect_url.nil? && @redirect_url.to_s.length > 800
       return true
     end
 
@@ -179,6 +184,17 @@ module SquareConnect
       end
 
       @pre_populate_buyer_email = pre_populate_buyer_email
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] redirect_url Value to be assigned
+    def redirect_url=(redirect_url)
+
+      if !redirect_url.nil? && redirect_url.to_s.length > 800
+        fail ArgumentError, "invalid value for 'redirect_url', the character length must be smaller than or equal to 800."
+      end
+
+      @redirect_url = redirect_url
     end
 
     # Checks equality by comparing each attribute.

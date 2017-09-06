@@ -15,7 +15,7 @@ module SquareConnect
     # The location's unique ID.
     attr_accessor :id
 
-    # The location's name.
+    # The location's name. Location names are set by the location owner and displayed in the dashboard as the location's nickname
     attr_accessor :name
 
     # The location's physical address.
@@ -26,6 +26,30 @@ module SquareConnect
 
     # Indicates which Square features are enabled for the location.  See [LocationCapability](#type-locationcapability) for possible values.
     attr_accessor :capabilities
+
+    # The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+    attr_accessor :status
+
+    # The time when the location was created, in RFC 3339 format.
+    attr_accessor :created_at
+
+    # The identifier of the merchant that owns the location.
+    attr_accessor :merchant_id
+
+    # The location's country, in ISO 3166-1-alpha-2 format.  See [Country](#type-country) for possible values.
+    attr_accessor :country
+
+    # The language associated with the location in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).
+    attr_accessor :language_code
+
+    # The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'.  See [Currency](#type-currency) for possible values.
+    attr_accessor :currency
+
+    # The location's phone_number.
+    attr_accessor :phone_number
+
+    # The location's business_name which is shown to its customers. For example, this is the name printed on its customer's receipts.
+    attr_accessor :business_name
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -56,7 +80,15 @@ module SquareConnect
         :'name' => :'name',
         :'address' => :'address',
         :'timezone' => :'timezone',
-        :'capabilities' => :'capabilities'
+        :'capabilities' => :'capabilities',
+        :'status' => :'status',
+        :'created_at' => :'created_at',
+        :'merchant_id' => :'merchant_id',
+        :'country' => :'country',
+        :'language_code' => :'language_code',
+        :'currency' => :'currency',
+        :'phone_number' => :'phone_number',
+        :'business_name' => :'business_name'
       }
     end
 
@@ -67,7 +99,15 @@ module SquareConnect
         :'name' => :'String',
         :'address' => :'Address',
         :'timezone' => :'String',
-        :'capabilities' => :'Array<String>'
+        :'capabilities' => :'Array<String>',
+        :'status' => :'String',
+        :'created_at' => :'String',
+        :'merchant_id' => :'String',
+        :'country' => :'String',
+        :'language_code' => :'String',
+        :'currency' => :'String',
+        :'phone_number' => :'String',
+        :'business_name' => :'String'
       }
     end
 
@@ -101,6 +141,38 @@ module SquareConnect
         end
       end
 
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.has_key?(:'created_at')
+        self.created_at = attributes[:'created_at']
+      end
+
+      if attributes.has_key?(:'merchant_id')
+        self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.has_key?(:'country')
+        self.country = attributes[:'country']
+      end
+
+      if attributes.has_key?(:'language_code')
+        self.language_code = attributes[:'language_code']
+      end
+
+      if attributes.has_key?(:'currency')
+        self.currency = attributes[:'currency']
+      end
+
+      if attributes.has_key?(:'phone_number')
+        self.phone_number = attributes[:'phone_number']
+      end
+
+      if attributes.has_key?(:'business_name')
+        self.business_name = attributes[:'business_name']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -113,7 +185,43 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      status_validator = EnumAttributeValidator.new('String', ["ACTIVE", "INACTIVE"])
+      return false unless status_validator.valid?(@status)
+      country_validator = EnumAttributeValidator.new('String', ["ZZ", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"])
+      return false unless country_validator.valid?(@country)
+      currency_validator = EnumAttributeValidator.new('String', ["UNKNOWN_CURRENCY", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BOV", "BRL", "BSD", "BTN", "BWP", "BYR", "BZD", "CAD", "CDF", "CHE", "CHF", "CHW", "CLF", "CLP", "CNY", "COP", "COU", "CRC", "CUC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MXV", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD", "SSP", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USN", "USS", "UYI", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAG", "XAU", "XBA", "XBB", "XBC", "XBD", "XCD", "XDR", "XOF", "XPD", "XPF", "XPT", "XTS", "XXX", "YER", "ZAR", "ZMK", "ZMW", "BTC"])
+      return false unless currency_validator.valid?(@currency)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["ACTIVE", "INACTIVE"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for 'status', must be one of #{validator.allowable_values}."
+      end
+      @status = status
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] country Object to be assigned
+    def country=(country)
+      validator = EnumAttributeValidator.new('String', ["ZZ", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"])
+      unless validator.valid?(country)
+        fail ArgumentError, "invalid value for 'country', must be one of #{validator.allowable_values}."
+      end
+      @country = country
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] currency Object to be assigned
+    def currency=(currency)
+      validator = EnumAttributeValidator.new('String', ["UNKNOWN_CURRENCY", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BOV", "BRL", "BSD", "BTN", "BWP", "BYR", "BZD", "CAD", "CDF", "CHE", "CHF", "CHW", "CLF", "CLP", "CNY", "COP", "COU", "CRC", "CUC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LTL", "LVL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRO", "MUR", "MVR", "MWK", "MXN", "MXV", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLL", "SOS", "SRD", "SSP", "STD", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USN", "USS", "UYI", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAG", "XAU", "XBA", "XBB", "XBC", "XBD", "XCD", "XDR", "XOF", "XPD", "XPF", "XPT", "XTS", "XXX", "YER", "ZAR", "ZMK", "ZMW", "BTC"])
+      unless validator.valid?(currency)
+        fail ArgumentError, "invalid value for 'currency', must be one of #{validator.allowable_values}."
+      end
+      @currency = currency
     end
 
     # Checks equality by comparing each attribute.
@@ -125,7 +233,15 @@ module SquareConnect
           name == o.name &&
           address == o.address &&
           timezone == o.timezone &&
-          capabilities == o.capabilities
+          capabilities == o.capabilities &&
+          status == o.status &&
+          created_at == o.created_at &&
+          merchant_id == o.merchant_id &&
+          country == o.country &&
+          language_code == o.language_code &&
+          currency == o.currency &&
+          phone_number == o.phone_number &&
+          business_name == o.business_name
     end
 
     # @see the `==` method
@@ -137,7 +253,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, address, timezone, capabilities].hash
+      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name].hash
     end
 
     # Builds the object from hash

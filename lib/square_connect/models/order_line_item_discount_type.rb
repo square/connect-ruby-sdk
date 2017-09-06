@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   class OrderLineItemDiscountType
     
-    UNKNOWN = "UNKNOWN".freeze
+    UNKNOWN_DISCOUNT = "UNKNOWN_DISCOUNT".freeze
     FIXED_PERCENTAGE = "FIXED_PERCENTAGE".freeze
     FIXED_AMOUNT = "FIXED_AMOUNT".freeze
     VARIABLE_PERCENTAGE = "VARIABLE_PERCENTAGE".freeze
