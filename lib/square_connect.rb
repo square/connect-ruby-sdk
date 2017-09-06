@@ -15,8 +15,6 @@ require 'square_connect/configuration'
 
 # Models
 require 'square_connect/models/address'
-require 'square_connect/models/application_receivable'
-require 'square_connect/models/application_receivable_refund'
 require 'square_connect/models/batch_delete_catalog_objects_request'
 require 'square_connect/models/batch_delete_catalog_objects_response'
 require 'square_connect/models/batch_retrieve_catalog_objects_request'

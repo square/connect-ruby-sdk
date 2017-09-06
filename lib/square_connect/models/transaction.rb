@@ -39,6 +39,9 @@ module SquareConnect
     # The shipping address provided in the request, if any.
     attr_accessor :shipping_address
 
+    # The order_id is an identifier for the order associated with this transaction, if any.
+    attr_accessor :order_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -72,7 +75,8 @@ module SquareConnect
         :'reference_id' => :'reference_id',
         :'product' => :'product',
         :'client_id' => :'client_id',
-        :'shipping_address' => :'shipping_address'
+        :'shipping_address' => :'shipping_address',
+        :'order_id' => :'order_id'
       }
     end
 
@@ -87,7 +91,8 @@ module SquareConnect
         :'reference_id' => :'String',
         :'product' => :'String',
         :'client_id' => :'String',
-        :'shipping_address' => :'Address'
+        :'shipping_address' => :'Address',
+        :'order_id' => :'String'
       }
     end
 
@@ -139,6 +144,10 @@ module SquareConnect
         self.shipping_address = attributes[:'shipping_address']
       end
 
+      if attributes.has_key?(:'order_id')
+        self.order_id = attributes[:'order_id']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -179,7 +188,8 @@ module SquareConnect
           reference_id == o.reference_id &&
           product == o.product &&
           client_id == o.client_id &&
-          shipping_address == o.shipping_address
+          shipping_address == o.shipping_address &&
+          order_id == o.order_id
     end
 
     # @see the `==` method
@@ -191,7 +201,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, created_at, tenders, refunds, reference_id, product, client_id, shipping_address].hash
+      [id, location_id, created_at, tenders, refunds, reference_id, product, client_id, shipping_address, order_id].hash
     end
 
     # Builds the object from hash

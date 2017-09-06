@@ -181,8 +181,6 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [SquareConnect::Address](docs/Address.md)
- - [SquareConnect::ApplicationReceivable](docs/ApplicationReceivable.md)
- - [SquareConnect::ApplicationReceivableRefund](docs/ApplicationReceivableRefund.md)
  - [SquareConnect::BatchDeleteCatalogObjectsRequest](docs/BatchDeleteCatalogObjectsRequest.md)
  - [SquareConnect::BatchDeleteCatalogObjectsResponse](docs/BatchDeleteCatalogObjectsResponse.md)
  - [SquareConnect::BatchRetrieveCatalogObjectsRequest](docs/BatchRetrieveCatalogObjectsRequest.md)
