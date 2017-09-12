@@ -30,16 +30,8 @@ module SquareConnect
       @config = config
 
       # Construct user agent string. Returns slightly different string for JRuby
-<<<<<<< a40540c616abe8ea8c48cb3ecedbf7797790c0ea
-      @user_agent = "Square-Connect-Ruby/2.2.1"
+      @user_agent = "Square-Connect-Ruby/2.3.0"
 
-||||||| merged common ancestors
-      @user_agent = "Square-Connect-Ruby/2.2.0"
-      
-=======
-      @user_agent = "Square-Connect-Ruby/2.2.0"
-
->>>>>>> From connect-api-specification: Support V1 pagination in Ruby SDK
       @default_headers = {
         'Content-Type' => "application/json",
         'User-Agent' => @user_agent,

@@ -79,8 +79,28 @@ module SquareConnect
         invalid_properties.push("invalid value for 'idempotency_key', idempotency_key cannot be nil.")
       end
 
+      if @idempotency_key.to_s.length > 192
+        invalid_properties.push("invalid value for 'idempotency_key', the character length must be smaller than or equal to 192.")
+      end
+
+      if @idempotency_key.to_s.length < 1
+        invalid_properties.push("invalid value for 'idempotency_key', the character length must be great than or equal to 1.")
+      end
+
       if @tender_id.nil?
         invalid_properties.push("invalid value for 'tender_id', tender_id cannot be nil.")
+      end
+
+      if @tender_id.to_s.length > 192
+        invalid_properties.push("invalid value for 'tender_id', the character length must be smaller than or equal to 192.")
+      end
+
+      if @tender_id.to_s.length < 1
+        invalid_properties.push("invalid value for 'tender_id', the character length must be great than or equal to 1.")
+      end
+
+      if !@reason.nil? && @reason.to_s.length > 192
+        invalid_properties.push("invalid value for 'reason', the character length must be smaller than or equal to 192.")
       end
 
       if @amount_money.nil?
@@ -94,9 +114,61 @@ module SquareConnect
     # @return true if the model is valid
     def valid?
       return false if @idempotency_key.nil?
+      return false if @idempotency_key.to_s.length > 192
+      return false if @idempotency_key.to_s.length < 1
       return false if @tender_id.nil?
+      return false if @tender_id.to_s.length > 192
+      return false if @tender_id.to_s.length < 1
+      return false if !@reason.nil? && @reason.to_s.length > 192
       return false if @amount_money.nil?
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] idempotency_key Value to be assigned
+    def idempotency_key=(idempotency_key)
+      if idempotency_key.nil?
+        fail ArgumentError, "idempotency_key cannot be nil"
+      end
+
+      if idempotency_key.to_s.length > 192
+        fail ArgumentError, "invalid value for 'idempotency_key', the character length must be smaller than or equal to 192."
+      end
+
+      if idempotency_key.to_s.length < 1
+        fail ArgumentError, "invalid value for 'idempotency_key', the character length must be great than or equal to 1."
+      end
+
+      @idempotency_key = idempotency_key
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] tender_id Value to be assigned
+    def tender_id=(tender_id)
+      if tender_id.nil?
+        fail ArgumentError, "tender_id cannot be nil"
+      end
+
+      if tender_id.to_s.length > 192
+        fail ArgumentError, "invalid value for 'tender_id', the character length must be smaller than or equal to 192."
+      end
+
+      if tender_id.to_s.length < 1
+        fail ArgumentError, "invalid value for 'tender_id', the character length must be great than or equal to 1."
+      end
+
+      @tender_id = tender_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reason Value to be assigned
+    def reason=(reason)
+
+      if !reason.nil? && reason.to_s.length > 192
+        fail ArgumentError, "invalid value for 'reason', the character length must be smaller than or equal to 192."
+      end
+
+      @reason = reason
     end
 
     # Checks equality by comparing each attribute.

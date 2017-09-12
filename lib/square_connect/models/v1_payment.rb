@@ -60,10 +60,13 @@ module SquareConnect
     # The total of all refunds applied to the payment.
     attr_accessor :refunded_money
 
+    # The total of all sales, including any applicable taxes, rounded to the smallest legal unit of currency (e.g., the nearest penny in USD, the nearest nickel in CAD)
     attr_accessor :swedish_rounding_money
 
+    # The total of all sales, including any applicable taxes.
     attr_accessor :gross_sales_money
 
+    # The total of all sales, minus any applicable taxes.
     attr_accessor :net_sales_money
 
     # All of the inclusive taxes associated with the payment.
