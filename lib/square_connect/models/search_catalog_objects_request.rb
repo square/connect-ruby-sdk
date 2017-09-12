@@ -24,7 +24,7 @@ module SquareConnect
     # If `true`, the response will include additional objects that are related to the requested object, as follows:  If a [CatalogItem](#type-catalogitem) is returned in the object field of the response, its associated [CatalogCategory](#type-catalogcategory), [CatalogTax](#type-catalogtax)es, and [CatalogModifierList](#type-catalogmodifierlist)s will be included in the `related_objects` field of the response.  If a [CatalogItemVariation](#type-catalogitemvariation) is returned in the object field of the response, its parent [CatalogItem](#type-catalogitem) will be included in the `related_objects` field of the response.
     attr_accessor :include_related_objects
 
-    # Return only objects that have been modified after this [timestamp](#workingwithdates) (in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\"). The timestamp is exclusive - objects whose timestamp is equal to `begin_time` will not be included in the response.
+    # Return objects modified after this [timestamp](#workingwithdates), in RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\". The timestamp is exclusive - objects with a timestamp equal to `begin_time` will not be included in the response.
     attr_accessor :begin_time
 
     # A query to be used to filter or sort the results. If no query is specified, the entire catalog will be returned.

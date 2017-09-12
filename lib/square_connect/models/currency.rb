@@ -12,6 +12,7 @@ require 'date'
 module SquareConnect
   class Currency
     
+    UNKNOWN_CURRENCY = "UNKNOWN_CURRENCY".freeze
     AED = "AED".freeze
     AFN = "AFN".freeze
     ALL = "ALL".freeze

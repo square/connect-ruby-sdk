@@ -12,6 +12,7 @@ require 'date'
 module SquareConnect
   class OrderLineItemDiscountScope
     
+    OTHER_DISCOUNT_SCOPE = "OTHER_DISCOUNT_SCOPE".freeze
     LINE_ITEM = "LINE_ITEM".freeze
     ORDER = "ORDER".freeze
   end
