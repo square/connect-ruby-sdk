@@ -142,8 +142,36 @@ module SquareConnect
         invalid_properties.push("invalid value for 'idempotency_key', idempotency_key cannot be nil.")
       end
 
+      if @idempotency_key.to_s.length > 192
+        invalid_properties.push("invalid value for 'idempotency_key', the character length must be smaller than or equal to 192.")
+      end
+
+      if @idempotency_key.to_s.length < 1
+        invalid_properties.push("invalid value for 'idempotency_key', the character length must be great than or equal to 1.")
+      end
+
       if @amount_money.nil?
         invalid_properties.push("invalid value for 'amount_money', amount_money cannot be nil.")
+      end
+
+      if !@card_nonce.nil? && @card_nonce.to_s.length > 192
+        invalid_properties.push("invalid value for 'card_nonce', the character length must be smaller than or equal to 192.")
+      end
+
+      if !@customer_card_id.nil? && @customer_card_id.to_s.length > 192
+        invalid_properties.push("invalid value for 'customer_card_id', the character length must be smaller than or equal to 192.")
+      end
+
+      if !@reference_id.nil? && @reference_id.to_s.length > 40
+        invalid_properties.push("invalid value for 'reference_id', the character length must be smaller than or equal to 40.")
+      end
+
+      if !@note.nil? && @note.to_s.length > 60
+        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 60.")
+      end
+
+      if !@customer_id.nil? && @customer_id.to_s.length > 50
+        invalid_properties.push("invalid value for 'customer_id', the character length must be smaller than or equal to 50.")
       end
 
       return invalid_properties
@@ -153,8 +181,88 @@ module SquareConnect
     # @return true if the model is valid
     def valid?
       return false if @idempotency_key.nil?
+      return false if @idempotency_key.to_s.length > 192
+      return false if @idempotency_key.to_s.length < 1
       return false if @amount_money.nil?
+      return false if !@card_nonce.nil? && @card_nonce.to_s.length > 192
+      return false if !@customer_card_id.nil? && @customer_card_id.to_s.length > 192
+      return false if !@reference_id.nil? && @reference_id.to_s.length > 40
+      return false if !@note.nil? && @note.to_s.length > 60
+      return false if !@customer_id.nil? && @customer_id.to_s.length > 50
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] idempotency_key Value to be assigned
+    def idempotency_key=(idempotency_key)
+      if idempotency_key.nil?
+        fail ArgumentError, "idempotency_key cannot be nil"
+      end
+
+      if idempotency_key.to_s.length > 192
+        fail ArgumentError, "invalid value for 'idempotency_key', the character length must be smaller than or equal to 192."
+      end
+
+      if idempotency_key.to_s.length < 1
+        fail ArgumentError, "invalid value for 'idempotency_key', the character length must be great than or equal to 1."
+      end
+
+      @idempotency_key = idempotency_key
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] card_nonce Value to be assigned
+    def card_nonce=(card_nonce)
+
+      if !card_nonce.nil? && card_nonce.to_s.length > 192
+        fail ArgumentError, "invalid value for 'card_nonce', the character length must be smaller than or equal to 192."
+      end
+
+      @card_nonce = card_nonce
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] customer_card_id Value to be assigned
+    def customer_card_id=(customer_card_id)
+
+      if !customer_card_id.nil? && customer_card_id.to_s.length > 192
+        fail ArgumentError, "invalid value for 'customer_card_id', the character length must be smaller than or equal to 192."
+      end
+
+      @customer_card_id = customer_card_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reference_id Value to be assigned
+    def reference_id=(reference_id)
+
+      if !reference_id.nil? && reference_id.to_s.length > 40
+        fail ArgumentError, "invalid value for 'reference_id', the character length must be smaller than or equal to 40."
+      end
+
+      @reference_id = reference_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] note Value to be assigned
+    def note=(note)
+
+      if !note.nil? && note.to_s.length > 60
+        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 60."
+      end
+
+      @note = note
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] customer_id Value to be assigned
+    def customer_id=(customer_id)
+
+      if !customer_id.nil? && customer_id.to_s.length > 50
+        fail ArgumentError, "invalid value for 'customer_id', the character length must be smaller than or equal to 50."
+      end
+
+      @customer_id = customer_id
     end
 
     # Checks equality by comparing each attribute.

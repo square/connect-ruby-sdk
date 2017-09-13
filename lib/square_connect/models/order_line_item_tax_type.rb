@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   class OrderLineItemTaxType
     
-    UNKNOWN = "UNKNOWN".freeze
+    UNKNOWN_TAX = "UNKNOWN_TAX".freeze
     ADDITIVE = "ADDITIVE".freeze
     INCLUSIVE = "INCLUSIVE".freeze
   end
