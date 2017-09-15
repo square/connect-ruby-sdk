@@ -45,6 +45,9 @@ module SquareConnect
     # The buyer's email address, if available. This value is optional, but this transaction is ineligible for chargeback protection if it is not provided.
     attr_accessor :buyer_email_address
 
+    # The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.
+    attr_accessor :order_id
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -59,7 +62,8 @@ module SquareConnect
         :'customer_id' => :'customer_id',
         :'billing_address' => :'billing_address',
         :'shipping_address' => :'shipping_address',
-        :'buyer_email_address' => :'buyer_email_address'
+        :'buyer_email_address' => :'buyer_email_address',
+        :'order_id' => :'order_id'
       }
     end
 
@@ -76,7 +80,8 @@ module SquareConnect
         :'customer_id' => :'String',
         :'billing_address' => :'Address',
         :'shipping_address' => :'Address',
-        :'buyer_email_address' => :'String'
+        :'buyer_email_address' => :'String',
+        :'order_id' => :'String'
       }
     end
 
@@ -132,6 +137,10 @@ module SquareConnect
         self.buyer_email_address = attributes[:'buyer_email_address']
       end
 
+      if attributes.has_key?(:'order_id')
+        self.order_id = attributes[:'order_id']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -174,6 +183,10 @@ module SquareConnect
         invalid_properties.push("invalid value for 'customer_id', the character length must be smaller than or equal to 50.")
       end
 
+      if !@order_id.nil? && @order_id.to_s.length > 192
+        invalid_properties.push("invalid value for 'order_id', the character length must be smaller than or equal to 192.")
+      end
+
       return invalid_properties
     end
 
@@ -189,6 +202,7 @@ module SquareConnect
       return false if !@reference_id.nil? && @reference_id.to_s.length > 40
       return false if !@note.nil? && @note.to_s.length > 60
       return false if !@customer_id.nil? && @customer_id.to_s.length > 50
+      return false if !@order_id.nil? && @order_id.to_s.length > 192
       return true
     end
 
@@ -265,6 +279,17 @@ module SquareConnect
       @customer_id = customer_id
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] order_id Value to be assigned
+    def order_id=(order_id)
+
+      if !order_id.nil? && order_id.to_s.length > 192
+        fail ArgumentError, "invalid value for 'order_id', the character length must be smaller than or equal to 192."
+      end
+
+      @order_id = order_id
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -280,7 +305,8 @@ module SquareConnect
           customer_id == o.customer_id &&
           billing_address == o.billing_address &&
           shipping_address == o.shipping_address &&
-          buyer_email_address == o.buyer_email_address
+          buyer_email_address == o.buyer_email_address &&
+          order_id == o.order_id
     end
 
     # @see the `==` method
@@ -292,7 +318,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [idempotency_key, amount_money, card_nonce, customer_card_id, delay_capture, reference_id, note, customer_id, billing_address, shipping_address, buyer_email_address].hash
+      [idempotency_key, amount_money, card_nonce, customer_card_id, delay_capture, reference_id, note, customer_id, billing_address, shipping_address, buyer_email_address, order_id].hash
     end
 
     # Builds the object from hash
