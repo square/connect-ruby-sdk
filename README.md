@@ -57,19 +57,15 @@ SquareConnect.configure do |config|
   config.access_token = 'YOUR ACCESS TOKEN'
 end
 
-api_instance = SquareConnect::ApplePayApi.new
-
-body = SquareConnect::RegisterDomainRequest.new # RegisterDomainRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
-
-
+# The SDK throws an exception if a Connect endpoint responds with anything besides 200 (success).
+# This block catches any exceptions that occur from the request.
+locations_api = SquareConnect::LocationsApi.new
 begin
-  #RegisterDomain
-  result = api_instance.register_domain(body)
-  p result
+  locations = locations_api.list_locations.locations
 rescue SquareConnect::ApiError => e
-  puts "Exception when calling ApplePayApi->register_domain: #{e}"
+  puts "Error encountered while loading the locations: #{e.message}"
+  return
 end
-
 ```
 
 ## Documentation for API Endpoints
