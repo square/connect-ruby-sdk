@@ -30,7 +30,7 @@ module SquareConnect
     # The Connect V1 IDs for this object at each [location](#type-location) where it is present, where they differ from the object's Connect V2 ID. The field will only be present for objects that have been created or modified by legacy APIs.
     attr_accessor :catalog_v1_ids
 
-    # If `true`, this object is present at all locations (including future locations), except where specified in the `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations), except where specified in the `present_at_location_ids` field.
+    # If `true`, this object is present at all locations (including future locations), except where specified in the `absent_at_location_ids` field. If `false`, this object is not present at any locations (including future locations), except where specified in the `present_at_location_ids` field. If not specified, defaults to `true`.
     attr_accessor :present_at_all_locations
 
     # A list of locations where the object is present, even if `present_at_all_locations` is `false`.
