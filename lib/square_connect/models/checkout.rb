@@ -39,6 +39,9 @@ module SquareConnect
     # The time when the checkout was created, in RFC 3339 format.
     attr_accessor :created_at
 
+    # Additional recipients (other than the merchant) receiving a portion of this checkout. For example, fees assessed on the purchase by a third party integration.
+    attr_accessor :additional_recipients
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -51,7 +54,8 @@ module SquareConnect
         :'pre_populate_shipping_address' => :'pre_populate_shipping_address',
         :'redirect_url' => :'redirect_url',
         :'order' => :'order',
-        :'created_at' => :'created_at'
+        :'created_at' => :'created_at',
+        :'additional_recipients' => :'additional_recipients'
       }
     end
 
@@ -66,7 +70,8 @@ module SquareConnect
         :'pre_populate_shipping_address' => :'Address',
         :'redirect_url' => :'String',
         :'order' => :'Order',
-        :'created_at' => :'String'
+        :'created_at' => :'String',
+        :'additional_recipients' => :'Array<AdditionalRecipient>'
       }
     end
 
@@ -114,6 +119,12 @@ module SquareConnect
         self.created_at = attributes[:'created_at']
       end
 
+      if attributes.has_key?(:'additional_recipients')
+        if (value = attributes[:'additional_recipients']).is_a?(Array)
+          self.additional_recipients = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -142,7 +153,8 @@ module SquareConnect
           pre_populate_shipping_address == o.pre_populate_shipping_address &&
           redirect_url == o.redirect_url &&
           order == o.order &&
-          created_at == o.created_at
+          created_at == o.created_at &&
+          additional_recipients == o.additional_recipients
     end
 
     # @see the `==` method
@@ -154,7 +166,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, checkout_page_url, ask_for_shipping_address, merchant_support_email, pre_populate_buyer_email, pre_populate_shipping_address, redirect_url, order, created_at].hash
+      [id, checkout_page_url, ask_for_shipping_address, merchant_support_email, pre_populate_buyer_email, pre_populate_shipping_address, redirect_url, order, created_at, additional_recipients].hash
     end
 
     # Builds the object from hash

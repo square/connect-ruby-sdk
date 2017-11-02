@@ -33,6 +33,9 @@ module SquareConnect
     # The URL to redirect to after checkout is completed with `checkoutId`, Square's `orderId`, `transactionId`, and `referenceId` appended as URL parameters. For example, if the provided redirect_url is `http://www.example.com/order-complete`, a successful transaction redirects the customer to:  `http://www.example.com/order-complete?checkoutId=xxxxxx&orderId=xxxxxx&referenceId=xxxxxx&transactionId=xxxxxx`  If you do not provide a redirect URL, Square Checkout will display an order confirmation page on your behalf; however Square strongly recommends that you provide a redirect URL so you can verify the transaction results and finalize the order through your existing/normal confirmation workflow.  Default: none; only exists if explicitly set.
     attr_accessor :redirect_url
 
+    # The basic primitive of multi party settlement. The value is optional. The transation facilitated by you can be splited from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `total_money` calcualted by Square for your order. The `location_id` must be the valid location of the app owner merchant.  This field is currently not supported in sandbox.
+    attr_accessor :additional_recipients
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -43,7 +46,8 @@ module SquareConnect
         :'merchant_support_email' => :'merchant_support_email',
         :'pre_populate_buyer_email' => :'pre_populate_buyer_email',
         :'pre_populate_shipping_address' => :'pre_populate_shipping_address',
-        :'redirect_url' => :'redirect_url'
+        :'redirect_url' => :'redirect_url',
+        :'additional_recipients' => :'additional_recipients'
       }
     end
 
@@ -56,7 +60,8 @@ module SquareConnect
         :'merchant_support_email' => :'String',
         :'pre_populate_buyer_email' => :'String',
         :'pre_populate_shipping_address' => :'Address',
-        :'redirect_url' => :'String'
+        :'redirect_url' => :'String',
+        :'additional_recipients' => :'Array<ChargeRequestAdditionalRecipient>'
       }
     end
 
@@ -94,6 +99,12 @@ module SquareConnect
 
       if attributes.has_key?(:'redirect_url')
         self.redirect_url = attributes[:'redirect_url']
+      end
+
+      if attributes.has_key?(:'additional_recipients')
+        if (value = attributes[:'additional_recipients']).is_a?(Array)
+          self.additional_recipients = value
+        end
       end
 
     end
@@ -208,7 +219,8 @@ module SquareConnect
           merchant_support_email == o.merchant_support_email &&
           pre_populate_buyer_email == o.pre_populate_buyer_email &&
           pre_populate_shipping_address == o.pre_populate_shipping_address &&
-          redirect_url == o.redirect_url
+          redirect_url == o.redirect_url &&
+          additional_recipients == o.additional_recipients
     end
 
     # @see the `==` method
@@ -220,7 +232,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [idempotency_key, order, ask_for_shipping_address, merchant_support_email, pre_populate_buyer_email, pre_populate_shipping_address, redirect_url].hash
+      [idempotency_key, order, ask_for_shipping_address, merchant_support_email, pre_populate_buyer_email, pre_populate_shipping_address, redirect_url, additional_recipients].hash
     end
 
     # Builds the object from hash
