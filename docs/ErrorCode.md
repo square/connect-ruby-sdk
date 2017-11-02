@@ -55,6 +55,7 @@ Name | Type
 **INVALID_EXPIRATION_YEAR** | string
 **INVALID_EXPIRATION_DATE** | string
 **UNSUPPORTED_CARD_BRAND** | string
+**UNSUPPORTED_ENTRY_METHOD** | string
 **INVALID_CARD** | string
 **DELAYED_TRANSACTION_EXPIRED** | string
 **DELAYED_TRANSACTION_CANCELED** | string
@@ -72,6 +73,7 @@ Name | Type
 **UNEXPECTED_VALUE** | string
 **SANDBOX_NOT_SUPPORTED** | string
 **INVALID_EMAIL_ADDRESS** | string
+**INVALID_PHONE_NUMBER** | string
 **CHECKOUT_EXPIRED** | string
 **CARD_DECLINED** | string
 **VERIFY_CVV_FAILURE** | string

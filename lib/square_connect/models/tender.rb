@@ -45,6 +45,9 @@ module SquareConnect
     # The details of the cash tender.  This value is present only if the value of `type` is `CASH`.
     attr_accessor :cash_details
 
+    # Additional recipients (other than the merchant) receiving a portion of this tender. For example, fees assessed on the purchase by a third party integration.
+    attr_accessor :additional_recipients
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -80,7 +83,8 @@ module SquareConnect
         :'customer_id' => :'customer_id',
         :'type' => :'type',
         :'card_details' => :'card_details',
-        :'cash_details' => :'cash_details'
+        :'cash_details' => :'cash_details',
+        :'additional_recipients' => :'additional_recipients'
       }
     end
 
@@ -97,7 +101,8 @@ module SquareConnect
         :'customer_id' => :'String',
         :'type' => :'String',
         :'card_details' => :'TenderCardDetails',
-        :'cash_details' => :'TenderCashDetails'
+        :'cash_details' => :'TenderCashDetails',
+        :'additional_recipients' => :'Array<AdditionalRecipient>'
       }
     end
 
@@ -153,6 +158,12 @@ module SquareConnect
         self.cash_details = attributes[:'cash_details']
       end
 
+      if attributes.has_key?(:'additional_recipients')
+        if (value = attributes[:'additional_recipients']).is_a?(Array)
+          self.additional_recipients = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -200,7 +211,8 @@ module SquareConnect
           customer_id == o.customer_id &&
           type == o.type &&
           card_details == o.card_details &&
-          cash_details == o.cash_details
+          cash_details == o.cash_details &&
+          additional_recipients == o.additional_recipients
     end
 
     # @see the `==` method
@@ -212,7 +224,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, transaction_id, created_at, note, amount_money, processing_fee_money, customer_id, type, card_details, cash_details].hash
+      [id, location_id, transaction_id, created_at, note, amount_money, processing_fee_money, customer_id, type, card_details, cash_details, additional_recipients].hash
     end
 
     # Builds the object from hash

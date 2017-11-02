@@ -83,5 +83,10 @@ describe 'Checkout' do
     end
   end
 
-end
+  describe 'test attribute "additional_recipients"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
 
+end

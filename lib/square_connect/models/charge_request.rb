@@ -48,6 +48,9 @@ module SquareConnect
     # The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.
     attr_accessor :order_id
 
+    # The basic primitive of multi party settlement. The value is optional. The transation facilitated by you can be splited from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in you charge's request. The `location_id` must be the valid location of the app owner merchant.  This field is currently not supported in sandbox.
+    attr_accessor :additional_recipients
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -63,7 +66,8 @@ module SquareConnect
         :'billing_address' => :'billing_address',
         :'shipping_address' => :'shipping_address',
         :'buyer_email_address' => :'buyer_email_address',
-        :'order_id' => :'order_id'
+        :'order_id' => :'order_id',
+        :'additional_recipients' => :'additional_recipients'
       }
     end
 
@@ -81,7 +85,8 @@ module SquareConnect
         :'billing_address' => :'Address',
         :'shipping_address' => :'Address',
         :'buyer_email_address' => :'String',
-        :'order_id' => :'String'
+        :'order_id' => :'String',
+        :'additional_recipients' => :'Array<AdditionalRecipient>'
       }
     end
 
@@ -139,6 +144,12 @@ module SquareConnect
 
       if attributes.has_key?(:'order_id')
         self.order_id = attributes[:'order_id']
+      end
+
+      if attributes.has_key?(:'additional_recipients')
+        if (value = attributes[:'additional_recipients']).is_a?(Array)
+          self.additional_recipients = value
+        end
       end
 
     end
@@ -306,7 +317,8 @@ module SquareConnect
           billing_address == o.billing_address &&
           shipping_address == o.shipping_address &&
           buyer_email_address == o.buyer_email_address &&
-          order_id == o.order_id
+          order_id == o.order_id &&
+          additional_recipients == o.additional_recipients
     end
 
     # @see the `==` method
@@ -318,7 +330,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [idempotency_key, amount_money, card_nonce, customer_card_id, delay_capture, reference_id, note, customer_id, billing_address, shipping_address, buyer_email_address, order_id].hash
+      [idempotency_key, amount_money, card_nonce, customer_card_id, delay_capture, reference_id, note, customer_id, billing_address, shipping_address, buyer_email_address, order_id, additional_recipients].hash
     end
 
     # Builds the object from hash

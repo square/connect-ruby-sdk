@@ -39,6 +39,9 @@ module SquareConnect
     # The amount of Square processing fee money refunded to the *merchant*.
     attr_accessor :processing_fee_money
 
+    # Additional recipients (other than the merchant) receiving a portion of this refund. For example, fees assessed on a refund of a purchase by a third party integration.
+    attr_accessor :additional_recipients
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -72,7 +75,8 @@ module SquareConnect
         :'reason' => :'reason',
         :'amount_money' => :'amount_money',
         :'status' => :'status',
-        :'processing_fee_money' => :'processing_fee_money'
+        :'processing_fee_money' => :'processing_fee_money',
+        :'additional_recipients' => :'additional_recipients'
       }
     end
 
@@ -87,7 +91,8 @@ module SquareConnect
         :'reason' => :'String',
         :'amount_money' => :'Money',
         :'status' => :'String',
-        :'processing_fee_money' => :'Money'
+        :'processing_fee_money' => :'Money',
+        :'additional_recipients' => :'Array<AdditionalRecipient>'
       }
     end
 
@@ -133,6 +138,12 @@ module SquareConnect
 
       if attributes.has_key?(:'processing_fee_money')
         self.processing_fee_money = attributes[:'processing_fee_money']
+      end
+
+      if attributes.has_key?(:'additional_recipients')
+        if (value = attributes[:'additional_recipients']).is_a?(Array)
+          self.additional_recipients = value
+        end
       end
 
     end
@@ -210,7 +221,8 @@ module SquareConnect
           reason == o.reason &&
           amount_money == o.amount_money &&
           status == o.status &&
-          processing_fee_money == o.processing_fee_money
+          processing_fee_money == o.processing_fee_money &&
+          additional_recipients == o.additional_recipients
     end
 
     # @see the `==` method
@@ -222,7 +234,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, transaction_id, tender_id, created_at, reason, amount_money, status, processing_fee_money].hash
+      [id, location_id, transaction_id, tender_id, created_at, reason, amount_money, status, processing_fee_money, additional_recipients].hash
     end
 
     # Builds the object from hash

@@ -32,8 +32,8 @@ describe 'TransactionsApi' do
   # unit tests for capture_transaction
   # CaptureTransaction
   # Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-  # @param location_id 
-  # @param transaction_id 
+  # @param location_id
+  # @param transaction_id
   # @param [Hash] opts the optional parameters
   # @return [CaptureTransactionResponse]
   describe 'capture_transaction test' do
@@ -117,8 +117,8 @@ describe 'TransactionsApi' do
   # unit tests for void_transaction
   # VoidTransaction
   # Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-  # @param location_id 
-  # @param transaction_id 
+  # @param location_id
+  # @param transaction_id
   # @param [Hash] opts the optional parameters
   # @return [VoidTransactionResponse]
   describe 'void_transaction test' do
