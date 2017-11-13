@@ -194,6 +194,13 @@ module SquareConnect
             key: 'Authorization',
             value: "Bearer #{access_token}"
           },
+        'oauth2ClientSecret' =>
+          {
+            type: 'api_key',
+            in: 'header',
+            key: 'Authorization',
+            value: api_key_with_prefix('Authorization')
+          },
       }
     end
   end

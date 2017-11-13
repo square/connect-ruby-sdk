@@ -30,6 +30,9 @@ module SquareConnect
     # The amount of the tender.
     attr_accessor :amount_money
 
+    # The tip's amount of the tender.
+    attr_accessor :tip_money
+
     # The amount of any Square processing fees applied to the tender.  This field is not immediately populated when a new transaction is created. It is usually available after about ten seconds.
     attr_accessor :processing_fee_money
 
@@ -79,6 +82,7 @@ module SquareConnect
         :'created_at' => :'created_at',
         :'note' => :'note',
         :'amount_money' => :'amount_money',
+        :'tip_money' => :'tip_money',
         :'processing_fee_money' => :'processing_fee_money',
         :'customer_id' => :'customer_id',
         :'type' => :'type',
@@ -97,6 +101,7 @@ module SquareConnect
         :'created_at' => :'String',
         :'note' => :'String',
         :'amount_money' => :'Money',
+        :'tip_money' => :'Money',
         :'processing_fee_money' => :'Money',
         :'customer_id' => :'String',
         :'type' => :'String',
@@ -136,6 +141,10 @@ module SquareConnect
 
       if attributes.has_key?(:'amount_money')
         self.amount_money = attributes[:'amount_money']
+      end
+
+      if attributes.has_key?(:'tip_money')
+        self.tip_money = attributes[:'tip_money']
       end
 
       if attributes.has_key?(:'processing_fee_money')
@@ -207,6 +216,7 @@ module SquareConnect
           created_at == o.created_at &&
           note == o.note &&
           amount_money == o.amount_money &&
+          tip_money == o.tip_money &&
           processing_fee_money == o.processing_fee_money &&
           customer_id == o.customer_id &&
           type == o.type &&
@@ -224,7 +234,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, transaction_id, created_at, note, amount_money, processing_fee_money, customer_id, type, card_details, cash_details, additional_recipients].hash
+      [id, location_id, transaction_id, created_at, note, amount_money, tip_money, processing_fee_money, customer_id, type, card_details, cash_details, additional_recipients].hash
     end
 
     # Builds the object from hash

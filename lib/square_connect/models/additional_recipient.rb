@@ -21,7 +21,7 @@ module SquareConnect
     # The amount of money distributed to the recipient.
     attr_accessor :amount_money
 
-    # The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server. TODO(botros): add required annotations on this, SETL-7263
+    # The unique ID for this [AdditionalRecipientReceivable](#type-additionalrecipientreceivable), assigned by the server.
     attr_accessor :receivable_id
 
 

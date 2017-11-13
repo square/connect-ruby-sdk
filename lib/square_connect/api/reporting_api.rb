@@ -18,7 +18,7 @@ module SquareConnect
     end
 
     # ListAdditionalRecipientReceivableRefunds
-    # Lists Additional Recipient Receivable Refunds for a particular location.  Max results per [page](#paginatingresults): 50
+    # Returns a list of refunded transactions (across all possible originating locations) relating to monies credited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.  Max results per [page](#paginatingresults): 50
     # @param location_id The ID of the location to list AdditionalRecipientReceivableRefunds for.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
@@ -32,7 +32,7 @@ module SquareConnect
     end
 
     # ListAdditionalRecipientReceivableRefunds
-    # Lists Additional Recipient Receivable Refunds for a particular location.  Max results per [page](#paginatingresults): 50
+    # Returns a list of refunded transactions (across all possible originating locations) relating to monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
     # @param location_id The ID of the location to list AdditionalRecipientReceivableRefunds for.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
@@ -86,7 +86,7 @@ module SquareConnect
     end
 
     # ListAdditionalRecipientReceivables
-    # Lists Additional Recipient Receivables for a particular location.  Max results per [page](#paginatingresults): 50
+    # Returns a list of receivables (across all possible sending locations) representing monies credited to the provided location ID by another Square account using the `additional_recipients` field in a transaction.  Max results per [page](#paginatingresults): 50
     # @param location_id The ID of the location to list AdditionalRecipientReceivables for.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
@@ -100,7 +100,7 @@ module SquareConnect
     end
 
     # ListAdditionalRecipientReceivables
-    # Lists Additional Recipient Receivables for a particular location.  Max results per [page](#paginatingresults): 50
+    # Returns a list of receivables (across all possible sending locations) representing monies credited to the provided location ID by another Square account using the &#x60;additional_recipients&#x60; field in a transaction.  Max results per [page](#paginatingresults): 50
     # @param location_id The ID of the location to list AdditionalRecipientReceivables for.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :begin_time The beginning of the requested reporting period, in RFC 3339 format.  See [Date ranges](#dateranges) for details on date inclusivity/exclusivity.  Default value: The current time minus one year.
