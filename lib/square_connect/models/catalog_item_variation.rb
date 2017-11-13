@@ -24,6 +24,9 @@ module SquareConnect
     # The item variation's UPC, if any. Searchable.
     attr_accessor :upc
 
+    # The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.
+    attr_accessor :ordinal
+
     # Indicates whether the item variation's price is fixed or determined at the time of sale. See [CatalogPricingType](#type-catalogpricingtype) for all possible values.
     attr_accessor :pricing_type
 
@@ -77,6 +80,7 @@ module SquareConnect
         :'name' => :'name',
         :'sku' => :'sku',
         :'upc' => :'upc',
+        :'ordinal' => :'ordinal',
         :'pricing_type' => :'pricing_type',
         :'price_money' => :'price_money',
         :'location_overrides' => :'location_overrides',
@@ -95,6 +99,7 @@ module SquareConnect
         :'name' => :'String',
         :'sku' => :'String',
         :'upc' => :'String',
+        :'ordinal' => :'Integer',
         :'pricing_type' => :'String',
         :'price_money' => :'Money',
         :'location_overrides' => :'Array<ItemVariationLocationOverrides>',
@@ -128,6 +133,10 @@ module SquareConnect
 
       if attributes.has_key?(:'upc')
         self.upc = attributes[:'upc']
+      end
+
+      if attributes.has_key?(:'ordinal')
+        self.ordinal = attributes[:'ordinal']
       end
 
       if attributes.has_key?(:'pricing_type')
@@ -212,6 +221,7 @@ module SquareConnect
           name == o.name &&
           sku == o.sku &&
           upc == o.upc &&
+          ordinal == o.ordinal &&
           pricing_type == o.pricing_type &&
           price_money == o.price_money &&
           location_overrides == o.location_overrides &&
@@ -231,7 +241,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [item_id, name, sku, upc, pricing_type, price_money, location_overrides, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, service_duration].hash
+      [item_id, name, sku, upc, ordinal, pricing_type, price_money, location_overrides, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, service_duration].hash
     end
 
     # Builds the object from hash

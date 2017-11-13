@@ -21,5 +21,6 @@ Name | Type | Description | Notes
 **phone_number** | **String** | The location&#39;s phone_number. | [optional] 
 **business_name** | **String** | The location&#39;s business_name which is shown to its customers. For example, this is the name printed on its customer&#39;s receipts. | [optional] 
 **type** | **String** | The location&#39;s type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values. | [optional] 
+**website_url** | **String** | The location&#39;s website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set. | [optional] 
 
 

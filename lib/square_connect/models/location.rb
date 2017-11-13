@@ -54,6 +54,9 @@ module SquareConnect
     # The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.
     attr_accessor :type
 
+    # The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.
+    attr_accessor :website_url
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -92,7 +95,8 @@ module SquareConnect
         :'currency' => :'currency',
         :'phone_number' => :'phone_number',
         :'business_name' => :'business_name',
-        :'type' => :'type'
+        :'type' => :'type',
+        :'website_url' => :'website_url'
       }
     end
 
@@ -112,7 +116,8 @@ module SquareConnect
         :'currency' => :'String',
         :'phone_number' => :'String',
         :'business_name' => :'String',
-        :'type' => :'String'
+        :'type' => :'String',
+        :'website_url' => :'String'
       }
     end
 
@@ -180,6 +185,10 @@ module SquareConnect
 
       if attributes.has_key?(:'type')
         self.type = attributes[:'type']
+      end
+
+      if attributes.has_key?(:'website_url')
+        self.website_url = attributes[:'website_url']
       end
 
     end
@@ -263,7 +272,8 @@ module SquareConnect
           currency == o.currency &&
           phone_number == o.phone_number &&
           business_name == o.business_name &&
-          type == o.type
+          type == o.type &&
+          website_url == o.website_url
     end
 
     # @see the `==` method
@@ -275,7 +285,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name, type].hash
+      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name, type, website_url].hash
     end
 
     # Builds the object from hash
