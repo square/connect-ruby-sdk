@@ -27,7 +27,7 @@ module SquareConnect
     # The note of the line item. This value cannot exceed 50 characters.
     attr_accessor :note
 
-    # Only used for Catalog line items. The catalog object ID from existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
+    # Only used for Catalog line items. The catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
     attr_accessor :catalog_object_id
 
     # Only used for Catalog line items. The modifiers to include on the line item.

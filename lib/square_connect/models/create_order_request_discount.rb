@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents a discount that can apply to either a single line item or an entire order.
   class CreateOrderRequestDiscount
-    # Only used for catalog taxes. The catalog object ID from exsiting [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
+    # Only used for catalog discounts. The catalog object ID for an existing [CatalogDiscount](#type-catalogdiscount).  Do not provide a value for this field if you provide values in other fields for an ad hoc discount.
     attr_accessor :catalog_object_id
 
     # Only used for ad hoc discounts. The discount's name.

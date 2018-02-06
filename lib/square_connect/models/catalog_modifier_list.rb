@@ -89,39 +89,15 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push("invalid value for 'name', name cannot be nil.")
-      end
-
-      if @name.to_s.length < 1
-        invalid_properties.push("invalid value for 'name', the character length must be great than or equal to 1.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @name.nil?
-      return false if @name.to_s.length < 1
       selection_type_validator = EnumAttributeValidator.new('String', ["SINGLE", "MULTIPLE"])
       return false unless selection_type_validator.valid?(@selection_type)
       return true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, "name cannot be nil"
-      end
-
-      if name.to_s.length < 1
-        fail ArgumentError, "invalid value for 'name', the character length must be great than or equal to 1."
-      end
-
-      @name = name
     end
 
     # Custom attribute writer method checking allowed values (enum).
