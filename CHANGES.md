@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 2.5.2 (2018-01-06)
+
+* `OTHER` enum value is added to `Type` on `V1SettlementEntry`
+
 ## Version 2.5.1 (2017-11-10)
 
 * `ordinal` is added to `CatalogItemVariation`
