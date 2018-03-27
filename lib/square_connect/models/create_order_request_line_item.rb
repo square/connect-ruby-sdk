@@ -12,13 +12,13 @@ require 'date'
 module SquareConnect
   # Represents a line item to include in an order. Each line item describes a different product to purchase, with its own quantity and price details.  Line items can either reference objects from the merchant's catalog, or can alternatively specify a name and price instead.
   class CreateOrderRequestLineItem
-    # Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide values in catalog_object_id.
+    # Only used for ad hoc line items. The name of the line item. This value cannot exceed 500 characters.  Do not provide a value for this field if you provide a value for `catalog_object_id`.
     attr_accessor :name
 
     # The quantity to purchase, as a string representation of a number.  This string must have a positive integer value.
     attr_accessor :quantity
 
-    # Only used for ad hoc line items. The base price for a single unit of the line item's associated variation.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.
+    # The base price for a single unit of the line item.  `base_price_money` is required for ad hoc line items and variable priced [CatalogItemVariation](#type-catalogitemvariation)s. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the CatalogItemVariation's price.
     attr_accessor :base_price_money
 
     # Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.  If this value is not set for an ad hoc line item, the default value of `Regular` is used.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.

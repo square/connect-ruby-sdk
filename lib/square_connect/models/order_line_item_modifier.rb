@@ -75,13 +75,45 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
+        invalid_properties.push("invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192.")
+      end
+
+      if !@name.nil? && @name.to_s.length > 255
+        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 255.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
+      return false if !@name.nil? && @name.to_s.length > 255
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] catalog_object_id Value to be assigned
+    def catalog_object_id=(catalog_object_id)
+
+      if !catalog_object_id.nil? && catalog_object_id.to_s.length > 192
+        fail ArgumentError, "invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192."
+      end
+
+      @catalog_object_id = catalog_object_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+
+      if !name.nil? && name.to_s.length > 255
+        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 255."
+      end
+
+      @name = name
     end
 
     # Checks equality by comparing each attribute.

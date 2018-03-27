@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
 
   class V1Refund
-    # The type of refund 
+    # The type of refund
     attr_accessor :type
 
     # The merchant-specified reason for the refund.
@@ -30,7 +30,7 @@ module SquareConnect
     # The Square-issued ID of the payment the refund is applied to.
     attr_accessor :payment_id
 
-    # 
+    #
     attr_accessor :merchant_id
 
     class EnumAttributeValidator
