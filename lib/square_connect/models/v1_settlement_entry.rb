@@ -102,7 +102,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["ADJUSTMENT", "BALANCE_CHARGE", "CHARGE", "FREE_PROCESSING", "HOLD_ADJUSTMENT", "PAID_SERVICE_FEE", "PAID_SERVICE_FEE_REFUND", "REDEMPTION_CODE", "REFUND", "RETURNED_PAYOUT", "SQUARE_CAPITAL_ADVANCE", "SQUARE_CAPITAL_PAYMENT", "SQUARE_CAPITAL_REVERSED_PAYMENT", "SUBSCRIPTION_FEE", "SUBSCRIPTION_FEE_REFUND", "INCENTED_PAYMENT", "OTHER", "RETURNED_ACH_ENTRY", "RETURNED_SQUARE_275", "SQUARE_275"])
+      type_validator = EnumAttributeValidator.new('String', ["ADJUSTMENT", "BALANCE_CHARGE", "CHARGE", "FREE_PROCESSING", "HOLD_ADJUSTMENT", "PAID_SERVICE_FEE", "PAID_SERVICE_FEE_REFUND", "REDEMPTION_CODE", "REFUND", "RETURNED_PAYOUT", "SQUARE_CAPITAL_ADVANCE", "SQUARE_CAPITAL_PAYMENT", "SQUARE_CAPITAL_REVERSED_PAYMENT", "SUBSCRIPTION_FEE", "SUBSCRIPTION_FEE_REFUND", "OTHER", "INCENTED_PAYMENT", "RETURNED_ACH_ENTRY", "RETURNED_SQUARE_275", "SQUARE_275"])
       return false unless type_validator.valid?(@type)
       return true
     end
@@ -110,7 +110,7 @@ module SquareConnect
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["ADJUSTMENT", "BALANCE_CHARGE", "CHARGE", "FREE_PROCESSING", "HOLD_ADJUSTMENT", "PAID_SERVICE_FEE", "PAID_SERVICE_FEE_REFUND", "REDEMPTION_CODE", "REFUND", "RETURNED_PAYOUT", "SQUARE_CAPITAL_ADVANCE", "SQUARE_CAPITAL_PAYMENT", "SQUARE_CAPITAL_REVERSED_PAYMENT", "SUBSCRIPTION_FEE", "SUBSCRIPTION_FEE_REFUND", "INCENTED_PAYMENT", "OTHER", "RETURNED_ACH_ENTRY", "RETURNED_SQUARE_275", "SQUARE_275"])
+      validator = EnumAttributeValidator.new('String', ["ADJUSTMENT", "BALANCE_CHARGE", "CHARGE", "FREE_PROCESSING", "HOLD_ADJUSTMENT", "PAID_SERVICE_FEE", "PAID_SERVICE_FEE_REFUND", "REDEMPTION_CODE", "REFUND", "RETURNED_PAYOUT", "SQUARE_CAPITAL_ADVANCE", "SQUARE_CAPITAL_PAYMENT", "SQUARE_CAPITAL_REVERSED_PAYMENT", "SUBSCRIPTION_FEE", "SUBSCRIPTION_FEE_REFUND", "OTHER", "INCENTED_PAYMENT", "RETURNED_ACH_ENTRY", "RETURNED_SQUARE_275", "SQUARE_275"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
       end

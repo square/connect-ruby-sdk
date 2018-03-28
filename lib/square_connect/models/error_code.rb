@@ -11,7 +11,7 @@ require 'date'
 
 module SquareConnect
   class ErrorCode
-
+    
     INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR".freeze
     UNAUTHORIZED = "UNAUTHORIZED".freeze
     ACCESS_TOKEN_EXPIRED = "ACCESS_TOKEN_EXPIRED".freeze
