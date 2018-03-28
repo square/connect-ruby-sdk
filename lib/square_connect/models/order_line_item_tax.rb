@@ -105,15 +105,52 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
+        invalid_properties.push("invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192.")
+      end
+
+      if !@name.nil? && @name.to_s.length > 255
+        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 255.")
+      end
+
+      if !@percentage.nil? && @percentage.to_s.length > 10
+        invalid_properties.push("invalid value for 'percentage', the character length must be smaller than or equal to 10.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
+      return false if !@name.nil? && @name.to_s.length > 255
       type_validator = EnumAttributeValidator.new('String', ["UNKNOWN_TAX", "ADDITIVE", "INCLUSIVE"])
       return false unless type_validator.valid?(@type)
+      return false if !@percentage.nil? && @percentage.to_s.length > 10
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] catalog_object_id Value to be assigned
+    def catalog_object_id=(catalog_object_id)
+
+      if !catalog_object_id.nil? && catalog_object_id.to_s.length > 192
+        fail ArgumentError, "invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192."
+      end
+
+      @catalog_object_id = catalog_object_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+
+      if !name.nil? && name.to_s.length > 255
+        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 255."
+      end
+
+      @name = name
     end
 
     # Custom attribute writer method checking allowed values (enum).
@@ -124,6 +161,17 @@ module SquareConnect
         fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
       end
       @type = type
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] percentage Value to be assigned
+    def percentage=(percentage)
+
+      if !percentage.nil? && percentage.to_s.length > 10
+        fail ArgumentError, "invalid value for 'percentage', the character length must be smaller than or equal to 10."
+      end
+
+      @percentage = percentage
     end
 
     # Checks equality by comparing each attribute.

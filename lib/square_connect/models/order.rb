@@ -104,13 +104,58 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @location_id.nil?
+        invalid_properties.push("invalid value for 'location_id', location_id cannot be nil.")
+      end
+
+      if @location_id.to_s.length < 1
+        invalid_properties.push("invalid value for 'location_id', the character length must be great than or equal to 1.")
+      end
+
+      if !@reference_id.nil? && @reference_id.to_s.length > 40
+        invalid_properties.push("invalid value for 'reference_id', the character length must be smaller than or equal to 40.")
+      end
+
+      if @line_items.nil?
+        invalid_properties.push("invalid value for 'line_items', line_items cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @location_id.nil?
+      return false if @location_id.to_s.length < 1
+      return false if !@reference_id.nil? && @reference_id.to_s.length > 40
+      return false if @line_items.nil?
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] location_id Value to be assigned
+    def location_id=(location_id)
+      if location_id.nil?
+        fail ArgumentError, "location_id cannot be nil"
+      end
+
+      if location_id.to_s.length < 1
+        fail ArgumentError, "invalid value for 'location_id', the character length must be great than or equal to 1."
+      end
+
+      @location_id = location_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] reference_id Value to be assigned
+    def reference_id=(reference_id)
+
+      if !reference_id.nil? && reference_id.to_s.length > 40
+        fail ArgumentError, "invalid value for 'reference_id', the character length must be smaller than or equal to 40."
+      end
+
+      @reference_id = reference_id
     end
 
     # Checks equality by comparing each attribute.

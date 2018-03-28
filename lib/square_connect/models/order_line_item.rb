@@ -162,13 +162,110 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@name.nil? && @name.to_s.length > 500
+        invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 500.")
+      end
+
+      if @quantity.nil?
+        invalid_properties.push("invalid value for 'quantity', quantity cannot be nil.")
+      end
+
+      if @quantity.to_s.length > 5
+        invalid_properties.push("invalid value for 'quantity', the character length must be smaller than or equal to 5.")
+      end
+
+      if @quantity.to_s.length < 1
+        invalid_properties.push("invalid value for 'quantity', the character length must be great than or equal to 1.")
+      end
+
+      if !@note.nil? && @note.to_s.length > 50
+        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 50.")
+      end
+
+      if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
+        invalid_properties.push("invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192.")
+      end
+
+      if !@variation_name.nil? && @variation_name.to_s.length > 255
+        invalid_properties.push("invalid value for 'variation_name', the character length must be smaller than or equal to 255.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@name.nil? && @name.to_s.length > 500
+      return false if @quantity.nil?
+      return false if @quantity.to_s.length > 5
+      return false if @quantity.to_s.length < 1
+      return false if !@note.nil? && @note.to_s.length > 50
+      return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
+      return false if !@variation_name.nil? && @variation_name.to_s.length > 255
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] name Value to be assigned
+    def name=(name)
+
+      if !name.nil? && name.to_s.length > 500
+        fail ArgumentError, "invalid value for 'name', the character length must be smaller than or equal to 500."
+      end
+
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] quantity Value to be assigned
+    def quantity=(quantity)
+      if quantity.nil?
+        fail ArgumentError, "quantity cannot be nil"
+      end
+
+      if quantity.to_s.length > 5
+        fail ArgumentError, "invalid value for 'quantity', the character length must be smaller than or equal to 5."
+      end
+
+      if quantity.to_s.length < 1
+        fail ArgumentError, "invalid value for 'quantity', the character length must be great than or equal to 1."
+      end
+
+      @quantity = quantity
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] note Value to be assigned
+    def note=(note)
+
+      if !note.nil? && note.to_s.length > 50
+        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 50."
+      end
+
+      @note = note
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] catalog_object_id Value to be assigned
+    def catalog_object_id=(catalog_object_id)
+
+      if !catalog_object_id.nil? && catalog_object_id.to_s.length > 192
+        fail ArgumentError, "invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192."
+      end
+
+      @catalog_object_id = catalog_object_id
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] variation_name Value to be assigned
+    def variation_name=(variation_name)
+
+      if !variation_name.nil? && variation_name.to_s.length > 255
+        fail ArgumentError, "invalid value for 'variation_name', the character length must be smaller than or equal to 255."
+      end
+
+      @variation_name = variation_name
     end
 
     # Checks equality by comparing each attribute.

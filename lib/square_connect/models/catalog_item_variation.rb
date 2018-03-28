@@ -21,7 +21,7 @@ module SquareConnect
     # The item variation's SKU, if any. Searchable.
     attr_accessor :sku
 
-    # The item variation's UPC, if any. Searchable.
+    # The item variation's UPC, if any. Searchable in the Connect API. This field is only exposed in the Connect API. It is not exposed in Square's Dashboard, Square Point of Sale app or Retail Point of Sale app.
     attr_accessor :upc
 
     # The order in which this item variation should be displayed. This value is read-only. On writes, the ordinal for each item variation within a parent [CatalogItem](#type-catalogitem) is set according to the item variations's position. On reads, the value is not guaranteed to be sequential or unique.

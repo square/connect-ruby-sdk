@@ -15,7 +15,7 @@ module SquareConnect
     # Only used for catalog taxes. The catalog object ID of an existing [CatalogTax](#type-catalogtax).  Do not provide a value for this field if you provide values in other fields for an ad hoc tax.
     attr_accessor :catalog_object_id
 
-    # Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set catalog_object_id.
+    # Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set `catalog_object_id`.
     attr_accessor :name
 
     # Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
