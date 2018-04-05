@@ -19,8 +19,8 @@ module SquareConnect
 
     # CaptureTransaction
     # Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-    # @param location_id
-    # @param transaction_id
+    # @param location_id 
+    # @param transaction_id 
     # @param [Hash] opts the optional parameters
     # @return [CaptureTransactionResponse]
     def capture_transaction(location_id, transaction_id, opts = {})
@@ -30,8 +30,8 @@ module SquareConnect
 
     # CaptureTransaction
     # Captures a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-    # @param location_id
-    # @param transaction_id
+    # @param location_id 
+    # @param transaction_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(CaptureTransactionResponse, Fixnum, Hash)>] CaptureTransactionResponse data, response status code and response headers
     def capture_transaction_with_http_info(location_id, transaction_id, opts = {})
@@ -387,8 +387,8 @@ module SquareConnect
 
     # VoidTransaction
     # Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-    # @param location_id
-    # @param transaction_id
+    # @param location_id 
+    # @param transaction_id 
     # @param [Hash] opts the optional parameters
     # @return [VoidTransactionResponse]
     def void_transaction(location_id, transaction_id, opts = {})
@@ -398,8 +398,8 @@ module SquareConnect
 
     # VoidTransaction
     # Cancels a transaction that was created with the [Charge](#endpoint-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/articles/delayed-capture-transactions/) for more information.
-    # @param location_id
-    # @param transaction_id
+    # @param location_id 
+    # @param transaction_id 
     # @param [Hash] opts the optional parameters
     # @return [Array<(VoidTransactionResponse, Fixnum, Hash)>] VoidTransactionResponse data, response status code and response headers
     def void_transaction_with_http_info(location_id, transaction_id, opts = {})
