@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **tendered_money** | [**V1Money**](V1Money.md) | The amount of total_money applied to the payment. | [optional] 
 **change_back_money** | [**V1Money**](V1Money.md) | The amount of total_money returned to the buyer as change. | [optional] 
 **refunded_money** | [**V1Money**](V1Money.md) | The total of all refunds applied to this tender. This amount is always negative or zero. | [optional] 
+**is_exchange** | **BOOLEAN** | Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange. | [optional] 
 
 

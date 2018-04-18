@@ -51,6 +51,9 @@ module SquareConnect
     # The total of all refunds applied to this tender. This amount is always negative or zero.
     attr_accessor :refunded_money
 
+    # Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange.
+    attr_accessor :is_exchange
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -88,7 +91,8 @@ module SquareConnect
         :'total_money' => :'total_money',
         :'tendered_money' => :'tendered_money',
         :'change_back_money' => :'change_back_money',
-        :'refunded_money' => :'refunded_money'
+        :'refunded_money' => :'refunded_money',
+        :'is_exchange' => :'is_exchange'
       }
     end
 
@@ -107,7 +111,8 @@ module SquareConnect
         :'total_money' => :'V1Money',
         :'tendered_money' => :'V1Money',
         :'change_back_money' => :'V1Money',
-        :'refunded_money' => :'V1Money'
+        :'refunded_money' => :'V1Money',
+        :'is_exchange' => :'BOOLEAN'
       }
     end
 
@@ -169,6 +174,10 @@ module SquareConnect
 
       if attributes.has_key?(:'refunded_money')
         self.refunded_money = attributes[:'refunded_money']
+      end
+
+      if attributes.has_key?(:'is_exchange')
+        self.is_exchange = attributes[:'is_exchange']
       end
 
     end
@@ -239,7 +248,8 @@ module SquareConnect
           total_money == o.total_money &&
           tendered_money == o.tendered_money &&
           change_back_money == o.change_back_money &&
-          refunded_money == o.refunded_money
+          refunded_money == o.refunded_money &&
+          is_exchange == o.is_exchange
     end
 
     # @see the `==` method
@@ -251,7 +261,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, type, name, employee_id, receipt_url, card_brand, pan_suffix, entry_method, payment_note, total_money, tendered_money, change_back_money, refunded_money].hash
+      [id, type, name, employee_id, receipt_url, card_brand, pan_suffix, entry_method, payment_note, total_money, tendered_money, change_back_money, refunded_money, is_exchange].hash
     end
 
     # Builds the object from hash
