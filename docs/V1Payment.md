@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **inclusive_tax** | [**Array&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | All of the inclusive taxes associated with the payment. | [optional] 
 **additive_tax** | [**Array&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | All of the additive taxes associated with the payment. | [optional] 
 **tender** | [**Array&lt;V1Tender&gt;**](V1Tender.md) | All of the additive taxes associated with the payment. | [optional] 
-**refunds** | [**Array&lt;V1Refund&gt;**](V1Refund.md) | All of the refunds applied to the payment. | [optional] 
+**refunds** | [**Array&lt;V1Refund&gt;**](V1Refund.md) | All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange. | [optional] 
 **itemizations** | [**Array&lt;V1PaymentItemization&gt;**](V1PaymentItemization.md) | The items purchased in the payment. | [optional] 
 
 

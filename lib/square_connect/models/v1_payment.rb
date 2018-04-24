@@ -78,7 +78,7 @@ module SquareConnect
     # All of the additive taxes associated with the payment.
     attr_accessor :tender
 
-    # All of the refunds applied to the payment.
+    # All of the refunds applied to the payment. Note that the value of all refunds on a payment can exceed the value of all tenders if a merchant chooses to refund money to a tender after previously accepting returned goods as part of an exchange.
     attr_accessor :refunds
 
     # The items purchased in the payment.

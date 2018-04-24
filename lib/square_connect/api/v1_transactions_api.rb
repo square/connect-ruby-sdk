@@ -278,7 +278,7 @@ module SquareConnect
     # @option opts [String] :order TThe order in which payments are listed in the response.
     # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [Integer] :limit The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods.
     # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1Refund>]
     def list_refunds(location_id, opts = {})
@@ -293,7 +293,7 @@ module SquareConnect
     # @option opts [String] :order TThe order in which payments are listed in the response.
     # @option opts [String] :begin_time The beginning of the requested reporting period, in ISO 8601 format. If this value is before January 1, 2013 (2013-01-01T00:00:00Z), this endpoint returns an error. Default value: The current time minus one year.
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
-    # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
+    # @option opts [Integer] :limit The approximate number of refunds to return in a single response. Default: 100. Max: 200. Response may contain more results than the prescribed limit when refunds are made simultaneously to multiple tenders in a payment or when refunds are generated in an exchange to account for the value of returned goods.
     # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1Refund>, Fixnum, Hash)>] Array<V1Refund> data, response status code and response headers
     def list_refunds_with_http_info(location_id, opts = {})
@@ -544,7 +544,7 @@ module SquareConnect
     # Provides comprehensive information for a single payment.
     # Provides comprehensive information for a single payment.
     # @param location_id The ID of the payment&#39;s associated location.
-    # @param payment_id The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.
+    # @param payment_id The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint.
     # @param [Hash] opts the optional parameters
     # @return [V1Payment]
     def retrieve_payment(location_id, payment_id, opts = {})
@@ -555,7 +555,7 @@ module SquareConnect
     # Provides comprehensive information for a single payment.
     # Provides comprehensive information for a single payment.
     # @param location_id The ID of the payment&#39;s associated location.
-    # @param payment_id The payment&#39;s Square-issued ID. You obtain this value from Payment objects returned by the List Payments endpoint, or Settlement objects returned by the List Settlements endpoint.
+    # @param payment_id The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1Payment, Fixnum, Hash)>] V1Payment data, response status code and response headers
     def retrieve_payment_with_http_info(location_id, payment_id, opts = {})

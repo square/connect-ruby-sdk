@@ -21,17 +21,20 @@ module SquareConnect
     # The amount of money refunded. This amount is always negative.
     attr_accessor :refunded_money
 
-    # The time when the merchant initiated the refund for Square to process, in ISO 8601 format..
+    # The time when the merchant initiated the refund for Square to process, in ISO 8601 format.
     attr_accessor :created_at
 
     # The time when Square processed the refund on behalf of the merchant, in ISO 8601 format.
     attr_accessor :processed_at
 
-    # The Square-issued ID of the payment the refund is applied to.
+    # A Square-issued ID associated with the refund. For single-tender refunds, payment_id is the ID of the original payment ID. For split-tender refunds, payment_id is the ID of the original tender. For exchange-based refunds (is_exchange == true), payment_id is the ID of the original payment ID even if the payment includes other tenders.
     attr_accessor :payment_id
 
     # 
     attr_accessor :merchant_id
+
+    # Indicates whether or not the refund is associated with an exchange. If is_exchange is true, the refund reflects the value of goods returned in the exchange not the total money refunded.
+    attr_accessor :is_exchange
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -64,7 +67,8 @@ module SquareConnect
         :'created_at' => :'created_at',
         :'processed_at' => :'processed_at',
         :'payment_id' => :'payment_id',
-        :'merchant_id' => :'merchant_id'
+        :'merchant_id' => :'merchant_id',
+        :'is_exchange' => :'is_exchange'
       }
     end
 
@@ -77,7 +81,8 @@ module SquareConnect
         :'created_at' => :'String',
         :'processed_at' => :'String',
         :'payment_id' => :'String',
-        :'merchant_id' => :'String'
+        :'merchant_id' => :'String',
+        :'is_exchange' => :'BOOLEAN'
       }
     end
 
@@ -115,6 +120,10 @@ module SquareConnect
 
       if attributes.has_key?(:'merchant_id')
         self.merchant_id = attributes[:'merchant_id']
+      end
+
+      if attributes.has_key?(:'is_exchange')
+        self.is_exchange = attributes[:'is_exchange']
       end
 
     end
@@ -155,7 +164,8 @@ module SquareConnect
           created_at == o.created_at &&
           processed_at == o.processed_at &&
           payment_id == o.payment_id &&
-          merchant_id == o.merchant_id
+          merchant_id == o.merchant_id &&
+          is_exchange == o.is_exchange
     end
 
     # @see the `==` method
@@ -167,7 +177,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, reason, refunded_money, created_at, processed_at, payment_id, merchant_id].hash
+      [type, reason, refunded_money, created_at, processed_at, payment_id, merchant_id, is_exchange].hash
     end
 
     # Builds the object from hash
