@@ -54,6 +54,12 @@ module SquareConnect
     # Deprecated. This field is not used.
     attr_accessor :taxable
 
+    # The ID of the item's category, if any.
+    attr_accessor :category_id
+
+    # If true, the item can be added to pickup orders from the merchant's online store. Default value: false
+    attr_accessor :available_for_pickup
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -92,7 +98,9 @@ module SquareConnect
         :'variations' => :'variations',
         :'modifier_lists' => :'modifier_lists',
         :'fees' => :'fees',
-        :'taxable' => :'taxable'
+        :'taxable' => :'taxable',
+        :'category_id' => :'category_id',
+        :'available_for_pickup' => :'available_for_pickup'
       }
     end
 
@@ -112,7 +120,9 @@ module SquareConnect
         :'variations' => :'Array<V1Variation>',
         :'modifier_lists' => :'Array<V1Variation>',
         :'fees' => :'Array<V1Fee>',
-        :'taxable' => :'BOOLEAN'
+        :'taxable' => :'BOOLEAN',
+        :'category_id' => :'String',
+        :'available_for_pickup' => :'BOOLEAN'
       }
     end
 
@@ -186,6 +196,14 @@ module SquareConnect
         self.taxable = attributes[:'taxable']
       end
 
+      if attributes.has_key?(:'category_id')
+        self.category_id = attributes[:'category_id']
+      end
+
+      if attributes.has_key?(:'available_for_pickup')
+        self.available_for_pickup = attributes[:'available_for_pickup']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -255,7 +273,9 @@ module SquareConnect
           variations == o.variations &&
           modifier_lists == o.modifier_lists &&
           fees == o.fees &&
-          taxable == o.taxable
+          taxable == o.taxable &&
+          category_id == o.category_id &&
+          available_for_pickup == o.available_for_pickup
     end
 
     # @see the `==` method
@@ -267,7 +287,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, description, type, color, abbreviation, visibility, available_online, master_image, category, variations, modifier_lists, fees, taxable].hash
+      [id, name, description, type, color, abbreviation, visibility, available_online, master_image, category, variations, modifier_lists, fees, taxable, category_id, available_for_pickup].hash
     end
 
     # Builds the object from hash

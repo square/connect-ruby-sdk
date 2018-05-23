@@ -178,8 +178,8 @@ module SquareConnect
         invalid_properties.push("invalid value for 'quantity', the character length must be great than or equal to 1.")
       end
 
-      if !@note.nil? && @note.to_s.length > 50
-        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 50.")
+      if !@note.nil? && @note.to_s.length > 500
+        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 500.")
       end
 
       if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
@@ -200,7 +200,7 @@ module SquareConnect
       return false if @quantity.nil?
       return false if @quantity.to_s.length > 5
       return false if @quantity.to_s.length < 1
-      return false if !@note.nil? && @note.to_s.length > 50
+      return false if !@note.nil? && @note.to_s.length > 500
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@variation_name.nil? && @variation_name.to_s.length > 255
       return true
@@ -239,8 +239,8 @@ module SquareConnect
     # @param [Object] note Value to be assigned
     def note=(note)
 
-      if !note.nil? && note.to_s.length > 50
-        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 50."
+      if !note.nil? && note.to_s.length > 500
+        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 500."
       end
 
       @note = note

@@ -36,6 +36,9 @@ module SquareConnect
     # The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `total_money` calculated by Square for your order. The `location_id` must be the valid location of the app owner merchant.  This field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.
     attr_accessor :additional_recipients
 
+    # An optional note to associate with the checkout object.  This value cannot exceed 60 characters.
+    attr_accessor :note
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -47,7 +50,8 @@ module SquareConnect
         :'pre_populate_buyer_email' => :'pre_populate_buyer_email',
         :'pre_populate_shipping_address' => :'pre_populate_shipping_address',
         :'redirect_url' => :'redirect_url',
-        :'additional_recipients' => :'additional_recipients'
+        :'additional_recipients' => :'additional_recipients',
+        :'note' => :'note'
       }
     end
 
@@ -61,7 +65,8 @@ module SquareConnect
         :'pre_populate_buyer_email' => :'String',
         :'pre_populate_shipping_address' => :'Address',
         :'redirect_url' => :'String',
-        :'additional_recipients' => :'Array<ChargeRequestAdditionalRecipient>'
+        :'additional_recipients' => :'Array<ChargeRequestAdditionalRecipient>',
+        :'note' => :'String'
       }
     end
 
@@ -107,6 +112,10 @@ module SquareConnect
         end
       end
 
+      if attributes.has_key?(:'note')
+        self.note = attributes[:'note']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -141,6 +150,10 @@ module SquareConnect
         invalid_properties.push("invalid value for 'redirect_url', the character length must be smaller than or equal to 800.")
       end
 
+      if !@note.nil? && @note.to_s.length > 60
+        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 60.")
+      end
+
       return invalid_properties
     end
 
@@ -154,6 +167,7 @@ module SquareConnect
       return false if !@merchant_support_email.nil? && @merchant_support_email.to_s.length > 254
       return false if !@pre_populate_buyer_email.nil? && @pre_populate_buyer_email.to_s.length > 254
       return false if !@redirect_url.nil? && @redirect_url.to_s.length > 800
+      return false if !@note.nil? && @note.to_s.length > 60
       return true
     end
 
@@ -208,6 +222,17 @@ module SquareConnect
       @redirect_url = redirect_url
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] note Value to be assigned
+    def note=(note)
+
+      if !note.nil? && note.to_s.length > 60
+        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 60."
+      end
+
+      @note = note
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -220,7 +245,8 @@ module SquareConnect
           pre_populate_buyer_email == o.pre_populate_buyer_email &&
           pre_populate_shipping_address == o.pre_populate_shipping_address &&
           redirect_url == o.redirect_url &&
-          additional_recipients == o.additional_recipients
+          additional_recipients == o.additional_recipients &&
+          note == o.note
     end
 
     # @see the `==` method
@@ -232,7 +258,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [idempotency_key, order, ask_for_shipping_address, merchant_support_email, pre_populate_buyer_email, pre_populate_shipping_address, redirect_url, additional_recipients].hash
+      [idempotency_key, order, ask_for_shipping_address, merchant_support_email, pre_populate_buyer_email, pre_populate_shipping_address, redirect_url, additional_recipients, note].hash
     end
 
     # Builds the object from hash

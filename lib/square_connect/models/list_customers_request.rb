@@ -15,18 +15,49 @@ module SquareConnect
     # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
     attr_accessor :cursor
 
+    # Indicates how Customers should be sorted. Default: `DEFAULT`.
+    attr_accessor :sort_field
+
+    # Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
+    attr_accessor :sort_order
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'cursor' => :'cursor'
+        :'cursor' => :'cursor',
+        :'sort_field' => :'sort_field',
+        :'sort_order' => :'sort_order'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'cursor' => :'String'
+        :'cursor' => :'String',
+        :'sort_field' => :'String',
+        :'sort_order' => :'String'
       }
     end
 
@@ -42,6 +73,14 @@ module SquareConnect
         self.cursor = attributes[:'cursor']
       end
 
+      if attributes.has_key?(:'sort_field')
+        self.sort_field = attributes[:'sort_field']
+      end
+
+      if attributes.has_key?(:'sort_order')
+        self.sort_order = attributes[:'sort_order']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -54,7 +93,31 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      sort_field_validator = EnumAttributeValidator.new('String', ["DEFAULT", "CREATED_AT"])
+      return false unless sort_field_validator.valid?(@sort_field)
+      sort_order_validator = EnumAttributeValidator.new('String', ["DESC", "ASC"])
+      return false unless sort_order_validator.valid?(@sort_order)
       return true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sort_field Object to be assigned
+    def sort_field=(sort_field)
+      validator = EnumAttributeValidator.new('String', ["DEFAULT", "CREATED_AT"])
+      unless validator.valid?(sort_field)
+        fail ArgumentError, "invalid value for 'sort_field', must be one of #{validator.allowable_values}."
+      end
+      @sort_field = sort_field
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] sort_order Object to be assigned
+    def sort_order=(sort_order)
+      validator = EnumAttributeValidator.new('String', ["DESC", "ASC"])
+      unless validator.valid?(sort_order)
+        fail ArgumentError, "invalid value for 'sort_order', must be one of #{validator.allowable_values}."
+      end
+      @sort_order = sort_order
     end
 
     # Checks equality by comparing each attribute.
@@ -62,7 +125,9 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          cursor == o.cursor
+          cursor == o.cursor &&
+          sort_field == o.sort_field &&
+          sort_order == o.sort_order
     end
 
     # @see the `==` method
@@ -74,7 +139,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [cursor].hash
+      [cursor, sort_field, sort_order].hash
     end
 
     # Builds the object from hash
