@@ -151,7 +151,7 @@ module SquareConnect
         :'refunds' => :'Array<V1Refund>',
         :'itemizations' => :'Array<V1PaymentItemization>',
         :'surcharge_money' => :'V1Money',
-        :'surcharges' => :'Array<Definitionsv1PaymentSurcharge>'
+        :'surcharges' => :'Array<V1PaymentSurcharge>'
       }
     end
 
