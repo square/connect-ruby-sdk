@@ -24,7 +24,7 @@ module SquareConnect
     # Only used for ad hoc line items. The variation name of the line item. This value cannot exceed 255 characters.  If this value is not set for an ad hoc line item, the default value of `Regular` is used.  Do not provide a value for this field if you provide a value for the `catalog_object_id`.
     attr_accessor :variation_name
 
-    # The note of the line item. This value cannot exceed 50 characters.
+    # The note of the line item. This value cannot exceed 500 characters.
     attr_accessor :note
 
     # Only used for Catalog line items. The catalog object ID for an existing [CatalogItemVariation](#type-catalogitemvariation).  Do not provide a value for this field if you provide a value for `name` and `base_price_money`.
@@ -146,8 +146,8 @@ module SquareConnect
         invalid_properties.push("invalid value for 'variation_name', the character length must be smaller than or equal to 255.")
       end
 
-      if !@note.nil? && @note.to_s.length > 50
-        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 50.")
+      if !@note.nil? && @note.to_s.length > 500
+        invalid_properties.push("invalid value for 'note', the character length must be smaller than or equal to 500.")
       end
 
       if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
@@ -165,7 +165,7 @@ module SquareConnect
       return false if @quantity.to_s.length > 5
       return false if @quantity.to_s.length < 1
       return false if !@variation_name.nil? && @variation_name.to_s.length > 255
-      return false if !@note.nil? && @note.to_s.length > 50
+      return false if !@note.nil? && @note.to_s.length > 500
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return true
     end
@@ -214,8 +214,8 @@ module SquareConnect
     # @param [Object] note Value to be assigned
     def note=(note)
 
-      if !note.nil? && note.to_s.length > 50
-        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 50."
+      if !note.nil? && note.to_s.length > 500
+        fail ArgumentError, "invalid value for 'note', the character length must be smaller than or equal to 500."
       end
 
       @note = note

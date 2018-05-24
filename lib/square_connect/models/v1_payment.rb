@@ -84,6 +84,12 @@ module SquareConnect
     # The items purchased in the payment.
     attr_accessor :itemizations
 
+    # The total of all surcharges applied to the payment.
+    attr_accessor :surcharge_money
+
+    # A list of all surcharges associated with the payment.
+    attr_accessor :surcharges
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -111,7 +117,9 @@ module SquareConnect
         :'additive_tax' => :'additive_tax',
         :'tender' => :'tender',
         :'refunds' => :'refunds',
-        :'itemizations' => :'itemizations'
+        :'itemizations' => :'itemizations',
+        :'surcharge_money' => :'surcharge_money',
+        :'surcharges' => :'surcharges'
       }
     end
 
@@ -141,7 +149,9 @@ module SquareConnect
         :'additive_tax' => :'Array<V1PaymentTax>',
         :'tender' => :'Array<V1Tender>',
         :'refunds' => :'Array<V1Refund>',
-        :'itemizations' => :'Array<V1PaymentItemization>'
+        :'itemizations' => :'Array<V1PaymentItemization>',
+        :'surcharge_money' => :'V1Money',
+        :'surcharges' => :'Array<V1PaymentSurcharge>'
       }
     end
 
@@ -259,6 +269,16 @@ module SquareConnect
         end
       end
 
+      if attributes.has_key?(:'surcharge_money')
+        self.surcharge_money = attributes[:'surcharge_money']
+      end
+
+      if attributes.has_key?(:'surcharges')
+        if (value = attributes[:'surcharges']).is_a?(Array)
+          self.surcharges = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -302,7 +322,9 @@ module SquareConnect
           additive_tax == o.additive_tax &&
           tender == o.tender &&
           refunds == o.refunds &&
-          itemizations == o.itemizations
+          itemizations == o.itemizations &&
+          surcharge_money == o.surcharge_money &&
+          surcharges == o.surcharges
     end
 
     # @see the `==` method
@@ -314,7 +336,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, merchant_id, created_at, creator_id, device, payment_url, receipt_url, inclusive_tax_money, additive_tax_money, tax_money, tip_money, discount_money, total_collected_money, processing_fee_money, net_total_money, refunded_money, swedish_rounding_money, gross_sales_money, net_sales_money, inclusive_tax, additive_tax, tender, refunds, itemizations].hash
+      [id, merchant_id, created_at, creator_id, device, payment_url, receipt_url, inclusive_tax_money, additive_tax_money, tax_money, tip_money, discount_money, total_collected_money, processing_fee_money, net_total_money, refunded_money, swedish_rounding_money, gross_sales_money, net_sales_money, inclusive_tax, additive_tax, tender, refunds, itemizations, surcharge_money, surcharges].hash
     end
 
     # Builds the object from hash

@@ -11,37 +11,77 @@ require 'date'
 
 module SquareConnect
 
-  class V1Page
-    # The page's unique identifier.
-    attr_accessor :id
-
-    # The page's name, if any.
+  class V1PaymentSurcharge
+    # The name of the surcharge.
     attr_accessor :name
 
-    # The page's position in the merchant's list of pages. Always an integer between 0 and 6, inclusive.
-    attr_accessor :page_index
+    # The amount of money applied to the order as a result of the surcharge.
+    attr_accessor :applied_money
 
-    # The cells included on the page.
-    attr_accessor :cells
+    # The amount of the surcharge as a percentage. The percentage is provided as a string representing the decimal equivalent of the percentage. For example, \"0.7\" corresponds to a 7% surcharge. Exactly one of rate or amount_money should be set.
+    attr_accessor :rate
 
+    # The amount of the surcharge as a Money object. Exactly one of rate or amount_money should be set.
+    attr_accessor :amount_money
+
+    # Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group.
+    attr_accessor :type
+
+    # Indicates whether the surcharge is taxable.
+    attr_accessor :taxable
+
+    # The list of taxes that should be applied to the surcharge.
+    attr_accessor :taxes
+
+    attr_accessor :surcharge_id
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
         :'name' => :'name',
-        :'page_index' => :'page_index',
-        :'cells' => :'cells'
+        :'applied_money' => :'applied_money',
+        :'rate' => :'rate',
+        :'amount_money' => :'amount_money',
+        :'type' => :'type',
+        :'taxable' => :'taxable',
+        :'taxes' => :'taxes',
+        :'surcharge_id' => :'surcharge_id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'id' => :'String',
         :'name' => :'String',
-        :'page_index' => :'Integer',
-        :'cells' => :'Array<V1PageCell>'
+        :'applied_money' => :'V1Money',
+        :'rate' => :'String',
+        :'amount_money' => :'V1Money',
+        :'type' => :'String',
+        :'taxable' => :'BOOLEAN',
+        :'taxes' => :'Array<V1PaymentTax>',
+        :'surcharge_id' => :'String'
       }
     end
 
@@ -53,22 +93,38 @@ module SquareConnect
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'id')
-        self.id = attributes[:'id']
-      end
-
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'page_index')
-        self.page_index = attributes[:'page_index']
+      if attributes.has_key?(:'applied_money')
+        self.applied_money = attributes[:'applied_money']
       end
 
-      if attributes.has_key?(:'cells')
-        if (value = attributes[:'cells']).is_a?(Array)
-          self.cells = value
+      if attributes.has_key?(:'rate')
+        self.rate = attributes[:'rate']
+      end
+
+      if attributes.has_key?(:'amount_money')
+        self.amount_money = attributes[:'amount_money']
+      end
+
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      end
+
+      if attributes.has_key?(:'taxable')
+        self.taxable = attributes[:'taxable']
+      end
+
+      if attributes.has_key?(:'taxes')
+        if (value = attributes[:'taxes']).is_a?(Array)
+          self.taxes = value
         end
+      end
+
+      if attributes.has_key?(:'surcharge_id')
+        self.surcharge_id = attributes[:'surcharge_id']
       end
 
     end
@@ -77,38 +133,25 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if !@page_index.nil? && @page_index > 6
-        invalid_properties.push("invalid value for 'page_index', must be smaller than or equal to 6.")
-      end
-
-      if !@page_index.nil? && @page_index < 0
-        invalid_properties.push("invalid value for 'page_index', must be greater than or equal to 0.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if !@page_index.nil? && @page_index > 6
-      return false if !@page_index.nil? && @page_index < 0
+      type_validator = EnumAttributeValidator.new('String', ["UNKNOWN", "AUTO_GRATUITY", "CUSTOM"])
+      return false unless type_validator.valid?(@type)
       return true
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] page_index Value to be assigned
-    def page_index=(page_index)
-
-      if !page_index.nil? && page_index > 6
-        fail ArgumentError, "invalid value for 'page_index', must be smaller than or equal to 6."
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] type Object to be assigned
+    def type=(type)
+      validator = EnumAttributeValidator.new('String', ["UNKNOWN", "AUTO_GRATUITY", "CUSTOM"])
+      unless validator.valid?(type)
+        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
       end
-
-      if !page_index.nil? && page_index < 0
-        fail ArgumentError, "invalid value for 'page_index', must be greater than or equal to 0."
-      end
-
-      @page_index = page_index
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -116,10 +159,14 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
           name == o.name &&
-          page_index == o.page_index &&
-          cells == o.cells
+          applied_money == o.applied_money &&
+          rate == o.rate &&
+          amount_money == o.amount_money &&
+          type == o.type &&
+          taxable == o.taxable &&
+          taxes == o.taxes &&
+          surcharge_id == o.surcharge_id
     end
 
     # @see the `==` method
@@ -131,7 +178,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, page_index, cells].hash
+      [name, applied_money, rate, amount_money, type, taxable, taxes, surcharge_id].hash
     end
 
     # Builds the object from hash

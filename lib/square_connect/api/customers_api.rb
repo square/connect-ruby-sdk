@@ -241,6 +241,8 @@ module SquareConnect
     # Lists a business's customers.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;.
+    # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;.
     # @return [ListCustomersResponse]
     def list_customers(opts = {})
       data, _status_code, _headers = list_customers_with_http_info(opts)
@@ -251,10 +253,18 @@ module SquareConnect
     # Lists a business&#39;s customers.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;.
+    # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;.
     # @return [Array<(ListCustomersResponse, Fixnum, Hash)>] ListCustomersResponse data, response status code and response headers
     def list_customers_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: CustomersApi.list_customers ..."
+      end
+      if opts[:'sort_field'] && !['DEFAULT', 'CREATED_AT'].include?(opts[:'sort_field'])
+        fail ArgumentError, 'invalid value for "sort_field", must be one of DEFAULT, CREATED_AT'
+      end
+      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
+        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
       end
       # resource path
       local_var_path = "/v2/customers".sub('{format}','json')
@@ -262,6 +272,8 @@ module SquareConnect
       # query parameters
       query_params = {}
       query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'sort_field'] = opts[:'sort_field'] if !opts[:'sort_field'].nil?
+      query_params[:'sort_order'] = opts[:'sort_order'] if !opts[:'sort_order'].nil?
 
       # header parameters
       header_params = {}
