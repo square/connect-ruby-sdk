@@ -3,7 +3,7 @@ cache: bundler
 rvm:
 - 2.2
 install:
-- openssl aes-256-cbc -K $encrypted_06a58c71dec3_key -iv $encrypted_06a58c71dec3_iv
+- openssl aes-256-cbc -K $encrypted_00bf0e382472_key -iv $encrypted_00bf0e382472_iv
   -in ./travis-ci/accounts.enc -out ./travis-ci/accounts.json -d
 - bundle install --jobs=3 --retry=3
 deploy:
