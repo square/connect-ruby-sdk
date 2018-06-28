@@ -15,7 +15,7 @@ module SquareConnect
     # The name of the line item.
     attr_accessor :name
 
-    # The quantity purchased, as a string representation of a number.
+    # The quantity purchased, as a string representation of a number.  This string must have a positive integer value.
     attr_accessor :quantity
 
     # The note of the line item.

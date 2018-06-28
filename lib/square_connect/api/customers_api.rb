@@ -241,8 +241,8 @@ module SquareConnect
     # Lists a business's customers.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
-    # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;.
-    # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;.
+    # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values.
+    # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values.
     # @return [ListCustomersResponse]
     def list_customers(opts = {})
       data, _status_code, _headers = list_customers_with_http_info(opts)
@@ -253,8 +253,8 @@ module SquareConnect
     # Lists a business&#39;s customers.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
-    # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;.
-    # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;.
+    # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values.
+    # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values.
     # @return [Array<(ListCustomersResponse, Fixnum, Hash)>] ListCustomersResponse data, response status code and response headers
     def list_customers_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -350,6 +350,59 @@ module SquareConnect
         :return_type => 'RetrieveCustomerResponse')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CustomersApi#retrieve_customer\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # SearchCustomers
+    # Searches a business's customers.
+    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # @param [Hash] opts the optional parameters
+    # @return [SearchCustomersResponse]
+    def search_customers(body, opts = {})
+      data, _status_code, _headers = search_customers_with_http_info(body, opts)
+      return data
+    end
+
+    # SearchCustomers
+    # Searches a business&#39;s customers.
+    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SearchCustomersResponse, Fixnum, Hash)>] SearchCustomersResponse data, response status code and response headers
+    def search_customers_with_http_info(body, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: CustomersApi.search_customers ..."
+      end
+      # verify the required parameter 'body' is set
+      fail ArgumentError, "Missing the required parameter 'body' when calling CustomersApi.search_customers" if body.nil?
+      # resource path
+      local_var_path = "/v2/customers/search".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(body)
+      auth_names = ['oauth2']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'SearchCustomersResponse')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CustomersApi#search_customers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
