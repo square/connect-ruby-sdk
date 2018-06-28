@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**delete_customer_card**](CustomersApi.md#delete_customer_card) | **DELETE** /v2/customers/{customer_id}/cards/{card_id} | DeleteCustomerCard
 [**list_customers**](CustomersApi.md#list_customers) | **GET** /v2/customers | ListCustomers
 [**retrieve_customer**](CustomersApi.md#retrieve_customer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
+[**search_customers**](CustomersApi.md#search_customers) | **POST** /v2/customers/search | SearchCustomers
 [**update_customer**](CustomersApi.md#update_customer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 
 
@@ -248,8 +249,8 @@ api_instance = SquareConnect::CustomersApi.new
 
 opts = { 
   cursor: "cursor_example", # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
-  sort_field: "sort_field_example", # String | Indicates how Customers should be sorted. Default: `DEFAULT`.
-  sort_order: "sort_order_example" # String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`.
+  sort_field: "sort_field_example", # String | Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.
+  sort_order: "sort_order_example" # String | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values.
 }
 
 begin
@@ -266,8 +267,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
- **sort_field** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. | [optional] 
- **sort_order** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. | [optional] 
+ **sort_field** | **String**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. | [optional] 
+ **sort_order** | **String**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. | [optional] 
 
 ### Return type
 
@@ -324,6 +325,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RetrieveCustomerResponse**](RetrieveCustomerResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+
+# **search_customers**
+> SearchCustomersResponse search_customers(body)
+
+SearchCustomers
+
+Searches a business's customers.
+
+### Example
+```ruby
+# load the gem
+require 'square_connect'
+# setup authorization
+SquareConnect.configure do |config|
+  # Configure OAuth2 access token for authorization: oauth2
+  config.access_token = 'YOUR ACCESS TOKEN'
+end
+
+api_instance = SquareConnect::CustomersApi.new
+
+body = SquareConnect::SearchCustomersRequest.new # SearchCustomersRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+
+
+begin
+  #SearchCustomers
+  result = api_instance.search_customers(body)
+  p result
+rescue SquareConnect::ApiError => e
+  puts "Exception when calling CustomersApi->search_customers: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SearchCustomersRequest**](SearchCustomersRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+
+### Return type
+
+[**SearchCustomersResponse**](SearchCustomersResponse.md)
 
 ### Authorization
 
