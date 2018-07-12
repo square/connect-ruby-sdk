@@ -50,6 +50,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -107,6 +109,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -160,6 +164,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -217,6 +223,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -281,6 +289,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -334,6 +344,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -355,7 +367,7 @@ module SquareConnect
     end
 
     # SearchCustomers
-    # Searches a business's customers.
+    # Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on `given_name` and `family_name`.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [SearchCustomersResponse]
@@ -365,7 +377,7 @@ module SquareConnect
     end
 
     # SearchCustomers
-    # Searches a business&#39;s customers.
+    # Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(SearchCustomersResponse, Fixnum, Hash)>] SearchCustomersResponse data, response status code and response headers
@@ -387,6 +399,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -444,6 +458,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}

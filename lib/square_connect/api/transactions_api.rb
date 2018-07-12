@@ -54,6 +54,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -111,6 +113,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -172,6 +176,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -240,6 +246,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -308,6 +316,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -365,6 +375,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
@@ -422,6 +434,8 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      
+      header_params['Square-Version'] = "2018-07-12"
 
       # form parameters
       form_params = {}
