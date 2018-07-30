@@ -30,7 +30,7 @@ module SquareConnect
     # An optional ID you can associate with the transaction for your own purposes (such as to associate the transaction with an entity ID in your own database).  This value cannot exceed 40 characters.
     attr_accessor :reference_id
 
-    # An optional note to associate with the transaction.  This value cannot exceed 60 characters.
+    # 
     attr_accessor :note
 
     # The ID of the customer to associate this transaction with. This field is required if you provide a value for `customer_card_id`, and optional otherwise.
@@ -45,10 +45,10 @@ module SquareConnect
     # The buyer's email address, if available. This value is optional, but this transaction is ineligible for chargeback protection if it is not provided.
     attr_accessor :buyer_email_address
 
-    # The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the `total_money` value of the order's `order_amounts` field.
+    # The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the value of the order's `total_money` field.
     attr_accessor :order_id
 
-    # The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in you charge's request. The `location_id` must be the valid location of the app owner merchant.  This field requires `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.
+    # The basic primitive of multi-party transaction. The value is optional. The transaction facilitated by you can be split from here.  If you provide this value, the `amount_money` value in your additional_recipients must not be more than 90% of the `amount_money` value in the charge request. The `location_id` must be the valid location of the app owner merchant.  This field requires the `PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS` OAuth permission.  This field is currently not supported in sandbox.
     attr_accessor :additional_recipients
 
 
