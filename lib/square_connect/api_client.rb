@@ -386,7 +386,7 @@ module SquareConnect
     # @param [Hash] headers hash with response headers
     # @return [String] batch_token or nil if no token is present
     def get_v1_batch_token_from_headers(headers)
-      if headers.is_a?(Hash) && headers.has_key?('Link')
+      if headers.respond_to?(:has_key?) && headers.has_key?('Link')
         match = /^<([^>]+)>;rel='next'$/.match(headers['Link'])
         if match
           uri = URI.parse(match[1])
