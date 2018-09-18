@@ -45,6 +45,9 @@ module SquareConnect
     # The customer's phone number.
     attr_accessor :phone_number
 
+    # The customer's birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+    attr_accessor :birthday
+
     # A second ID you can set to associate the customer with an entity in another system.
     attr_accessor :reference_id
 
@@ -96,6 +99,7 @@ module SquareConnect
         :'email_address' => :'email_address',
         :'address' => :'address',
         :'phone_number' => :'phone_number',
+        :'birthday' => :'birthday',
         :'reference_id' => :'reference_id',
         :'note' => :'note',
         :'preferences' => :'preferences',
@@ -118,6 +122,7 @@ module SquareConnect
         :'email_address' => :'String',
         :'address' => :'Address',
         :'phone_number' => :'String',
+        :'birthday' => :'String',
         :'reference_id' => :'String',
         :'note' => :'String',
         :'preferences' => :'CustomerPreferences',
@@ -178,6 +183,10 @@ module SquareConnect
 
       if attributes.has_key?(:'phone_number')
         self.phone_number = attributes[:'phone_number']
+      end
+
+      if attributes.has_key?(:'birthday')
+        self.birthday = attributes[:'birthday']
       end
 
       if attributes.has_key?(:'reference_id')
@@ -260,6 +269,7 @@ module SquareConnect
           email_address == o.email_address &&
           address == o.address &&
           phone_number == o.phone_number &&
+          birthday == o.birthday &&
           reference_id == o.reference_id &&
           note == o.note &&
           preferences == o.preferences &&
@@ -276,7 +286,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, created_at, updated_at, cards, given_name, family_name, nickname, company_name, email_address, address, phone_number, reference_id, note, preferences, groups, creation_source].hash
+      [id, created_at, updated_at, cards, given_name, family_name, nickname, company_name, email_address, address, phone_number, birthday, reference_id, note, preferences, groups, creation_source].hash
     end
 
     # Builds the object from hash

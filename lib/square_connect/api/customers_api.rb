@@ -51,7 +51,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -110,7 +110,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -132,7 +132,7 @@ module SquareConnect
     end
 
     # DeleteCustomer
-    # Deletes a customer from a business, along with any linked cards on file.
+    # Deletes a customer from a business, along with any linked cards on file. When two profiles are merged into a single profile, that profile is assigned a new `customer_id`. You must use the new `customer_id` to delete merged profiles.
     # @param customer_id The ID of the customer to delete.
     # @param [Hash] opts the optional parameters
     # @return [DeleteCustomerResponse]
@@ -142,7 +142,7 @@ module SquareConnect
     end
 
     # DeleteCustomer
-    # Deletes a customer from a business, along with any linked cards on file.
+    # Deletes a customer from a business, along with any linked cards on file. When two profiles are merged into a single profile, that profile is assigned a new &#x60;customer_id&#x60;. You must use the new &#x60;customer_id&#x60; to delete merged profiles.
     # @param customer_id The ID of the customer to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(DeleteCustomerResponse, Fixnum, Hash)>] DeleteCustomerResponse data, response status code and response headers
@@ -165,7 +165,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -224,7 +224,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -290,7 +290,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -345,7 +345,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -400,7 +400,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -422,7 +422,7 @@ module SquareConnect
     end
 
     # UpdateCustomer
-    # Updates the details of an existing customer. The ID of the customer may change if the customer has been merged into another customer.  You cannot edit a customer's cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+    # Updates the details of an existing customer. When two profiles are merged into a single profile, that profile is assigned a new `customer_id`. You must use the new `customer_id` to update merged profiles.  You cannot edit a customer's cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
     # @param customer_id The ID of the customer to update.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -433,7 +433,7 @@ module SquareConnect
     end
 
     # UpdateCustomer
-    # Updates the details of an existing customer. The ID of the customer may change if the customer has been merged into another customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
+    # Updates the details of an existing customer. When two profiles are merged into a single profile, that profile is assigned a new &#x60;customer_id&#x60;. You must use the new &#x60;customer_id&#x60; to update merged profiles.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
     # @param customer_id The ID of the customer to update.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -459,7 +459,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}

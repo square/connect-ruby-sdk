@@ -33,7 +33,7 @@ module SquareConnect
     # The card's billing address. This value is present only if this object represents a customer's card on file.
     attr_accessor :billing_address
 
-    # The unique string fingerprint for the card.  The fingerprint is based on the credit card number and is unique to the merchant.  If a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case. Note: Fingerprint may not exist on old transactions.
+    # The unique string fingerprint for the card. The fingerprint is based on the credit card number and is unique to the merchant. If a card is used at multiple locations for the same merchant, it will have the same fingerprint in each case. Note: Fingerprint may not exist on old transactions.
     attr_accessor :fingerprint
 
     class EnumAttributeValidator
