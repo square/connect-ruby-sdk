@@ -55,7 +55,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -114,7 +114,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -136,7 +136,7 @@ module SquareConnect
     end
 
     # CreateRefund
-    # Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  *NOTE**: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
+    # Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  NOTE: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
     # @param location_id The ID of the original transaction&#39;s associated location.
     # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -148,7 +148,7 @@ module SquareConnect
     end
 
     # CreateRefund
-    # Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  *NOTE**: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
+    # Initiates a refund for a previously charged tender.  You must issue a refund within 120 days of the associated payment. See [this article](https://squareup.com/help/us/en/article/5060) for more information on refund behavior.  NOTE: Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**. Interac transactions must refunded in-person (e.g., dipping the card using POS app).
     # @param location_id The ID of the original transaction&#39;s associated location.
     # @param transaction_id The ID of the original transaction that includes the tender to refund.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -177,7 +177,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -247,7 +247,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -317,7 +317,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -376,7 +376,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}
@@ -435,7 +435,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2018-07-12"
+      header_params['Square-Version'] = "2018-09-18"
 
       # form parameters
       form_params = {}

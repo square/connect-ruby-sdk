@@ -39,6 +39,9 @@ module SquareConnect
     # An optional note to associate with the customer.
     attr_accessor :note
 
+    # The customer birthday in RFC-3339 format. Year is optional, timezone and times are not allowed. Example: `0000-09-01T00:00:00-00:00` for a birthday on September 1st. `1998-09-01T00:00:00-00:00` for a birthday on September 1st 1998.
+    attr_accessor :birthday
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -51,7 +54,8 @@ module SquareConnect
         :'address' => :'address',
         :'phone_number' => :'phone_number',
         :'reference_id' => :'reference_id',
-        :'note' => :'note'
+        :'note' => :'note',
+        :'birthday' => :'birthday'
       }
     end
 
@@ -66,7 +70,8 @@ module SquareConnect
         :'address' => :'Address',
         :'phone_number' => :'String',
         :'reference_id' => :'String',
-        :'note' => :'String'
+        :'note' => :'String',
+        :'birthday' => :'String'
       }
     end
 
@@ -114,6 +119,10 @@ module SquareConnect
         self.note = attributes[:'note']
       end
 
+      if attributes.has_key?(:'birthday')
+        self.birthday = attributes[:'birthday']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -142,7 +151,8 @@ module SquareConnect
           address == o.address &&
           phone_number == o.phone_number &&
           reference_id == o.reference_id &&
-          note == o.note
+          note == o.note &&
+          birthday == o.birthday
     end
 
     # @see the `==` method
@@ -154,7 +164,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [given_name, family_name, company_name, nickname, email_address, address, phone_number, reference_id, note].hash
+      [given_name, family_name, company_name, nickname, email_address, address, phone_number, reference_id, note, birthday].hash
     end
 
     # Builds the object from hash

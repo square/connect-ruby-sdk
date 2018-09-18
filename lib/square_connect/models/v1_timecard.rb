@@ -27,7 +27,7 @@ module SquareConnect
     # The clock-out time for the timecard, in ISO 8601 format. Provide this value only if importing timecard information from another system.
     attr_accessor :clockout_time
 
-    # The ID of the location the employee clocked in from, if any.
+    # The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules.
     attr_accessor :clockin_location_id
 
     # The ID of the location the employee clocked out from. Provide this value only if importing timecard information from another system.
@@ -38,6 +38,15 @@ module SquareConnect
 
     # The time when the timecard was most recently updated, in ISO 8601 format.
     attr_accessor :updated_at
+
+    # The total number of regular (non-overtime) seconds worked in the timecard.
+    attr_accessor :regular_seconds_worked
+
+    # The total number of overtime seconds worked in the timecard.
+    attr_accessor :overtime_seconds_worked
+
+    # The total number of doubletime seconds worked in the timecard.
+    attr_accessor :doubletime_seconds_worked
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -51,7 +60,10 @@ module SquareConnect
         :'clockin_location_id' => :'clockin_location_id',
         :'clockout_location_id' => :'clockout_location_id',
         :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at'
+        :'updated_at' => :'updated_at',
+        :'regular_seconds_worked' => :'regular_seconds_worked',
+        :'overtime_seconds_worked' => :'overtime_seconds_worked',
+        :'doubletime_seconds_worked' => :'doubletime_seconds_worked'
       }
     end
 
@@ -66,7 +78,10 @@ module SquareConnect
         :'clockin_location_id' => :'String',
         :'clockout_location_id' => :'String',
         :'created_at' => :'String',
-        :'updated_at' => :'String'
+        :'updated_at' => :'String',
+        :'regular_seconds_worked' => :'Float',
+        :'overtime_seconds_worked' => :'Float',
+        :'doubletime_seconds_worked' => :'Float'
       }
     end
 
@@ -114,6 +129,18 @@ module SquareConnect
         self.updated_at = attributes[:'updated_at']
       end
 
+      if attributes.has_key?(:'regular_seconds_worked')
+        self.regular_seconds_worked = attributes[:'regular_seconds_worked']
+      end
+
+      if attributes.has_key?(:'overtime_seconds_worked')
+        self.overtime_seconds_worked = attributes[:'overtime_seconds_worked']
+      end
+
+      if attributes.has_key?(:'doubletime_seconds_worked')
+        self.doubletime_seconds_worked = attributes[:'doubletime_seconds_worked']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -147,7 +174,10 @@ module SquareConnect
           clockin_location_id == o.clockin_location_id &&
           clockout_location_id == o.clockout_location_id &&
           created_at == o.created_at &&
-          updated_at == o.updated_at
+          updated_at == o.updated_at &&
+          regular_seconds_worked == o.regular_seconds_worked &&
+          overtime_seconds_worked == o.overtime_seconds_worked &&
+          doubletime_seconds_worked == o.doubletime_seconds_worked
     end
 
     # @see the `==` method
@@ -159,7 +189,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, employee_id, deleted, clockin_time, clockout_time, clockin_location_id, clockout_location_id, created_at, updated_at].hash
+      [id, employee_id, deleted, clockin_time, clockout_time, clockin_location_id, clockout_location_id, created_at, updated_at, regular_seconds_worked, overtime_seconds_worked, doubletime_seconds_worked].hash
     end
 
     # Builds the object from hash
