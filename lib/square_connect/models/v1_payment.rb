@@ -90,6 +90,9 @@ module SquareConnect
     # A list of all surcharges associated with the payment.
     attr_accessor :surcharges
 
+    # Indicates whether or not the payment is only partially paid for. If true, this payment will have the tenders collected so far, but the itemizations will be empty until the payment is completed.
+    attr_accessor :is_partial
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -119,7 +122,8 @@ module SquareConnect
         :'refunds' => :'refunds',
         :'itemizations' => :'itemizations',
         :'surcharge_money' => :'surcharge_money',
-        :'surcharges' => :'surcharges'
+        :'surcharges' => :'surcharges',
+        :'is_partial' => :'is_partial'
       }
     end
 
@@ -151,7 +155,8 @@ module SquareConnect
         :'refunds' => :'Array<V1Refund>',
         :'itemizations' => :'Array<V1PaymentItemization>',
         :'surcharge_money' => :'V1Money',
-        :'surcharges' => :'Array<V1PaymentSurcharge>'
+        :'surcharges' => :'Array<V1PaymentSurcharge>',
+        :'is_partial' => :'BOOLEAN'
       }
     end
 
@@ -279,6 +284,10 @@ module SquareConnect
         end
       end
 
+      if attributes.has_key?(:'is_partial')
+        self.is_partial = attributes[:'is_partial']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -324,7 +333,8 @@ module SquareConnect
           refunds == o.refunds &&
           itemizations == o.itemizations &&
           surcharge_money == o.surcharge_money &&
-          surcharges == o.surcharges
+          surcharges == o.surcharges &&
+          is_partial == o.is_partial
     end
 
     # @see the `==` method
@@ -336,7 +346,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, merchant_id, created_at, creator_id, device, payment_url, receipt_url, inclusive_tax_money, additive_tax_money, tax_money, tip_money, discount_money, total_collected_money, processing_fee_money, net_total_money, refunded_money, swedish_rounding_money, gross_sales_money, net_sales_money, inclusive_tax, additive_tax, tender, refunds, itemizations, surcharge_money, surcharges].hash
+      [id, merchant_id, created_at, creator_id, device, payment_url, receipt_url, inclusive_tax_money, additive_tax_money, tax_money, tip_money, discount_money, total_collected_money, processing_fee_money, net_total_money, refunded_money, swedish_rounding_money, gross_sales_money, net_sales_money, inclusive_tax, additive_tax, tender, refunds, itemizations, surcharge_money, surcharges, is_partial].hash
     end
 
     # Builds the object from hash

@@ -45,6 +45,12 @@ module SquareConnect
     # The amount of total_money applied to the payment.
     attr_accessor :tendered_money
 
+    # The time when the tender was created, in ISO 8601 format.
+    attr_accessor :tendered_at
+
+    # The time when the tender was settled, in ISO 8601 format.
+    attr_accessor :settled_at
+
     # The amount of total_money returned to the buyer as change.
     attr_accessor :change_back_money
 
@@ -90,6 +96,8 @@ module SquareConnect
         :'payment_note' => :'payment_note',
         :'total_money' => :'total_money',
         :'tendered_money' => :'tendered_money',
+        :'tendered_at' => :'tendered_at',
+        :'settled_at' => :'settled_at',
         :'change_back_money' => :'change_back_money',
         :'refunded_money' => :'refunded_money',
         :'is_exchange' => :'is_exchange'
@@ -110,6 +118,8 @@ module SquareConnect
         :'payment_note' => :'String',
         :'total_money' => :'V1Money',
         :'tendered_money' => :'V1Money',
+        :'tendered_at' => :'String',
+        :'settled_at' => :'String',
         :'change_back_money' => :'V1Money',
         :'refunded_money' => :'V1Money',
         :'is_exchange' => :'BOOLEAN'
@@ -166,6 +176,14 @@ module SquareConnect
 
       if attributes.has_key?(:'tendered_money')
         self.tendered_money = attributes[:'tendered_money']
+      end
+
+      if attributes.has_key?(:'tendered_at')
+        self.tendered_at = attributes[:'tendered_at']
+      end
+
+      if attributes.has_key?(:'settled_at')
+        self.settled_at = attributes[:'settled_at']
       end
 
       if attributes.has_key?(:'change_back_money')
@@ -247,6 +265,8 @@ module SquareConnect
           payment_note == o.payment_note &&
           total_money == o.total_money &&
           tendered_money == o.tendered_money &&
+          tendered_at == o.tendered_at &&
+          settled_at == o.settled_at &&
           change_back_money == o.change_back_money &&
           refunded_money == o.refunded_money &&
           is_exchange == o.is_exchange
@@ -261,7 +281,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, type, name, employee_id, receipt_url, card_brand, pan_suffix, entry_method, payment_note, total_money, tendered_money, change_back_money, refunded_money, is_exchange].hash
+      [id, type, name, employee_id, receipt_url, card_brand, pan_suffix, entry_method, payment_note, total_money, tendered_money, tendered_at, settled_at, change_back_money, refunded_money, is_exchange].hash
     end
 
     # Builds the object from hash
