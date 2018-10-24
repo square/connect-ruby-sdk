@@ -33,6 +33,7 @@ module SquareConnect
     # The list of taxes that should be applied to the surcharge.
     attr_accessor :taxes
 
+    # A Square-issued unique identifier associated with the surcharge.
     attr_accessor :surcharge_id
 
     class EnumAttributeValidator

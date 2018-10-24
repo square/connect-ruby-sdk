@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **type** | **String** | Indicates the source of the surcharge. For example, if it was applied as an automatic gratuity for a large group. | [optional] 
 **taxable** | **BOOLEAN** | Indicates whether the surcharge is taxable. | [optional] 
 **taxes** | [**Array&lt;V1PaymentTax&gt;**](V1PaymentTax.md) | The list of taxes that should be applied to the surcharge. | [optional] 
-**surcharge_id** | **String** |  | [optional] 
+**surcharge_id** | **String** | A Square-issued unique identifier associated with the surcharge. | [optional] 
 
 

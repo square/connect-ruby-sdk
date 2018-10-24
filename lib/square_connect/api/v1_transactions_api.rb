@@ -208,6 +208,7 @@ module SquareConnect
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
     # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+    # @option opts [BOOLEAN] :include_partial Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.
     # @return [Array<V1Payment>]
     def list_payments(location_id, opts = {})
       data, _status_code, _headers = list_payments_with_http_info(location_id, opts)
@@ -223,6 +224,7 @@ module SquareConnect
     # @option opts [String] :end_time The end of the requested reporting period, in ISO 8601 format. If this value is more than one year greater than begin_time, this endpoint returns an error. Default value: The current time.
     # @option opts [Integer] :limit The maximum number of payments to return in a single response. This value cannot exceed 200.
     # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
+    # @option opts [BOOLEAN] :include_partial Indicates whether or not to include partial payments in the response. Partial payments will have the tenders collected so far, but the itemizations will be empty until the payment is completed.
     # @return [Array<(Array<V1Payment>, Fixnum, Hash)>] Array<V1Payment> data, response status code and response headers
     def list_payments_with_http_info(location_id, opts = {})
       if @api_client.config.debugging
@@ -247,6 +249,7 @@ module SquareConnect
       query_params[:'end_time'] = opts[:'end_time'] if !opts[:'end_time'].nil?
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'batch_token'] = opts[:'batch_token'] if !opts[:'batch_token'].nil?
+      query_params[:'include_partial'] = opts[:'include_partial'] if !opts[:'include_partial'].nil?
 
       # header parameters
       header_params = {}
