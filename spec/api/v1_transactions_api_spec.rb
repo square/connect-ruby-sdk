@@ -102,7 +102,7 @@ describe 'V1TransactionsApi' do
 
   # unit tests for list_settlements
   # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-  # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
+  # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
   # @param location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :order TThe order in which payments are listed in the response.
