@@ -18,7 +18,7 @@ module SquareConnect
     # The unique identifier of the merchant that took the payment.
     attr_accessor :merchant_id
 
-    # The time when the payment was created, in ISO 8601 format.
+    # The time when the payment was created, in ISO 8601 format. Reflects the time of the first payment if the object represents an incomplete partial payment, and the time of the last or complete payment otherwise.
     attr_accessor :created_at
 
     # The unique identifier of the Square account that took the payment.
