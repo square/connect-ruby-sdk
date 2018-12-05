@@ -12,6 +12,9 @@ require 'date'
 module SquareConnect
   # Defines the body parameters that can be provided in a request to the [CreateCustomer](#endpoint-createcustomer) endpoint.
   class CreateCustomerRequest
+    # The idempotency key for the request. See the [Idempotency](/basics/api101/idempotency) guide for more information.
+    attr_accessor :idempotency_key
+
     # The customer's given (i.e., first) name.
     attr_accessor :given_name
 
@@ -46,6 +49,7 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'idempotency_key' => :'idempotency_key',
         :'given_name' => :'given_name',
         :'family_name' => :'family_name',
         :'company_name' => :'company_name',
@@ -62,6 +66,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'idempotency_key' => :'String',
         :'given_name' => :'String',
         :'family_name' => :'String',
         :'company_name' => :'String',
@@ -82,6 +87,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'idempotency_key')
+        self.idempotency_key = attributes[:'idempotency_key']
+      end
 
       if attributes.has_key?(:'given_name')
         self.given_name = attributes[:'given_name']
@@ -143,6 +152,7 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          idempotency_key == o.idempotency_key &&
           given_name == o.given_name &&
           family_name == o.family_name &&
           company_name == o.company_name &&
@@ -164,7 +174,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [given_name, family_name, company_name, nickname, email_address, address, phone_number, reference_id, note, birthday].hash
+      [idempotency_key, given_name, family_name, company_name, nickname, email_address, address, phone_number, reference_id, note, birthday].hash
     end
 
     # Builds the object from hash

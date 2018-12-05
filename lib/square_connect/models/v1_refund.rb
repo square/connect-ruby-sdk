@@ -21,6 +21,36 @@ module SquareConnect
     # The amount of money refunded. This amount is always negative.
     attr_accessor :refunded_money
 
+    # The amount of processing fee money refunded. This amount is always positive.
+    attr_accessor :refunded_processing_fee_money
+
+    # The total amount of tax money refunded. This amount is always negative.
+    attr_accessor :refunded_tax_money
+
+    # The amount of additive tax money refunded. This amount is always negative.
+    attr_accessor :refunded_additive_tax_money
+
+    # All of the additive taxes associated with the refund.
+    attr_accessor :refunded_additive_tax
+
+    # The amount of inclusive tax money refunded. This amount is always negative.
+    attr_accessor :refunded_inclusive_tax_money
+
+    # All of the inclusive taxes associated with the refund.
+    attr_accessor :refunded_inclusive_tax
+
+    # The amount of tip money refunded. This amount is always negative.
+    attr_accessor :refunded_tip_money
+
+    # The amount of discount money refunded. This amount is always positive.
+    attr_accessor :refunded_discount_money
+
+    # The amount of surcharge money refunded. This amount is always negative.
+    attr_accessor :refunded_surcharge_money
+
+    # A list of all surcharges associated with the refund.
+    attr_accessor :refunded_surcharges
+
     # The time when the merchant initiated the refund for Square to process, in ISO 8601 format.
     attr_accessor :created_at
 
@@ -64,6 +94,16 @@ module SquareConnect
         :'type' => :'type',
         :'reason' => :'reason',
         :'refunded_money' => :'refunded_money',
+        :'refunded_processing_fee_money' => :'refunded_processing_fee_money',
+        :'refunded_tax_money' => :'refunded_tax_money',
+        :'refunded_additive_tax_money' => :'refunded_additive_tax_money',
+        :'refunded_additive_tax' => :'refunded_additive_tax',
+        :'refunded_inclusive_tax_money' => :'refunded_inclusive_tax_money',
+        :'refunded_inclusive_tax' => :'refunded_inclusive_tax',
+        :'refunded_tip_money' => :'refunded_tip_money',
+        :'refunded_discount_money' => :'refunded_discount_money',
+        :'refunded_surcharge_money' => :'refunded_surcharge_money',
+        :'refunded_surcharges' => :'refunded_surcharges',
         :'created_at' => :'created_at',
         :'processed_at' => :'processed_at',
         :'payment_id' => :'payment_id',
@@ -78,6 +118,16 @@ module SquareConnect
         :'type' => :'String',
         :'reason' => :'String',
         :'refunded_money' => :'V1Money',
+        :'refunded_processing_fee_money' => :'V1Money',
+        :'refunded_tax_money' => :'V1Money',
+        :'refunded_additive_tax_money' => :'V1Money',
+        :'refunded_additive_tax' => :'Array<V1PaymentTax>',
+        :'refunded_inclusive_tax_money' => :'V1Money',
+        :'refunded_inclusive_tax' => :'Array<V1PaymentTax>',
+        :'refunded_tip_money' => :'V1Money',
+        :'refunded_discount_money' => :'V1Money',
+        :'refunded_surcharge_money' => :'V1Money',
+        :'refunded_surcharges' => :'Array<V1PaymentSurcharge>',
         :'created_at' => :'String',
         :'processed_at' => :'String',
         :'payment_id' => :'String',
@@ -104,6 +154,52 @@ module SquareConnect
 
       if attributes.has_key?(:'refunded_money')
         self.refunded_money = attributes[:'refunded_money']
+      end
+
+      if attributes.has_key?(:'refunded_processing_fee_money')
+        self.refunded_processing_fee_money = attributes[:'refunded_processing_fee_money']
+      end
+
+      if attributes.has_key?(:'refunded_tax_money')
+        self.refunded_tax_money = attributes[:'refunded_tax_money']
+      end
+
+      if attributes.has_key?(:'refunded_additive_tax_money')
+        self.refunded_additive_tax_money = attributes[:'refunded_additive_tax_money']
+      end
+
+      if attributes.has_key?(:'refunded_additive_tax')
+        if (value = attributes[:'refunded_additive_tax']).is_a?(Array)
+          self.refunded_additive_tax = value
+        end
+      end
+
+      if attributes.has_key?(:'refunded_inclusive_tax_money')
+        self.refunded_inclusive_tax_money = attributes[:'refunded_inclusive_tax_money']
+      end
+
+      if attributes.has_key?(:'refunded_inclusive_tax')
+        if (value = attributes[:'refunded_inclusive_tax']).is_a?(Array)
+          self.refunded_inclusive_tax = value
+        end
+      end
+
+      if attributes.has_key?(:'refunded_tip_money')
+        self.refunded_tip_money = attributes[:'refunded_tip_money']
+      end
+
+      if attributes.has_key?(:'refunded_discount_money')
+        self.refunded_discount_money = attributes[:'refunded_discount_money']
+      end
+
+      if attributes.has_key?(:'refunded_surcharge_money')
+        self.refunded_surcharge_money = attributes[:'refunded_surcharge_money']
+      end
+
+      if attributes.has_key?(:'refunded_surcharges')
+        if (value = attributes[:'refunded_surcharges']).is_a?(Array)
+          self.refunded_surcharges = value
+        end
       end
 
       if attributes.has_key?(:'created_at')
@@ -161,6 +257,16 @@ module SquareConnect
           type == o.type &&
           reason == o.reason &&
           refunded_money == o.refunded_money &&
+          refunded_processing_fee_money == o.refunded_processing_fee_money &&
+          refunded_tax_money == o.refunded_tax_money &&
+          refunded_additive_tax_money == o.refunded_additive_tax_money &&
+          refunded_additive_tax == o.refunded_additive_tax &&
+          refunded_inclusive_tax_money == o.refunded_inclusive_tax_money &&
+          refunded_inclusive_tax == o.refunded_inclusive_tax &&
+          refunded_tip_money == o.refunded_tip_money &&
+          refunded_discount_money == o.refunded_discount_money &&
+          refunded_surcharge_money == o.refunded_surcharge_money &&
+          refunded_surcharges == o.refunded_surcharges &&
           created_at == o.created_at &&
           processed_at == o.processed_at &&
           payment_id == o.payment_id &&
@@ -177,7 +283,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, reason, refunded_money, created_at, processed_at, payment_id, merchant_id, is_exchange].hash
+      [type, reason, refunded_money, refunded_processing_fee_money, refunded_tax_money, refunded_additive_tax_money, refunded_additive_tax, refunded_inclusive_tax_money, refunded_inclusive_tax, refunded_tip_money, refunded_discount_money, refunded_surcharge_money, refunded_surcharges, created_at, processed_at, payment_id, merchant_id, is_exchange].hash
     end
 
     # Builds the object from hash
