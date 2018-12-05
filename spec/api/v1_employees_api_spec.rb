@@ -96,7 +96,7 @@ describe 'V1EmployeesApi' do
   # Provides summary information for all of a business&#39;s employee roles.
   # Provides summary information for all of a business&#39;s employee roles.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
+  # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC
   # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
   # @option opts [String] :cursor A pagination cursor to retrieve the next set of results for your original query to the endpoint.
   # @return [Array<V1EmployeeRole>]
@@ -110,7 +110,7 @@ describe 'V1EmployeesApi' do
   # Provides summary information for all of a business&#39;s employees.
   # Provides summary information for all of a business&#39;s employees.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC 
+  # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC
   # @option opts [String] :begin_updated_at If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format
   # @option opts [String] :end_updated_at If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format.
   # @option opts [String] :begin_created_at If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format.
@@ -210,7 +210,7 @@ describe 'V1EmployeesApi' do
 
   # unit tests for update_employee
   # V1 UpdateEmployee
-  # 
+  #
   # @param employee_id The ID of the role to modify.
   # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
   # @param [Hash] opts the optional parameters

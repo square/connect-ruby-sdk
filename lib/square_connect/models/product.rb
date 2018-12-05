@@ -19,6 +19,8 @@ module SquareConnect
     INVOICES = "INVOICES".freeze
     ONLINE_STORE = "ONLINE_STORE".freeze
     PAYROLL = "PAYROLL".freeze
+    DASHBOARD = "DASHBOARD".freeze
+    ITEM_LIBRARY_IMPORT = "ITEM_LIBRARY_IMPORT".freeze
     OTHER = "OTHER".freeze
   end
 

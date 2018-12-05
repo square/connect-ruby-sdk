@@ -21,7 +21,7 @@ module SquareConnect
     # The time when the customer was last updated, in RFC 3339 format.
     attr_accessor :updated_at
 
-    # The non-confidential details of the customer's cards on file.
+    # The payment details of the customer's cards on file.
     attr_accessor :cards
 
     # The customer's given (i.e., first) name.

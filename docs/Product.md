@@ -14,6 +14,8 @@ Name | Type
 **INVOICES** | string
 **ONLINE_STORE** | string
 **PAYROLL** | string
+**DASHBOARD** | string
+**ITEM_LIBRARY_IMPORT** | string
 **OTHER** | string
 
 
