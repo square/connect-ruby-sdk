@@ -129,7 +129,7 @@ describe 'CheckoutApi' do
           first_name: 'Jane',
           last_name: 'Doe'
         },
-        redirect_url: 'https://docs.connect.squareup.com/order-confirm'
+        redirect_url: 'https://merchant.website.com/order-confirm'
       }
     end
     it "should create a checkout object" do
