@@ -15,7 +15,7 @@ module SquareConnect
     # The ID of the [CatalogItem](#type-catalogitem) associated with this item variation. Searchable.
     attr_accessor :item_id
 
-    # The item variation's name. Searchable.
+    # The item variation's name. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :name
 
     # The item variation's SKU, if any. Searchable.
@@ -45,7 +45,7 @@ module SquareConnect
     # If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type` is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.  This value is always an integer.
     attr_accessor :inventory_alert_threshold
 
-    # Arbitrary user metadata to associate with the item variation. Cannot exceed 255 characters. Searchable.
+    # Arbitrary user metadata to associate with the item variation. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :user_data
 
     # If the [CatalogItem](#type-catalogitem) that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).

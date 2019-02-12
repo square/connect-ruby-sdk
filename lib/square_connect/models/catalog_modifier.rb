@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A modifier in the Catalog object model.
   class CatalogModifier
-    # The modifier's name. Searchable.
+    # The modifier's name. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :name
 
     # The modifier's price.

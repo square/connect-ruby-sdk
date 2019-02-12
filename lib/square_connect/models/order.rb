@@ -21,8 +21,17 @@ module SquareConnect
     # A client specified identifier to associate an entity in another system with this order.
     attr_accessor :reference_id
 
-    # The line items included in the order. Every order has at least one line item.
+    # The line items included in the order.
     attr_accessor :line_items
+
+    # A list of taxes applied to this order. On read or retrieve, this list includes both order-level and item-level taxes. When creating an Order, set your order-level taxes in this list.
+    attr_accessor :taxes
+
+    # A list of discounts applied to this order. On read or retrieve, this list includes both order-level and item-level discounts. When creating an Order, set your order-level discounts in this list.
+    attr_accessor :discounts
+
+    # Details on order fulfillment.  Orders can only be created with at most one fulfillment. However, orders returned by the API may contain multiple fulfillments.
+    attr_accessor :fulfillments
 
     # The total amount of money to collect for the order.
     attr_accessor :total_money
@@ -41,6 +50,9 @@ module SquareConnect
         :'location_id' => :'location_id',
         :'reference_id' => :'reference_id',
         :'line_items' => :'line_items',
+        :'taxes' => :'taxes',
+        :'discounts' => :'discounts',
+        :'fulfillments' => :'fulfillments',
         :'total_money' => :'total_money',
         :'total_tax_money' => :'total_tax_money',
         :'total_discount_money' => :'total_discount_money'
@@ -54,6 +66,9 @@ module SquareConnect
         :'location_id' => :'String',
         :'reference_id' => :'String',
         :'line_items' => :'Array<OrderLineItem>',
+        :'taxes' => :'Array<OrderLineItemTax>',
+        :'discounts' => :'Array<OrderLineItemDiscount>',
+        :'fulfillments' => :'Array<OrderFulfillment>',
         :'total_money' => :'Money',
         :'total_tax_money' => :'Money',
         :'total_discount_money' => :'Money'
@@ -83,6 +98,24 @@ module SquareConnect
       if attributes.has_key?(:'line_items')
         if (value = attributes[:'line_items']).is_a?(Array)
           self.line_items = value
+        end
+      end
+
+      if attributes.has_key?(:'taxes')
+        if (value = attributes[:'taxes']).is_a?(Array)
+          self.taxes = value
+        end
+      end
+
+      if attributes.has_key?(:'discounts')
+        if (value = attributes[:'discounts']).is_a?(Array)
+          self.discounts = value
+        end
+      end
+
+      if attributes.has_key?(:'fulfillments')
+        if (value = attributes[:'fulfillments']).is_a?(Array)
+          self.fulfillments = value
         end
       end
 
@@ -116,10 +149,6 @@ module SquareConnect
         invalid_properties.push("invalid value for 'reference_id', the character length must be smaller than or equal to 40.")
       end
 
-      if @line_items.nil?
-        invalid_properties.push("invalid value for 'line_items', line_items cannot be nil.")
-      end
-
       return invalid_properties
     end
 
@@ -129,7 +158,6 @@ module SquareConnect
       return false if @location_id.nil?
       return false if @location_id.to_s.length < 1
       return false if !@reference_id.nil? && @reference_id.to_s.length > 40
-      return false if @line_items.nil?
       return true
     end
 
@@ -167,6 +195,9 @@ module SquareConnect
           location_id == o.location_id &&
           reference_id == o.reference_id &&
           line_items == o.line_items &&
+          taxes == o.taxes &&
+          discounts == o.discounts &&
+          fulfillments == o.fulfillments &&
           total_money == o.total_money &&
           total_tax_money == o.total_tax_money &&
           total_discount_money == o.total_discount_money
@@ -181,7 +212,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, reference_id, line_items, total_money, total_tax_money, total_discount_money].hash
+      [id, location_id, reference_id, line_items, taxes, discounts, fulfillments, total_money, total_tax_money, total_discount_money].hash
     end
 
     # Builds the object from hash

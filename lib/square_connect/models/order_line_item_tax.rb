@@ -27,6 +27,9 @@ module SquareConnect
     # The amount of the money applied by the tax in an order.
     attr_accessor :applied_money
 
+    # Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.
+    attr_accessor :scope
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -56,7 +59,8 @@ module SquareConnect
         :'name' => :'name',
         :'type' => :'type',
         :'percentage' => :'percentage',
-        :'applied_money' => :'applied_money'
+        :'applied_money' => :'applied_money',
+        :'scope' => :'scope'
       }
     end
 
@@ -67,7 +71,8 @@ module SquareConnect
         :'name' => :'String',
         :'type' => :'String',
         :'percentage' => :'String',
-        :'applied_money' => :'Money'
+        :'applied_money' => :'Money',
+        :'scope' => :'String'
       }
     end
 
@@ -99,6 +104,10 @@ module SquareConnect
         self.applied_money = attributes[:'applied_money']
       end
 
+      if attributes.has_key?(:'scope')
+        self.scope = attributes[:'scope']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -128,6 +137,8 @@ module SquareConnect
       type_validator = EnumAttributeValidator.new('String', ["UNKNOWN_TAX", "ADDITIVE", "INCLUSIVE"])
       return false unless type_validator.valid?(@type)
       return false if !@percentage.nil? && @percentage.to_s.length > 10
+      scope_validator = EnumAttributeValidator.new('String', ["OTHER_TAX_SCOPE", "LINE_ITEM", "ORDER"])
+      return false unless scope_validator.valid?(@scope)
       return true
     end
 
@@ -174,6 +185,16 @@ module SquareConnect
       @percentage = percentage
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] scope Object to be assigned
+    def scope=(scope)
+      validator = EnumAttributeValidator.new('String', ["OTHER_TAX_SCOPE", "LINE_ITEM", "ORDER"])
+      unless validator.valid?(scope)
+        fail ArgumentError, "invalid value for 'scope', must be one of #{validator.allowable_values}."
+      end
+      @scope = scope
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -183,7 +204,8 @@ module SquareConnect
           name == o.name &&
           type == o.type &&
           percentage == o.percentage &&
-          applied_money == o.applied_money
+          applied_money == o.applied_money &&
+          scope == o.scope
     end
 
     # @see the `==` method
@@ -195,7 +217,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [catalog_object_id, name, type, percentage, applied_money].hash
+      [catalog_object_id, name, type, percentage, applied_money, scope].hash
     end
 
     # Builds the object from hash
