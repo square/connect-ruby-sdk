@@ -12,25 +12,29 @@ require 'date'
 module SquareConnect
   # 
   class CreateOrderRequest
+    # The order to create. If this field is set, then the only other top-level field that can be set is the idempotency_key.
+    attr_accessor :order
+
     # A value you specify that uniquely identifies this order among orders you've created.  If you're unsure whether a particular order was created successfully, you can reattempt it with the same idempotency key without worrying about creating duplicate orders.  See [Idempotency keys](#idempotencykeys) for more information.
     attr_accessor :idempotency_key
 
-    # An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.
+    # __Deprecated__: Please set the reference_id on the nested [order](#type-order) field instead.  An optional ID you can associate with the order for your own purposes (such as to associate the order with an entity ID in your own database).  This value cannot exceed 40 characters.
     attr_accessor :reference_id
 
-    # The line items to associate with this order.  Each line item represents a different product to include in a purchase.
+    # __Deprecated__: Please set the line_items on the nested [order](#type-order) field instead.  The line items to associate with this order.  Each line item represents a different product to include in a purchase.
     attr_accessor :line_items
 
-    # The taxes to include on the order.
+    # __Deprecated__: Please set the taxes on the nested [order](#type-order) field instead.  The taxes to include on the order.
     attr_accessor :taxes
 
-    # The discounts to include on the order.
+    # __Deprecated__: Please set the discounts on the nested [order](#type-order) field instead.  The discounts to include on the order.
     attr_accessor :discounts
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'order' => :'order',
         :'idempotency_key' => :'idempotency_key',
         :'reference_id' => :'reference_id',
         :'line_items' => :'line_items',
@@ -42,6 +46,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'order' => :'Order',
         :'idempotency_key' => :'String',
         :'reference_id' => :'String',
         :'line_items' => :'Array<CreateOrderRequestLineItem>',
@@ -57,6 +62,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'order')
+        self.order = attributes[:'order']
+      end
 
       if attributes.has_key?(:'idempotency_key')
         self.idempotency_key = attributes[:'idempotency_key']
@@ -98,10 +107,6 @@ module SquareConnect
         invalid_properties.push("invalid value for 'reference_id', the character length must be smaller than or equal to 40.")
       end
 
-      if @line_items.nil?
-        invalid_properties.push("invalid value for 'line_items', line_items cannot be nil.")
-      end
-
       return invalid_properties
     end
 
@@ -110,7 +115,6 @@ module SquareConnect
     def valid?
       return false if !@idempotency_key.nil? && @idempotency_key.to_s.length > 192
       return false if !@reference_id.nil? && @reference_id.to_s.length > 40
-      return false if @line_items.nil?
       return true
     end
 
@@ -141,6 +145,7 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          order == o.order &&
           idempotency_key == o.idempotency_key &&
           reference_id == o.reference_id &&
           line_items == o.line_items &&
@@ -157,7 +162,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [idempotency_key, reference_id, line_items, taxes, discounts].hash
+      [order, idempotency_key, reference_id, line_items, taxes, discounts].hash
     end
 
     # Builds the object from hash

@@ -30,10 +30,10 @@ module SquareConnect
     # The [CatalogModifier](#type-catalogmodifier)s applied to this line item.
     attr_accessor :modifiers
 
-    # The taxes applied to this line item.
+    # A list of taxes applied to this line item. On read or retrieve, this list includes both item-level taxes and any order-level taxes apportioned to this item. When creating an Order, set your item-level taxes in this list.
     attr_accessor :taxes
 
-    # The discounts applied to this line item.
+    # A list of discounts applied to this line item. On read or retrieve, this list includes both item-level discounts and any order-level discounts apportioned to this item. When creating an Order, set your item-level discounts in this list.
     attr_accessor :discounts
 
     # The base price for a single unit of the line item.

@@ -12,16 +12,16 @@ require 'date'
 module SquareConnect
   # An item (i.e., product family) in the Catalog object model.
   class CatalogItem
-    # The item's name. Searchable.
+    # The item's name. Searchable. This field must not be empty. This field has max length of 512 Unicode code points.
     attr_accessor :name
 
-    # The item's description. Searchable.
+    # The item's description. Searchable. This field has max length of 4096 Unicode code points.
     attr_accessor :description
 
-    # The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable.
+    # The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable. This field has max length of 24 Unicode code points.
     attr_accessor :abbreviation
 
-    # The color of the item's display label in the Square Point of Sale app.
+    # The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code.
     attr_accessor :label_color
 
     # If `true`, the item can be added to shipping orders from the merchant's online store.

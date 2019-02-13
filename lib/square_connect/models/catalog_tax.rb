@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A tax in the Catalog object model.
   class CatalogTax
-    # The tax's name. Searchable.
+    # The tax's name. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :name
 
     # Whether the tax is calculated based on a payment's subtotal or total. See [TaxCalculationPhase](#type-taxcalculationphase) for all possible values.

@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A category to which an [CatalogItem](#type-catalogitem) belongs in the Catalog object model.
   class CatalogCategory
-    # The category's name. Searchable.
+    # The category's name. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :name
 
 

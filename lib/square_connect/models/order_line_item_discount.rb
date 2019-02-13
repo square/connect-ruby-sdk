@@ -30,7 +30,7 @@ module SquareConnect
     # The amount of discount actually applied to this line item.  Represents the amount of money applied to a line item as a discount When an amount-based discount is at order-level, this value is different from `amount_money` because the discount is distributed across the line items.
     attr_accessor :applied_money
 
-    # Indicates the level at which the discount applies. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
+    # Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values.
     attr_accessor :scope
 
     class EnumAttributeValidator

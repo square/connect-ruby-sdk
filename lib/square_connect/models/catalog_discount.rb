@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A discount in the Catalog object model.
   class CatalogDiscount
-    # The discount's name. Searchable.
+    # The discount's name. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :name
 
     # Indicates whether the discount is a fixed amount or percentage, or entered at the time of sale. See [CatalogDiscountType](#type-catalogdiscounttype) for all possible values.
@@ -27,7 +27,7 @@ module SquareConnect
     # Indicates whether a mobile staff member needs to enter their PIN to apply the discount to a payment in the Square Point of Sale app.
     attr_accessor :pin_required
 
-    # The color of the discount's display label in the Square Point of Sale app.
+    # The color of the discount's display label in the Square Point of Sale app. This must be a valid hex color code.
     attr_accessor :label_color
 
     class EnumAttributeValidator
