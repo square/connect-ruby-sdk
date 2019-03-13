@@ -30,7 +30,7 @@ module SquareConnect
     # The employee's email address.
     attr_accessor :email
 
-    # CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. 
+    # CWhether the employee is ACTIVE or INACTIVE. Inactive employees cannot sign in to Square Register.Merchants update this field from the Square Dashboard. See [V1EmployeeStatus](#type-v1employeestatus) for possible values
     attr_accessor :status
 
     # An ID the merchant can set to associate the employee with an entity in another system.

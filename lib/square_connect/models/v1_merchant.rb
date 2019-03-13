@@ -21,7 +21,7 @@ module SquareConnect
     # The email address associated with the merchant account.
     attr_accessor :email
 
-    # Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION.
+    # Indicates whether the merchant account corresponds to a single-location account (LOCATION) or a business account (BUSINESS). This value is almost always LOCATION. See [V1MerchantAccountType](#type-v1merchantaccounttype) for possible values
     attr_accessor :account_type
 
     # Capabilities that are enabled for the merchant's Square account. Capabilities that are not listed in this array are not enabled for the account.
@@ -45,12 +45,13 @@ module SquareConnect
     # The phone number of the merchant's business.
     attr_accessor :business_phone
 
-    # The type of business operated by the merchant.
+    # The type of business operated by the merchant. See [V1MerchantBusinessType](#type-v1merchantbusinesstype) for possible values
     attr_accessor :business_type
 
     # The merchant's shipping address.
-    attr_accessor :shipping_address_
+    attr_accessor :shipping_address
 
+    # Additional information for a single-location account specified by its associated business account, if it has one.
     attr_accessor :location_details
 
     # The URL of the merchant's online store.
@@ -93,7 +94,7 @@ module SquareConnect
         :'business_address' => :'business_address',
         :'business_phone' => :'business_phone',
         :'business_type' => :'business_type',
-        :'shipping_address_' => :'shipping_address ',
+        :'shipping_address' => :'shipping_address',
         :'location_details' => :'location_details',
         :'market_url' => :'market_url'
       }
@@ -114,7 +115,7 @@ module SquareConnect
         :'business_address' => :'Address',
         :'business_phone' => :'V1PhoneNumber',
         :'business_type' => :'String',
-        :'shipping_address_' => :'Address',
+        :'shipping_address' => :'Address',
         :'location_details' => :'V1MerchantLocationDetails',
         :'market_url' => :'String'
       }
@@ -178,8 +179,8 @@ module SquareConnect
         self.business_type = attributes[:'business_type']
       end
 
-      if attributes.has_key?(:'shipping_address ')
-        self.shipping_address_ = attributes[:'shipping_address ']
+      if attributes.has_key?(:'shipping_address')
+        self.shipping_address = attributes[:'shipping_address']
       end
 
       if attributes.has_key?(:'location_details')
@@ -246,7 +247,7 @@ module SquareConnect
           business_address == o.business_address &&
           business_phone == o.business_phone &&
           business_type == o.business_type &&
-          shipping_address_ == o.shipping_address_ &&
+          shipping_address == o.shipping_address &&
           location_details == o.location_details &&
           market_url == o.market_url
     end
@@ -260,7 +261,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, email, account_type, account_capabilities, country_code, language_code, currency_code, business_name, business_address, business_phone, business_type, shipping_address_, location_details, market_url].hash
+      [id, name, email, account_type, account_capabilities, country_code, language_code, currency_code, business_name, business_address, business_phone, business_type, shipping_address, location_details, market_url].hash
     end
 
     # Builds the object from hash

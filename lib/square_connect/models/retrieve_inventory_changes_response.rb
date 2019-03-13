@@ -18,7 +18,7 @@ module SquareConnect
     # The set of inventory changes for the requested object and locations.
     attr_accessor :changes
 
-    # The pagination cursor to be used in a subsequent request. If unset, this is the final response.  See [Paginating results](#paginatingresults) for more information.
+    # The pagination cursor to be used in a subsequent request. If unset, this is the final response.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
 

@@ -15,7 +15,7 @@ module SquareConnect
     # The set of [Error](#type-error)s encountered.
     attr_accessor :errors
 
-    # The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Paginating results](#paginatingresults) for more information.
+    # The pagination cursor to be used in a subsequent request. If unset, this is the final response. See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
     # The [CatalogObject](#type-catalogobject)s returned.

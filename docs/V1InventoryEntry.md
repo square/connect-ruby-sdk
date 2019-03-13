@@ -2,6 +2,8 @@
 
 ### Description
 
+V1InventoryEntry
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

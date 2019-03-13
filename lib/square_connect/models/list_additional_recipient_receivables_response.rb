@@ -18,7 +18,7 @@ module SquareConnect
     # An array of AdditionalRecipientReceivables that match your query.
     attr_accessor :receivables
 
-    # A pagination cursor for retrieving the next set of results, if any remain. Provide this value as the `cursor` parameter in a subsequent request to this endpoint.  See [Paginating results](#paginatingresults) for more information.
+    # A pagination cursor for retrieving the next set of results, if any remain. Provide this value as the `cursor` parameter in a subsequent request to this endpoint.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
 

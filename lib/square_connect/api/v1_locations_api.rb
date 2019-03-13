@@ -17,7 +17,7 @@ module SquareConnect
       @api_client = api_client
     end
 
-    # Provides details for a business's locations, including their IDs.
+    # ListLocations
     # Provides details for a business's locations, including their IDs.
     # @param [Hash] opts the optional parameters
     # @return [Array<V1Merchant>]
@@ -26,7 +26,7 @@ module SquareConnect
       return data
     end
 
-    # Provides details for a business&#39;s locations, including their IDs.
+    # ListLocations
     # Provides details for a business&#39;s locations, including their IDs.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<V1Merchant>, Fixnum, Hash)>] Array<V1Merchant> data, response status code and response headers
@@ -47,6 +47,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -67,7 +68,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Get a business's information.
+    # RetrieveBusiness
     # Get a business's information.
     # @param [Hash] opts the optional parameters
     # @return [V1Merchant]
@@ -76,7 +77,7 @@ module SquareConnect
       return data
     end
 
-    # Get a business&#39;s information.
+    # RetrieveBusiness
     # Get a business&#39;s information.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1Merchant, Fixnum, Hash)>] V1Merchant data, response status code and response headers
@@ -97,6 +98,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}

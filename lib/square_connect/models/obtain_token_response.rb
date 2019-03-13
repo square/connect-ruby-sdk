@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # 
   class ObtainTokenResponse
-    # Your application's access token. You provide this token in a header with every request to Connect API endpoints. See [Request and response headers](https://docs.connect.squareup.com/api/connect/v2/#requestandresponseheaders) for the format of this header.
+    # A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.
     attr_accessor :access_token
 
     # This value is always _bearer_.
@@ -24,7 +24,7 @@ module SquareConnect
     # The ID of the authorizing merchant's business.
     attr_accessor :merchant_id
 
-    # The ID of the merchant [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) associated with the authorization. Only present if the merchant signed up for a subscription during authorization.
+    # __Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if  the merchant signed up for a subscription during authorization.
     attr_accessor :subscription_id
 
     # The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
@@ -32,6 +32,9 @@ module SquareConnect
 
     # Then OpenID token belonging to this this person. Only present if the OPENID scope is included in the authorize request.
     attr_accessor :id_token
+
+    # A refresh token.  For more information, see [OAuth access token management](/authz/oauth/how-it-works#oauth-access-token-management).
+    attr_accessor :refresh_token
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -43,7 +46,8 @@ module SquareConnect
         :'merchant_id' => :'merchant_id',
         :'subscription_id' => :'subscription_id',
         :'plan_id' => :'plan_id',
-        :'id_token' => :'id_token'
+        :'id_token' => :'id_token',
+        :'refresh_token' => :'refresh_token'
       }
     end
 
@@ -56,7 +60,8 @@ module SquareConnect
         :'merchant_id' => :'String',
         :'subscription_id' => :'String',
         :'plan_id' => :'String',
-        :'id_token' => :'String'
+        :'id_token' => :'String',
+        :'refresh_token' => :'String'
       }
     end
 
@@ -96,6 +101,10 @@ module SquareConnect
         self.id_token = attributes[:'id_token']
       end
 
+      if attributes.has_key?(:'refresh_token')
+        self.refresh_token = attributes[:'refresh_token']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -122,7 +131,8 @@ module SquareConnect
           merchant_id == o.merchant_id &&
           subscription_id == o.subscription_id &&
           plan_id == o.plan_id &&
-          id_token == o.id_token
+          id_token == o.id_token &&
+          refresh_token == o.refresh_token
     end
 
     # @see the `==` method
@@ -134,7 +144,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [access_token, token_type, expires_at, merchant_id, subscription_id, plan_id, id_token].hash
+      [access_token, token_type, expires_at, merchant_id, subscription_id, plan_id, id_token, refresh_token].hash
     end
 
     # Builds the object from hash

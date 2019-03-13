@@ -21,7 +21,7 @@ module SquareConnect
     # Last modification [timestamp](#workingwithdates) in RFC 3339 format, e.g., `\"2016-08-15T23:59:33.123Z\"` would indicate the UTC time (denoted by `Z`) of August 15, 2016 at 23:59:33 and 123 milliseconds.
     attr_accessor :updated_at
 
-    # The version of the object. When updating an object, the version supplied must match the version in the database, otherwise the write will be rejected as conflicting.
+    # The version of the object. When updating an object, the version supplied by the must match the version in the database, otherwise the write will be rejected as conflicting.
     attr_accessor :version
 
     # If `true`, the object has been deleted from the database. Must be `false` for new objects being inserted. When deleted, the `updated_at` field will equal the deletion time.
