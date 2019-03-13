@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Defines the query parameters that can be provided in a request to the [ListCustomers](#endpoint-listcustomers) endpoint.
   class ListCustomersRequest
-    # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
     # Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values.

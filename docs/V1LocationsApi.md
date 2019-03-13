@@ -4,14 +4,14 @@ All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**list_locations**](V1LocationsApi.md#list_locations) | **GET** /v1/me/locations | Provides details for a business&#39;s locations, including their IDs.
-[**retrieve_business**](V1LocationsApi.md#retrieve_business) | **GET** /v1/me | Get a business&#39;s information.
+[**list_locations**](V1LocationsApi.md#list_locations) | **GET** /v1/me/locations | ListLocations
+[**retrieve_business**](V1LocationsApi.md#retrieve_business) | **GET** /v1/me | RetrieveBusiness
 
 
 # **list_locations**
 > Array&lt;V1Merchant&gt; list_locations
 
-Provides details for a business's locations, including their IDs.
+ListLocations
 
 Provides details for a business's locations, including their IDs.
 
@@ -28,7 +28,7 @@ end
 api_instance = SquareConnect::V1LocationsApi.new
 
 begin
-  #Provides details for a business's locations, including their IDs.
+  #ListLocations
   result = api_instance.list_locations
   p result
 rescue SquareConnect::ApiError => e
@@ -57,7 +57,7 @@ This endpoint does not need any parameter.
 # **retrieve_business**
 > V1Merchant retrieve_business
 
-Get a business's information.
+RetrieveBusiness
 
 Get a business's information.
 
@@ -74,7 +74,7 @@ end
 api_instance = SquareConnect::V1LocationsApi.new
 
 begin
-  #Get a business's information.
+  #RetrieveBusiness
   result = api_instance.retrieve_business
   p result
 rescue SquareConnect::ApiError => e

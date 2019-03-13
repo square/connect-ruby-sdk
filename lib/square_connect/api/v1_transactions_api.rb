@@ -17,8 +17,8 @@ module SquareConnect
       @api_client = api_client
     end
 
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+    # CreateRefund
+    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.  You cannot issue a partial refund for a split tender payment. You must instead issue a full or partial refund for a particular tender, by providing the applicable tender id to the V1CreateRefund endpoint. Issuing a full refund for a split tender payment refunds all tenders associated with the payment.  Issuing a refund for a card payment is not reversible. For development purposes, you can create fake cash payments in Square Point of Sale and refund them.
     # @param location_id The ID of the original payment&#39;s associated location.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -28,8 +28,8 @@ module SquareConnect
       return data
     end
 
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+    # CreateRefund
+    # Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.  You cannot issue a partial refund for a split tender payment. You must instead issue a full or partial refund for a particular tender, by providing the applicable tender id to the V1CreateRefund endpoint. Issuing a full refund for a split tender payment refunds all tenders associated with the payment.  Issuing a refund for a card payment is not reversible. For development purposes, you can create fake cash payments in Square Point of Sale and refund them.
     # @param location_id The ID of the original payment&#39;s associated location.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -55,6 +55,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -75,7 +76,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+    # ListBankAccounts
     # Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
     # @param location_id The ID of the location to list bank accounts for.
     # @param [Hash] opts the optional parameters
@@ -85,7 +86,7 @@ module SquareConnect
       return data
     end
 
-    # Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+    # ListBankAccounts
     # Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
     # @param location_id The ID of the location to list bank accounts for.
     # @param [Hash] opts the optional parameters
@@ -109,6 +110,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -129,7 +131,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for a merchant's online store orders.
+    # ListOrders
     # Provides summary information for a merchant's online store orders.
     # @param location_id The ID of the location to list online store orders for.
     # @param [Hash] opts the optional parameters
@@ -142,7 +144,7 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for a merchant&#39;s online store orders.
+    # ListOrders
     # Provides summary information for a merchant&#39;s online store orders.
     # @param location_id The ID of the location to list online store orders for.
     # @param [Hash] opts the optional parameters
@@ -156,13 +158,9 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1TransactionsApi.list_orders" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1TransactionsApi.list_orders, must be smaller than or equal to 200.'
-      end
-
       # resource path
       local_var_path = "/v1/{location_id}/orders".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -179,6 +177,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -199,8 +198,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-    # Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+    # ListPayments
+    # Provides summary information for all payments taken for a given Square account during a date range. Date ranges cannot exceed 1 year in length. See Date ranges for details of inclusive and exclusive dates.  *Note**: Details for payments processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline payments have a `created_at` value that reflects the time the payment was originally processed, not the time it was subsequently transmitted to Square. Consequently, the ListPayments endpoint might list an offline payment chronologically between online payments that were seen in a previous request.
     # @param location_id The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order The order in which payments are listed in the response.
@@ -215,8 +214,8 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-    # Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+    # ListPayments
+    # Provides summary information for all payments taken for a given Square account during a date range. Date ranges cannot exceed 1 year in length. See Date ranges for details of inclusive and exclusive dates.  *Note**: Details for payments processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline payments have a &#x60;created_at&#x60; value that reflects the time the payment was originally processed, not the time it was subsequently transmitted to Square. Consequently, the ListPayments endpoint might list an offline payment chronologically between online payments that were seen in a previous request.
     # @param location_id The ID of the location to list payments for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order The order in which payments are listed in the response.
@@ -232,13 +231,9 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1TransactionsApi.list_payments" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1TransactionsApi.list_payments, must be smaller than or equal to 200.'
-      end
-
       # resource path
       local_var_path = "/v1/{location_id}/payments".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -258,6 +253,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -278,7 +274,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
+    # ListRefunds
     # Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
     # @param location_id The ID of the location to list refunds for.
     # @param [Hash] opts the optional parameters
@@ -293,7 +289,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
+    # ListRefunds
     # Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
     # @param location_id The ID of the location to list refunds for.
     # @param [Hash] opts the optional parameters
@@ -309,13 +305,9 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1TransactionsApi.list_refunds" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1TransactionsApi.list_refunds, must be smaller than or equal to 200.'
-      end
-
       # resource path
       local_var_path = "/v1/{location_id}/refunds".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -334,6 +326,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -354,8 +347,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. 
+    # ListSettlements
+    # Provides summary information for all deposits and withdrawals initiated by Square to a linked bank account during a date range. Date ranges cannot exceed one year in length.  *Note**: the ListSettlements endpoint does not provide entry information.
     # @param location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order TThe order in which payments are listed in the response.
@@ -370,8 +363,8 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-    # Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length. 
+    # ListSettlements
+    # Provides summary information for all deposits and withdrawals initiated by Square to a linked bank account during a date range. Date ranges cannot exceed one year in length.  *Note**: the ListSettlements endpoint does not provide entry information.
     # @param location_id The ID of the location to list settlements for. If you specify me, this endpoint returns payments aggregated from all of the business&#39;s locations.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order TThe order in which payments are listed in the response.
@@ -387,13 +380,9 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1TransactionsApi.list_settlements" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1TransactionsApi.list_settlements, must be smaller than or equal to 200.'
-      end
-
       if opts[:'status'] && !['SENT', 'FAILED'].include?(opts[:'status'])
         fail ArgumentError, 'invalid value for "status", must be one of SENT, FAILED'
       end
@@ -416,6 +405,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -436,7 +426,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+    # RetrieveBankAccount
     # Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
     # @param location_id The ID of the bank account&#39;s associated location.
     # @param bank_account_id The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned.
@@ -447,7 +437,7 @@ module SquareConnect
       return data
     end
 
-    # Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+    # RetrieveBankAccount
     # Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
     # @param location_id The ID of the bank account&#39;s associated location.
     # @param bank_account_id The bank account&#39;s Square-issued ID. You obtain this value from Settlement objects returned.
@@ -474,6 +464,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -494,7 +485,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides comprehensive information for a single online store order, including the order's history.
+    # RetrieveOrder
     # Provides comprehensive information for a single online store order, including the order's history.
     # @param location_id The ID of the order&#39;s associated location.
     # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
@@ -505,7 +496,7 @@ module SquareConnect
       return data
     end
 
-    # Provides comprehensive information for a single online store order, including the order&#39;s history.
+    # RetrieveOrder
     # Provides comprehensive information for a single online store order, including the order&#39;s history.
     # @param location_id The ID of the order&#39;s associated location.
     # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
@@ -532,6 +523,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -552,7 +544,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides comprehensive information for a single payment.
+    # RetrievePayment
     # Provides comprehensive information for a single payment.
     # @param location_id The ID of the payment&#39;s associated location.
     # @param payment_id The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint.
@@ -563,7 +555,7 @@ module SquareConnect
       return data
     end
 
-    # Provides comprehensive information for a single payment.
+    # RetrievePayment
     # Provides comprehensive information for a single payment.
     # @param location_id The ID of the payment&#39;s associated location.
     # @param payment_id The Square-issued payment ID. payment_id comes from Payment objects returned by the List Payments endpoint, Settlement objects returned by the List Settlements endpoint, or Refund objects returned by the List Refunds endpoint.
@@ -590,6 +582,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -610,8 +603,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
+    # RetrieveSettlement
+    # Provides comprehensive information for a single settlement.  The returned `Settlement` objects include an `entries` field that lists the transactions that contribute to the settlement total. Most settlement entries correspond to a payment payout, but settlement entries are also generated for less common events, like refunds, manual adjustments, or chargeback holds.  Square initiates its regular deposits as indicated in the [Deposit Options with Square](https://squareup.com/help/us/en/article/3807) help article. Details for a regular deposit are usually not available from Connect API endpoints before 10 p.m. PST the same day.  Square does not know when an initiated settlement **completes**, only whether it has failed. A completed settlement is typically reflected in a bank account within 3 business days, but in exceptional cases it may take longer.
     # @param location_id The ID of the settlements&#39;s associated location.
     # @param settlement_id The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint.
     # @param [Hash] opts the optional parameters
@@ -621,8 +614,8 @@ module SquareConnect
       return data
     end
 
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-    # Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
+    # RetrieveSettlement
+    # Provides comprehensive information for a single settlement.  The returned &#x60;Settlement&#x60; objects include an &#x60;entries&#x60; field that lists the transactions that contribute to the settlement total. Most settlement entries correspond to a payment payout, but settlement entries are also generated for less common events, like refunds, manual adjustments, or chargeback holds.  Square initiates its regular deposits as indicated in the [Deposit Options with Square](https://squareup.com/help/us/en/article/3807) help article. Details for a regular deposit are usually not available from Connect API endpoints before 10 p.m. PST the same day.  Square does not know when an initiated settlement **completes**, only whether it has failed. A completed settlement is typically reflected in a bank account within 3 business days, but in exceptional cases it may take longer.
     # @param location_id The ID of the settlements&#39;s associated location.
     # @param settlement_id The settlement&#39;s Square-issued ID. You obtain this value from Settlement objects returned by the List Settlements endpoint.
     # @param [Hash] opts the optional parameters
@@ -648,6 +641,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -668,7 +662,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+    # UpdateOrder
     # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
     # @param location_id The ID of the order&#39;s associated location.
     # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
@@ -680,7 +674,7 @@ module SquareConnect
       return data
     end
 
-    # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+    # UpdateOrder
     # Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
     # @param location_id The ID of the order&#39;s associated location.
     # @param order_id The order&#39;s Square-issued ID. You obtain this value from Order objects returned by the List Orders endpoint
@@ -710,6 +704,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}

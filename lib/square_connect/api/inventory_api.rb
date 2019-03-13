@@ -51,7 +51,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -106,7 +106,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -161,7 +161,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -216,7 +216,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -242,7 +242,7 @@ module SquareConnect
     # @param catalog_object_id ID of the [CatalogObject](#type-catalogobject) to retrieve.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :location_ids The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
-    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
     # @return [RetrieveInventoryChangesResponse]
     def retrieve_inventory_changes(catalog_object_id, opts = {})
       data, _status_code, _headers = retrieve_inventory_changes_with_http_info(catalog_object_id, opts)
@@ -254,7 +254,7 @@ module SquareConnect
     # @param catalog_object_id ID of the [CatalogObject](#type-catalogobject) to retrieve.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :location_ids The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
-    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
     # @return [Array<(RetrieveInventoryChangesResponse, Fixnum, Hash)>] RetrieveInventoryChangesResponse data, response status code and response headers
     def retrieve_inventory_changes_with_http_info(catalog_object_id, opts = {})
       if @api_client.config.debugging
@@ -277,7 +277,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -303,7 +303,7 @@ module SquareConnect
     # @param catalog_object_id ID of the [CatalogObject](#type-catalogobject) to retrieve.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :location_ids The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
-    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
     # @return [RetrieveInventoryCountResponse]
     def retrieve_inventory_count(catalog_object_id, opts = {})
       data, _status_code, _headers = retrieve_inventory_count_with_http_info(catalog_object_id, opts)
@@ -315,7 +315,7 @@ module SquareConnect
     # @param catalog_object_id ID of the [CatalogObject](#type-catalogobject) to retrieve.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :location_ids The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
-    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
     # @return [Array<(RetrieveInventoryCountResponse, Fixnum, Hash)>] RetrieveInventoryCountResponse data, response status code and response headers
     def retrieve_inventory_count_with_http_info(catalog_object_id, opts = {})
       if @api_client.config.debugging
@@ -338,7 +338,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -393,7 +393,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}

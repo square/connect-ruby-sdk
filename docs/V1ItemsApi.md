@@ -4,52 +4,52 @@ All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**adjust_inventory**](V1ItemsApi.md#adjust_inventory) | **POST** /v1/{location_id}/inventory/{variation_id} | Adjusts an item variation&#39;s current available inventory.
-[**apply_fee**](V1ItemsApi.md#apply_fee) | **PUT** /v1/{location_id}/items/{item_id}/fees/{fee_id} | Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
-[**apply_modifier_list**](V1ItemsApi.md#apply_modifier_list) | **PUT** /v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id} | Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
-[**create_category**](V1ItemsApi.md#create_category) | **POST** /v1/{location_id}/categories | Creates an item category.
-[**create_discount**](V1ItemsApi.md#create_discount) | **POST** /v1/{location_id}/discounts | Creates a discount.
-[**create_fee**](V1ItemsApi.md#create_fee) | **POST** /v1/{location_id}/fees | Creates a fee (tax).
-[**create_item**](V1ItemsApi.md#create_item) | **POST** /v1/{location_id}/items | Creates an item and at least one variation for it.
-[**create_modifier_list**](V1ItemsApi.md#create_modifier_list) | **POST** /v1/{location_id}/modifier-lists | Creates an item modifier list and at least one modifier option for it.
-[**create_modifier_option**](V1ItemsApi.md#create_modifier_option) | **POST** /v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options | Creates an item modifier option and adds it to a modifier list.
-[**create_page**](V1ItemsApi.md#create_page) | **POST** /v1/{location_id}/pages | Creates a Favorites page in Square Register.
-[**create_variation**](V1ItemsApi.md#create_variation) | **POST** /v1/{location_id}/items/{item_id}/variations | Creates an item variation for an existing item.
-[**delete_category**](V1ItemsApi.md#delete_category) | **DELETE** /v1/{location_id}/categories/{category_id} | Deletes an existing item category.
-[**delete_discount**](V1ItemsApi.md#delete_discount) | **DELETE** /v1/{location_id}/discounts/{discount_id} | Deletes an existing discount.
-[**delete_fee**](V1ItemsApi.md#delete_fee) | **DELETE** /v1/{location_id}/fees/{fee_id} | Deletes an existing fee (tax).
-[**delete_item**](V1ItemsApi.md#delete_item) | **DELETE** /v1/{location_id}/items/{item_id} | Deletes an existing item and all item variations associated with it.
-[**delete_modifier_list**](V1ItemsApi.md#delete_modifier_list) | **DELETE** /v1/{location_id}/modifier-lists/{modifier_list_id} | Deletes an existing item modifier list and all modifier options associated with it.
-[**delete_modifier_option**](V1ItemsApi.md#delete_modifier_option) | **DELETE** /v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id} | Deletes an existing item modifier option from a modifier list.
-[**delete_page**](V1ItemsApi.md#delete_page) | **DELETE** /v1/{location_id}/pages/{page_id} | Deletes an existing Favorites page and all of its cells.
-[**delete_page_cell**](V1ItemsApi.md#delete_page_cell) | **DELETE** /v1/{location_id}/pages/{page_id}/cells | Deletes a cell from a Favorites page in Square Register.
-[**delete_variation**](V1ItemsApi.md#delete_variation) | **DELETE** /v1/{location_id}/items/{item_id}/variations/{variation_id} | Deletes an existing item variation from an item.
-[**list_categories**](V1ItemsApi.md#list_categories) | **GET** /v1/{location_id}/categories | Lists all of a location&#39;s item categories.
-[**list_discounts**](V1ItemsApi.md#list_discounts) | **GET** /v1/{location_id}/discounts | Lists all of a location&#39;s discounts.
-[**list_fees**](V1ItemsApi.md#list_fees) | **GET** /v1/{location_id}/fees | Lists all of a location&#39;s fees (taxes).
-[**list_inventory**](V1ItemsApi.md#list_inventory) | **GET** /v1/{location_id}/inventory | Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
-[**list_items**](V1ItemsApi.md#list_items) | **GET** /v1/{location_id}/items | Provides summary information for all of a location&#39;s items.
-[**list_modifier_lists**](V1ItemsApi.md#list_modifier_lists) | **GET** /v1/{location_id}/modifier-lists | Lists all of a location&#39;s modifier lists.
-[**list_pages**](V1ItemsApi.md#list_pages) | **GET** /v1/{location_id}/pages | Lists all of a location&#39;s Favorites pages in Square Register.
-[**remove_fee**](V1ItemsApi.md#remove_fee) | **DELETE** /v1/{location_id}/items/{item_id}/fees/{fee_id} | Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
-[**remove_modifier_list**](V1ItemsApi.md#remove_modifier_list) | **DELETE** /v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id} | Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
-[**retrieve_item**](V1ItemsApi.md#retrieve_item) | **GET** /v1/{location_id}/items/{item_id} | Provides the details for a single item, including associated modifier lists and fees.
-[**retrieve_modifier_list**](V1ItemsApi.md#retrieve_modifier_list) | **GET** /v1/{location_id}/modifier-lists/{modifier_list_id} | Provides the details for a single modifier list.
-[**update_category**](V1ItemsApi.md#update_category) | **PUT** /v1/{location_id}/categories/{category_id} | Modifies the details of an existing item category.
-[**update_discount**](V1ItemsApi.md#update_discount) | **PUT** /v1/{location_id}/discounts/{discount_id} | Modifies the details of an existing discount.
-[**update_fee**](V1ItemsApi.md#update_fee) | **PUT** /v1/{location_id}/fees/{fee_id} | Modifies the details of an existing fee (tax).
-[**update_item**](V1ItemsApi.md#update_item) | **PUT** /v1/{location_id}/items/{item_id} | Modifies the core details of an existing item.
-[**update_modifier_list**](V1ItemsApi.md#update_modifier_list) | **PUT** /v1/{location_id}/modifier-lists/{modifier_list_id} | Modifies the details of an existing item modifier list.
-[**update_modifier_option**](V1ItemsApi.md#update_modifier_option) | **PUT** /v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id} | Modifies the details of an existing item modifier option.
-[**update_page**](V1ItemsApi.md#update_page) | **PUT** /v1/{location_id}/pages/{page_id} | Modifies the details of a Favorites page in Square Register.
-[**update_page_cell**](V1ItemsApi.md#update_page_cell) | **PUT** /v1/{location_id}/pages/{page_id}/cells | Modifies a cell of a Favorites page in Square Register.
-[**update_variation**](V1ItemsApi.md#update_variation) | **PUT** /v1/{location_id}/items/{item_id}/variations/{variation_id} | Modifies the details of an existing item variation.
+[**adjust_inventory**](V1ItemsApi.md#adjust_inventory) | **POST** /v1/{location_id}/inventory/{variation_id} | AdjustInventory
+[**apply_fee**](V1ItemsApi.md#apply_fee) | **PUT** /v1/{location_id}/items/{item_id}/fees/{fee_id} | ApplyFee
+[**apply_modifier_list**](V1ItemsApi.md#apply_modifier_list) | **PUT** /v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id} | ApplyModifierList
+[**create_category**](V1ItemsApi.md#create_category) | **POST** /v1/{location_id}/categories | CreateCategory
+[**create_discount**](V1ItemsApi.md#create_discount) | **POST** /v1/{location_id}/discounts | CreateDiscount
+[**create_fee**](V1ItemsApi.md#create_fee) | **POST** /v1/{location_id}/fees | CreateFee
+[**create_item**](V1ItemsApi.md#create_item) | **POST** /v1/{location_id}/items | CreateItem
+[**create_modifier_list**](V1ItemsApi.md#create_modifier_list) | **POST** /v1/{location_id}/modifier-lists | CreateModifierList
+[**create_modifier_option**](V1ItemsApi.md#create_modifier_option) | **POST** /v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options | CreateModifierOption
+[**create_page**](V1ItemsApi.md#create_page) | **POST** /v1/{location_id}/pages | CreatePage
+[**create_variation**](V1ItemsApi.md#create_variation) | **POST** /v1/{location_id}/items/{item_id}/variations | CreateVariation
+[**delete_category**](V1ItemsApi.md#delete_category) | **DELETE** /v1/{location_id}/categories/{category_id} | DeleteCategory
+[**delete_discount**](V1ItemsApi.md#delete_discount) | **DELETE** /v1/{location_id}/discounts/{discount_id} | DeleteDiscount
+[**delete_fee**](V1ItemsApi.md#delete_fee) | **DELETE** /v1/{location_id}/fees/{fee_id} | DeleteFee
+[**delete_item**](V1ItemsApi.md#delete_item) | **DELETE** /v1/{location_id}/items/{item_id} | DeleteItem
+[**delete_modifier_list**](V1ItemsApi.md#delete_modifier_list) | **DELETE** /v1/{location_id}/modifier-lists/{modifier_list_id} | DeleteModifierList
+[**delete_modifier_option**](V1ItemsApi.md#delete_modifier_option) | **DELETE** /v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id} | DeleteModifierOption
+[**delete_page**](V1ItemsApi.md#delete_page) | **DELETE** /v1/{location_id}/pages/{page_id} | DeletePage
+[**delete_page_cell**](V1ItemsApi.md#delete_page_cell) | **DELETE** /v1/{location_id}/pages/{page_id}/cells | DeletePageCell
+[**delete_variation**](V1ItemsApi.md#delete_variation) | **DELETE** /v1/{location_id}/items/{item_id}/variations/{variation_id} | DeleteVariation
+[**list_categories**](V1ItemsApi.md#list_categories) | **GET** /v1/{location_id}/categories | ListCategories
+[**list_discounts**](V1ItemsApi.md#list_discounts) | **GET** /v1/{location_id}/discounts | ListDiscounts
+[**list_fees**](V1ItemsApi.md#list_fees) | **GET** /v1/{location_id}/fees | ListFees
+[**list_inventory**](V1ItemsApi.md#list_inventory) | **GET** /v1/{location_id}/inventory | ListInventory
+[**list_items**](V1ItemsApi.md#list_items) | **GET** /v1/{location_id}/items | ListItems
+[**list_modifier_lists**](V1ItemsApi.md#list_modifier_lists) | **GET** /v1/{location_id}/modifier-lists | ListModifierLists
+[**list_pages**](V1ItemsApi.md#list_pages) | **GET** /v1/{location_id}/pages | ListPages
+[**remove_fee**](V1ItemsApi.md#remove_fee) | **DELETE** /v1/{location_id}/items/{item_id}/fees/{fee_id} | RemoveFee
+[**remove_modifier_list**](V1ItemsApi.md#remove_modifier_list) | **DELETE** /v1/{location_id}/items/{item_id}/modifier-lists/{modifier_list_id} | RemoveModifierList
+[**retrieve_item**](V1ItemsApi.md#retrieve_item) | **GET** /v1/{location_id}/items/{item_id} | RetrieveItem
+[**retrieve_modifier_list**](V1ItemsApi.md#retrieve_modifier_list) | **GET** /v1/{location_id}/modifier-lists/{modifier_list_id} | RetrieveModifierList
+[**update_category**](V1ItemsApi.md#update_category) | **PUT** /v1/{location_id}/categories/{category_id} | UpdateCategory
+[**update_discount**](V1ItemsApi.md#update_discount) | **PUT** /v1/{location_id}/discounts/{discount_id} | UpdateDiscount
+[**update_fee**](V1ItemsApi.md#update_fee) | **PUT** /v1/{location_id}/fees/{fee_id} | UpdateFee
+[**update_item**](V1ItemsApi.md#update_item) | **PUT** /v1/{location_id}/items/{item_id} | UpdateItem
+[**update_modifier_list**](V1ItemsApi.md#update_modifier_list) | **PUT** /v1/{location_id}/modifier-lists/{modifier_list_id} | UpdateModifierList
+[**update_modifier_option**](V1ItemsApi.md#update_modifier_option) | **PUT** /v1/{location_id}/modifier-lists/{modifier_list_id}/modifier-options/{modifier_option_id} | UpdateModifierOption
+[**update_page**](V1ItemsApi.md#update_page) | **PUT** /v1/{location_id}/pages/{page_id} | UpdatePage
+[**update_page_cell**](V1ItemsApi.md#update_page_cell) | **PUT** /v1/{location_id}/pages/{page_id}/cells | UpdatePageCell
+[**update_variation**](V1ItemsApi.md#update_variation) | **PUT** /v1/{location_id}/items/{item_id}/variations/{variation_id} | UpdateVariation
 
 
 # **adjust_inventory**
 > V1InventoryEntry adjust_inventory(location_id, variation_id, body)
 
-Adjusts an item variation's current available inventory.
+AdjustInventory
 
 Adjusts an item variation's current available inventory.
 
@@ -73,7 +73,7 @@ body = SquareConnect::V1AdjustInventoryRequest.new # V1AdjustInventoryRequest | 
 
 
 begin
-  #Adjusts an item variation's current available inventory.
+  #AdjustInventory
   result = api_instance.adjust_inventory(location_id, variation_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 # **apply_fee**
 > V1Item apply_fee(location_id, item_id, fee_id)
 
-Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+ApplyFee
 
 Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
 
@@ -131,7 +131,7 @@ fee_id = "fee_id_example" # String | The ID of the fee to apply.
 
 
 begin
-  #Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+  #ApplyFee
   result = api_instance.apply_fee(location_id, item_id, fee_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 # **apply_modifier_list**
 > V1Item apply_modifier_list(location_id, modifier_list_id, item_id)
 
-Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+ApplyModifierList
 
 Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
 
@@ -189,7 +189,7 @@ item_id = "item_id_example" # String | The ID of the item to add the modifier li
 
 
 begin
-  #Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+  #ApplyModifierList
   result = api_instance.apply_modifier_list(location_id, modifier_list_id, item_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 # **create_category**
 > V1Category create_category(location_id, body)
 
-Creates an item category.
+CreateCategory
 
 Creates an item category.
 
@@ -245,7 +245,7 @@ body = SquareConnect::V1Category.new # V1Category | An object containing the fie
 
 
 begin
-  #Creates an item category.
+  #CreateCategory
   result = api_instance.create_category(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 # **create_discount**
 > V1Discount create_discount(location_id, body)
 
-Creates a discount.
+CreateDiscount
 
 Creates a discount.
 
@@ -300,7 +300,7 @@ body = SquareConnect::V1Discount.new # V1Discount | An object containing the fie
 
 
 begin
-  #Creates a discount.
+  #CreateDiscount
   result = api_instance.create_discount(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 # **create_fee**
 > V1Fee create_fee(location_id, body)
 
-Creates a fee (tax).
+CreateFee
 
 Creates a fee (tax).
 
@@ -355,7 +355,7 @@ body = SquareConnect::V1Fee.new # V1Fee | An object containing the fields to POS
 
 
 begin
-  #Creates a fee (tax).
+  #CreateFee
   result = api_instance.create_fee(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -388,9 +388,9 @@ Name | Type | Description  | Notes
 # **create_item**
 > V1Item create_item(location_id, body)
 
-Creates an item and at least one variation for it.
+CreateItem
 
-Creates an item and at least one variation for it.
+Creates an item and at least one variation for it. Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify its `id`. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a `user_data` string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
 
 ### Example
 ```ruby
@@ -410,7 +410,7 @@ body = SquareConnect::V1Item.new # V1Item | An object containing the fields to P
 
 
 begin
-  #Creates an item and at least one variation for it.
+  #CreateItem
   result = api_instance.create_item(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -443,7 +443,7 @@ Name | Type | Description  | Notes
 # **create_modifier_list**
 > V1ModifierList create_modifier_list(location_id, body)
 
-Creates an item modifier list and at least one modifier option for it.
+CreateModifierList
 
 Creates an item modifier list and at least one modifier option for it.
 
@@ -465,7 +465,7 @@ body = SquareConnect::V1ModifierList.new # V1ModifierList | An object containing
 
 
 begin
-  #Creates an item modifier list and at least one modifier option for it.
+  #CreateModifierList
   result = api_instance.create_modifier_list(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 # **create_modifier_option**
 > V1ModifierOption create_modifier_option(location_id, modifier_list_id, body)
 
-Creates an item modifier option and adds it to a modifier list.
+CreateModifierOption
 
 Creates an item modifier option and adds it to a modifier list.
 
@@ -522,7 +522,7 @@ body = SquareConnect::V1ModifierOption.new # V1ModifierOption | An object contai
 
 
 begin
-  #Creates an item modifier option and adds it to a modifier list.
+  #CreateModifierOption
   result = api_instance.create_modifier_option(location_id, modifier_list_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 # **create_page**
 > V1Page create_page(location_id, body)
 
-Creates a Favorites page in Square Register.
+CreatePage
 
 Creates a Favorites page in Square Register.
 
@@ -578,7 +578,7 @@ body = SquareConnect::V1Page.new # V1Page | An object containing the fields to P
 
 
 begin
-  #Creates a Favorites page in Square Register.
+  #CreatePage
   result = api_instance.create_page(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -611,7 +611,7 @@ Name | Type | Description  | Notes
 # **create_variation**
 > V1Variation create_variation(location_id, item_id, body)
 
-Creates an item variation for an existing item.
+CreateVariation
 
 Creates an item variation for an existing item.
 
@@ -635,7 +635,7 @@ body = SquareConnect::V1Variation.new # V1Variation | An object containing the f
 
 
 begin
-  #Creates an item variation for an existing item.
+  #CreateVariation
   result = api_instance.create_variation(location_id, item_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -669,9 +669,9 @@ Name | Type | Description  | Notes
 # **delete_category**
 > V1Category delete_category(location_id, category_id)
 
-Deletes an existing item category.
+DeleteCategory
 
-Deletes an existing item category.
+Deletes an existing item category. *Note**: DeleteCategory returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteCategoryRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -691,7 +691,7 @@ category_id = "category_id_example" # String | The ID of the category to delete.
 
 
 begin
-  #Deletes an existing item category.
+  #DeleteCategory
   result = api_instance.delete_category(location_id, category_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -724,9 +724,9 @@ Name | Type | Description  | Notes
 # **delete_discount**
 > V1Discount delete_discount(location_id, discount_id)
 
-Deletes an existing discount.
+DeleteDiscount
 
-Deletes an existing discount.
+Deletes an existing discount. *Note**: DeleteDiscount returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteDiscountRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -746,7 +746,7 @@ discount_id = "discount_id_example" # String | The ID of the discount to delete.
 
 
 begin
-  #Deletes an existing discount.
+  #DeleteDiscount
   result = api_instance.delete_discount(location_id, discount_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -779,9 +779,9 @@ Name | Type | Description  | Notes
 # **delete_fee**
 > V1Fee delete_fee(location_id, fee_id)
 
-Deletes an existing fee (tax).
+DeleteFee
 
-Deletes an existing fee (tax).
+Deletes an existing fee (tax). *Note**: DeleteFee returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteFeeRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -801,7 +801,7 @@ fee_id = "fee_id_example" # String | The ID of the fee to delete.
 
 
 begin
-  #Deletes an existing fee (tax).
+  #DeleteFee
   result = api_instance.delete_fee(location_id, fee_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -834,9 +834,9 @@ Name | Type | Description  | Notes
 # **delete_item**
 > V1Item delete_item(location_id, item_id)
 
-Deletes an existing item and all item variations associated with it.
+DeleteItem
 
-Deletes an existing item and all item variations associated with it.
+Deletes an existing item and all item variations associated with it. *Note**: DeleteItem returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteItemRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -856,7 +856,7 @@ item_id = "item_id_example" # String | The ID of the item to modify.
 
 
 begin
-  #Deletes an existing item and all item variations associated with it.
+  #DeleteItem
   result = api_instance.delete_item(location_id, item_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -889,9 +889,9 @@ Name | Type | Description  | Notes
 # **delete_modifier_list**
 > V1ModifierList delete_modifier_list(location_id, modifier_list_id)
 
-Deletes an existing item modifier list and all modifier options associated with it.
+DeleteModifierList
 
-Deletes an existing item modifier list and all modifier options associated with it.
+Deletes an existing item modifier list and all modifier options associated with it. *Note**: DeleteModifierList returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteModifierListRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -911,7 +911,7 @@ modifier_list_id = "modifier_list_id_example" # String | The ID of the modifier 
 
 
 begin
-  #Deletes an existing item modifier list and all modifier options associated with it.
+  #DeleteModifierList
   result = api_instance.delete_modifier_list(location_id, modifier_list_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -944,9 +944,9 @@ Name | Type | Description  | Notes
 # **delete_modifier_option**
 > V1ModifierOption delete_modifier_option(location_id, modifier_list_id, modifier_option_id)
 
-Deletes an existing item modifier option from a modifier list.
+DeleteModifierOption
 
-Deletes an existing item modifier option from a modifier list.
+Deletes an existing item modifier option from a modifier list. *Note**: DeleteModifierOption returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteModifierOptionRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -968,7 +968,7 @@ modifier_option_id = "modifier_option_id_example" # String | The ID of the modif
 
 
 begin
-  #Deletes an existing item modifier option from a modifier list.
+  #DeleteModifierOption
   result = api_instance.delete_modifier_option(location_id, modifier_list_id, modifier_option_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1002,9 +1002,9 @@ Name | Type | Description  | Notes
 # **delete_page**
 > V1Page delete_page(location_id, page_id)
 
-Deletes an existing Favorites page and all of its cells.
+DeletePage
 
-Deletes an existing Favorites page and all of its cells.
+Deletes an existing Favorites page and all of its cells. *Note**: DeletePage returns nothing on success but Connect SDKs map the empty response to an empty `V1DeletePageRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -1024,7 +1024,7 @@ page_id = "page_id_example" # String | The ID of the page to delete.
 
 
 begin
-  #Deletes an existing Favorites page and all of its cells.
+  #DeletePage
   result = api_instance.delete_page(location_id, page_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1057,9 +1057,9 @@ Name | Type | Description  | Notes
 # **delete_page_cell**
 > V1Page delete_page_cell(location_id, page_id, opts)
 
-Deletes a cell from a Favorites page in Square Register.
+DeletePageCell
 
-Deletes a cell from a Favorites page in Square Register.
+Deletes a cell from a Favorites page in Square Register. *Note**: DeletePageCell returns nothing on success but Connect SDKs map the empty response to an empty `V1DeletePageCellRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -1083,7 +1083,7 @@ opts = {
 }
 
 begin
-  #Deletes a cell from a Favorites page in Square Register.
+  #DeletePageCell
   result = api_instance.delete_page_cell(location_id, page_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -1118,9 +1118,9 @@ Name | Type | Description  | Notes
 # **delete_variation**
 > V1Variation delete_variation(location_id, item_id, variation_id)
 
-Deletes an existing item variation from an item.
+DeleteVariation
 
-Deletes an existing item variation from an item.
+Deletes an existing item variation from an item. *Note**: DeleteVariation returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteVariationRequest` object as documented below.
 
 ### Example
 ```ruby
@@ -1142,7 +1142,7 @@ variation_id = "variation_id_example" # String | The ID of the variation to dele
 
 
 begin
-  #Deletes an existing item variation from an item.
+  #DeleteVariation
   result = api_instance.delete_variation(location_id, item_id, variation_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1176,7 +1176,7 @@ Name | Type | Description  | Notes
 # **list_categories**
 > Array&lt;V1Category&gt; list_categories(location_id)
 
-Lists all of a location's item categories.
+ListCategories
 
 Lists all of a location's item categories.
 
@@ -1196,7 +1196,7 @@ location_id = "location_id_example" # String | The ID of the location to list ca
 
 
 begin
-  #Lists all of a location's item categories.
+  #ListCategories
   result = api_instance.list_categories(location_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1228,7 +1228,7 @@ Name | Type | Description  | Notes
 # **list_discounts**
 > Array&lt;V1Discount&gt; list_discounts(location_id)
 
-Lists all of a location's discounts.
+ListDiscounts
 
 Lists all of a location's discounts.
 
@@ -1248,7 +1248,7 @@ location_id = "location_id_example" # String | The ID of the location to list ca
 
 
 begin
-  #Lists all of a location's discounts.
+  #ListDiscounts
   result = api_instance.list_discounts(location_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1280,7 +1280,7 @@ Name | Type | Description  | Notes
 # **list_fees**
 > Array&lt;V1Fee&gt; list_fees(location_id)
 
-Lists all of a location's fees (taxes).
+ListFees
 
 Lists all of a location's fees (taxes).
 
@@ -1300,7 +1300,7 @@ location_id = "location_id_example" # String | The ID of the location to list fe
 
 
 begin
-  #Lists all of a location's fees (taxes).
+  #ListFees
   result = api_instance.list_fees(location_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1332,7 +1332,7 @@ Name | Type | Description  | Notes
 # **list_inventory**
 > Array&lt;V1InventoryEntry&gt; list_inventory(location_id, opts)
 
-Provides inventory information for all of a merchant's inventory-enabled item variations.
+ListInventory
 
 Provides inventory information for all of a merchant's inventory-enabled item variations.
 
@@ -1356,7 +1356,7 @@ opts = {
 }
 
 begin
-  #Provides inventory information for all of a merchant's inventory-enabled item variations.
+  #ListInventory
   result = api_instance.list_inventory(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -1390,7 +1390,7 @@ Name | Type | Description  | Notes
 # **list_items**
 > Array&lt;V1Item&gt; list_items(location_id, opts)
 
-Provides summary information for all of a location's items.
+ListItems
 
 Provides summary information for all of a location's items.
 
@@ -1413,7 +1413,7 @@ opts = {
 }
 
 begin
-  #Provides summary information for all of a location's items.
+  #ListItems
   result = api_instance.list_items(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -1446,7 +1446,7 @@ Name | Type | Description  | Notes
 # **list_modifier_lists**
 > Array&lt;V1ModifierList&gt; list_modifier_lists(location_id)
 
-Lists all of a location's modifier lists.
+ListModifierLists
 
 Lists all of a location's modifier lists.
 
@@ -1466,7 +1466,7 @@ location_id = "location_id_example" # String | The ID of the location to list mo
 
 
 begin
-  #Lists all of a location's modifier lists.
+  #ListModifierLists
   result = api_instance.list_modifier_lists(location_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1498,7 +1498,7 @@ Name | Type | Description  | Notes
 # **list_pages**
 > Array&lt;V1Page&gt; list_pages(location_id)
 
-Lists all of a location's Favorites pages in Square Register.
+ListPages
 
 Lists all of a location's Favorites pages in Square Register.
 
@@ -1518,7 +1518,7 @@ location_id = "location_id_example" # String | The ID of the location to list Fa
 
 
 begin
-  #Lists all of a location's Favorites pages in Square Register.
+  #ListPages
   result = api_instance.list_pages(location_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1550,7 +1550,7 @@ Name | Type | Description  | Notes
 # **remove_fee**
 > V1Item remove_fee(location_id, item_id, fee_id)
 
-Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+RemoveFee
 
 Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
 
@@ -1574,7 +1574,7 @@ fee_id = "fee_id_example" # String | The ID of the fee to apply.
 
 
 begin
-  #Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+  #RemoveFee
   result = api_instance.remove_fee(location_id, item_id, fee_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1608,7 +1608,7 @@ Name | Type | Description  | Notes
 # **remove_modifier_list**
 > V1Item remove_modifier_list(location_id, modifier_list_id, item_id)
 
-Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+RemoveModifierList
 
 Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
 
@@ -1632,7 +1632,7 @@ item_id = "item_id_example" # String | The ID of the item to remove the modifier
 
 
 begin
-  #Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+  #RemoveModifierList
   result = api_instance.remove_modifier_list(location_id, modifier_list_id, item_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1666,7 +1666,7 @@ Name | Type | Description  | Notes
 # **retrieve_item**
 > V1Item retrieve_item(location_id, item_id)
 
-Provides the details for a single item, including associated modifier lists and fees.
+RetrieveItem
 
 Provides the details for a single item, including associated modifier lists and fees.
 
@@ -1688,7 +1688,7 @@ item_id = "item_id_example" # String | The item's ID.
 
 
 begin
-  #Provides the details for a single item, including associated modifier lists and fees.
+  #RetrieveItem
   result = api_instance.retrieve_item(location_id, item_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1721,7 +1721,7 @@ Name | Type | Description  | Notes
 # **retrieve_modifier_list**
 > V1ModifierList retrieve_modifier_list(location_id, modifier_list_id)
 
-Provides the details for a single modifier list.
+RetrieveModifierList
 
 Provides the details for a single modifier list.
 
@@ -1743,7 +1743,7 @@ modifier_list_id = "modifier_list_id_example" # String | The modifier list's ID.
 
 
 begin
-  #Provides the details for a single modifier list.
+  #RetrieveModifierList
   result = api_instance.retrieve_modifier_list(location_id, modifier_list_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -1776,7 +1776,7 @@ Name | Type | Description  | Notes
 # **update_category**
 > V1Category update_category(location_id, category_id, body)
 
-Modifies the details of an existing item category.
+UpdateCategory
 
 Modifies the details of an existing item category.
 
@@ -1800,7 +1800,7 @@ body = SquareConnect::V1Category.new # V1Category | An object containing the fie
 
 
 begin
-  #Modifies the details of an existing item category.
+  #UpdateCategory
   result = api_instance.update_category(location_id, category_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -1834,7 +1834,7 @@ Name | Type | Description  | Notes
 # **update_discount**
 > V1Discount update_discount(location_id, discount_id, body)
 
-Modifies the details of an existing discount.
+UpdateDiscount
 
 Modifies the details of an existing discount.
 
@@ -1858,7 +1858,7 @@ body = SquareConnect::V1Discount.new # V1Discount | An object containing the fie
 
 
 begin
-  #Modifies the details of an existing discount.
+  #UpdateDiscount
   result = api_instance.update_discount(location_id, discount_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -1892,7 +1892,7 @@ Name | Type | Description  | Notes
 # **update_fee**
 > V1Fee update_fee(location_id, fee_id, body)
 
-Modifies the details of an existing fee (tax).
+UpdateFee
 
 Modifies the details of an existing fee (tax).
 
@@ -1916,7 +1916,7 @@ body = SquareConnect::V1Fee.new # V1Fee | An object containing the fields to POS
 
 
 begin
-  #Modifies the details of an existing fee (tax).
+  #UpdateFee
   result = api_instance.update_fee(location_id, fee_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -1950,7 +1950,7 @@ Name | Type | Description  | Notes
 # **update_item**
 > V1Item update_item(location_id, item_id, body)
 
-Modifies the core details of an existing item.
+UpdateItem
 
 Modifies the core details of an existing item.
 
@@ -1974,7 +1974,7 @@ body = SquareConnect::V1Item.new # V1Item | An object containing the fields to P
 
 
 begin
-  #Modifies the core details of an existing item.
+  #UpdateItem
   result = api_instance.update_item(location_id, item_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -2008,7 +2008,7 @@ Name | Type | Description  | Notes
 # **update_modifier_list**
 > V1ModifierList update_modifier_list(location_id, modifier_list_id, body)
 
-Modifies the details of an existing item modifier list.
+UpdateModifierList
 
 Modifies the details of an existing item modifier list.
 
@@ -2032,7 +2032,7 @@ body = SquareConnect::V1UpdateModifierListRequest.new # V1UpdateModifierListRequ
 
 
 begin
-  #Modifies the details of an existing item modifier list.
+  #UpdateModifierList
   result = api_instance.update_modifier_list(location_id, modifier_list_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -2066,7 +2066,7 @@ Name | Type | Description  | Notes
 # **update_modifier_option**
 > V1ModifierOption update_modifier_option(location_id, modifier_list_id, modifier_option_id, body)
 
-Modifies the details of an existing item modifier option.
+UpdateModifierOption
 
 Modifies the details of an existing item modifier option.
 
@@ -2092,7 +2092,7 @@ body = SquareConnect::V1ModifierOption.new # V1ModifierOption | An object contai
 
 
 begin
-  #Modifies the details of an existing item modifier option.
+  #UpdateModifierOption
   result = api_instance.update_modifier_option(location_id, modifier_list_id, modifier_option_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -2127,7 +2127,7 @@ Name | Type | Description  | Notes
 # **update_page**
 > V1Page update_page(location_id, page_id, body)
 
-Modifies the details of a Favorites page in Square Register.
+UpdatePage
 
 Modifies the details of a Favorites page in Square Register.
 
@@ -2151,7 +2151,7 @@ body = SquareConnect::V1Page.new # V1Page | An object containing the fields to P
 
 
 begin
-  #Modifies the details of a Favorites page in Square Register.
+  #UpdatePage
   result = api_instance.update_page(location_id, page_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -2185,7 +2185,7 @@ Name | Type | Description  | Notes
 # **update_page_cell**
 > V1Page update_page_cell(location_id, page_id, body)
 
-Modifies a cell of a Favorites page in Square Register.
+UpdatePageCell
 
 Modifies a cell of a Favorites page in Square Register.
 
@@ -2209,7 +2209,7 @@ body = SquareConnect::V1PageCell.new # V1PageCell | An object containing the fie
 
 
 begin
-  #Modifies a cell of a Favorites page in Square Register.
+  #UpdatePageCell
   result = api_instance.update_page_cell(location_id, page_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -2243,7 +2243,7 @@ Name | Type | Description  | Notes
 # **update_variation**
 > V1Variation update_variation(location_id, item_id, variation_id, body)
 
-Modifies the details of an existing item variation.
+UpdateVariation
 
 Modifies the details of an existing item variation.
 
@@ -2269,7 +2269,7 @@ body = SquareConnect::V1Variation.new # V1Variation | An object containing the f
 
 
 begin
-  #Modifies the details of an existing item variation.
+  #UpdateVariation
   result = api_instance.update_variation(location_id, item_id, variation_id, body)
   p result
 rescue SquareConnect::ApiError => e

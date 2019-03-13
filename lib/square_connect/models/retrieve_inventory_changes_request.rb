@@ -15,7 +15,7 @@ module SquareConnect
     # The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
     attr_accessor :location_ids
 
-    # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+    # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
 

@@ -51,7 +51,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -110,7 +110,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -165,7 +165,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -224,7 +224,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -248,7 +248,7 @@ module SquareConnect
     # ListCustomers
     # Lists a business's customers.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information.
     # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values.
     # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values.
     # @return [ListCustomersResponse]
@@ -260,7 +260,7 @@ module SquareConnect
     # ListCustomers
     # Lists a business&#39;s customers.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information.
+    # @option opts [String] :cursor A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information.
     # @option opts [String] :sort_field Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values.
     # @option opts [String] :sort_order Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values.
     # @return [Array<(ListCustomersResponse, Fixnum, Hash)>] ListCustomersResponse data, response status code and response headers
@@ -290,7 +290,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -345,7 +345,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -400,7 +400,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -459,7 +459,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-02-13"
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}

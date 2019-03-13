@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Defines the fields included in the request body for the [SearchCustomers](#endpoint-searchcustomer) endpoint.
   class SearchCustomersRequest
-    # Include the pagination cursor in subsequent calls to this endpoint to retrieve the next set of results associated with the original query.  See [Paginating results](#paginatingresults) for more information.
+    # Include the pagination cursor in subsequent calls to this endpoint to retrieve the next set of results associated with the original query.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
     # A limit on the number of results to be returned in a single page. The limit is advisory - the implementation may return more or fewer results. If the supplied limit is negative, zero, or is higher than the maximum limit of 1,000, it will be ignored.

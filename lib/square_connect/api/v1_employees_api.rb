@@ -17,8 +17,8 @@ module SquareConnect
       @api_client = api_client
     end
 
-    # Creates an employee for a business.
-    # Creates an employee for a business.
+    # CreateEmployee
+    #  Use the CreateEmployee endpoint to add an employee to a Square account. Employees created with the Connect API have an initial status of `INACTIVE`. Inactive employees cannot sign in to Square Point of Sale until they are activated from the Square Dashboard. Employee status cannot be changed with the Connect API.  <aside class=\"important\"> Employee entities cannot be deleted. To disable employee profiles, set the employee's status to <code>INACTIVE</code> </aside>
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [V1Employee]
@@ -27,8 +27,8 @@ module SquareConnect
       return data
     end
 
-    # Creates an employee for a business.
-    # Creates an employee for a business.
+    # CreateEmployee
+    #  Use the CreateEmployee endpoint to add an employee to a Square account. Employees created with the Connect API have an initial status of &#x60;INACTIVE&#x60;. Inactive employees cannot sign in to Square Point of Sale until they are activated from the Square Dashboard. Employee status cannot be changed with the Connect API.  &lt;aside class&#x3D;\&quot;important\&quot;&gt; Employee entities cannot be deleted. To disable employee profiles, set the employee&#39;s status to &lt;code&gt;INACTIVE&lt;/code&gt; &lt;/aside&gt;
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1Employee, Fixnum, Hash)>] V1Employee data, response status code and response headers
@@ -51,6 +51,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -71,8 +72,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates an employee role you can then assign to employees.
-    # Creates an employee role you can then assign to employees.
+    # CreateEmployeeRole
+    # Creates an employee role you can then assign to employees.  Square accounts can include any number of roles that can be assigned to employees. These roles define the actions and permissions granted to an employee with that role. For example, an employee with a \"Shift Manager\" role might be able to issue refunds in Square Point of Sale, whereas an employee with a \"Clerk\" role might not.  Roles are assigned with the [V1UpdateEmployee](#endpoint-v1updateemployee) endpoint. An employee can have only one role at a time.  If an employee has no role, they have none of the permissions associated with roles. All employees can accept payments with Square Point of Sale.
     # @param employee_role An EmployeeRole object with a name and permissions, and an optional owner flag.
     # @param [Hash] opts the optional parameters
     # @return [V1EmployeeRole]
@@ -81,8 +82,8 @@ module SquareConnect
       return data
     end
 
-    # Creates an employee role you can then assign to employees.
-    # Creates an employee role you can then assign to employees.
+    # CreateEmployeeRole
+    # Creates an employee role you can then assign to employees.  Square accounts can include any number of roles that can be assigned to employees. These roles define the actions and permissions granted to an employee with that role. For example, an employee with a \&quot;Shift Manager\&quot; role might be able to issue refunds in Square Point of Sale, whereas an employee with a \&quot;Clerk\&quot; role might not.  Roles are assigned with the [V1UpdateEmployee](#endpoint-v1updateemployee) endpoint. An employee can have only one role at a time.  If an employee has no role, they have none of the permissions associated with roles. All employees can accept payments with Square Point of Sale.
     # @param employee_role An EmployeeRole object with a name and permissions, and an optional owner flag.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1EmployeeRole, Fixnum, Hash)>] V1EmployeeRole data, response status code and response headers
@@ -105,6 +106,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -125,8 +127,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates a timecard for an employee. Each timecard corresponds to a single shift.
-    # Creates a timecard for an employee. Each timecard corresponds to a single shift.
+    # CreateTimecard
+    # Creates a timecard for an employee and clocks them in with an `API_CREATE` event and a `clockin_time` set to the current time unless the request provides a different value. To import timecards from another system (rather than clocking someone in). Specify the `clockin_time` and* `clockout_time` in the request.  Timecards correspond to exactly one shift for a given employee, bounded by the `clockin_time` and `clockout_time` fields. An employee is considered clocked in if they have a timecard that doesn't have a `clockout_time` set. An employee that is currently clocked in cannot be clocked in a second time.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [V1Timecard]
@@ -135,8 +137,8 @@ module SquareConnect
       return data
     end
 
-    # Creates a timecard for an employee. Each timecard corresponds to a single shift.
-    # Creates a timecard for an employee. Each timecard corresponds to a single shift.
+    # CreateTimecard
+    # Creates a timecard for an employee and clocks them in with an &#x60;API_CREATE&#x60; event and a &#x60;clockin_time&#x60; set to the current time unless the request provides a different value. To import timecards from another system (rather than clocking someone in). Specify the &#x60;clockin_time&#x60; and* &#x60;clockout_time&#x60; in the request.  Timecards correspond to exactly one shift for a given employee, bounded by the &#x60;clockin_time&#x60; and &#x60;clockout_time&#x60; fields. An employee is considered clocked in if they have a timecard that doesn&#39;t have a &#x60;clockout_time&#x60; set. An employee that is currently clocked in cannot be clocked in a second time.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1Timecard, Fixnum, Hash)>] V1Timecard data, response status code and response headers
@@ -159,6 +161,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -179,8 +182,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-    # Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+    # DeleteTimecard
+    # Deletes a timecard. Timecards can also be deleted through the Square Dashboard. Deleted timecards are still accessible through Connect API endpoints, but cannot be modified. The `deleted` field of the `Timecard` object indicates whether the timecard has been deleted.  *Note**: By default, deleted timecards appear alongside valid timecards in results returned by the [ListTimecards](#endpoint-v1employees-listtimecards) endpoint. To filter deleted timecards, include the `deleted` query parameter in the list request.  <aside> Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. </aside>
     # @param timecard_id The ID of the timecard to delete.
     # @param [Hash] opts the optional parameters
     # @return [Object]
@@ -189,8 +192,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
-    # Deletes a timecard. Deleted timecards are still accessible from Connect API endpoints, but the value of their deleted field is set to true. See Handling deleted timecards for more information.
+    # DeleteTimecard
+    # Deletes a timecard. Timecards can also be deleted through the Square Dashboard. Deleted timecards are still accessible through Connect API endpoints, but cannot be modified. The &#x60;deleted&#x60; field of the &#x60;Timecard&#x60; object indicates whether the timecard has been deleted.  *Note**: By default, deleted timecards appear alongside valid timecards in results returned by the [ListTimecards](#endpoint-v1employees-listtimecards) endpoint. To filter deleted timecards, include the &#x60;deleted&#x60; query parameter in the list request.  &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
     # @param timecard_id The ID of the timecard to delete.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Object, Fixnum, Hash)>] Object data, response status code and response headers
@@ -213,6 +216,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -233,7 +237,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+    # ListCashDrawerShifts
     # Provides the details for all of a location's cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
     # @param location_id The ID of the location to list cash drawer shifts for.
     # @param [Hash] opts the optional parameters
@@ -246,7 +250,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
+    # ListCashDrawerShifts
     # Provides the details for all of a location&#39;s cash drawer shifts during a date range. The date range you specify cannot exceed 90 days.
     # @param location_id The ID of the location to list cash drawer shifts for.
     # @param [Hash] opts the optional parameters
@@ -260,8 +264,8 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1EmployeesApi.list_cash_drawer_shifts" if location_id.nil?
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
       # resource path
       local_var_path = "/v1/{location_id}/cash-drawer-shifts".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
@@ -279,6 +283,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -299,10 +304,10 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all of a business's employee roles.
+    # ListEmployeeRoles
     # Provides summary information for all of a business's employee roles.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
+    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
     # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<V1EmployeeRole>]
@@ -311,10 +316,10 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all of a business&#39;s employee roles.
+    # ListEmployeeRoles
     # Provides summary information for all of a business&#39;s employee roles.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC 
+    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.Default value: ASC
     # @option opts [Integer] :limit The maximum integer number of employee entities to return in a single response. Default 100, maximum 200.
     # @option opts [String] :batch_token A pagination cursor to retrieve the next set of results for your original query to the endpoint.
     # @return [Array<(Array<V1EmployeeRole>, Fixnum, Hash)>] Array<V1EmployeeRole> data, response status code and response headers
@@ -322,13 +327,9 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_employee_roles ..."
       end
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1EmployeesApi.list_employee_roles, must be smaller than or equal to 200.'
-      end
-
       # resource path
       local_var_path = "/v1/me/roles".sub('{format}','json')
 
@@ -345,6 +346,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -365,10 +367,10 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all of a business's employees.
+    # ListEmployees
     # Provides summary information for all of a business's employees.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC 
+    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC
     # @option opts [String] :begin_updated_at If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format
     # @option opts [String] :end_updated_at If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format.
     # @option opts [String] :begin_created_at If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format.
@@ -383,10 +385,10 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all of a business&#39;s employees.
+    # ListEmployees
     # Provides summary information for all of a business&#39;s employees.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC 
+    # @option opts [String] :order The order in which employees are listed in the response, based on their created_at field.      Default value: ASC
     # @option opts [String] :begin_updated_at If filtering results by their updated_at field, the beginning of the requested reporting period, in ISO 8601 format
     # @option opts [String] :end_updated_at If filtering results by there updated_at field, the end of the requested reporting period, in ISO 8601 format.
     # @option opts [String] :begin_created_at If filtering results by their created_at field, the beginning of the requested reporting period, in ISO 8601 format.
@@ -400,16 +402,12 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_employees ..."
       end
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
       if opts[:'status'] && !['ACTIVE', 'INACTIVE'].include?(opts[:'status'])
         fail ArgumentError, 'invalid value for "status", must be one of ACTIVE, INACTIVE'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1EmployeesApi.list_employees, must be smaller than or equal to 200.'
-      end
-
       # resource path
       local_var_path = "/v1/me/employees".sub('{format}','json')
 
@@ -432,6 +430,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -452,8 +451,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all events associated with a particular timecard.
-    # Provides summary information for all events associated with a particular timecard.
+    # ListTimecardEvents
+    # Provides summary information for all events associated with a particular timecard.  <aside> Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. </aside>
     # @param timecard_id The ID of the timecard to list events for.
     # @param [Hash] opts the optional parameters
     # @return [Array<V1TimecardEvent>]
@@ -462,8 +461,8 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all events associated with a particular timecard.
-    # Provides summary information for all events associated with a particular timecard.
+    # ListTimecardEvents
+    # Provides summary information for all events associated with a particular timecard.  &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
     # @param timecard_id The ID of the timecard to list events for.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<V1TimecardEvent>, Fixnum, Hash)>] Array<V1TimecardEvent> data, response status code and response headers
@@ -474,10 +473,11 @@ module SquareConnect
       # verify the required parameter 'timecard_id' is set
       fail ArgumentError, "Missing the required parameter 'timecard_id' when calling V1EmployeesApi.list_timecard_events" if timecard_id.nil?
       # resource path
-      local_var_path = "/v1/me/timecards/{timecard_id}/events".sub('{format}','json').sub('{' + 'timecard_id' + '}', timecard_id.to_s)
+      local_var_path = "/v1/me/timecards/{timecard_id}/events".sub('{format}','json')
 
       # query parameters
       query_params = {}
+      query_params[:'timecard_id'] = timecard_id
 
       # header parameters
       header_params = {}
@@ -486,6 +486,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -506,7 +507,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all of a business's employee timecards.
+    # ListTimecards
     # Provides summary information for all of a business's employee timecards.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order The order in which timecards are listed in the response, based on their created_at field.
@@ -526,7 +527,7 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all of a business&#39;s employee timecards.
+    # ListTimecards
     # Provides summary information for all of a business&#39;s employee timecards.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :order The order in which timecards are listed in the response, based on their created_at field.
@@ -545,13 +546,9 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_timecards ..."
       end
-      if opts[:'order'] && !['ASC', 'DESC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of ASC, DESC'
+      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
+        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
-      if !opts[:'limit'].nil? && opts[:'limit'] > 200
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1EmployeesApi.list_timecards, must be smaller than or equal to 200.'
-      end
-
       # resource path
       local_var_path = "/v1/me/timecards".sub('{format}','json')
 
@@ -576,6 +573,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -596,7 +594,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+    # RetrieveCashDrawerShift
     # Provides the details for a single cash drawer shift, including all events that occurred during the shift.
     # @param location_id The ID of the location to list cash drawer shifts for.
     # @param shift_id The shift&#39;s ID.
@@ -607,7 +605,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for a single cash drawer shift, including all events that occurred during the shift.
+    # RetrieveCashDrawerShift
     # Provides the details for a single cash drawer shift, including all events that occurred during the shift.
     # @param location_id The ID of the location to list cash drawer shifts for.
     # @param shift_id The shift&#39;s ID.
@@ -634,6 +632,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -654,7 +653,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for a single employee.
+    # RetrieveEmployee
     # Provides the details for a single employee.
     # @param employee_id The employee&#39;s ID.
     # @param [Hash] opts the optional parameters
@@ -664,7 +663,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for a single employee.
+    # RetrieveEmployee
     # Provides the details for a single employee.
     # @param employee_id The employee&#39;s ID.
     # @param [Hash] opts the optional parameters
@@ -688,6 +687,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -708,7 +708,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for a single employee role.
+    # RetrieveEmployeeRole
     # Provides the details for a single employee role.
     # @param role_id The role&#39;s ID.
     # @param [Hash] opts the optional parameters
@@ -718,7 +718,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for a single employee role.
+    # RetrieveEmployeeRole
     # Provides the details for a single employee role.
     # @param role_id The role&#39;s ID.
     # @param [Hash] opts the optional parameters
@@ -742,6 +742,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -762,8 +763,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for a single timecard.
-    # Provides the details for a single timecard.
+    # RetrieveTimecard
+    # Provides the details for a single timecard. <aside> Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. </aside>
     # @param timecard_id The timecard&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @return [V1Timecard]
@@ -772,8 +773,8 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for a single timecard.
-    # Provides the details for a single timecard.
+    # RetrieveTimecard
+    # Provides the details for a single timecard. &lt;aside&gt; Only approved accounts can manage their employees with Square. Unapproved accounts cannot use employee management features with the API. &lt;/aside&gt;
     # @param timecard_id The timecard&#39;s ID.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1Timecard, Fixnum, Hash)>] V1Timecard data, response status code and response headers
@@ -796,6 +797,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -816,7 +818,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # V1 UpdateEmployee
+    # UpdateEmployee
     # 
     # @param employee_id The ID of the role to modify.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -827,7 +829,7 @@ module SquareConnect
       return data
     end
 
-    # V1 UpdateEmployee
+    # UpdateEmployee
     # 
     # @param employee_id The ID of the role to modify.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -854,6 +856,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -874,7 +877,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an employee role.
+    # UpdateEmployeeRole
     # Modifies the details of an employee role.
     # @param role_id The ID of the role to modify.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -885,7 +888,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an employee role.
+    # UpdateEmployeeRole
     # Modifies the details of an employee role.
     # @param role_id The ID of the role to modify.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -912,6 +915,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -932,10 +936,10 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.
-    # Modifies a timecard's details. This creates an API_EDIT event for the timecard. You can view a timecard's event history with the List Timecard Events endpoint.
+    # UpdateTimecard
+    # Modifies the details of a timecard with an `API_EDIT` event for the timecard. Updating an active timecard with a `clockout_time` clocks the employee out.
     # @param timecard_id TThe ID of the timecard to modify.
-    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # @param body An object containing the fields to POST for the request. See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [V1Timecard]
     def update_timecard(timecard_id, body, opts = {})
@@ -943,10 +947,10 @@ module SquareConnect
       return data
     end
 
-    # Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
-    # Modifies a timecard&#39;s details. This creates an API_EDIT event for the timecard. You can view a timecard&#39;s event history with the List Timecard Events endpoint.
+    # UpdateTimecard
+    # Modifies the details of a timecard with an &#x60;API_EDIT&#x60; event for the timecard. Updating an active timecard with a &#x60;clockout_time&#x60; clocks the employee out.
     # @param timecard_id TThe ID of the timecard to modify.
-    # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+    # @param body An object containing the fields to POST for the request. See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(V1Timecard, Fixnum, Hash)>] V1Timecard data, response status code and response headers
     def update_timecard_with_http_info(timecard_id, body, opts = {})
@@ -970,6 +974,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}

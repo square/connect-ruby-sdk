@@ -30,7 +30,7 @@ module SquareConnect
     # Provided as an RFC 3339 timestamp. Returns results whose `created_at` or `calculated_at` value is strictly before the given time. Default: UNIX epoch (`1970-01-01T00:00:00Z`).
     attr_accessor :updated_before
 
-    # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+    # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
     class EnumAttributeValidator

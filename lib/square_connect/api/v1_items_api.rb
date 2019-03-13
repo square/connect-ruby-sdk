@@ -17,7 +17,7 @@ module SquareConnect
       @api_client = api_client
     end
 
-    # Adjusts an item variation's current available inventory.
+    # AdjustInventory
     # Adjusts an item variation's current available inventory.
     # @param location_id The ID of the item&#39;s associated location.
     # @param variation_id The ID of the variation to adjust inventory information for.
@@ -29,7 +29,7 @@ module SquareConnect
       return data
     end
 
-    # Adjusts an item variation&#39;s current available inventory.
+    # AdjustInventory
     # Adjusts an item variation&#39;s current available inventory.
     # @param location_id The ID of the item&#39;s associated location.
     # @param variation_id The ID of the variation to adjust inventory information for.
@@ -59,6 +59,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -79,7 +80,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+    # ApplyFee
     # Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
     # @param location_id The ID of the fee&#39;s associated location.
     # @param item_id The ID of the item to add the fee to.
@@ -91,7 +92,7 @@ module SquareConnect
       return data
     end
 
-    # Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
+    # ApplyFee
     # Associates a fee with an item, meaning the fee is automatically applied to the item in Square Register.
     # @param location_id The ID of the fee&#39;s associated location.
     # @param item_id The ID of the item to add the fee to.
@@ -121,6 +122,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -141,7 +143,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+    # ApplyModifierList
     # Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to apply.
@@ -153,7 +155,7 @@ module SquareConnect
       return data
     end
 
-    # Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
+    # ApplyModifierList
     # Associates a modifier list with an item, meaning modifier options from the list can be applied to the item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to apply.
@@ -183,6 +185,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -203,7 +206,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates an item category.
+    # CreateCategory
     # Creates an item category.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -214,7 +217,7 @@ module SquareConnect
       return data
     end
 
-    # Creates an item category.
+    # CreateCategory
     # Creates an item category.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -241,6 +244,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -261,7 +265,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates a discount.
+    # CreateDiscount
     # Creates a discount.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -272,7 +276,7 @@ module SquareConnect
       return data
     end
 
-    # Creates a discount.
+    # CreateDiscount
     # Creates a discount.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -299,6 +303,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -319,7 +324,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates a fee (tax).
+    # CreateFee
     # Creates a fee (tax).
     # @param location_id The ID of the location to create a fee for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -330,7 +335,7 @@ module SquareConnect
       return data
     end
 
-    # Creates a fee (tax).
+    # CreateFee
     # Creates a fee (tax).
     # @param location_id The ID of the location to create a fee for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -357,6 +362,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -377,8 +383,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates an item and at least one variation for it.
-    # Creates an item and at least one variation for it.
+    # CreateItem
+    # Creates an item and at least one variation for it. Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify its `id`. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a `user_data` string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -388,8 +394,8 @@ module SquareConnect
       return data
     end
 
-    # Creates an item and at least one variation for it.
-    # Creates an item and at least one variation for it.
+    # CreateItem
+    # Creates an item and at least one variation for it. Item-related entities include fields you can use to associate them with entities in a non-Square system.  When you create an item-related entity, you can optionally specify its &#x60;id&#x60;. This value must be unique among all IDs ever specified for the account, including those specified by other applications. You can never reuse an entity ID. If you do not specify an ID, Square generates one for the entity.  Item variations have a &#x60;user_data&#x60; string that lets you associate arbitrary metadata with the variation. The string cannot exceed 255 characters.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -415,6 +421,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -435,7 +442,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates an item modifier list and at least one modifier option for it.
+    # CreateModifierList
     # Creates an item modifier list and at least one modifier option for it.
     # @param location_id The ID of the location to create a modifier list for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -446,7 +453,7 @@ module SquareConnect
       return data
     end
 
-    # Creates an item modifier list and at least one modifier option for it.
+    # CreateModifierList
     # Creates an item modifier list and at least one modifier option for it.
     # @param location_id The ID of the location to create a modifier list for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -473,6 +480,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -493,7 +501,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates an item modifier option and adds it to a modifier list.
+    # CreateModifierOption
     # Creates an item modifier option and adds it to a modifier list.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to edit.
@@ -505,7 +513,7 @@ module SquareConnect
       return data
     end
 
-    # Creates an item modifier option and adds it to a modifier list.
+    # CreateModifierOption
     # Creates an item modifier option and adds it to a modifier list.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to edit.
@@ -535,6 +543,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -555,7 +564,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates a Favorites page in Square Register.
+    # CreatePage
     # Creates a Favorites page in Square Register.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -566,7 +575,7 @@ module SquareConnect
       return data
     end
 
-    # Creates a Favorites page in Square Register.
+    # CreatePage
     # Creates a Favorites page in Square Register.
     # @param location_id The ID of the location to create an item for.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
@@ -593,6 +602,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -613,7 +623,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Creates an item variation for an existing item.
+    # CreateVariation
     # Creates an item variation for an existing item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The item&#39;s ID.
@@ -625,7 +635,7 @@ module SquareConnect
       return data
     end
 
-    # Creates an item variation for an existing item.
+    # CreateVariation
     # Creates an item variation for an existing item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The item&#39;s ID.
@@ -655,6 +665,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -675,8 +686,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing item category.
-    # Deletes an existing item category.
+    # DeleteCategory
+    # Deletes an existing item category. *Note**: DeleteCategory returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteCategoryRequest` object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param category_id The ID of the category to delete.
     # @param [Hash] opts the optional parameters
@@ -686,8 +697,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing item category.
-    # Deletes an existing item category.
+    # DeleteCategory
+    # Deletes an existing item category. *Note**: DeleteCategory returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteCategoryRequest&#x60; object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param category_id The ID of the category to delete.
     # @param [Hash] opts the optional parameters
@@ -713,6 +724,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -733,8 +745,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing discount.
-    # Deletes an existing discount.
+    # DeleteDiscount
+    # Deletes an existing discount. *Note**: DeleteDiscount returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteDiscountRequest` object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param discount_id The ID of the discount to delete.
     # @param [Hash] opts the optional parameters
@@ -744,8 +756,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing discount.
-    # Deletes an existing discount.
+    # DeleteDiscount
+    # Deletes an existing discount. *Note**: DeleteDiscount returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteDiscountRequest&#x60; object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param discount_id The ID of the discount to delete.
     # @param [Hash] opts the optional parameters
@@ -771,6 +783,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -791,8 +804,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing fee (tax).
-    # Deletes an existing fee (tax).
+    # DeleteFee
+    # Deletes an existing fee (tax). *Note**: DeleteFee returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteFeeRequest` object as documented below.
     # @param location_id The ID of the fee&#39;s associated location.
     # @param fee_id The ID of the fee to delete.
     # @param [Hash] opts the optional parameters
@@ -802,8 +815,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing fee (tax).
-    # Deletes an existing fee (tax).
+    # DeleteFee
+    # Deletes an existing fee (tax). *Note**: DeleteFee returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteFeeRequest&#x60; object as documented below.
     # @param location_id The ID of the fee&#39;s associated location.
     # @param fee_id The ID of the fee to delete.
     # @param [Hash] opts the optional parameters
@@ -829,6 +842,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -849,8 +863,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing item and all item variations associated with it.
-    # Deletes an existing item and all item variations associated with it.
+    # DeleteItem
+    # Deletes an existing item and all item variations associated with it. *Note**: DeleteItem returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteItemRequest` object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to modify.
     # @param [Hash] opts the optional parameters
@@ -860,8 +874,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing item and all item variations associated with it.
-    # Deletes an existing item and all item variations associated with it.
+    # DeleteItem
+    # Deletes an existing item and all item variations associated with it. *Note**: DeleteItem returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteItemRequest&#x60; object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to modify.
     # @param [Hash] opts the optional parameters
@@ -887,6 +901,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -907,8 +922,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing item modifier list and all modifier options associated with it.
-    # Deletes an existing item modifier list and all modifier options associated with it.
+    # DeleteModifierList
+    # Deletes an existing item modifier list and all modifier options associated with it. *Note**: DeleteModifierList returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteModifierListRequest` object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to delete.
     # @param [Hash] opts the optional parameters
@@ -918,8 +933,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing item modifier list and all modifier options associated with it.
-    # Deletes an existing item modifier list and all modifier options associated with it.
+    # DeleteModifierList
+    # Deletes an existing item modifier list and all modifier options associated with it. *Note**: DeleteModifierList returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierListRequest&#x60; object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to delete.
     # @param [Hash] opts the optional parameters
@@ -945,6 +960,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -965,8 +981,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing item modifier option from a modifier list.
-    # Deletes an existing item modifier option from a modifier list.
+    # DeleteModifierOption
+    # Deletes an existing item modifier option from a modifier list. *Note**: DeleteModifierOption returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteModifierOptionRequest` object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to delete.
     # @param modifier_option_id The ID of the modifier list to edit.
@@ -977,8 +993,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing item modifier option from a modifier list.
-    # Deletes an existing item modifier option from a modifier list.
+    # DeleteModifierOption
+    # Deletes an existing item modifier option from a modifier list. *Note**: DeleteModifierOption returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteModifierOptionRequest&#x60; object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to delete.
     # @param modifier_option_id The ID of the modifier list to edit.
@@ -1007,6 +1023,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1027,8 +1044,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing Favorites page and all of its cells.
-    # Deletes an existing Favorites page and all of its cells.
+    # DeletePage
+    # Deletes an existing Favorites page and all of its cells. *Note**: DeletePage returns nothing on success but Connect SDKs map the empty response to an empty `V1DeletePageRequest` object as documented below.
     # @param location_id The ID of the Favorites page&#39;s associated location.
     # @param page_id The ID of the page to delete.
     # @param [Hash] opts the optional parameters
@@ -1038,8 +1055,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing Favorites page and all of its cells.
-    # Deletes an existing Favorites page and all of its cells.
+    # DeletePage
+    # Deletes an existing Favorites page and all of its cells. *Note**: DeletePage returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageRequest&#x60; object as documented below.
     # @param location_id The ID of the Favorites page&#39;s associated location.
     # @param page_id The ID of the page to delete.
     # @param [Hash] opts the optional parameters
@@ -1065,6 +1082,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1085,8 +1103,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes a cell from a Favorites page in Square Register.
-    # Deletes a cell from a Favorites page in Square Register.
+    # DeletePageCell
+    # Deletes a cell from a Favorites page in Square Register. *Note**: DeletePageCell returns nothing on success but Connect SDKs map the empty response to an empty `V1DeletePageCellRequest` object as documented below.
     # @param location_id The ID of the Favorites page&#39;s associated location.
     # @param page_id The ID of the page to delete.
     # @param [Hash] opts the optional parameters
@@ -1098,8 +1116,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes a cell from a Favorites page in Square Register.
-    # Deletes a cell from a Favorites page in Square Register.
+    # DeletePageCell
+    # Deletes a cell from a Favorites page in Square Register. *Note**: DeletePageCell returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeletePageCellRequest&#x60; object as documented below.
     # @param location_id The ID of the Favorites page&#39;s associated location.
     # @param page_id The ID of the page to delete.
     # @param [Hash] opts the optional parameters
@@ -1129,6 +1147,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1149,8 +1168,8 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Deletes an existing item variation from an item.
-    # Deletes an existing item variation from an item.
+    # DeleteVariation
+    # Deletes an existing item variation from an item. *Note**: DeleteVariation returns nothing on success but Connect SDKs map the empty response to an empty `V1DeleteVariationRequest` object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to delete.
     # @param variation_id The ID of the variation to delete.
@@ -1161,8 +1180,8 @@ module SquareConnect
       return data
     end
 
-    # Deletes an existing item variation from an item.
-    # Deletes an existing item variation from an item.
+    # DeleteVariation
+    # Deletes an existing item variation from an item. *Note**: DeleteVariation returns nothing on success but Connect SDKs map the empty response to an empty &#x60;V1DeleteVariationRequest&#x60; object as documented below.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to delete.
     # @param variation_id The ID of the variation to delete.
@@ -1191,6 +1210,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1211,7 +1231,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Lists all of a location's item categories.
+    # ListCategories
     # Lists all of a location's item categories.
     # @param location_id The ID of the location to list categories for.
     # @param [Hash] opts the optional parameters
@@ -1221,7 +1241,7 @@ module SquareConnect
       return data
     end
 
-    # Lists all of a location&#39;s item categories.
+    # ListCategories
     # Lists all of a location&#39;s item categories.
     # @param location_id The ID of the location to list categories for.
     # @param [Hash] opts the optional parameters
@@ -1245,6 +1265,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1265,7 +1286,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Lists all of a location's discounts.
+    # ListDiscounts
     # Lists all of a location's discounts.
     # @param location_id The ID of the location to list categories for.
     # @param [Hash] opts the optional parameters
@@ -1275,7 +1296,7 @@ module SquareConnect
       return data
     end
 
-    # Lists all of a location&#39;s discounts.
+    # ListDiscounts
     # Lists all of a location&#39;s discounts.
     # @param location_id The ID of the location to list categories for.
     # @param [Hash] opts the optional parameters
@@ -1299,6 +1320,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1319,7 +1341,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Lists all of a location's fees (taxes).
+    # ListFees
     # Lists all of a location's fees (taxes).
     # @param location_id The ID of the location to list fees for.
     # @param [Hash] opts the optional parameters
@@ -1329,7 +1351,7 @@ module SquareConnect
       return data
     end
 
-    # Lists all of a location&#39;s fees (taxes).
+    # ListFees
     # Lists all of a location&#39;s fees (taxes).
     # @param location_id The ID of the location to list fees for.
     # @param [Hash] opts the optional parameters
@@ -1353,6 +1375,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1373,7 +1396,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides inventory information for all of a merchant's inventory-enabled item variations.
+    # ListInventory
     # Provides inventory information for all of a merchant's inventory-enabled item variations.
     # @param location_id The ID of the item&#39;s associated location.
     # @param [Hash] opts the optional parameters
@@ -1385,7 +1408,7 @@ module SquareConnect
       return data
     end
 
-    # Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
+    # ListInventory
     # Provides inventory information for all of a merchant&#39;s inventory-enabled item variations.
     # @param location_id The ID of the item&#39;s associated location.
     # @param [Hash] opts the optional parameters
@@ -1398,10 +1421,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1ItemsApi.list_inventory" if location_id.nil?
-      if !opts[:'limit'].nil? && opts[:'limit'] > 1000
-        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling V1ItemsApi.list_inventory, must be smaller than or equal to 1000.'
-      end
-
       # resource path
       local_var_path = "/v1/{location_id}/inventory".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -1417,6 +1436,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1437,7 +1457,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides summary information for all of a location's items.
+    # ListItems
     # Provides summary information for all of a location's items.
     # @param location_id The ID of the location to list items for.
     # @param [Hash] opts the optional parameters
@@ -1448,7 +1468,7 @@ module SquareConnect
       return data
     end
 
-    # Provides summary information for all of a location&#39;s items.
+    # ListItems
     # Provides summary information for all of a location&#39;s items.
     # @param location_id The ID of the location to list items for.
     # @param [Hash] opts the optional parameters
@@ -1474,6 +1494,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1494,7 +1515,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Lists all of a location's modifier lists.
+    # ListModifierLists
     # Lists all of a location's modifier lists.
     # @param location_id The ID of the location to list modifier lists for.
     # @param [Hash] opts the optional parameters
@@ -1504,7 +1525,7 @@ module SquareConnect
       return data
     end
 
-    # Lists all of a location&#39;s modifier lists.
+    # ListModifierLists
     # Lists all of a location&#39;s modifier lists.
     # @param location_id The ID of the location to list modifier lists for.
     # @param [Hash] opts the optional parameters
@@ -1528,6 +1549,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1548,7 +1570,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Lists all of a location's Favorites pages in Square Register.
+    # ListPages
     # Lists all of a location's Favorites pages in Square Register.
     # @param location_id The ID of the location to list Favorites pages for.
     # @param [Hash] opts the optional parameters
@@ -1558,7 +1580,7 @@ module SquareConnect
       return data
     end
 
-    # Lists all of a location&#39;s Favorites pages in Square Register.
+    # ListPages
     # Lists all of a location&#39;s Favorites pages in Square Register.
     # @param location_id The ID of the location to list Favorites pages for.
     # @param [Hash] opts the optional parameters
@@ -1582,6 +1604,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1602,7 +1625,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+    # RemoveFee
     # Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
     # @param location_id The ID of the fee&#39;s associated location.
     # @param item_id The ID of the item to add the fee to.
@@ -1614,7 +1637,7 @@ module SquareConnect
       return data
     end
 
-    # Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
+    # RemoveFee
     # Removes a fee assocation from an item, meaning the fee is no longer automatically applied to the item in Square Register.
     # @param location_id The ID of the fee&#39;s associated location.
     # @param item_id The ID of the item to add the fee to.
@@ -1644,6 +1667,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1664,7 +1688,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+    # RemoveModifierList
     # Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to remove.
@@ -1676,7 +1700,7 @@ module SquareConnect
       return data
     end
 
-    # Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
+    # RemoveModifierList
     # Removes a modifier list association from an item, meaning modifier options from the list can no longer be applied to the item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to remove.
@@ -1706,6 +1730,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1726,7 +1751,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for a single item, including associated modifier lists and fees.
+    # RetrieveItem
     # Provides the details for a single item, including associated modifier lists and fees.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The item&#39;s ID.
@@ -1737,7 +1762,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for a single item, including associated modifier lists and fees.
+    # RetrieveItem
     # Provides the details for a single item, including associated modifier lists and fees.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The item&#39;s ID.
@@ -1764,6 +1789,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1784,7 +1810,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Provides the details for a single modifier list.
+    # RetrieveModifierList
     # Provides the details for a single modifier list.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The modifier list&#39;s ID.
@@ -1795,7 +1821,7 @@ module SquareConnect
       return data
     end
 
-    # Provides the details for a single modifier list.
+    # RetrieveModifierList
     # Provides the details for a single modifier list.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The modifier list&#39;s ID.
@@ -1822,6 +1848,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1842,7 +1869,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an existing item category.
+    # UpdateCategory
     # Modifies the details of an existing item category.
     # @param location_id The ID of the category&#39;s associated location.
     # @param category_id The ID of the category to edit.
@@ -1854,7 +1881,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an existing item category.
+    # UpdateCategory
     # Modifies the details of an existing item category.
     # @param location_id The ID of the category&#39;s associated location.
     # @param category_id The ID of the category to edit.
@@ -1884,6 +1911,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1904,7 +1932,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an existing discount.
+    # UpdateDiscount
     # Modifies the details of an existing discount.
     # @param location_id The ID of the category&#39;s associated location.
     # @param discount_id The ID of the discount to edit.
@@ -1916,7 +1944,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an existing discount.
+    # UpdateDiscount
     # Modifies the details of an existing discount.
     # @param location_id The ID of the category&#39;s associated location.
     # @param discount_id The ID of the discount to edit.
@@ -1946,6 +1974,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -1966,7 +1995,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an existing fee (tax).
+    # UpdateFee
     # Modifies the details of an existing fee (tax).
     # @param location_id The ID of the fee&#39;s associated location.
     # @param fee_id The ID of the fee to edit.
@@ -1978,7 +2007,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an existing fee (tax).
+    # UpdateFee
     # Modifies the details of an existing fee (tax).
     # @param location_id The ID of the fee&#39;s associated location.
     # @param fee_id The ID of the fee to edit.
@@ -2008,6 +2037,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -2028,7 +2058,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the core details of an existing item.
+    # UpdateItem
     # Modifies the core details of an existing item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to modify.
@@ -2040,7 +2070,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the core details of an existing item.
+    # UpdateItem
     # Modifies the core details of an existing item.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to modify.
@@ -2070,6 +2100,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -2090,7 +2121,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an existing item modifier list.
+    # UpdateModifierList
     # Modifies the details of an existing item modifier list.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to edit.
@@ -2102,7 +2133,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an existing item modifier list.
+    # UpdateModifierList
     # Modifies the details of an existing item modifier list.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to edit.
@@ -2132,6 +2163,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -2152,7 +2184,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an existing item modifier option.
+    # UpdateModifierOption
     # Modifies the details of an existing item modifier option.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to edit.
@@ -2165,7 +2197,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an existing item modifier option.
+    # UpdateModifierOption
     # Modifies the details of an existing item modifier option.
     # @param location_id The ID of the item&#39;s associated location.
     # @param modifier_list_id The ID of the modifier list to edit.
@@ -2198,6 +2230,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -2218,7 +2251,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of a Favorites page in Square Register.
+    # UpdatePage
     # Modifies the details of a Favorites page in Square Register.
     # @param location_id The ID of the Favorites page&#39;s associated location
     # @param page_id The ID of the page to modify.
@@ -2230,7 +2263,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of a Favorites page in Square Register.
+    # UpdatePage
     # Modifies the details of a Favorites page in Square Register.
     # @param location_id The ID of the Favorites page&#39;s associated location
     # @param page_id The ID of the page to modify.
@@ -2260,6 +2293,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -2280,7 +2314,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies a cell of a Favorites page in Square Register.
+    # UpdatePageCell
     # Modifies a cell of a Favorites page in Square Register.
     # @param location_id The ID of the Favorites page&#39;s associated location.
     # @param page_id The ID of the page the cell belongs to.
@@ -2292,7 +2326,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies a cell of a Favorites page in Square Register.
+    # UpdatePageCell
     # Modifies a cell of a Favorites page in Square Register.
     # @param location_id The ID of the Favorites page&#39;s associated location.
     # @param page_id The ID of the page the cell belongs to.
@@ -2322,6 +2356,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}
@@ -2342,7 +2377,7 @@ module SquareConnect
       return data, status_code, headers
     end
 
-    # Modifies the details of an existing item variation.
+    # UpdateVariation
     # Modifies the details of an existing item variation.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to modify.
@@ -2355,7 +2390,7 @@ module SquareConnect
       return data
     end
 
-    # Modifies the details of an existing item variation.
+    # UpdateVariation
     # Modifies the details of an existing item variation.
     # @param location_id The ID of the item&#39;s associated location.
     # @param item_id The ID of the item to modify.
@@ -2388,6 +2423,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
+      header_params['Square-Version'] = "2019-03-13"
 
       # form parameters
       form_params = {}

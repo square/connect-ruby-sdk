@@ -18,7 +18,7 @@ module SquareConnect
     # An array of `Customer` objects that match your query.
     attr_accessor :customers
 
-    # A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Paginating results](#paginatingresults) for more information.
+    # A pagination cursor to retrieve the next set of results for your original query to the endpoint. This value is present only if the request succeeded and additional results are available.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
 

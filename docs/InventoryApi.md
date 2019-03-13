@@ -244,7 +244,7 @@ catalog_object_id = "catalog_object_id_example" # String | ID of the [CatalogObj
 
 opts = { 
   location_ids: "location_ids_example", # String | The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
-  cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+  cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
 }
 
 begin
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_object_id** | **String**| ID of the [CatalogObject](#type-catalogobject) to retrieve. | 
  **location_ids** | **String**| The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations. | [optional] 
- **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
+ **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. | [optional] 
 
 ### Return type
 
@@ -302,7 +302,7 @@ catalog_object_id = "catalog_object_id_example" # String | ID of the [CatalogObj
 
 opts = { 
   location_ids: "location_ids_example", # String | The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations.
-  cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information.
+  cursor: "cursor_example" # String | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information.
 }
 
 begin
@@ -320,7 +320,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalog_object_id** | **String**| ID of the [CatalogObject](#type-catalogobject) to retrieve. | 
  **location_ids** | **String**| The [Location](#type-location) IDs to look up as a comma-separated list. An empty list queries all locations. | [optional] 
- **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
+ **cursor** | **String**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for the original query.  See [Pagination](/basics/api101/pagination) for more information. | [optional] 
 
 ### Return type
 

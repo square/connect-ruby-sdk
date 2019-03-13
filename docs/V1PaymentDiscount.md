@@ -2,6 +2,8 @@
 
 ### Description
 
+V1PaymentDiscount
+
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------

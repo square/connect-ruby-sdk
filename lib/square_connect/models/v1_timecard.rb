@@ -27,7 +27,7 @@ module SquareConnect
     # The clock-out time for the timecard, in ISO 8601 format. Provide this value only if importing timecard information from another system.
     attr_accessor :clockout_time
 
-    # The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard���s timezone and overtime rules.
+    # The ID of the location the employee clocked in from. We strongly reccomend providing a clockin_location_id. Square uses the clockin_location_id to determine a timecard’s timezone and overtime rules.
     attr_accessor :clockin_location_id
 
     # The ID of the location the employee clocked out from. Provide this value only if importing timecard information from another system.

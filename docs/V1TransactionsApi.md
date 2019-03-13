@@ -4,25 +4,25 @@ All URIs are relative to *https://connect.squareup.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_refund**](V1TransactionsApi.md#create_refund) | **POST** /v1/{location_id}/refunds | Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
-[**list_bank_accounts**](V1TransactionsApi.md#list_bank_accounts) | **GET** /v1/{location_id}/bank-accounts | Provides non-confidential details for all of a location&#39;s associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-[**list_orders**](V1TransactionsApi.md#list_orders) | **GET** /v1/{location_id}/orders | Provides summary information for a merchant&#39;s online store orders.
-[**list_payments**](V1TransactionsApi.md#list_payments) | **GET** /v1/{location_id}/payments | Provides summary information for all payments taken by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
-[**list_refunds**](V1TransactionsApi.md#list_refunds) | **GET** /v1/{location_id}/refunds | Provides the details for all refunds initiated by a merchant or any of the merchant&#39;s mobile staff during a date range. Date ranges cannot exceed one year in length.
-[**list_settlements**](V1TransactionsApi.md#list_settlements) | **GET** /v1/{location_id}/settlements | Provides summary information for all deposits and withdrawals initiated by Square to a merchant&#39;s bank account during a date range. Date ranges cannot exceed one year in length.
-[**retrieve_bank_account**](V1TransactionsApi.md#retrieve_bank_account) | **GET** /v1/{location_id}/bank-accounts/{bank_account_id} | Provides non-confidential details for a merchant&#39;s associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
-[**retrieve_order**](V1TransactionsApi.md#retrieve_order) | **GET** /v1/{location_id}/orders/{order_id} | Provides comprehensive information for a single online store order, including the order&#39;s history.
-[**retrieve_payment**](V1TransactionsApi.md#retrieve_payment) | **GET** /v1/{location_id}/payments/{payment_id} | Provides comprehensive information for a single payment.
-[**retrieve_settlement**](V1TransactionsApi.md#retrieve_settlement) | **GET** /v1/{location_id}/settlements/{settlement_id} | Provides comprehensive information for a single settlement, including the entries that contribute to the settlement&#39;s total.
-[**update_order**](V1TransactionsApi.md#update_order) | **PUT** /v1/{location_id}/orders/{order_id} | Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+[**create_refund**](V1TransactionsApi.md#create_refund) | **POST** /v1/{location_id}/refunds | CreateRefund
+[**list_bank_accounts**](V1TransactionsApi.md#list_bank_accounts) | **GET** /v1/{location_id}/bank-accounts | ListBankAccounts
+[**list_orders**](V1TransactionsApi.md#list_orders) | **GET** /v1/{location_id}/orders | ListOrders
+[**list_payments**](V1TransactionsApi.md#list_payments) | **GET** /v1/{location_id}/payments | ListPayments
+[**list_refunds**](V1TransactionsApi.md#list_refunds) | **GET** /v1/{location_id}/refunds | ListRefunds
+[**list_settlements**](V1TransactionsApi.md#list_settlements) | **GET** /v1/{location_id}/settlements | ListSettlements
+[**retrieve_bank_account**](V1TransactionsApi.md#retrieve_bank_account) | **GET** /v1/{location_id}/bank-accounts/{bank_account_id} | RetrieveBankAccount
+[**retrieve_order**](V1TransactionsApi.md#retrieve_order) | **GET** /v1/{location_id}/orders/{order_id} | RetrieveOrder
+[**retrieve_payment**](V1TransactionsApi.md#retrieve_payment) | **GET** /v1/{location_id}/payments/{payment_id} | RetrievePayment
+[**retrieve_settlement**](V1TransactionsApi.md#retrieve_settlement) | **GET** /v1/{location_id}/settlements/{settlement_id} | RetrieveSettlement
+[**update_order**](V1TransactionsApi.md#update_order) | **PUT** /v1/{location_id}/orders/{order_id} | UpdateOrder
 
 
 # **create_refund**
 > V1Refund create_refund(location_id, body)
 
-Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+CreateRefund
 
-Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.  You cannot issue a partial refund for a split tender payment. You must instead issue a full or partial refund for a particular tender, by providing the applicable tender id to the V1CreateRefund endpoint. Issuing a full refund for a split tender payment refunds all tenders associated with the payment.  Issuing a refund for a card payment is not reversible. For development purposes, you can create fake cash payments in Square Point of Sale and refund them.
 
 ### Example
 ```ruby
@@ -42,7 +42,7 @@ body = SquareConnect::V1CreateRefundRequest.new # V1CreateRefundRequest | An obj
 
 
 begin
-  #Issues a refund for a previously processed payment. You must issue a refund within 60 days of the associated payment.
+  #CreateRefund
   result = api_instance.create_refund(location_id, body)
   p result
 rescue SquareConnect::ApiError => e
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 # **list_bank_accounts**
 > Array&lt;V1BankAccount&gt; list_bank_accounts(location_id)
 
-Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+ListBankAccounts
 
 Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
 
@@ -95,7 +95,7 @@ location_id = "location_id_example" # String | The ID of the location to list ba
 
 
 begin
-  #Provides non-confidential details for all of a location's associated bank accounts. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+  #ListBankAccounts
   result = api_instance.list_bank_accounts(location_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 # **list_orders**
 > Array&lt;V1Order&gt; list_orders(location_id, opts)
 
-Provides summary information for a merchant's online store orders.
+ListOrders
 
 Provides summary information for a merchant's online store orders.
 
@@ -152,7 +152,7 @@ opts = {
 }
 
 begin
-  #Provides summary information for a merchant's online store orders.
+  #ListOrders
   result = api_instance.list_orders(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -187,9 +187,9 @@ Name | Type | Description  | Notes
 # **list_payments**
 > Array&lt;V1Payment&gt; list_payments(location_id, opts)
 
-Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+ListPayments
 
-Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+Provides summary information for all payments taken for a given Square account during a date range. Date ranges cannot exceed 1 year in length. See Date ranges for details of inclusive and exclusive dates.  *Note**: Details for payments processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline payments have a `created_at` value that reflects the time the payment was originally processed, not the time it was subsequently transmitted to Square. Consequently, the ListPayments endpoint might list an offline payment chronologically between online payments that were seen in a previous request.
 
 ### Example
 ```ruby
@@ -215,7 +215,7 @@ opts = {
 }
 
 begin
-  #Provides summary information for all payments taken by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length. See Date ranges for details of inclusive and exclusive dates.
+  #ListPayments
   result = api_instance.list_payments(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 # **list_refunds**
 > Array&lt;V1Refund&gt; list_refunds(location_id, opts)
 
-Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
+ListRefunds
 
 Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
 
@@ -280,7 +280,7 @@ opts = {
 }
 
 begin
-  #Provides the details for all refunds initiated by a merchant or any of the merchant's mobile staff during a date range. Date ranges cannot exceed one year in length.
+  #ListRefunds
   result = api_instance.list_refunds(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -317,9 +317,9 @@ Name | Type | Description  | Notes
 # **list_settlements**
 > Array&lt;V1Settlement&gt; list_settlements(location_id, opts)
 
-Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.
+ListSettlements
 
-Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length. 
+Provides summary information for all deposits and withdrawals initiated by Square to a linked bank account during a date range. Date ranges cannot exceed one year in length.  *Note**: the ListSettlements endpoint does not provide entry information.
 
 ### Example
 ```ruby
@@ -345,7 +345,7 @@ opts = {
 }
 
 begin
-  #Provides summary information for all deposits and withdrawals initiated by Square to a merchant's bank account during a date range. Date ranges cannot exceed one year in length.
+  #ListSettlements
   result = api_instance.list_settlements(location_id, opts)
   p result
 rescue SquareConnect::ApiError => e
@@ -383,7 +383,7 @@ Name | Type | Description  | Notes
 # **retrieve_bank_account**
 > V1BankAccount retrieve_bank_account(location_id, bank_account_id)
 
-Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+RetrieveBankAccount
 
 Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
 
@@ -405,7 +405,7 @@ bank_account_id = "bank_account_id_example" # String | The bank account's Square
 
 
 begin
-  #Provides non-confidential details for a merchant's associated bank account. This endpoint does not provide full bank account numbers, and there is no way to obtain a full bank account number with the Connect API.
+  #RetrieveBankAccount
   result = api_instance.retrieve_bank_account(location_id, bank_account_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 # **retrieve_order**
 > V1Order retrieve_order(location_id, order_id)
 
-Provides comprehensive information for a single online store order, including the order's history.
+RetrieveOrder
 
 Provides comprehensive information for a single online store order, including the order's history.
 
@@ -460,7 +460,7 @@ order_id = "order_id_example" # String | The order's Square-issued ID. You obtai
 
 
 begin
-  #Provides comprehensive information for a single online store order, including the order's history.
+  #RetrieveOrder
   result = api_instance.retrieve_order(location_id, order_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -493,7 +493,7 @@ Name | Type | Description  | Notes
 # **retrieve_payment**
 > V1Payment retrieve_payment(location_id, payment_id)
 
-Provides comprehensive information for a single payment.
+RetrievePayment
 
 Provides comprehensive information for a single payment.
 
@@ -515,7 +515,7 @@ payment_id = "payment_id_example" # String | The Square-issued payment ID. payme
 
 
 begin
-  #Provides comprehensive information for a single payment.
+  #RetrievePayment
   result = api_instance.retrieve_payment(location_id, payment_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -548,9 +548,9 @@ Name | Type | Description  | Notes
 # **retrieve_settlement**
 > V1Settlement retrieve_settlement(location_id, settlement_id)
 
-Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
+RetrieveSettlement
 
-Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
+Provides comprehensive information for a single settlement.  The returned `Settlement` objects include an `entries` field that lists the transactions that contribute to the settlement total. Most settlement entries correspond to a payment payout, but settlement entries are also generated for less common events, like refunds, manual adjustments, or chargeback holds.  Square initiates its regular deposits as indicated in the [Deposit Options with Square](https://squareup.com/help/us/en/article/3807) help article. Details for a regular deposit are usually not available from Connect API endpoints before 10 p.m. PST the same day.  Square does not know when an initiated settlement **completes**, only whether it has failed. A completed settlement is typically reflected in a bank account within 3 business days, but in exceptional cases it may take longer.
 
 ### Example
 ```ruby
@@ -570,7 +570,7 @@ settlement_id = "settlement_id_example" # String | The settlement's Square-issue
 
 
 begin
-  #Provides comprehensive information for a single settlement, including the entries that contribute to the settlement's total.
+  #RetrieveSettlement
   result = api_instance.retrieve_settlement(location_id, settlement_id)
   p result
 rescue SquareConnect::ApiError => e
@@ -603,7 +603,7 @@ Name | Type | Description  | Notes
 # **update_order**
 > V1Order update_order(location_id, order_id, body)
 
-Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+UpdateOrder
 
 Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
 
@@ -627,7 +627,7 @@ body = SquareConnect::V1UpdateOrderRequest.new # V1UpdateOrderRequest | An objec
 
 
 begin
-  #Updates the details of an online store order. Every update you perform on an order corresponds to one of three actions:
+  #UpdateOrder
   result = api_instance.update_order(location_id, order_id, body)
   p result
 rescue SquareConnect::ApiError => e

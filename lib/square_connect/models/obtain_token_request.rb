@@ -12,17 +12,26 @@ require 'date'
 module SquareConnect
   # 
   class ObtainTokenRequest
-    # Your application's ID, available from the [application dashboard](https://connect.squareup.com/apps).
+    # The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).
     attr_accessor :client_id
 
-    # Your application's secret, available from the [application dashboard](https://connect.squareup.com/apps).
+    # The Square-issued application secret for your application,  available from the [application dashboard](https://connect.squareup.com/apps).
     attr_accessor :client_secret
 
-    # The authorization code to exchange.
+    # The authorization code to exchange.  This is required if `grant_type` is set to `authorization_code`, to indicate that  the application wants to exchange an authorization code for an OAuth access token.
     attr_accessor :code
 
     # The redirect URL assigned in the [application dashboard](https://connect.squareup.com/apps).
     attr_accessor :redirect_uri
+
+    # Specifies the method to request an OAuth access token.  Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
+    attr_accessor :grant_type
+
+    # A valid refresh token for generating a new OAuth access token.  A valid refresh token is required if `grant_type` is set to `refresh_token` ,   to indicate the application wants a replacement for an expired OAuth access token.
+    attr_accessor :refresh_token
+
+    # Legacy OAuth access token obtained using a Connect API version prior  to 2019-03-13. This parameter is required if `grant_type` is set to  `migration_token` to indicate that the application wants to get a replacement   OAuth access token. The response also returns a refresh token.  For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).
+    attr_accessor :migration_token
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -31,7 +40,10 @@ module SquareConnect
         :'client_id' => :'client_id',
         :'client_secret' => :'client_secret',
         :'code' => :'code',
-        :'redirect_uri' => :'redirect_uri'
+        :'redirect_uri' => :'redirect_uri',
+        :'grant_type' => :'grant_type',
+        :'refresh_token' => :'refresh_token',
+        :'migration_token' => :'migration_token'
       }
     end
 
@@ -41,7 +53,10 @@ module SquareConnect
         :'client_id' => :'String',
         :'client_secret' => :'String',
         :'code' => :'String',
-        :'redirect_uri' => :'String'
+        :'redirect_uri' => :'String',
+        :'grant_type' => :'String',
+        :'refresh_token' => :'String',
+        :'migration_token' => :'String'
       }
     end
 
@@ -69,6 +84,18 @@ module SquareConnect
         self.redirect_uri = attributes[:'redirect_uri']
       end
 
+      if attributes.has_key?(:'grant_type')
+        self.grant_type = attributes[:'grant_type']
+      end
+
+      if attributes.has_key?(:'refresh_token')
+        self.refresh_token = attributes[:'refresh_token']
+      end
+
+      if attributes.has_key?(:'migration_token')
+        self.migration_token = attributes[:'migration_token']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -92,7 +119,10 @@ module SquareConnect
           client_id == o.client_id &&
           client_secret == o.client_secret &&
           code == o.code &&
-          redirect_uri == o.redirect_uri
+          redirect_uri == o.redirect_uri &&
+          grant_type == o.grant_type &&
+          refresh_token == o.refresh_token &&
+          migration_token == o.migration_token
     end
 
     # @see the `==` method
@@ -104,7 +134,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [client_id, client_secret, code, redirect_uri].hash
+      [client_id, client_secret, code, redirect_uri, grant_type, refresh_token, migration_token].hash
     end
 
     # Builds the object from hash
