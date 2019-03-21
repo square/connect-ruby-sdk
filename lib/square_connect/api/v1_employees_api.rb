@@ -473,11 +473,10 @@ module SquareConnect
       # verify the required parameter 'timecard_id' is set
       fail ArgumentError, "Missing the required parameter 'timecard_id' when calling V1EmployeesApi.list_timecard_events" if timecard_id.nil?
       # resource path
-      local_var_path = "/v1/me/timecards/{timecard_id}/events".sub('{format}','json')
+      local_var_path = "/v1/me/timecards/{timecard_id}/events".sub('{format}','json').sub('{' + 'timecard_id' + '}', timecard_id.to_s)
 
       # query parameters
       query_params = {}
-      query_params[:'timecard_id'] = timecard_id
 
       # header parameters
       header_params = {}

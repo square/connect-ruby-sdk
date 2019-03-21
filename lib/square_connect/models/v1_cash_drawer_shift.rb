@@ -122,7 +122,7 @@ module SquareConnect
         :'id' => :'String',
         :'event_type' => :'String',
         :'opened_at' => :'String',
-        :'ended_at' => :'BOOLEAN',
+        :'ended_at' => :'String',
         :'closed_at' => :'String',
         :'employee_ids' => :'Array<String>',
         :'opening_employee_id' => :'String',
