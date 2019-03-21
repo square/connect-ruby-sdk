@@ -12,21 +12,16 @@ require 'date'
 module SquareConnect
   # 
   class V1ListTimecardEventsRequest
-    # The ID of the timecard to list events for.
-    attr_accessor :timecard_id
-
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'timecard_id' => :'timecard_id'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'timecard_id' => :'String'
       }
     end
 
@@ -38,27 +33,18 @@ module SquareConnect
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'timecard_id')
-        self.timecard_id = attributes[:'timecard_id']
-      end
-
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @timecard_id.nil?
-        invalid_properties.push("invalid value for 'timecard_id', timecard_id cannot be nil.")
-      end
-
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @timecard_id.nil?
       return true
     end
 
@@ -66,8 +52,7 @@ module SquareConnect
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
-      self.class == o.class &&
-          timecard_id == o.timecard_id
+      self.class == o.class
     end
 
     # @see the `==` method
@@ -79,7 +64,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [timecard_id].hash
+      [].hash
     end
 
     # Builds the object from hash
