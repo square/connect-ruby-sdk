@@ -17,7 +17,7 @@ For more information, please visit [https://squareup.com/developers](https://squ
 
 ## Installation
 
-### RubyGems
+### Option1: RubyGems
 The Ruby SDK is published as a gem. Simply run:
 
 ```
@@ -30,13 +30,13 @@ Or add this line to your Gemfile:
 gem 'square_connect'
 ```
 
-### Install from Git
+### Option 2: Install from Git
 
 If the Ruby gem is hosted at a git repository: https://github.com/square/connect-ruby-sdk, then add the following in the Gemfile:
 
     gem 'square_connect', :git => 'https://github.com/square/connect-ruby-sdk.git'
 
-### Include the Ruby code directly
+### Option 3: Include the Ruby code directly
 
 Include the Ruby code directly using `-I` as follows:
 
