@@ -12,10 +12,10 @@ require 'date'
 module SquareConnect
   # Contains details on how to fulfill this order.
   class OrderFulfillment
-    # The type of the fulfillment.
+    # The type of the fulfillment. See [OrderFulfillmentType](#type-orderfulfillmenttype) for possible values
     attr_accessor :type
 
-    # The state of the fulfillment.
+    # The state of the fulfillment. See [OrderFulfillmentState](#type-orderfulfillmentstate) for possible values
     attr_accessor :state
 
     # Contains pickup-specific details. Required when fulfillment type is `PICKUP`.

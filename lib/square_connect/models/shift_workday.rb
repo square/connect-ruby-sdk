@@ -15,7 +15,7 @@ module SquareConnect
     # Dates for fetching the shifts
     attr_accessor :date_range
 
-    # The strategy on which the dates are applied.
+    # The strategy on which the dates are applied. See [ShiftWorkdayMatcher](#type-shiftworkdaymatcher) for possible values
     attr_accessor :match_shifts_by
 
     # Location-specific timezones convert workdays to datetime filters. Every location included in the query must have a timezone, or this field must be provided as a fallback. Format: the IANA timezone database identifier for the relevant timezone.

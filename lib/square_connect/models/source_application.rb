@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Provides information about the application used to generate an inventory change.
   class SourceApplication
-    # Read-only [Product](#type-product) type for the application.
+    # Read-only [Product](#type-product) type for the application. See [Product](#type-product) for possible values
     attr_accessor :product
 
     # Read-only Square ID assigned to the application. Only used for [Product](#type-product) type `EXTERNAL_API`.

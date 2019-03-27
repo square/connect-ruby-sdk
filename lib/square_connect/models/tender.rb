@@ -39,7 +39,7 @@ module SquareConnect
     # If the tender is associated with a customer or represents a customer's card on file, this is the ID of the associated customer.
     attr_accessor :customer_id
 
-    # The type of tender, such as `CARD` or `CASH`.
+    # The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values
     attr_accessor :type
 
     # The details of the card tender.  This value is present only if the value of `type` is `CARD`.

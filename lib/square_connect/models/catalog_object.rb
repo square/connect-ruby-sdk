@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # The wrapper object for object types in the Catalog data model. The type of a particular `CatalogObject` is determined by the value of `type` and only the corresponding data field may be set.  - if type = `ITEM`, only `item_data` will be populated and it will contain a valid [CatalogItem](#type-catalogitem) object. - if type = `ITEM_VARIATION`, only `item_variation_data` will be populated and it will contain a valid [CatalogItemVariation](#type-catalogitemvariation) object. - if type = `MODIFIER`, only `modifier_data` will be populated and it will contain a valid [CatalogModifier](#type-catalogmodifier) object. - if type = `MODIFIER_LIST`, only `modifier_list_data` will be populated and it will contain a valid [CatalogModifierList](#type-catalogmodifierlist) object. - if type = `CATEGORY`, only `category_data` will be populated and it will contain a valid [CatalogCategory](#type-catalogcategory) object. - if type = `DISCOUNT`, only `discount_data` will be populated and it will contain a valid [CatalogDiscount](#type-catalogdiscount) object. - if type = `TAX`, only `tax_data` will be populated and it will contain a valid [CatalogTax](#type-catalogtax) object.  For a more detailed discussion of the Catalog data model, please see the [Catalog Overview](/products/catalog/overview).
   class CatalogObject
-    # The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below.  See [CatalogObjectType](#type-catalogobjecttype) for all possible values.
+    # The type of this object. Each object type has expected properties expressed in a structured format within its corresponding `*_data` field below. See [CatalogObjectType](#type-catalogobjecttype) for possible values
     attr_accessor :type
 
     # An identifier to reference this object in the catalog. When a new CatalogObject is inserted, the client should set the id to a temporary identifier starting with a `'#'` character. Other objects being inserted or updated within the same request may use this identifier to refer to the new object.  When the server receives the new object, it will supply a unique identifier that replaces the temporary identifier for all future references.
@@ -60,6 +60,9 @@ module SquareConnect
     # Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`.
     attr_accessor :modifier_data
 
+    # Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.
+    attr_accessor :image_data
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -100,7 +103,8 @@ module SquareConnect
         :'tax_data' => :'tax_data',
         :'discount_data' => :'discount_data',
         :'modifier_list_data' => :'modifier_list_data',
-        :'modifier_data' => :'modifier_data'
+        :'modifier_data' => :'modifier_data',
+        :'image_data' => :'image_data'
       }
     end
 
@@ -122,7 +126,8 @@ module SquareConnect
         :'tax_data' => :'CatalogTax',
         :'discount_data' => :'CatalogDiscount',
         :'modifier_list_data' => :'CatalogModifierList',
-        :'modifier_data' => :'CatalogModifier'
+        :'modifier_data' => :'CatalogModifier',
+        :'image_data' => :'CatalogImage'
       }
     end
 
@@ -204,6 +209,10 @@ module SquareConnect
         self.modifier_data = attributes[:'modifier_data']
       end
 
+      if attributes.has_key?(:'image_data')
+        self.image_data = attributes[:'image_data']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -229,7 +238,7 @@ module SquareConnect
     # @return true if the model is valid
     def valid?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["ITEM", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER"])
+      type_validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER"])
       return false unless type_validator.valid?(@type)
       return false if @id.nil?
       return false if @id.to_s.length < 1
@@ -239,7 +248,7 @@ module SquareConnect
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["ITEM", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER"])
+      validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
       end
@@ -280,7 +289,8 @@ module SquareConnect
           tax_data == o.tax_data &&
           discount_data == o.discount_data &&
           modifier_list_data == o.modifier_list_data &&
-          modifier_data == o.modifier_data
+          modifier_data == o.modifier_data &&
+          image_data == o.image_data
     end
 
     # @see the `==` method
@@ -292,7 +302,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data].hash
+      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, image_data].hash
     end
 
     # Builds the object from hash

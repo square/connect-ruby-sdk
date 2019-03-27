@@ -12,10 +12,10 @@ require 'date'
 module SquareConnect
   # Sets the sort order of search results.
   class ShiftSort
-    # The field to sort on.
+    # The field to sort on. See [ShiftSortField](#type-shiftsortfield) for possible values
     attr_accessor :field
 
-    # The order in which results are returned. Defaults to DESC.
+    # The order in which results are returned. Defaults to DESC. See [SortOrder](#type-sortorder) for possible values
     attr_accessor :order
 
     class EnumAttributeValidator

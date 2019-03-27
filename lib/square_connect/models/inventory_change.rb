@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents a single physical count, inventory, adjustment, or transfer that is part of the history of inventory changes for a particular [CatalogObject](#type-catalogobject).
   class InventoryChange
-    # Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for all possible values.
+    # Indicates how the inventory change was applied. See [InventoryChangeType](#type-inventorychangetype) for possible values
     attr_accessor :type
 
     # Contains details about the physical count when `type` is `PHYSICAL_COUNT` and unset for all other types.

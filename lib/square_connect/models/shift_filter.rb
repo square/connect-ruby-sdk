@@ -18,7 +18,7 @@ module SquareConnect
     # Fetch shifts for the specified employee.
     attr_accessor :employee_id
 
-    # Fetch a `Shift` instance by `Shift.status`.
+    # Fetch a `Shift` instance by `Shift.status`. See [ShiftFilterStatus](#type-shiftfilterstatus) for possible values
     attr_accessor :status
 
     # Fetch `Shift`s that start in the time range - Inclusive.

@@ -60,7 +60,7 @@ module SquareConnect
     # The groups the customer belongs to.
     attr_accessor :groups
 
-    # A creation source represents the method used to create the customer profile.
+    # A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values
     attr_accessor :creation_source
 
     class EnumAttributeValidator

@@ -15,7 +15,7 @@ module SquareConnect
     # Any errors that occurred during the request.
     attr_accessor :errors
 
-    # Status of the domain registration.  See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values.
+    # Status of the domain registration. See [RegisterDomainResponseStatus](#type-registerdomainresponsestatus) for possible values
     attr_accessor :status
 
     class EnumAttributeValidator

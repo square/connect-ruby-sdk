@@ -18,7 +18,7 @@ module SquareConnect
     # The [CatalogObjectType](#type-catalogobjecttype) of the [CatalogObject](#type-catalogobject) being tracked. Tracking is only supported for the `ITEM_VARIATION` type.
     attr_accessor :catalog_object_type
 
-    # The current [InventoryState](#type-inventorystate) for the related quantity of items.
+    # The current [InventoryState](#type-inventorystate) for the related quantity of items. See [InventoryState](#type-inventorystate) for possible values
     attr_accessor :state
 
     # The Square ID of the [Location](#type-location) where the related quantity of items are being tracked.

@@ -18,10 +18,10 @@ module SquareConnect
     # An optional ID provided by the application to tie the [InventoryAdjustment](#type-inventoryadjustment) to an external system.
     attr_accessor :reference_id
 
-    # The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment.
+    # The [InventoryState](#type-inventorystate) of the related quantity of items before the adjustment. See [InventoryState](#type-inventorystate) for possible values
     attr_accessor :from_state
 
-    # The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment.
+    # The [InventoryState](#type-inventorystate) of the related quantity of items after the adjustment. See [InventoryState](#type-inventorystate) for possible values
     attr_accessor :to_state
 
     # The Square ID of the [Location](#type-location) where the related quantity of items are being tracked.

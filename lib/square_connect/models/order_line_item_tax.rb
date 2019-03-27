@@ -18,7 +18,7 @@ module SquareConnect
     # The tax's name.
     attr_accessor :name
 
-    # Indicates the calculation method used to apply the tax.  See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values.
+    # Indicates the calculation method used to apply the tax. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
     attr_accessor :type
 
     # The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%.
@@ -27,7 +27,7 @@ module SquareConnect
     # The amount of the money applied by the tax in an order.
     attr_accessor :applied_money
 
-    # Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values.
+    # Indicates the level at which the tax applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemTaxScope](#type-orderlineitemtaxscope) for possible values
     attr_accessor :scope
 
     class EnumAttributeValidator

@@ -33,7 +33,7 @@ module SquareConnect
     # The amount of money refunded to the buyer.
     attr_accessor :amount_money
 
-    # The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`).
+    # The current status of the refund (`PENDING`, `APPROVED`, `REJECTED`, or `FAILED`). See [RefundStatus](#type-refundstatus) for possible values
     attr_accessor :status
 
     # The amount of Square processing fee money refunded to the *merchant*.

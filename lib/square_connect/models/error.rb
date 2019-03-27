@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents an error encountered during a request to the Connect API.
   class Error
-    # The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values.
+    # The error's high-level category. See [ErrorCategory](#type-errorcategory) for possible values
     attr_accessor :category
 
     # The error's specific code. See [ErrorCode](#type-errorcode) for possible values

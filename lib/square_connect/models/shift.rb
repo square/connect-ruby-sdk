@@ -36,7 +36,7 @@ module SquareConnect
     # A list of any paid or unpaid breaks that were taken during this shift.
     attr_accessor :breaks
 
-    # Describes working state of the current `Shift`.
+    # Describes working state of the current `Shift`. See [ShiftStatus](#type-shiftstatus) for possible values
     attr_accessor :status
 
     # Used for resolving concurrency issues; request will fail if version provided does not match server version at time of request. If not provided, Square executes a blind write; potentially overwriting data from another write.
