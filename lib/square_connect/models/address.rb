@@ -45,7 +45,7 @@ module SquareConnect
     # The address's postal code.
     attr_accessor :postal_code
 
-    # The address's country, in ISO 3166-1-alpha-2 format.
+    # The address's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
     attr_accessor :country
 
     # Optional first name when it's representing recipient.

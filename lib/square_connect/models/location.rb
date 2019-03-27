@@ -24,10 +24,10 @@ module SquareConnect
     # The [IANA Timezone Database](https://www.iana.org/time-zones) identifier for the location's timezone.
     attr_accessor :timezone
 
-    # Indicates which Square features are enabled for the location.  See [LocationCapability](#type-locationcapability) for possible values.
+    # Indicates which Square features are enabled for the location. See [LocationCapability](#type-locationcapability) for possible values
     attr_accessor :capabilities
 
-    # The location's status  See [LocationStatus](#type-locationstatus) for possible values.
+    # The location's status See [LocationStatus](#type-locationstatus) for possible values
     attr_accessor :status
 
     # The time when the location was created, in RFC 3339 format.
@@ -36,13 +36,13 @@ module SquareConnect
     # The identifier of the merchant that owns the location.
     attr_accessor :merchant_id
 
-    # The location's country, in ISO 3166-1-alpha-2 format.  See [Country](#type-country) for possible values.
+    # The location's country, in ISO 3166-1-alpha-2 format. See [Country](#type-country) for possible values
     attr_accessor :country
 
     # The language associated with the location in [BCP 47 format](https://tools.ietf.org/html/bcp47#appendix-A).
     attr_accessor :language_code
 
-    # The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'.  See [Currency](#type-currency) for possible values.
+    # The currency used for all transactions at this location, specified in __ISO 4217 format__. For example, the currency for a location processing transactions in the United States is 'USD'. See [Currency](#type-currency) for possible values
     attr_accessor :currency
 
     # The location's phone_number.
@@ -51,7 +51,7 @@ module SquareConnect
     # The location's business_name which is shown to its customers. For example, this is the name printed on its customer's receipts.
     attr_accessor :business_name
 
-    # The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space.  See [LocationType](#type-locationtype) for possible values.
+    # The location's type, as set by the account owner in the Square dashboard. Typically used to indicate whether or not the location object represents a physical space like a building or mall space. See [LocationType](#type-locationtype) for possible values
     attr_accessor :type
 
     # The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.

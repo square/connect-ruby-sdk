@@ -13,6 +13,7 @@ module SquareConnect
   class CatalogObjectType
     
     ITEM = "ITEM".freeze
+    IMAGE = "IMAGE".freeze
     CATEGORY = "CATEGORY".freeze
     ITEM_VARIATION = "ITEM_VARIATION".freeze
     TAX = "TAX".freeze

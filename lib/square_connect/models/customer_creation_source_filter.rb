@@ -12,10 +12,10 @@ require 'date'
 module SquareConnect
   # Creation source filter.  If one or more creation sources are set, customer profiles are included in, or excluded from, the result if they match at least one of the filter criteria.
   class CustomerCreationSourceFilter
-    # The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values.
+    # The list of creation sources used as filtering criteria. See [CustomerCreationSource](#type-customercreationsource) for possible values
     attr_accessor :values
 
-    # Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values.
+    # Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values
     attr_accessor :rule
 
     class EnumAttributeValidator

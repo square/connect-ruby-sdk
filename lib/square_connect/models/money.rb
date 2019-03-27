@@ -15,7 +15,7 @@ module SquareConnect
     # The amount of money, in the smallest denomination of the currency indicated by `currency`. For example, when `currency` is `USD`, `amount` is in cents.
     attr_accessor :amount
 
-    # The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`.  See [Currency](#type-currency) for possible values.
+    # The type of currency, in __ISO 4217 format__. For example, the currency code for US dollars is `USD`. See [Currency](#type-currency) for possible values
     attr_accessor :currency
 
     class EnumAttributeValidator

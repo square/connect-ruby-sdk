@@ -24,7 +24,7 @@ module SquareConnect
     # A list of location IDs where this employee has access.
     attr_accessor :location_ids
 
-    # Specifies the status of the employee being fetched.
+    # Specifies the status of the employee being fetched. See [EmployeeStatus](#type-employeestatus) for possible values
     attr_accessor :status
 
     # A read-only timestamp in RFC 3339 format.

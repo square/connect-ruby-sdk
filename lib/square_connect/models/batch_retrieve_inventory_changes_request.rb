@@ -18,10 +18,10 @@ module SquareConnect
     # Filters results by [Location](#type-location) ID. Only applied when set. Default: unset.
     attr_accessor :location_ids
 
-    # Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter.
+    # Filters results by [InventoryChangeType](#type-inventorychangetype). Default: [`PHYSICAL_COUNT`, `ADJUSTMENT`]. `TRANSFER` is not supported as a filter. See [InventoryChangeType](#type-inventorychangetype) for possible values
     attr_accessor :types
 
-    # Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset.
+    # Filters `ADJUSTMENT` query results by [InventoryState](#type-inventorystate). Only applied when set. Default: unset. See [InventoryState](#type-inventorystate) for possible values
     attr_accessor :states
 
     # Provided as an RFC 3339 timestamp. Returns results whose `created_at` or `calculated_at` value is after the given time. Default: UNIX epoch (`1970-01-01T00:00:00Z`).

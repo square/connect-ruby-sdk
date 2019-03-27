@@ -21,7 +21,7 @@ module SquareConnect
     # The auto completion duration in RFC3339 duration format, e.g., \"P1W3D\". If set, an open and accepted pickup fulfillment will automatically move to the `COMPLETED` state after this period of time. If not set, this pickup fulfillment will remain accepted until it is canceled or completed.
     attr_accessor :auto_complete_duration
 
-    # The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`.
+    # The schedule type of the pickup fulfillment. Defaults to `SCHEDULED`. See [OrderFulfillmentPickupDetailsScheduleType](#type-orderfulfillmentpickupdetailsscheduletype) for possible values
     attr_accessor :schedule_type
 
     # The pickup [timestamp](#workingwithdates) in RFC3339 timestamp format, e.g., \"2016-09-04T23:59:33.123Z\". For fulfillments with the schedule type `ASAP`, this is automatically set to the current time plus the expected duration to prepare the fulfillment. This represents the start of the pickup window.

@@ -12,13 +12,13 @@ require 'date'
 module SquareConnect
   # Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD`
   class TenderCardDetails
-    # The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values.
+    # The credit card payment's current state (such as `AUTHORIZED` or `CAPTURED`). See [TenderCardDetailsStatus](#type-tendercarddetailsstatus) for possible values
     attr_accessor :status
 
     # The credit card's non-confidential details.
     attr_accessor :card
 
-    # The method used to enter the card's details for the transaction.
+    # The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values
     attr_accessor :entry_method
 
     class EnumAttributeValidator

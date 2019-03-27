@@ -18,7 +18,7 @@ module SquareConnect
     # An optional ID provided by the application to tie the [InventoryTransfer](#type-inventorytransfer) to an external system.
     attr_accessor :reference_id
 
-    # The [InventoryState](#type-inventorystate) for the quantity of items being transfered.
+    # The [InventoryState](#type-inventorystate) for the quantity of items being transfered. See [InventoryState](#type-inventorystate) for possible values
     attr_accessor :state
 
     # The Square ID of the [Location](#type-location) where the related quantity of items were tracked before the transfer.

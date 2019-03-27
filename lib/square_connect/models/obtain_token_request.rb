@@ -15,22 +15,22 @@ module SquareConnect
     # The Square-issued ID of your application, available from the [application dashboard](https://connect.squareup.com/apps).
     attr_accessor :client_id
 
-    # The Square-issued application secret for your application,  available from the [application dashboard](https://connect.squareup.com/apps).
+    # The Square-issued application secret for your application, available from the [application dashboard](https://connect.squareup.com/apps).
     attr_accessor :client_secret
 
-    # The authorization code to exchange.  This is required if `grant_type` is set to `authorization_code`, to indicate that  the application wants to exchange an authorization code for an OAuth access token.
+    # The authorization code to exchange. This is required if `grant_type` is set to `authorization_code`, to indicate that the application wants to exchange an authorization code for an OAuth access token.
     attr_accessor :code
 
     # The redirect URL assigned in the [application dashboard](https://connect.squareup.com/apps).
     attr_accessor :redirect_uri
 
-    # Specifies the method to request an OAuth access token.  Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
+    # Specifies the method to request an OAuth access token. Valid values are: `authorization_code`, `refresh_token`, and `migration_token`
     attr_accessor :grant_type
 
-    # A valid refresh token for generating a new OAuth access token.  A valid refresh token is required if `grant_type` is set to `refresh_token` ,   to indicate the application wants a replacement for an expired OAuth access token.
+    # A valid refresh token for generating a new OAuth access token. A valid refresh token is required if `grant_type` is set to `refresh_token` , to indicate the application wants a replacement for an expired OAuth access token.
     attr_accessor :refresh_token
 
-    # Legacy OAuth access token obtained using a Connect API version prior  to 2019-03-13. This parameter is required if `grant_type` is set to  `migration_token` to indicate that the application wants to get a replacement   OAuth access token. The response also returns a refresh token.  For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).
+    # Legacy OAuth access token obtained using a Connect API version prior to 2019-03-13. This parameter is required if `grant_type` is set to `migration_token` to indicate that the application wants to get a replacement OAuth access token. The response also returns a refresh token. For more information, see [Migrate to Using Refresh Tokens](/authz/oauth/migration).
     attr_accessor :migration_token
 
 
@@ -102,12 +102,27 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @client_id.nil?
+        invalid_properties.push("invalid value for 'client_id', client_id cannot be nil.")
+      end
+
+      if @client_secret.nil?
+        invalid_properties.push("invalid value for 'client_secret', client_secret cannot be nil.")
+      end
+
+      if @grant_type.nil?
+        invalid_properties.push("invalid value for 'grant_type', grant_type cannot be nil.")
+      end
+
       return invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @client_id.nil?
+      return false if @client_secret.nil?
+      return false if @grant_type.nil?
       return true
     end
 

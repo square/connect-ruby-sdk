@@ -15,7 +15,7 @@ module SquareConnect
     # Filter employees returned to only those that are associated with the specified location.
     attr_accessor :location_id
 
-    # Specifies the EmployeeStatus to filter the employee by.
+    # Specifies the EmployeeStatus to filter the employee by. See [EmployeeStatus](#type-employeestatus) for possible values
     attr_accessor :status
 
     # The number of employees to be returned on each page.

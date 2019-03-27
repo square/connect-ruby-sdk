@@ -15,7 +15,7 @@ module SquareConnect
     # The [CatalogModifierList](#type-catalogmodifierlist)'s name. Searchable. This field has max length of 255 Unicode code points.
     attr_accessor :name
 
-    # Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for all possible values.
+    # Indicates whether multiple options from the [CatalogModifierList](#type-catalogmodifierlist) can be applied to a single [CatalogItem](#type-catalogitem). See [CatalogModifierListSelectionType](#type-catalogmodifierlistselectiontype) for possible values
     attr_accessor :selection_type
 
     # The options included in the [CatalogModifierList](#type-catalogmodifierlist). You must include at least one [CatalogModifier](#type-catalogmodifier). Each [CatalogObject](#type-catalogobject) must have type `MODIFIER` and contain [CatalogModifier](#type-catalogmodifier) data.
