@@ -39,6 +39,9 @@ module SquareConnect
     # A list of locations where the object is not present, even if `present_at_all_locations` is `true`.
     attr_accessor :absent_at_location_ids
 
+    # Identifies the `CatalogImage` attached to this `CatalogObject`.
+    attr_accessor :image_id
+
     # Structured data for a [CatalogItem](#type-catalogitem), set for CatalogObjects of type `ITEM`.
     attr_accessor :item_data
 
@@ -97,6 +100,7 @@ module SquareConnect
         :'present_at_all_locations' => :'present_at_all_locations',
         :'present_at_location_ids' => :'present_at_location_ids',
         :'absent_at_location_ids' => :'absent_at_location_ids',
+        :'image_id' => :'image_id',
         :'item_data' => :'item_data',
         :'category_data' => :'category_data',
         :'item_variation_data' => :'item_variation_data',
@@ -120,6 +124,7 @@ module SquareConnect
         :'present_at_all_locations' => :'BOOLEAN',
         :'present_at_location_ids' => :'Array<String>',
         :'absent_at_location_ids' => :'Array<String>',
+        :'image_id' => :'String',
         :'item_data' => :'CatalogItem',
         :'category_data' => :'CatalogCategory',
         :'item_variation_data' => :'CatalogItemVariation',
@@ -179,6 +184,10 @@ module SquareConnect
         if (value = attributes[:'absent_at_location_ids']).is_a?(Array)
           self.absent_at_location_ids = value
         end
+      end
+
+      if attributes.has_key?(:'image_id')
+        self.image_id = attributes[:'image_id']
       end
 
       if attributes.has_key?(:'item_data')
@@ -283,6 +292,7 @@ module SquareConnect
           present_at_all_locations == o.present_at_all_locations &&
           present_at_location_ids == o.present_at_location_ids &&
           absent_at_location_ids == o.absent_at_location_ids &&
+          image_id == o.image_id &&
           item_data == o.item_data &&
           category_data == o.category_data &&
           item_variation_data == o.item_variation_data &&
@@ -302,7 +312,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, image_data].hash
+      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, image_data].hash
     end
 
     # Builds the object from hash
