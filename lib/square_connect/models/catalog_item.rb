@@ -42,7 +42,7 @@ module SquareConnect
     # A set of [CatalogItemModifierListInfo](#type-catalogitemmodifierlistinfo) objects representing the modifier lists that apply to this item, along with the overrides and min and max limits that are specific to this item. [CatalogModifierList](#type-catalogmodifierlist)s may also be added to or deleted from an item using `UpdateItemModifierLists`.
     attr_accessor :modifier_list_info
 
-    # __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_data` in [`CatalogObject`](#type-catalogobject).
+    # __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).
     attr_accessor :image_url
 
     # A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.
