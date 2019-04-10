@@ -30,6 +30,9 @@ module SquareConnect
     # The ID of the modifier list the option belongs to.
     attr_accessor :modifier_list_id
 
+    # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+    attr_accessor :v2_id
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -39,7 +42,8 @@ module SquareConnect
         :'price_money' => :'price_money',
         :'on_by_default' => :'on_by_default',
         :'ordinal' => :'ordinal',
-        :'modifier_list_id' => :'modifier_list_id'
+        :'modifier_list_id' => :'modifier_list_id',
+        :'v2_id' => :'v2_id'
       }
     end
 
@@ -51,7 +55,8 @@ module SquareConnect
         :'price_money' => :'V1Money',
         :'on_by_default' => :'BOOLEAN',
         :'ordinal' => :'Integer',
-        :'modifier_list_id' => :'String'
+        :'modifier_list_id' => :'String',
+        :'v2_id' => :'String'
       }
     end
 
@@ -87,6 +92,10 @@ module SquareConnect
         self.modifier_list_id = attributes[:'modifier_list_id']
       end
 
+      if attributes.has_key?(:'v2_id')
+        self.v2_id = attributes[:'v2_id']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -112,7 +121,8 @@ module SquareConnect
           price_money == o.price_money &&
           on_by_default == o.on_by_default &&
           ordinal == o.ordinal &&
-          modifier_list_id == o.modifier_list_id
+          modifier_list_id == o.modifier_list_id &&
+          v2_id == o.v2_id
     end
 
     # @see the `==` method
@@ -124,7 +134,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, price_money, on_by_default, ordinal, modifier_list_id].hash
+      [id, name, price_money, on_by_default, ordinal, modifier_list_id, v2_id].hash
     end
 
     # Builds the object from hash

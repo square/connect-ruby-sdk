@@ -24,6 +24,9 @@ module SquareConnect
     # The options included in the modifier list.
     attr_accessor :modifier_options
 
+    # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+    attr_accessor :v2_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -52,7 +55,8 @@ module SquareConnect
         :'id' => :'id',
         :'name' => :'name',
         :'selection_type' => :'selection_type',
-        :'modifier_options' => :'modifier_options'
+        :'modifier_options' => :'modifier_options',
+        :'v2_id' => :'v2_id'
       }
     end
 
@@ -62,7 +66,8 @@ module SquareConnect
         :'id' => :'String',
         :'name' => :'String',
         :'selection_type' => :'String',
-        :'modifier_options' => :'Array<V1ModifierOption>'
+        :'modifier_options' => :'Array<V1ModifierOption>',
+        :'v2_id' => :'String'
       }
     end
 
@@ -90,6 +95,10 @@ module SquareConnect
         if (value = attributes[:'modifier_options']).is_a?(Array)
           self.modifier_options = value
         end
+      end
+
+      if attributes.has_key?(:'v2_id')
+        self.v2_id = attributes[:'v2_id']
       end
 
     end
@@ -127,7 +136,8 @@ module SquareConnect
           id == o.id &&
           name == o.name &&
           selection_type == o.selection_type &&
-          modifier_options == o.modifier_options
+          modifier_options == o.modifier_options &&
+          v2_id == o.v2_id
     end
 
     # @see the `==` method
@@ -139,7 +149,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, selection_type, modifier_options].hash
+      [id, name, selection_type, modifier_options, v2_id].hash
     end
 
     # Builds the object from hash

@@ -45,6 +45,9 @@ module SquareConnect
     # Arbitrary metadata associated with the variation. Cannot exceed 255 characters.
     attr_accessor :user_data
 
+    # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+    attr_accessor :v2_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -80,7 +83,8 @@ module SquareConnect
         :'track_inventory' => :'track_inventory',
         :'inventory_alert_type' => :'inventory_alert_type',
         :'inventory_alert_threshold' => :'inventory_alert_threshold',
-        :'user_data' => :'user_data'
+        :'user_data' => :'user_data',
+        :'v2_id' => :'v2_id'
       }
     end
 
@@ -97,7 +101,8 @@ module SquareConnect
         :'track_inventory' => :'BOOLEAN',
         :'inventory_alert_type' => :'String',
         :'inventory_alert_threshold' => :'Integer',
-        :'user_data' => :'String'
+        :'user_data' => :'String',
+        :'v2_id' => :'String'
       }
     end
 
@@ -151,6 +156,10 @@ module SquareConnect
 
       if attributes.has_key?(:'user_data')
         self.user_data = attributes[:'user_data']
+      end
+
+      if attributes.has_key?(:'v2_id')
+        self.v2_id = attributes[:'v2_id']
       end
 
     end
@@ -207,7 +216,8 @@ module SquareConnect
           track_inventory == o.track_inventory &&
           inventory_alert_type == o.inventory_alert_type &&
           inventory_alert_threshold == o.inventory_alert_threshold &&
-          user_data == o.user_data
+          user_data == o.user_data &&
+          v2_id == o.v2_id
     end
 
     # @see the `==` method
@@ -219,7 +229,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, item_id, ordinal, pricing_type, price_money, sku, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data].hash
+      [id, name, item_id, ordinal, pricing_type, price_money, sku, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, v2_id].hash
     end
 
     # Builds the object from hash
