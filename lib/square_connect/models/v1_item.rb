@@ -60,6 +60,9 @@ module SquareConnect
     # If true, the item can be added to pickup orders from the merchant's online store. Default value: false
     attr_accessor :available_for_pickup
 
+    # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+    attr_accessor :v2_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -100,7 +103,8 @@ module SquareConnect
         :'fees' => :'fees',
         :'taxable' => :'taxable',
         :'category_id' => :'category_id',
-        :'available_for_pickup' => :'available_for_pickup'
+        :'available_for_pickup' => :'available_for_pickup',
+        :'v2_id' => :'v2_id'
       }
     end
 
@@ -122,7 +126,8 @@ module SquareConnect
         :'fees' => :'Array<V1Fee>',
         :'taxable' => :'BOOLEAN',
         :'category_id' => :'String',
-        :'available_for_pickup' => :'BOOLEAN'
+        :'available_for_pickup' => :'BOOLEAN',
+        :'v2_id' => :'String'
       }
     end
 
@@ -204,6 +209,10 @@ module SquareConnect
         self.available_for_pickup = attributes[:'available_for_pickup']
       end
 
+      if attributes.has_key?(:'v2_id')
+        self.v2_id = attributes[:'v2_id']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -275,7 +284,8 @@ module SquareConnect
           fees == o.fees &&
           taxable == o.taxable &&
           category_id == o.category_id &&
-          available_for_pickup == o.available_for_pickup
+          available_for_pickup == o.available_for_pickup &&
+          v2_id == o.v2_id
     end
 
     # @see the `==` method
@@ -287,7 +297,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, description, type, color, abbreviation, visibility, available_online, master_image, category, variations, modifier_lists, fees, taxable, category_id, available_for_pickup].hash
+      [id, name, description, type, color, abbreviation, visibility, available_online, master_image, category, variations, modifier_lists, fees, taxable, category_id, available_for_pickup, v2_id].hash
     end
 
     # Builds the object from hash

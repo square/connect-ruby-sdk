@@ -39,6 +39,9 @@ module SquareConnect
     # In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants. See [V1FeeType](#type-v1feetype) for possible values
     attr_accessor :type
 
+    # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+    attr_accessor :v2_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -72,7 +75,8 @@ module SquareConnect
         :'applies_to_custom_amounts' => :'applies_to_custom_amounts',
         :'enabled' => :'enabled',
         :'inclusion_type' => :'inclusion_type',
-        :'type' => :'type'
+        :'type' => :'type',
+        :'v2_id' => :'v2_id'
       }
     end
 
@@ -87,7 +91,8 @@ module SquareConnect
         :'applies_to_custom_amounts' => :'BOOLEAN',
         :'enabled' => :'BOOLEAN',
         :'inclusion_type' => :'String',
-        :'type' => :'String'
+        :'type' => :'String',
+        :'v2_id' => :'String'
       }
     end
 
@@ -133,6 +138,10 @@ module SquareConnect
 
       if attributes.has_key?(:'type')
         self.type = attributes[:'type']
+      end
+
+      if attributes.has_key?(:'v2_id')
+        self.v2_id = attributes[:'v2_id']
       end
 
     end
@@ -211,7 +220,8 @@ module SquareConnect
           applies_to_custom_amounts == o.applies_to_custom_amounts &&
           enabled == o.enabled &&
           inclusion_type == o.inclusion_type &&
-          type == o.type
+          type == o.type &&
+          v2_id == o.v2_id
     end
 
     # @see the `==` method
@@ -223,7 +233,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, rate, calculation_phase, adjustment_type, applies_to_custom_amounts, enabled, inclusion_type, type].hash
+      [id, name, rate, calculation_phase, adjustment_type, applies_to_custom_amounts, enabled, inclusion_type, type, v2_id].hash
     end
 
     # Builds the object from hash

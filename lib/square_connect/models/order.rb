@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Contains all information related to a single order to process with Square, including line items that specify the products to purchase
   class Order
-    # The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-createorder) endpoint.
+    # The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-orders-createorder) endpoint.
     attr_accessor :id
 
     # The ID of the merchant location this order is associated with.
@@ -20,6 +20,9 @@ module SquareConnect
 
     # A client specified identifier to associate an entity in another system with this order.
     attr_accessor :reference_id
+
+    # The origination details of the order.
+    attr_accessor :source
 
     # The line items included in the order.
     attr_accessor :line_items
@@ -49,6 +52,7 @@ module SquareConnect
         :'id' => :'id',
         :'location_id' => :'location_id',
         :'reference_id' => :'reference_id',
+        :'source' => :'source',
         :'line_items' => :'line_items',
         :'taxes' => :'taxes',
         :'discounts' => :'discounts',
@@ -65,6 +69,7 @@ module SquareConnect
         :'id' => :'String',
         :'location_id' => :'String',
         :'reference_id' => :'String',
+        :'source' => :'OrderSource',
         :'line_items' => :'Array<OrderLineItem>',
         :'taxes' => :'Array<OrderLineItemTax>',
         :'discounts' => :'Array<OrderLineItemDiscount>',
@@ -93,6 +98,10 @@ module SquareConnect
 
       if attributes.has_key?(:'reference_id')
         self.reference_id = attributes[:'reference_id']
+      end
+
+      if attributes.has_key?(:'source')
+        self.source = attributes[:'source']
       end
 
       if attributes.has_key?(:'line_items')
@@ -194,6 +203,7 @@ module SquareConnect
           id == o.id &&
           location_id == o.location_id &&
           reference_id == o.reference_id &&
+          source == o.source &&
           line_items == o.line_items &&
           taxes == o.taxes &&
           discounts == o.discounts &&
@@ -212,7 +222,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, reference_id, line_items, taxes, discounts, fulfillments, total_money, total_tax_money, total_discount_money].hash
+      [id, location_id, reference_id, source, line_items, taxes, discounts, fulfillments, total_money, total_tax_money, total_discount_money].hash
     end
 
     # Builds the object from hash

@@ -47,7 +47,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-03-27"
+      header_params['Square-Version'] = "2019-04-10"
 
       # form parameters
       form_params = {}

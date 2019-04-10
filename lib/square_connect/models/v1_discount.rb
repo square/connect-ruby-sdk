@@ -33,6 +33,9 @@ module SquareConnect
     # The color of the discount's display label in Square Register, if not the default color. The default color is 9da2a6. See [V1DiscountColor](#type-v1discountcolor) for possible values
     attr_accessor :color
 
+    # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
+    attr_accessor :v2_id
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -64,7 +67,8 @@ module SquareConnect
         :'amount_money' => :'amount_money',
         :'discount_type' => :'discount_type',
         :'pin_required' => :'pin_required',
-        :'color' => :'color'
+        :'color' => :'color',
+        :'v2_id' => :'v2_id'
       }
     end
 
@@ -77,7 +81,8 @@ module SquareConnect
         :'amount_money' => :'V1Money',
         :'discount_type' => :'String',
         :'pin_required' => :'BOOLEAN',
-        :'color' => :'String'
+        :'color' => :'String',
+        :'v2_id' => :'String'
       }
     end
 
@@ -115,6 +120,10 @@ module SquareConnect
 
       if attributes.has_key?(:'color')
         self.color = attributes[:'color']
+      end
+
+      if attributes.has_key?(:'v2_id')
+        self.v2_id = attributes[:'v2_id']
       end
 
     end
@@ -167,7 +176,8 @@ module SquareConnect
           amount_money == o.amount_money &&
           discount_type == o.discount_type &&
           pin_required == o.pin_required &&
-          color == o.color
+          color == o.color &&
+          v2_id == o.v2_id
     end
 
     # @see the `==` method
@@ -179,7 +189,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, rate, amount_money, discount_type, pin_required, color].hash
+      [id, name, rate, amount_money, discount_type, pin_required, color, v2_id].hash
     end
 
     # Builds the object from hash
