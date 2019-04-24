@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # 
   class ObtainTokenResponse
-    # A valid OAuth access token. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.
+    # A valid OAuth access token. OAuth access tokens are 64 bytes long. Provide the access token in a header with every request to Connect API endpoints. See the [Build with OAuth](/authz/oauth/build-with-the-api) guide for more information.
     attr_accessor :access_token
 
     # This value is always _bearer_.

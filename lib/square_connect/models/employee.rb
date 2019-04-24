@@ -21,6 +21,12 @@ module SquareConnect
     # Family (last) name of the employee
     attr_accessor :last_name
 
+    # Email of the employee
+    attr_accessor :email
+
+    # Phone number of the employee in E.164 format, i.e. \"+12125554250\"
+    attr_accessor :phone_number
+
     # A list of location IDs where this employee has access.
     attr_accessor :location_ids
 
@@ -61,6 +67,8 @@ module SquareConnect
         :'id' => :'id',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
+        :'email' => :'email',
+        :'phone_number' => :'phone_number',
         :'location_ids' => :'location_ids',
         :'status' => :'status',
         :'created_at' => :'created_at',
@@ -74,6 +82,8 @@ module SquareConnect
         :'id' => :'String',
         :'first_name' => :'String',
         :'last_name' => :'String',
+        :'email' => :'String',
+        :'phone_number' => :'String',
         :'location_ids' => :'Array<String>',
         :'status' => :'String',
         :'created_at' => :'String',
@@ -99,6 +109,14 @@ module SquareConnect
 
       if attributes.has_key?(:'last_name')
         self.last_name = attributes[:'last_name']
+      end
+
+      if attributes.has_key?(:'email')
+        self.email = attributes[:'email']
+      end
+
+      if attributes.has_key?(:'phone_number')
+        self.phone_number = attributes[:'phone_number']
       end
 
       if attributes.has_key?(:'location_ids')
@@ -154,6 +172,8 @@ module SquareConnect
           id == o.id &&
           first_name == o.first_name &&
           last_name == o.last_name &&
+          email == o.email &&
+          phone_number == o.phone_number &&
           location_ids == o.location_ids &&
           status == o.status &&
           created_at == o.created_at &&
@@ -169,7 +189,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, first_name, last_name, location_ids, status, created_at, updated_at].hash
+      [id, first_name, last_name, email, phone_number, location_ids, status, created_at, updated_at].hash
     end
 
     # Builds the object from hash

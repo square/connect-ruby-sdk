@@ -30,7 +30,7 @@ module SquareConnect
     # An optional ID you can associate with the transaction for your own purposes (such as to associate the transaction with an entity ID in your own database).  This value cannot exceed 40 characters.
     attr_accessor :reference_id
 
-    # 
+    # An optional note to associate with the transaction.  This value cannot exceed 60 characters.
     attr_accessor :note
 
     # The ID of the customer to associate this transaction with. This field is required if you provide a value for `customer_card_id`, and optional otherwise.

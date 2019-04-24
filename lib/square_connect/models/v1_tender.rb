@@ -27,7 +27,7 @@ module SquareConnect
     # The URL of the receipt for the tender.
     attr_accessor :receipt_url
 
-    # The brand of credit card provided. See [CardBrand](#type-cardbrand) for possible values
+    # The brand of credit card provided. See [V1TenderCardBrand](#type-v1tendercardbrand) for possible values
     attr_accessor :card_brand
 
     # The last four digits of the provided credit card's account number.
@@ -212,7 +212,7 @@ module SquareConnect
     def valid?
       type_validator = EnumAttributeValidator.new('String', ["CREDIT_CARD", "CASH", "THIRD_PARTY_CARD", "NO_SALE", "SQUARE_WALLET", "SQUARE_GIFT_CARD", "UNKNOWN", "OTHER"])
       return false unless type_validator.valid?(@type)
-      card_brand_validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
+      card_brand_validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTER_CARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
       return false unless card_brand_validator.valid?(@card_brand)
       entry_method_validator = EnumAttributeValidator.new('String', ["MANUAL", "SCANNED", "SQUARE_CASH", "SQUARE_WALLET", "SWIPED", "WEB_FORM", "OTHER"])
       return false unless entry_method_validator.valid?(@entry_method)
@@ -232,7 +232,7 @@ module SquareConnect
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] card_brand Object to be assigned
     def card_brand=(card_brand)
-      validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
+      validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTER_CARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
       unless validator.valid?(card_brand)
         fail ArgumentError, "invalid value for 'card_brand', must be one of #{validator.allowable_values}."
       end

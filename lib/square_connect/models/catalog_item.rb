@@ -18,7 +18,7 @@ module SquareConnect
     # The item's description. Searchable. This field has max length of 4096 Unicode code points.
     attr_accessor :description
 
-    # The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used.  Searchable. This field has max length of 24 Unicode code points.
+    # The text of the item's display label in the Square Point of Sale app. Only up to the first five characters of the string are used. Searchable. This field has max length of 24 Unicode code points.
     attr_accessor :abbreviation
 
     # The color of the item's display label in the Square Point of Sale app. This must be a valid hex color code.
