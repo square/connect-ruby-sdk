@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents the origination details of an order.
   class OrderSource
-    # The name used to identify the place (physical or digital) that an order originates.  If unset, the name defaults to the name of the application that created the order.
+    # The name used to identify the place (physical or digital) that an order originates. If unset, the name defaults to the name of the application that created the order.
     attr_accessor :name
 
 

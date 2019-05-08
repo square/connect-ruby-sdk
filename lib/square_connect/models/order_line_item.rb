@@ -12,11 +12,17 @@ require 'date'
 module SquareConnect
   # Represents a line item in an order. Each line item describes a different product to purchase, with its own quantity and price details.
   class OrderLineItem
+    # The line item's Unique identifier, unique only within this order. This field is read-only.
+    attr_accessor :uid
+
     # The name of the line item.
     attr_accessor :name
 
-    # The quantity purchased, as a string representation of a number.  This string must have a positive integer value.
+    # The quantity purchased, formatted as a decimal number. For example: `\"3\"`.  Line items with a `quantity_unit` can have non-integer quantities. For example: `\"1.70000\"`.  Orders Hub and older versions of Connect do not support non-integer quantities. See [Decimal quantities with Orders hub and older versions of Connect](/more-apis/orders/overview#decimal-quantities).
     attr_accessor :quantity
+
+    # The unit and precision that this line item's quantity is measured in.
+    attr_accessor :quantity_unit
 
     # The note of the line item.
     attr_accessor :note
@@ -39,7 +45,10 @@ module SquareConnect
     # The base price for a single unit of the line item.
     attr_accessor :base_price_money
 
-    # The gross sales amount of money calculated as (item base price + modifiers price) * quantity.
+    # The total price of all item variations sold in this line item. Calculated as `base_price_money` multiplied by `quantity`. Does not include modifiers.
+    attr_accessor :variation_total_price_money
+
+    # The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.
     attr_accessor :gross_sales_money
 
     # The total tax amount of money to collect for the line item.
@@ -55,8 +64,10 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'uid' => :'uid',
         :'name' => :'name',
         :'quantity' => :'quantity',
+        :'quantity_unit' => :'quantity_unit',
         :'note' => :'note',
         :'catalog_object_id' => :'catalog_object_id',
         :'variation_name' => :'variation_name',
@@ -64,6 +75,7 @@ module SquareConnect
         :'taxes' => :'taxes',
         :'discounts' => :'discounts',
         :'base_price_money' => :'base_price_money',
+        :'variation_total_price_money' => :'variation_total_price_money',
         :'gross_sales_money' => :'gross_sales_money',
         :'total_tax_money' => :'total_tax_money',
         :'total_discount_money' => :'total_discount_money',
@@ -74,8 +86,10 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'uid' => :'String',
         :'name' => :'String',
         :'quantity' => :'String',
+        :'quantity_unit' => :'OrderQuantityUnit',
         :'note' => :'String',
         :'catalog_object_id' => :'String',
         :'variation_name' => :'String',
@@ -83,6 +97,7 @@ module SquareConnect
         :'taxes' => :'Array<OrderLineItemTax>',
         :'discounts' => :'Array<OrderLineItemDiscount>',
         :'base_price_money' => :'Money',
+        :'variation_total_price_money' => :'Money',
         :'gross_sales_money' => :'Money',
         :'total_tax_money' => :'Money',
         :'total_discount_money' => :'Money',
@@ -98,12 +113,20 @@ module SquareConnect
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
+      if attributes.has_key?(:'uid')
+        self.uid = attributes[:'uid']
+      end
+
       if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
       if attributes.has_key?(:'quantity')
         self.quantity = attributes[:'quantity']
+      end
+
+      if attributes.has_key?(:'quantity_unit')
+        self.quantity_unit = attributes[:'quantity_unit']
       end
 
       if attributes.has_key?(:'note')
@@ -140,6 +163,10 @@ module SquareConnect
         self.base_price_money = attributes[:'base_price_money']
       end
 
+      if attributes.has_key?(:'variation_total_price_money')
+        self.variation_total_price_money = attributes[:'variation_total_price_money']
+      end
+
       if attributes.has_key?(:'gross_sales_money')
         self.gross_sales_money = attributes[:'gross_sales_money']
       end
@@ -162,6 +189,10 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@uid.nil? && @uid.to_s.length > 60
+        invalid_properties.push("invalid value for 'uid', the character length must be smaller than or equal to 60.")
+      end
+
       if !@name.nil? && @name.to_s.length > 500
         invalid_properties.push("invalid value for 'name', the character length must be smaller than or equal to 500.")
       end
@@ -170,8 +201,8 @@ module SquareConnect
         invalid_properties.push("invalid value for 'quantity', quantity cannot be nil.")
       end
 
-      if @quantity.to_s.length > 5
-        invalid_properties.push("invalid value for 'quantity', the character length must be smaller than or equal to 5.")
+      if @quantity.to_s.length > 12
+        invalid_properties.push("invalid value for 'quantity', the character length must be smaller than or equal to 12.")
       end
 
       if @quantity.to_s.length < 1
@@ -196,14 +227,26 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@uid.nil? && @uid.to_s.length > 60
       return false if !@name.nil? && @name.to_s.length > 500
       return false if @quantity.nil?
-      return false if @quantity.to_s.length > 5
+      return false if @quantity.to_s.length > 12
       return false if @quantity.to_s.length < 1
       return false if !@note.nil? && @note.to_s.length > 500
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@variation_name.nil? && @variation_name.to_s.length > 255
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] uid Value to be assigned
+    def uid=(uid)
+
+      if !uid.nil? && uid.to_s.length > 60
+        fail ArgumentError, "invalid value for 'uid', the character length must be smaller than or equal to 60."
+      end
+
+      @uid = uid
     end
 
     # Custom attribute writer method with validation
@@ -224,8 +267,8 @@ module SquareConnect
         fail ArgumentError, "quantity cannot be nil"
       end
 
-      if quantity.to_s.length > 5
-        fail ArgumentError, "invalid value for 'quantity', the character length must be smaller than or equal to 5."
+      if quantity.to_s.length > 12
+        fail ArgumentError, "invalid value for 'quantity', the character length must be smaller than or equal to 12."
       end
 
       if quantity.to_s.length < 1
@@ -273,8 +316,10 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          uid == o.uid &&
           name == o.name &&
           quantity == o.quantity &&
+          quantity_unit == o.quantity_unit &&
           note == o.note &&
           catalog_object_id == o.catalog_object_id &&
           variation_name == o.variation_name &&
@@ -282,6 +327,7 @@ module SquareConnect
           taxes == o.taxes &&
           discounts == o.discounts &&
           base_price_money == o.base_price_money &&
+          variation_total_price_money == o.variation_total_price_money &&
           gross_sales_money == o.gross_sales_money &&
           total_tax_money == o.total_tax_money &&
           total_discount_money == o.total_discount_money &&
@@ -297,7 +343,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, quantity, note, catalog_object_id, variation_name, modifiers, taxes, discounts, base_price_money, gross_sales_money, total_tax_money, total_discount_money, total_money].hash
+      [uid, name, quantity, quantity_unit, note, catalog_object_id, variation_name, modifiers, taxes, discounts, base_price_money, variation_total_price_money, gross_sales_money, total_tax_money, total_discount_money, total_money].hash
     end
 
     # Builds the object from hash

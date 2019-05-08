@@ -36,13 +36,13 @@ module SquareConnect
     # The ID of the customer to associate this transaction with. This field is required if you provide a value for `customer_card_id`, and optional otherwise.
     attr_accessor :customer_id
 
-    # The buyer's billing address. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor `shipping_address` is provided.
+    # The buyer's billing address.
     attr_accessor :billing_address
 
-    # The buyer's shipping address, if available. This value is optional, but this transaction is ineligible for chargeback protection if neither this parameter nor `billing_address` is provided.
+    # The buyer's shipping address, if available.
     attr_accessor :shipping_address
 
-    # The buyer's email address, if available. This value is optional, but this transaction is ineligible for chargeback protection if it is not provided.
+    # The buyer's email address, if available.
     attr_accessor :buyer_email_address
 
     # The ID of the order to associate with this transaction.  If you provide this value, the `amount_money` value of your request must __exactly match__ the value of the order's `total_money` field.

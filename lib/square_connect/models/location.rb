@@ -57,6 +57,9 @@ module SquareConnect
     # The location's website, as set by the account owner in the Square dashboard.  Default: none; only exists if explicitly set.
     attr_accessor :website_url
 
+    #   The hours of operation for a business location.  Default: none; only exists if explicitly set.
+    attr_accessor :business_hours
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -96,7 +99,8 @@ module SquareConnect
         :'phone_number' => :'phone_number',
         :'business_name' => :'business_name',
         :'type' => :'type',
-        :'website_url' => :'website_url'
+        :'website_url' => :'website_url',
+        :'business_hours' => :'business_hours'
       }
     end
 
@@ -117,7 +121,8 @@ module SquareConnect
         :'phone_number' => :'String',
         :'business_name' => :'String',
         :'type' => :'String',
-        :'website_url' => :'String'
+        :'website_url' => :'String',
+        :'business_hours' => :'BusinessHours'
       }
     end
 
@@ -189,6 +194,10 @@ module SquareConnect
 
       if attributes.has_key?(:'website_url')
         self.website_url = attributes[:'website_url']
+      end
+
+      if attributes.has_key?(:'business_hours')
+        self.business_hours = attributes[:'business_hours']
       end
 
     end
@@ -273,7 +282,8 @@ module SquareConnect
           phone_number == o.phone_number &&
           business_name == o.business_name &&
           type == o.type &&
-          website_url == o.website_url
+          website_url == o.website_url &&
+          business_hours == o.business_hours
     end
 
     # @see the `==` method
@@ -285,7 +295,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name, type, website_url].hash
+      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name, type, website_url, business_hours].hash
     end
 
     # Builds the object from hash
