@@ -18,7 +18,7 @@ module SquareConnect
     # Only used for ad hoc taxes. The tax's name.  Do not provide a value for this field if you set `catalog_object_id`.
     attr_accessor :name
 
-    # Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
+    # Only used for ad hoc taxes. Indicates the calculation method used to apply the line item tax.  Default: `ADDITIVE`; See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values. See [OrderLineItemTaxType](#type-orderlineitemtaxtype) for possible values
     attr_accessor :type
 
     # Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0

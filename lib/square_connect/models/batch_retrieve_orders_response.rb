@@ -18,12 +18,16 @@ module SquareConnect
     # Any errors that occurred during the request.
     attr_accessor :errors
 
+    # List of transaction ids within the requested set of ids that encountered transformation issues when being converted to an Order.
+    attr_accessor :unconvertible_transaction_ids
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'orders' => :'orders',
-        :'errors' => :'errors'
+        :'errors' => :'errors',
+        :'unconvertible_transaction_ids' => :'unconvertible_transaction_ids'
       }
     end
 
@@ -31,7 +35,8 @@ module SquareConnect
     def self.swagger_types
       {
         :'orders' => :'Array<Order>',
-        :'errors' => :'Array<Error>'
+        :'errors' => :'Array<Error>',
+        :'unconvertible_transaction_ids' => :'Array<String>'
       }
     end
 
@@ -52,6 +57,12 @@ module SquareConnect
       if attributes.has_key?(:'errors')
         if (value = attributes[:'errors']).is_a?(Array)
           self.errors = value
+        end
+      end
+
+      if attributes.has_key?(:'unconvertible_transaction_ids')
+        if (value = attributes[:'unconvertible_transaction_ids']).is_a?(Array)
+          self.unconvertible_transaction_ids = value
         end
       end
 
@@ -76,7 +87,8 @@ module SquareConnect
       return true if self.equal?(o)
       self.class == o.class &&
           orders == o.orders &&
-          errors == o.errors
+          errors == o.errors &&
+          unconvertible_transaction_ids == o.unconvertible_transaction_ids
     end
 
     # @see the `==` method
@@ -88,7 +100,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [orders, errors].hash
+      [orders, errors, unconvertible_transaction_ids].hash
     end
 
     # Builds the object from hash

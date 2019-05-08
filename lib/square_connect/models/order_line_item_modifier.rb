@@ -12,6 +12,9 @@ require 'date'
 module SquareConnect
   # A [CatalogModifier](#type-catalogmodifier).
   class OrderLineItemModifier
+    # The modifier's Unique identifier, unique only within this order. This field is read-only.
+    attr_accessor :uid
+
     # The catalog object id referencing [CatalogModifier](#type-catalogmodifier).
     attr_accessor :catalog_object_id
 
@@ -21,13 +24,14 @@ module SquareConnect
     # The base price for the modifier.  `base_price_money` is required for ad hoc modifiers. If both `catalog_object_id` and `base_price_money` are set, `base_price_money` will override the predefined [CatalogModifier](#type-catalogmodifier) price.
     attr_accessor :base_price_money
 
-    # The total price of the item modifier for its line item. This is the modifier's base_price_money multiplied by the line item's quantity.
+    # The total price of the item modifier for its line item. This is the modifier's `base_price_money` multiplied by the line item's quantity.
     attr_accessor :total_price_money
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'uid' => :'uid',
         :'catalog_object_id' => :'catalog_object_id',
         :'name' => :'name',
         :'base_price_money' => :'base_price_money',
@@ -38,6 +42,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'uid' => :'String',
         :'catalog_object_id' => :'String',
         :'name' => :'String',
         :'base_price_money' => :'Money',
@@ -52,6 +57,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'uid')
+        self.uid = attributes[:'uid']
+      end
 
       if attributes.has_key?(:'catalog_object_id')
         self.catalog_object_id = attributes[:'catalog_object_id']
@@ -75,6 +84,10 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@uid.nil? && @uid.to_s.length > 60
+        invalid_properties.push("invalid value for 'uid', the character length must be smaller than or equal to 60.")
+      end
+
       if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
         invalid_properties.push("invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192.")
       end
@@ -89,9 +102,21 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@uid.nil? && @uid.to_s.length > 60
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@name.nil? && @name.to_s.length > 255
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] uid Value to be assigned
+    def uid=(uid)
+
+      if !uid.nil? && uid.to_s.length > 60
+        fail ArgumentError, "invalid value for 'uid', the character length must be smaller than or equal to 60."
+      end
+
+      @uid = uid
     end
 
     # Custom attribute writer method with validation
@@ -121,6 +146,7 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          uid == o.uid &&
           catalog_object_id == o.catalog_object_id &&
           name == o.name &&
           base_price_money == o.base_price_money &&
@@ -136,7 +162,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [catalog_object_id, name, base_price_money, total_price_money].hash
+      [uid, catalog_object_id, name, base_price_money, total_price_money].hash
     end
 
     # Builds the object from hash

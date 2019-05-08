@@ -12,6 +12,9 @@ require 'date'
 module SquareConnect
   # Represents a discount that applies to one or more line items in an order.  Fixed-amount, order-level discounts are distributed across all non-zero line item totals. The amount distributed to each line item is relative to that item’s contribution to the order subtotal.
   class OrderLineItemDiscount
+    # The discount's Unique identifier, unique only within this order. This field is read-only.
+    attr_accessor :uid
+
     # The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).
     attr_accessor :catalog_object_id
 
@@ -21,7 +24,7 @@ module SquareConnect
     # The type of the discount. If it is created by API, it would be either `FIXED_PERCENTAGE` or `FIXED_AMOUNT`.  VARIABLE_* is not supported in API because the order is created at the time of sale and either percentage or amount has to be specified. See [OrderLineItemDiscountType](#type-orderlineitemdiscounttype) for possible values
     attr_accessor :type
 
-    # The percentage of the tax, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.
+    # The percentage of the discount, as a string representation of a decimal number. A value of `7.25` corresponds to a percentage of 7.25%.  The percentage won't be set for an amount-based discount.
     attr_accessor :percentage
 
     # The total monetary amount of the applicable discount. If it is at order level, it is the value of the order level discount. If it is at line item level, it is the value of the line item level discount.  The amount_money won't be set for a percentage-based discount.
@@ -58,6 +61,7 @@ module SquareConnect
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'uid' => :'uid',
         :'catalog_object_id' => :'catalog_object_id',
         :'name' => :'name',
         :'type' => :'type',
@@ -71,6 +75,7 @@ module SquareConnect
     # Attribute type mapping.
     def self.swagger_types
       {
+        :'uid' => :'String',
         :'catalog_object_id' => :'String',
         :'name' => :'String',
         :'type' => :'String',
@@ -88,6 +93,10 @@ module SquareConnect
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
+
+      if attributes.has_key?(:'uid')
+        self.uid = attributes[:'uid']
+      end
 
       if attributes.has_key?(:'catalog_object_id')
         self.catalog_object_id = attributes[:'catalog_object_id']
@@ -123,6 +132,10 @@ module SquareConnect
     # @return Array for valid properies with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@uid.nil? && @uid.to_s.length > 60
+        invalid_properties.push("invalid value for 'uid', the character length must be smaller than or equal to 60.")
+      end
+
       if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
         invalid_properties.push("invalid value for 'catalog_object_id', the character length must be smaller than or equal to 192.")
       end
@@ -141,6 +154,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@uid.nil? && @uid.to_s.length > 60
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@name.nil? && @name.to_s.length > 255
       type_validator = EnumAttributeValidator.new('String', ["UNKNOWN_DISCOUNT", "FIXED_PERCENTAGE", "FIXED_AMOUNT", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
@@ -149,6 +163,17 @@ module SquareConnect
       scope_validator = EnumAttributeValidator.new('String', ["OTHER_DISCOUNT_SCOPE", "LINE_ITEM", "ORDER"])
       return false unless scope_validator.valid?(@scope)
       return true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] uid Value to be assigned
+    def uid=(uid)
+
+      if !uid.nil? && uid.to_s.length > 60
+        fail ArgumentError, "invalid value for 'uid', the character length must be smaller than or equal to 60."
+      end
+
+      @uid = uid
     end
 
     # Custom attribute writer method with validation
@@ -209,6 +234,7 @@ module SquareConnect
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          uid == o.uid &&
           catalog_object_id == o.catalog_object_id &&
           name == o.name &&
           type == o.type &&
@@ -227,7 +253,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [catalog_object_id, name, type, percentage, amount_money, applied_money, scope].hash
+      [uid, catalog_object_id, name, type, percentage, amount_money, applied_money, scope].hash
     end
 
     # Builds the object from hash
