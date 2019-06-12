@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # The line item discount being returned.
   class OrderReturnDiscount
-    # The return discount's Unique identifier, unique only within this order.
+    # Unique ID that identifies the return discount only within this order.  This field is read-only.
     attr_accessor :uid
 
     # `uid` of the Discount from the Order which contains the original application of this discount.

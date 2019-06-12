@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A [CatalogModifier](#type-catalogmodifier).
   class OrderLineItemModifier
-    # The modifier's Unique identifier, unique only within this order. This field is read-only.
+    # Unique ID that identifies the modifier only within this order.  This field is read-only.
     attr_accessor :uid
 
     # The catalog object id referencing [CatalogModifier](#type-catalogmodifier).

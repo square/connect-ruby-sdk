@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A rounding adjustment of the money being returned. Commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.
   class OrderRoundingAdjustment
-    # The rounding adjustment's Unique identifier, unique only within this order. This field is read-only.
+    # Unique ID that identifies the rounding adjustment only within this order.  This field is read-only.
     attr_accessor :uid
 
     # The name of the rounding adjustment from the original sale Order.

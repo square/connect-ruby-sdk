@@ -66,6 +66,9 @@ module SquareConnect
     # Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.
     attr_accessor :image_data
 
+    # Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.
+    attr_accessor :measurement_unit_data
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -108,7 +111,8 @@ module SquareConnect
         :'discount_data' => :'discount_data',
         :'modifier_list_data' => :'modifier_list_data',
         :'modifier_data' => :'modifier_data',
-        :'image_data' => :'image_data'
+        :'image_data' => :'image_data',
+        :'measurement_unit_data' => :'measurement_unit_data'
       }
     end
 
@@ -132,7 +136,8 @@ module SquareConnect
         :'discount_data' => :'CatalogDiscount',
         :'modifier_list_data' => :'CatalogModifierList',
         :'modifier_data' => :'CatalogModifier',
-        :'image_data' => :'CatalogImage'
+        :'image_data' => :'CatalogImage',
+        :'measurement_unit_data' => :'CatalogMeasurementUnit'
       }
     end
 
@@ -222,6 +227,10 @@ module SquareConnect
         self.image_data = attributes[:'image_data']
       end
 
+      if attributes.has_key?(:'measurement_unit_data')
+        self.measurement_unit_data = attributes[:'measurement_unit_data']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -247,7 +256,7 @@ module SquareConnect
     # @return true if the model is valid
     def valid?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER"])
+      type_validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER", "PRICING_RULE", "PRODUCT_SET", "TIME_PERIOD"])
       return false unless type_validator.valid?(@type)
       return false if @id.nil?
       return false if @id.to_s.length < 1
@@ -257,7 +266,7 @@ module SquareConnect
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER"])
+      validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER", "PRICING_RULE", "PRODUCT_SET", "TIME_PERIOD"])
       unless validator.valid?(type)
         fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
       end
@@ -300,7 +309,8 @@ module SquareConnect
           discount_data == o.discount_data &&
           modifier_list_data == o.modifier_list_data &&
           modifier_data == o.modifier_data &&
-          image_data == o.image_data
+          image_data == o.image_data &&
+          measurement_unit_data == o.measurement_unit_data
     end
 
     # @see the `==` method
@@ -312,7 +322,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, image_data].hash
+      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, image_data, measurement_unit_data].hash
     end
 
     # Builds the object from hash

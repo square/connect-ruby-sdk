@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # The set of line items, service charges, taxes, discounts, tips, etc. being returned in an Order.
   class OrderReturn
-    # The return's Unique identifier, unique only within this order. This field is read-only.
+    # Unique ID that identifies the return only within this order.  This field is read-only.
     attr_accessor :uid
 
     # Order which contains the original sale of these returned line items. This will be unset for unlinked returns.
@@ -20,6 +20,9 @@ module SquareConnect
 
     # Collection of line items which are being returned.
     attr_accessor :return_line_items
+
+    # Collection of service charges which are being returned.  This field is read-only.
+    attr_accessor :return_service_charges
 
     # Collection of taxes which are being returned.
     attr_accessor :return_taxes
@@ -40,6 +43,7 @@ module SquareConnect
         :'uid' => :'uid',
         :'source_order_id' => :'source_order_id',
         :'return_line_items' => :'return_line_items',
+        :'return_service_charges' => :'return_service_charges',
         :'return_taxes' => :'return_taxes',
         :'return_discounts' => :'return_discounts',
         :'rounding_adjustment' => :'rounding_adjustment',
@@ -53,6 +57,7 @@ module SquareConnect
         :'uid' => :'String',
         :'source_order_id' => :'String',
         :'return_line_items' => :'Array<OrderReturnLineItem>',
+        :'return_service_charges' => :'Array<OrderReturnServiceCharge>',
         :'return_taxes' => :'Array<OrderReturnTax>',
         :'return_discounts' => :'Array<OrderReturnDiscount>',
         :'rounding_adjustment' => :'OrderRoundingAdjustment',
@@ -79,6 +84,12 @@ module SquareConnect
       if attributes.has_key?(:'return_line_items')
         if (value = attributes[:'return_line_items']).is_a?(Array)
           self.return_line_items = value
+        end
+      end
+
+      if attributes.has_key?(:'return_service_charges')
+        if (value = attributes[:'return_service_charges']).is_a?(Array)
+          self.return_service_charges = value
         end
       end
 
@@ -141,6 +152,7 @@ module SquareConnect
           uid == o.uid &&
           source_order_id == o.source_order_id &&
           return_line_items == o.return_line_items &&
+          return_service_charges == o.return_service_charges &&
           return_taxes == o.return_taxes &&
           return_discounts == o.return_discounts &&
           rounding_adjustment == o.rounding_adjustment &&
@@ -156,7 +168,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [uid, source_order_id, return_line_items, return_taxes, return_discounts, rounding_adjustment, return_amounts].hash
+      [uid, source_order_id, return_line_items, return_service_charges, return_taxes, return_discounts, rounding_adjustment, return_amounts].hash
     end
 
     # Builds the object from hash

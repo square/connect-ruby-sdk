@@ -24,10 +24,10 @@ module SquareConnect
     # The ID of the authorizing merchant's business.
     attr_accessor :merchant_id
 
-    # __Legacy field__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
+    # __LEGACY FIELD__. The ID of a subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
     attr_accessor :subscription_id
 
-    # The ID of the [subscription](https://docs.connect.squareup.com/api/connect/v1/#navsection-subscriptionmanagement) plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
+    # __LEGACY FIELD__. The ID of the subscription plan the merchant signed up for. Only present if the merchant signed up for a subscription during authorization.
     attr_accessor :plan_id
 
     # Then OpenID token belonging to this this person. Only present if the OPENID scope is included in the authorize request.

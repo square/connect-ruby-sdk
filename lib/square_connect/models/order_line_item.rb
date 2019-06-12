@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents a line item in an order. Each line item describes a different product to purchase, with its own quantity and price details.
   class OrderLineItem
-    # The line item's Unique identifier, unique only within this order. This field is read-only.
+    # Unique ID that identifies the line item only within this order.  This field is read-only.
     attr_accessor :uid
 
     # The name of the line item.
@@ -48,16 +48,16 @@ module SquareConnect
     # The total price of all item variations sold in this line item. Calculated as `base_price_money` multiplied by `quantity`. Does not include modifiers.
     attr_accessor :variation_total_price_money
 
-    # The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.
+    # The amount of money made in gross sales for this line item. Calculated as the sum of the variation's total price and each modifier's total price.  This field is read-only.
     attr_accessor :gross_sales_money
 
-    # The total tax amount of money to collect for the line item.
+    # The total tax amount of money to collect for the line item.  This field is read-only.
     attr_accessor :total_tax_money
 
-    # The total discount amount of money to collect for the line item.
+    # The total discount amount of money to collect for the line item.  This field is read-only.
     attr_accessor :total_discount_money
 
-    # The total amount of money to collect for this line item.
+    # The total amount of money to collect for this line item.  This field is read-only.
     attr_accessor :total_money
 
 

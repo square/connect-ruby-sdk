@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents a discount that applies to one or more line items in an order.  Fixed-amount, order-level discounts are distributed across all non-zero line item totals. The amount distributed to each line item is relative to that item’s contribution to the order subtotal.
   class OrderLineItemDiscount
-    # The discount's Unique identifier, unique only within this order. This field is read-only.
+    # Unique ID that identifies the discount only within this order.  This field is read-only.
     attr_accessor :uid
 
     # The catalog object id referencing [CatalogDiscount](#type-catalogdiscount).

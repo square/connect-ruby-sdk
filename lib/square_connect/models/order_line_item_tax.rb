@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Represents a tax that applies to one or more line items in an order.
   class OrderLineItemTax
-    # The tax's Unique identifier, unique only within this order. This field is read-only.
+    # Unique ID that identifies the tax only within this order.  This field is read-only.
     attr_accessor :uid
 
     # The catalog object id referencing [CatalogTax](#type-catalogtax).

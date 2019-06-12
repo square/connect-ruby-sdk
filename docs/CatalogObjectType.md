@@ -15,5 +15,8 @@ Name | Type
 **DISCOUNT** | string
 **MODIFIER_LIST** | string
 **MODIFIER** | string
+**PRICING_RULE** | string
+**PRODUCT_SET** | string
+**TIME_PERIOD** | string
 
 

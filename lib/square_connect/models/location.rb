@@ -60,6 +60,24 @@ module SquareConnect
     #   The hours of operation for a business location.  Default: none; only exists if explicitly set.
     attr_accessor :business_hours
 
+    # The email of the location.
+    attr_accessor :business_email
+
+    # The business description of the location.
+    attr_accessor :description
+
+    # The Twitter username of the location without the '
+    attr_accessor :twitter_username
+
+    # The Instagram username of the location without the '
+    attr_accessor :instagram_username
+
+    # The Facebook profile URL of the location. The URL should begin with 'facebook.com/'.
+    attr_accessor :facebook_url
+
+    # The physical coordinates (latitude and longitude) of the location.
+    attr_accessor :coordinates
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -100,7 +118,13 @@ module SquareConnect
         :'business_name' => :'business_name',
         :'type' => :'type',
         :'website_url' => :'website_url',
-        :'business_hours' => :'business_hours'
+        :'business_hours' => :'business_hours',
+        :'business_email' => :'business_email',
+        :'description' => :'description',
+        :'twitter_username' => :'twitter_username',
+        :'instagram_username' => :'instagram_username',
+        :'facebook_url' => :'facebook_url',
+        :'coordinates' => :'coordinates'
       }
     end
 
@@ -122,7 +146,13 @@ module SquareConnect
         :'business_name' => :'String',
         :'type' => :'String',
         :'website_url' => :'String',
-        :'business_hours' => :'BusinessHours'
+        :'business_hours' => :'BusinessHours',
+        :'business_email' => :'String',
+        :'description' => :'String',
+        :'twitter_username' => :'String',
+        :'instagram_username' => :'String',
+        :'facebook_url' => :'String',
+        :'coordinates' => :'Coordinates'
       }
     end
 
@@ -198,6 +228,30 @@ module SquareConnect
 
       if attributes.has_key?(:'business_hours')
         self.business_hours = attributes[:'business_hours']
+      end
+
+      if attributes.has_key?(:'business_email')
+        self.business_email = attributes[:'business_email']
+      end
+
+      if attributes.has_key?(:'description')
+        self.description = attributes[:'description']
+      end
+
+      if attributes.has_key?(:'twitter_username')
+        self.twitter_username = attributes[:'twitter_username']
+      end
+
+      if attributes.has_key?(:'instagram_username')
+        self.instagram_username = attributes[:'instagram_username']
+      end
+
+      if attributes.has_key?(:'facebook_url')
+        self.facebook_url = attributes[:'facebook_url']
+      end
+
+      if attributes.has_key?(:'coordinates')
+        self.coordinates = attributes[:'coordinates']
       end
 
     end
@@ -283,7 +337,13 @@ module SquareConnect
           business_name == o.business_name &&
           type == o.type &&
           website_url == o.website_url &&
-          business_hours == o.business_hours
+          business_hours == o.business_hours &&
+          business_email == o.business_email &&
+          description == o.description &&
+          twitter_username == o.twitter_username &&
+          instagram_username == o.instagram_username &&
+          facebook_url == o.facebook_url &&
+          coordinates == o.coordinates
     end
 
     # @see the `==` method
@@ -295,7 +355,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name, type, website_url, business_hours].hash
+      [id, name, address, timezone, capabilities, status, created_at, merchant_id, country, language_code, currency, phone_number, business_name, type, website_url, business_hours, business_email, description, twitter_username, instagram_username, facebook_url, coordinates].hash
     end
 
     # Builds the object from hash
