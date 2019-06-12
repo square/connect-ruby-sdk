@@ -51,16 +51,16 @@ module SquareConnect
     # The total price of all item variations returned in this line item. Calculated as `base_price_money` multiplied by `quantity`. Does not include modifiers.
     attr_accessor :variation_total_price_money
 
-    # The gross return amount of money calculated as (item base price + modifiers price) * quantity.
+    # The gross return amount of money calculated as (item base price + modifiers price) * quantity.  This field is read-only.
     attr_accessor :gross_return_money
 
-    # The total tax amount of money to return for the line item.
+    # The total tax amount of money to return for the line item.  This field is read-only.
     attr_accessor :total_tax_money
 
-    # The total discount amount of money to return for the line item.
+    # The total discount amount of money to return for the line item.  This field is read-only.
     attr_accessor :total_discount_money
 
-    # The total amount of money to return for this line item.
+    # The total amount of money to return for this line item.  This field is read-only.
     attr_accessor :total_money
 
 

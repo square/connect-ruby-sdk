@@ -18,7 +18,7 @@ module SquareConnect
     end
 
     # RegisterDomain
-    # Activates a domain for use with Web Apple Pay and Square. A validation will be performed on this domain by Apple to ensure is it properly set up as an Apple Pay enabled domain.  This endpoint provides an easy way for platform developers to bulk activate Web Apple Pay with Square for merchants using their platform.  To learn more about Apple Pay on Web see the Apple Pay section in the [Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.
+    # Activates a domain for use with Web Apple Pay and Square. A validation will be performed on this domain by Apple to ensure is it properly set up as an Apple Pay enabled domain.  This endpoint provides an easy way for platform developers to bulk activate Web Apple Pay with Square for merchants using their platform.  To learn more about Apple Pay on Web see the Apple Pay section in the [Embedding the Square Payment Form](/payment-form/add-digital-wallets/apple-pay) guide.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [RegisterDomainResponse]
@@ -28,7 +28,7 @@ module SquareConnect
     end
 
     # RegisterDomain
-    # Activates a domain for use with Web Apple Pay and Square. A validation will be performed on this domain by Apple to ensure is it properly set up as an Apple Pay enabled domain.  This endpoint provides an easy way for platform developers to bulk activate Web Apple Pay with Square for merchants using their platform.  To learn more about Apple Pay on Web see the Apple Pay section in the [Embedding the Square Payment Form](/payments/sqpaymentform/overview) guide.
+    # Activates a domain for use with Web Apple Pay and Square. A validation will be performed on this domain by Apple to ensure is it properly set up as an Apple Pay enabled domain.  This endpoint provides an easy way for platform developers to bulk activate Web Apple Pay with Square for merchants using their platform.  To learn more about Apple Pay on Web see the Apple Pay section in the [Embedding the Square Payment Form](/payment-form/add-digital-wallets/apple-pay) guide.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(RegisterDomainResponse, Fixnum, Hash)>] RegisterDomainResponse data, response status code and response headers
@@ -51,7 +51,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-05-08"
+      header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
       form_params = {}

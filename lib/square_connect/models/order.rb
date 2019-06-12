@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # Contains all information related to a single order to process with Square, including line items that specify the products to purchase. Order objects also include information on any associated tenders, refunds, and returns.  All Connect V2 Transactions have all been converted to Orders including all associated itemization data.
   class Order
-    # The order's unique ID.  This value is only present for Order objects created by the Orders API through the [CreateOrder](#endpoint-orders-createorder) endpoint.
+    # The order's unique ID.  This field is read-only.
     attr_accessor :id
 
     # The ID of the merchant location this order is associated with.
@@ -36,19 +36,22 @@ module SquareConnect
     # A list of discounts applied to this order. On read or retrieve, this list includes both order-level and item-level discounts. When creating an Order, set your order-level discounts in this list.
     attr_accessor :discounts
 
+    # A list of service charges applied to the order.
+    attr_accessor :service_charges
+
     # Details on order fulfillment.  Orders can only be created with at most one fulfillment. However, orders returned by the API may contain multiple fulfillments.
     attr_accessor :fulfillments
 
-    # Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.
+    # Collection of items from sale Orders being returned in this one. Normally part of an Itemized Return or Exchange.  There will be exactly one `Return` object per sale Order being referenced.  This field is read-only.
     attr_accessor :returns
 
-    # Rollup of returned money amounts.
+    # Rollup of returned money amounts.  This field is read-only.
     attr_accessor :return_amounts
 
-    # Net money amounts (sale money - return money).
+    # Net money amounts (sale money - return money).  This field is read-only.
     attr_accessor :net_amounts
 
-    # A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.
+    # A positive or negative rounding adjustment to the total of the order, commonly used to apply Cash Rounding when the minimum unit of account is smaller than the lowest physical denomination of currency.  This field is read-only.
     attr_accessor :rounding_adjustment
 
     # The Tenders which were used to pay for the Order. This field is read-only.
@@ -57,26 +60,29 @@ module SquareConnect
     # The Refunds that are part of this Order. This field is read-only.
     attr_accessor :refunds
 
-    # Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+    # Timestamp for when the order was created. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.
     attr_accessor :created_at
 
-    # Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+    # Timestamp for when the order was last updated. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.
     attr_accessor :updated_at
 
-    # Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".
+    # Timestamp for when the order was closed. In RFC 3339 format, e.g., \"2016-09-04T23:59:33.123Z\".  This field is read-only.
     attr_accessor :closed_at
 
     # The current state of the order. `OPEN`,`COMPLETED`,`CANCELED` See [OrderState](#type-orderstate) for possible values
     attr_accessor :state
 
-    # The total amount of money to collect for the order.
+    # The total amount of money to collect for the order.  This field is read-only.
     attr_accessor :total_money
 
-    # The total tax amount of money to collect for the order.
+    # The total tax amount of money to collect for the order.  This field is read-only.
     attr_accessor :total_tax_money
 
-    # The total discount amount of money to collect for the order.
+    # The total discount amount of money to collect for the order.  This field is read-only.
     attr_accessor :total_discount_money
+
+    # The total amount of money collected in service charges for the order.  Note: `total_service_charge_money` is the sum of `applied_money` fields for each individual service charge. Therefore, `total_service_charge_money` will only include inclusive tax amounts, not additive tax amounts.  This field is read-only.
+    attr_accessor :total_service_charge_money
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -111,6 +117,7 @@ module SquareConnect
         :'line_items' => :'line_items',
         :'taxes' => :'taxes',
         :'discounts' => :'discounts',
+        :'service_charges' => :'service_charges',
         :'fulfillments' => :'fulfillments',
         :'returns' => :'returns',
         :'return_amounts' => :'return_amounts',
@@ -124,7 +131,8 @@ module SquareConnect
         :'state' => :'state',
         :'total_money' => :'total_money',
         :'total_tax_money' => :'total_tax_money',
-        :'total_discount_money' => :'total_discount_money'
+        :'total_discount_money' => :'total_discount_money',
+        :'total_service_charge_money' => :'total_service_charge_money'
       }
     end
 
@@ -139,6 +147,7 @@ module SquareConnect
         :'line_items' => :'Array<OrderLineItem>',
         :'taxes' => :'Array<OrderLineItemTax>',
         :'discounts' => :'Array<OrderLineItemDiscount>',
+        :'service_charges' => :'Array<OrderServiceCharge>',
         :'fulfillments' => :'Array<OrderFulfillment>',
         :'returns' => :'Array<OrderReturn>',
         :'return_amounts' => :'OrderMoneyAmounts',
@@ -152,7 +161,8 @@ module SquareConnect
         :'state' => :'String',
         :'total_money' => :'Money',
         :'total_tax_money' => :'Money',
-        :'total_discount_money' => :'Money'
+        :'total_discount_money' => :'Money',
+        :'total_service_charge_money' => :'Money'
       }
     end
 
@@ -199,6 +209,12 @@ module SquareConnect
       if attributes.has_key?(:'discounts')
         if (value = attributes[:'discounts']).is_a?(Array)
           self.discounts = value
+        end
+      end
+
+      if attributes.has_key?(:'service_charges')
+        if (value = attributes[:'service_charges']).is_a?(Array)
+          self.service_charges = value
         end
       end
 
@@ -264,6 +280,10 @@ module SquareConnect
 
       if attributes.has_key?(:'total_discount_money')
         self.total_discount_money = attributes[:'total_discount_money']
+      end
+
+      if attributes.has_key?(:'total_service_charge_money')
+        self.total_service_charge_money = attributes[:'total_service_charge_money']
       end
 
     end
@@ -346,6 +366,7 @@ module SquareConnect
           line_items == o.line_items &&
           taxes == o.taxes &&
           discounts == o.discounts &&
+          service_charges == o.service_charges &&
           fulfillments == o.fulfillments &&
           returns == o.returns &&
           return_amounts == o.return_amounts &&
@@ -359,7 +380,8 @@ module SquareConnect
           state == o.state &&
           total_money == o.total_money &&
           total_tax_money == o.total_tax_money &&
-          total_discount_money == o.total_discount_money
+          total_discount_money == o.total_discount_money &&
+          total_service_charge_money == o.total_service_charge_money
     end
 
     # @see the `==` method
@@ -371,7 +393,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [id, location_id, reference_id, source, customer_id, line_items, taxes, discounts, fulfillments, returns, return_amounts, net_amounts, rounding_adjustment, tenders, refunds, created_at, updated_at, closed_at, state, total_money, total_tax_money, total_discount_money].hash
+      [id, location_id, reference_id, source, customer_id, line_items, taxes, discounts, service_charges, fulfillments, returns, return_amounts, net_amounts, rounding_adjustment, tenders, refunds, created_at, updated_at, closed_at, state, total_money, total_tax_money, total_discount_money, total_service_charge_money].hash
     end
 
     # Builds the object from hash

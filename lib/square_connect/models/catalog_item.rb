@@ -45,7 +45,7 @@ module SquareConnect
     # __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).
     attr_accessor :image_url
 
-    # A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.
+    # A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.  Maximum: 250 item variations
     attr_accessor :variations
 
     # The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values

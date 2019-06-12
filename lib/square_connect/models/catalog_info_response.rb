@@ -18,12 +18,16 @@ module SquareConnect
     # 
     attr_accessor :limits
 
+    # Names and abbreviations for standard units.
+    attr_accessor :standard_unit_description_group
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'errors' => :'errors',
-        :'limits' => :'limits'
+        :'limits' => :'limits',
+        :'standard_unit_description_group' => :'standard_unit_description_group'
       }
     end
 
@@ -31,7 +35,8 @@ module SquareConnect
     def self.swagger_types
       {
         :'errors' => :'Array<Error>',
-        :'limits' => :'CatalogInfoResponseLimits'
+        :'limits' => :'CatalogInfoResponseLimits',
+        :'standard_unit_description_group' => :'StandardUnitDescriptionGroup'
       }
     end
 
@@ -51,6 +56,10 @@ module SquareConnect
 
       if attributes.has_key?(:'limits')
         self.limits = attributes[:'limits']
+      end
+
+      if attributes.has_key?(:'standard_unit_description_group')
+        self.standard_unit_description_group = attributes[:'standard_unit_description_group']
       end
 
     end
@@ -74,7 +83,8 @@ module SquareConnect
       return true if self.equal?(o)
       self.class == o.class &&
           errors == o.errors &&
-          limits == o.limits
+          limits == o.limits &&
+          standard_unit_description_group == o.standard_unit_description_group
     end
 
     # @see the `==` method
@@ -86,7 +96,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [errors, limits].hash
+      [errors, limits, standard_unit_description_group].hash
     end
 
     # Builds the object from hash

@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # The line item tax being returned.
   class OrderReturnTax
-    # The return tax's Unique identifier, unique only within this order.
+    # Unique ID that identifies the return tax only within this order.  This field is read-only.
     attr_accessor :uid
 
     # `uid` of the Tax from the Order which contains the original charge of this tax.

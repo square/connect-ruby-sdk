@@ -55,7 +55,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-05-08"
+      header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
       form_params = {}
@@ -114,7 +114,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-05-08"
+      header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
       form_params = {}
@@ -136,7 +136,7 @@ module SquareConnect
     end
 
     # SearchOrders
-    # Search all Orders for a merchant and return either [Orders](#type-order) or [OrderEntries](#type-orderentry).  Note that details for orders processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline orders have a `created_at` value that reflects the time the order was originally processed, not the time it was subsequently transmitted to Square. Consequently, the SearchOrder endpoint might list an offline Order chronologically between online Orders that were seen in a previous request.  By default, SearchOrders will return all results for all of the merchant’s locations. When fetching additional pages using a `cursor`, the `query` must be equal to the `query` used to fetch the first page of results.
+    # Search all Orders for a merchant and return either [Orders](#type-order) or [OrderEntries](#type-orderentry).  Note that details for orders processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline orders have a `created_at` value that reflects the time the order was originally processed, not the time it was subsequently transmitted to Square. Consequently, the SearchOrder endpoint might list an offline Order chronologically between online Orders that were seen in a previous request.  When fetching additional pages using a `cursor`, the `query` must be equal to the `query` used to fetch the first page of results.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [SearchOrdersResponse]
@@ -146,7 +146,7 @@ module SquareConnect
     end
 
     # SearchOrders
-    # Search all Orders for a merchant and return either [Orders](#type-order) or [OrderEntries](#type-orderentry).  Note that details for orders processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline orders have a &#x60;created_at&#x60; value that reflects the time the order was originally processed, not the time it was subsequently transmitted to Square. Consequently, the SearchOrder endpoint might list an offline Order chronologically between online Orders that were seen in a previous request.  By default, SearchOrders will return all results for all of the merchant’s locations. When fetching additional pages using a &#x60;cursor&#x60;, the &#x60;query&#x60; must be equal to the &#x60;query&#x60; used to fetch the first page of results.
+    # Search all Orders for a merchant and return either [Orders](#type-order) or [OrderEntries](#type-orderentry).  Note that details for orders processed with Square Point of Sale while in offline mode may not be transmitted to Square for up to 72 hours. Offline orders have a &#x60;created_at&#x60; value that reflects the time the order was originally processed, not the time it was subsequently transmitted to Square. Consequently, the SearchOrder endpoint might list an offline Order chronologically between online Orders that were seen in a previous request.  When fetching additional pages using a &#x60;cursor&#x60;, the &#x60;query&#x60; must be equal to the &#x60;query&#x60; used to fetch the first page of results.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(SearchOrdersResponse, Fixnum, Hash)>] SearchOrdersResponse data, response status code and response headers
@@ -169,7 +169,7 @@ module SquareConnect
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
       
-      header_params['Square-Version'] = "2019-05-08"
+      header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
       form_params = {}

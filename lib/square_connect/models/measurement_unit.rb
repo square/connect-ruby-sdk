@@ -27,6 +27,9 @@ module SquareConnect
     # Represents a standard unit of weight or mass. See [MeasurementUnitWeight](#type-measurementunitweight) for possible values
     attr_accessor :weight_unit
 
+    # Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values
+    attr_accessor :generic_unit
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -56,7 +59,8 @@ module SquareConnect
         :'area_unit' => :'area_unit',
         :'length_unit' => :'length_unit',
         :'volume_unit' => :'volume_unit',
-        :'weight_unit' => :'weight_unit'
+        :'weight_unit' => :'weight_unit',
+        :'generic_unit' => :'generic_unit'
       }
     end
 
@@ -67,7 +71,8 @@ module SquareConnect
         :'area_unit' => :'String',
         :'length_unit' => :'String',
         :'volume_unit' => :'String',
-        :'weight_unit' => :'String'
+        :'weight_unit' => :'String',
+        :'generic_unit' => :'String'
       }
     end
 
@@ -99,6 +104,10 @@ module SquareConnect
         self.weight_unit = attributes[:'weight_unit']
       end
 
+      if attributes.has_key?(:'generic_unit')
+        self.generic_unit = attributes[:'generic_unit']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -119,6 +128,8 @@ module SquareConnect
       return false unless volume_unit_validator.valid?(@volume_unit)
       weight_unit_validator = EnumAttributeValidator.new('String', ["IMPERIAL_WEIGHT_OUNCE", "IMPERIAL_POUND", "IMPERIAL_STONE", "METRIC_MILLIGRAM", "METRIC_GRAM", "METRIC_KILOGRAM"])
       return false unless weight_unit_validator.valid?(@weight_unit)
+      generic_unit_validator = EnumAttributeValidator.new('String', ["INVALID_GENERIC_UNIT", "UNIT"])
+      return false unless generic_unit_validator.valid?(@generic_unit)
       return true
     end
 
@@ -162,6 +173,16 @@ module SquareConnect
       @weight_unit = weight_unit
     end
 
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] generic_unit Object to be assigned
+    def generic_unit=(generic_unit)
+      validator = EnumAttributeValidator.new('String', ["INVALID_GENERIC_UNIT", "UNIT"])
+      unless validator.valid?(generic_unit)
+        fail ArgumentError, "invalid value for 'generic_unit', must be one of #{validator.allowable_values}."
+      end
+      @generic_unit = generic_unit
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -171,7 +192,8 @@ module SquareConnect
           area_unit == o.area_unit &&
           length_unit == o.length_unit &&
           volume_unit == o.volume_unit &&
-          weight_unit == o.weight_unit
+          weight_unit == o.weight_unit &&
+          generic_unit == o.generic_unit
     end
 
     # @see the `==` method
@@ -183,7 +205,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [custom_unit, area_unit, length_unit, volume_unit, weight_unit].hash
+      [custom_unit, area_unit, length_unit, volume_unit, weight_unit, generic_unit].hash
     end
 
     # Builds the object from hash

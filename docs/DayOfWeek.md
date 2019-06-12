@@ -2,7 +2,7 @@
 
 ### Description
 
- Indicates the specific day  of the week.
+Indicates the specific day  of the week.
 
 ## Properties
 Name | Type

@@ -12,7 +12,7 @@ require 'date'
 module SquareConnect
   # A line item modifier being returned.
   class OrderReturnLineItemModifier
-    # The return modifier's Unique identifier, unique only within this order
+    # Unique ID that identifies the return modifier only within this order.  This field is read-only.
     attr_accessor :uid
 
     # `uid` of the Modifier from the LineItem from the Order which contains the original sale of this line item modifier.

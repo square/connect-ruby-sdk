@@ -20,6 +20,9 @@ module SquareConnect
     DISCOUNT = "DISCOUNT".freeze
     MODIFIER_LIST = "MODIFIER_LIST".freeze
     MODIFIER = "MODIFIER".freeze
+    PRICING_RULE = "PRICING_RULE".freeze
+    PRODUCT_SET = "PRODUCT_SET".freeze
+    TIME_PERIOD = "TIME_PERIOD".freeze
   end
 
 end
