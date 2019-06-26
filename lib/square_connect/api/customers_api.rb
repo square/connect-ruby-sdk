@@ -74,7 +74,7 @@ module SquareConnect
 
     # CreateCustomerCard
     # Adds a card on file to an existing customer.  As with charges, calls to `CreateCustomerCard` are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.  Cards on file are automatically updated on a monthly basis to confirm they are still valid and can be charged.
-    # @param customer_id The ID of the customer to link the card on file to.
+    # @param customer_id The Square ID of the customer profile the card is linked to.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [CreateCustomerCardResponse]
@@ -85,7 +85,7 @@ module SquareConnect
 
     # CreateCustomerCard
     # Adds a card on file to an existing customer.  As with charges, calls to &#x60;CreateCustomerCard&#x60; are idempotent. Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.  Cards on file are automatically updated on a monthly basis to confirm they are still valid and can be charged.
-    # @param customer_id The ID of the customer to link the card on file to.
+    # @param customer_id The Square ID of the customer profile the card is linked to.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
     # @return [Array<(CreateCustomerCardResponse, Fixnum, Hash)>] CreateCustomerCardResponse data, response status code and response headers

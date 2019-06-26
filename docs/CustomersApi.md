@@ -85,7 +85,7 @@ end
 
 api_instance = SquareConnect::CustomersApi.new
 
-customer_id = "customer_id_example" # String | The ID of the customer to link the card on file to.
+customer_id = "customer_id_example" # String | The Square ID of the customer profile the card is linked to.
 
 body = SquareConnect::CreateCustomerCardRequest.new # CreateCustomerCardRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
 
@@ -103,7 +103,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **customer_id** | **String**| The ID of the customer to link the card on file to. | 
+ **customer_id** | **String**| The Square ID of the customer profile the card is linked to. | 
  **body** | [**CreateCustomerCardRequest**](CreateCustomerCardRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
 
 ### Return type
