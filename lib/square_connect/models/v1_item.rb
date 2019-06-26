@@ -122,7 +122,7 @@ module SquareConnect
         :'master_image' => :'V1ItemImage',
         :'category' => :'V1Category',
         :'variations' => :'Array<V1Variation>',
-        :'modifier_lists' => :'Array<V1Variation>',
+        :'modifier_lists' => :'Array<V1ModifierList>',
         :'fees' => :'Array<V1Fee>',
         :'taxable' => :'BOOLEAN',
         :'category_id' => :'String',

@@ -455,6 +455,7 @@ require 'square_connect/models/v1_variation_inventory_alert_type'
 require 'square_connect/models/v1_variation_pricing_type'
 require 'square_connect/models/void_transaction_request'
 require 'square_connect/models/void_transaction_response'
+require 'square_connect/models/webhook_events'
 require 'square_connect/models/weekday'
 require 'square_connect/models/workweek_config'
 
