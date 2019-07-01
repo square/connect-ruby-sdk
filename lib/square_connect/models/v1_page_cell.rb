@@ -30,27 +30,6 @@ module SquareConnect
     # For a cell with an object_type of PLACEHOLDER, this value indicates the cell's special behavior. See [V1PageCellPlaceholderType](#type-v1pagecellplaceholdertype) for possible values
     attr_accessor :placeholder_type
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -120,31 +99,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      object_type_validator = EnumAttributeValidator.new('String', ["ITEM", "DISCOUNT", "CATEGORY", "PLACEHOLDER"])
-      return false unless object_type_validator.valid?(@object_type)
-      placeholder_type_validator = EnumAttributeValidator.new('String', ["ALL_ITEMS", "DISCOUNTS_CATEGORY", "REWARDS_FINDER"])
-      return false unless placeholder_type_validator.valid?(@placeholder_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] object_type Object to be assigned
-    def object_type=(object_type)
-      validator = EnumAttributeValidator.new('String', ["ITEM", "DISCOUNT", "CATEGORY", "PLACEHOLDER"])
-      unless validator.valid?(object_type)
-        fail ArgumentError, "invalid value for 'object_type', must be one of #{validator.allowable_values}."
-      end
-      @object_type = object_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] placeholder_type Object to be assigned
-    def placeholder_type=(placeholder_type)
-      validator = EnumAttributeValidator.new('String', ["ALL_ITEMS", "DISCOUNTS_CATEGORY", "REWARDS_FINDER"])
-      unless validator.valid?(placeholder_type)
-        fail ArgumentError, "invalid value for 'placeholder_type', must be one of #{validator.allowable_values}."
-      end
-      @placeholder_type = placeholder_type
     end
 
     # Checks equality by comparing each attribute.

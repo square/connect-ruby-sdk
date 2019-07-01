@@ -42,9 +42,6 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: EmployeesApi.list_employees ..."
       end
-      if opts[:'status'] && !['ACTIVE', 'INACTIVE'].include?(opts[:'status'])
-        fail ArgumentError, 'invalid value for "status", must be one of ACTIVE, INACTIVE'
-      end
       # resource path
       local_var_path = "/v2/employees".sub('{format}','json')
 
@@ -61,7 +58,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -116,7 +113,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters

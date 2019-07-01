@@ -42,27 +42,6 @@ module SquareConnect
     # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
     attr_accessor :v2_id
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -156,55 +135,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      calculation_phase_validator = EnumAttributeValidator.new('String', ["FEE_SUBTOTAL_PHASE", "OTHER", "FEE_TOTAL_PHASE"])
-      return false unless calculation_phase_validator.valid?(@calculation_phase)
-      adjustment_type_validator = EnumAttributeValidator.new('String', ["TAX"])
-      return false unless adjustment_type_validator.valid?(@adjustment_type)
-      inclusion_type_validator = EnumAttributeValidator.new('String', ["ADDITIVE", "INCLUSIVE"])
-      return false unless inclusion_type_validator.valid?(@inclusion_type)
-      type_validator = EnumAttributeValidator.new('String', ["CA_GST", "CA_HST", "CA_PST", "CA_QST", "JP_CONSUMPTION_TAX", "CA_PEI_PST", "US_SALES_TAX", "OTHER"])
-      return false unless type_validator.valid?(@type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] calculation_phase Object to be assigned
-    def calculation_phase=(calculation_phase)
-      validator = EnumAttributeValidator.new('String', ["FEE_SUBTOTAL_PHASE", "OTHER", "FEE_TOTAL_PHASE"])
-      unless validator.valid?(calculation_phase)
-        fail ArgumentError, "invalid value for 'calculation_phase', must be one of #{validator.allowable_values}."
-      end
-      @calculation_phase = calculation_phase
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] adjustment_type Object to be assigned
-    def adjustment_type=(adjustment_type)
-      validator = EnumAttributeValidator.new('String', ["TAX"])
-      unless validator.valid?(adjustment_type)
-        fail ArgumentError, "invalid value for 'adjustment_type', must be one of #{validator.allowable_values}."
-      end
-      @adjustment_type = adjustment_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] inclusion_type Object to be assigned
-    def inclusion_type=(inclusion_type)
-      validator = EnumAttributeValidator.new('String', ["ADDITIVE", "INCLUSIVE"])
-      unless validator.valid?(inclusion_type)
-        fail ArgumentError, "invalid value for 'inclusion_type', must be one of #{validator.allowable_values}."
-      end
-      @inclusion_type = inclusion_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["CA_GST", "CA_HST", "CA_PST", "CA_QST", "JP_CONSUMPTION_TAX", "CA_PEI_PST", "US_SALES_TAX", "OTHER"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Checks equality by comparing each attribute.

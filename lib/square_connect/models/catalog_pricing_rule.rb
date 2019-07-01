@@ -51,27 +51,6 @@ module SquareConnect
     # Represents the local time at which the pricing rule will become inactive. Time zone is determined by the device running the Point of Sale app.  Represented in RFC3339 partial-time format (HH:MM:SS). Partial seconds will be truncated.
     attr_accessor :valid_until_local_time
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -185,19 +164,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      stackable_validator = EnumAttributeValidator.new('String', ["UNKNOWN", "BASE", "STACKABLE", "EXCLUSIVE"])
-      return false unless stackable_validator.valid?(@stackable)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] stackable Object to be assigned
-    def stackable=(stackable)
-      validator = EnumAttributeValidator.new('String', ["UNKNOWN", "BASE", "STACKABLE", "EXCLUSIVE"])
-      unless validator.valid?(stackable)
-        fail ArgumentError, "invalid value for 'stackable', must be one of #{validator.allowable_values}."
-      end
-      @stackable = stackable
     end
 
     # Checks equality by comparing each attribute.

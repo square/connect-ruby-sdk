@@ -21,27 +21,6 @@ module SquareConnect
     # The method used to enter the card's details for the transaction. See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values
     attr_accessor :entry_method
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -93,31 +72,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      status_validator = EnumAttributeValidator.new('String', ["AUTHORIZED", "CAPTURED", "VOIDED", "FAILED"])
-      return false unless status_validator.valid?(@status)
-      entry_method_validator = EnumAttributeValidator.new('String', ["SWIPED", "KEYED", "EMV", "ON_FILE", "CONTACTLESS"])
-      return false unless entry_method_validator.valid?(@entry_method)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["AUTHORIZED", "CAPTURED", "VOIDED", "FAILED"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for 'status', must be one of #{validator.allowable_values}."
-      end
-      @status = status
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] entry_method Object to be assigned
-    def entry_method=(entry_method)
-      validator = EnumAttributeValidator.new('String', ["SWIPED", "KEYED", "EMV", "ON_FILE", "CONTACTLESS"])
-      unless validator.valid?(entry_method)
-        fail ArgumentError, "invalid value for 'entry_method', must be one of #{validator.allowable_values}."
-      end
-      @entry_method = entry_method
     end
 
     # Checks equality by comparing each attribute.

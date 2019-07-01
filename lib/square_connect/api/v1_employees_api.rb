@@ -50,7 +50,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -105,7 +105,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -160,7 +160,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -215,7 +215,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -264,9 +264,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1EmployeesApi.list_cash_drawer_shifts" if location_id.nil?
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v1/{location_id}/cash-drawer-shifts".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -282,7 +279,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -327,9 +324,6 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_employee_roles ..."
       end
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v1/me/roles".sub('{format}','json')
 
@@ -345,7 +339,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -402,12 +396,6 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_employees ..."
       end
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
-      end
-      if opts[:'status'] && !['ACTIVE', 'INACTIVE'].include?(opts[:'status'])
-        fail ArgumentError, 'invalid value for "status", must be one of ACTIVE, INACTIVE'
-      end
       # resource path
       local_var_path = "/v1/me/employees".sub('{format}','json')
 
@@ -429,7 +417,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -484,7 +472,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -545,9 +533,6 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_timecards ..."
       end
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v1/me/timecards".sub('{format}','json')
 
@@ -571,7 +556,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -630,7 +615,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -685,7 +670,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -740,7 +725,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -795,7 +780,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -818,7 +803,7 @@ module SquareConnect
     end
 
     # UpdateEmployee
-    # 
+    #
     # @param employee_id The ID of the role to modify.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -829,7 +814,7 @@ module SquareConnect
     end
 
     # UpdateEmployee
-    # 
+    #
     # @param employee_id The ID of the role to modify.
     # @param body An object containing the fields to POST for the request.  See the corresponding object definition for field details.
     # @param [Hash] opts the optional parameters
@@ -854,7 +839,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -913,7 +898,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -972,7 +957,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters

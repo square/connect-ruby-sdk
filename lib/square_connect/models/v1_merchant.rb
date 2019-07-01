@@ -57,27 +57,6 @@ module SquareConnect
     # The URL of the merchant's online store.
     attr_accessor :market_url
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -203,31 +182,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      account_type_validator = EnumAttributeValidator.new('String', ["LOCATION", "BUSINESS"])
-      return false unless account_type_validator.valid?(@account_type)
-      business_type_validator = EnumAttributeValidator.new('String', ["ACCOUNTING", "APPAREL_AND_ACCESSORY_SHOPS", "ART_DEALERS_GALLERIES", "ART_DESIGN_AND_PHOTOGRAPHY", "BAR_CLUB_LOUNGE", "BEAUTY_AND_BARBER_SHOPS", "BOOK_STORES", "BUSINESS_SERVICES", "CATERING", "CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS", "CHARITIBLE_ORGS", "CLEANING_SERVICES", "COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES", "CONSULTANT", "CONTRACTORS", "DELIVERY_SERVICES", "DENTISTRY", "EDUCATION", "FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS", "FOOD_TRUCK_CART", "FURNITURE_HOME_AND_OFFICE_EQUIPMENT", "FURNITURE_HOME_GOODS", "HOTELS_AND_LODGING", "INDIVIDUAL_USE", "JEWELRY_AND_WATCHES", "LANDSCAPING_AND_HORTICULTURAL_SERVICES", "LANGUAGE_SCHOOLS", "LEGAL_SERVICES", "MEDICAL_PRACTITIONERS", "MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS", "MEMBERSHIP_ORGANIZATIONS", "MUSIC_AND_ENTERTAINMENT", "OTHER", "OUTDOOR_MARKETS", "PERSONAL_SERVICES", "POLITICAL_ORGANIZATIONS", "PROFESSIONAL_SERVICES", "REAL_ESTATE", "RECREATION_SERVICES", "REPAIR_SHOPS_AND_RELATED_SERVICES", "RESTAURANTS", "RETAIL_SHOPS", "SCHOOLS_AND_EDUCATIONAL_SERVICES", "SPORTING_GOODS", "TAXICABS_AND_LIMOUSINES", "TICKET_SALES", "TOURISM", "TRAVEL_TOURISM", "VETERINARY_SERVICES", "WEB_DEV_DESIGN"])
-      return false unless business_type_validator.valid?(@business_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] account_type Object to be assigned
-    def account_type=(account_type)
-      validator = EnumAttributeValidator.new('String', ["LOCATION", "BUSINESS"])
-      unless validator.valid?(account_type)
-        fail ArgumentError, "invalid value for 'account_type', must be one of #{validator.allowable_values}."
-      end
-      @account_type = account_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] business_type Object to be assigned
-    def business_type=(business_type)
-      validator = EnumAttributeValidator.new('String', ["ACCOUNTING", "APPAREL_AND_ACCESSORY_SHOPS", "ART_DEALERS_GALLERIES", "ART_DESIGN_AND_PHOTOGRAPHY", "BAR_CLUB_LOUNGE", "BEAUTY_AND_BARBER_SHOPS", "BOOK_STORES", "BUSINESS_SERVICES", "CATERING", "CHARITABLE_SOCIAL_SERVICE_ORGANIZATIONS", "CHARITIBLE_ORGS", "CLEANING_SERVICES", "COMPUTER_EQUIPMENT_SOFTWARE_MAINTENANCE_REPAIR_SERVICES", "CONSULTANT", "CONTRACTORS", "DELIVERY_SERVICES", "DENTISTRY", "EDUCATION", "FOOD_STORES_CONVENIENCE_STORES_AND_SPECIALTY_MARKETS", "FOOD_TRUCK_CART", "FURNITURE_HOME_AND_OFFICE_EQUIPMENT", "FURNITURE_HOME_GOODS", "HOTELS_AND_LODGING", "INDIVIDUAL_USE", "JEWELRY_AND_WATCHES", "LANDSCAPING_AND_HORTICULTURAL_SERVICES", "LANGUAGE_SCHOOLS", "LEGAL_SERVICES", "MEDICAL_PRACTITIONERS", "MEDICAL_SERVICES_AND_HEALTH_PRACTITIONERS", "MEMBERSHIP_ORGANIZATIONS", "MUSIC_AND_ENTERTAINMENT", "OTHER", "OUTDOOR_MARKETS", "PERSONAL_SERVICES", "POLITICAL_ORGANIZATIONS", "PROFESSIONAL_SERVICES", "REAL_ESTATE", "RECREATION_SERVICES", "REPAIR_SHOPS_AND_RELATED_SERVICES", "RESTAURANTS", "RETAIL_SHOPS", "SCHOOLS_AND_EDUCATIONAL_SERVICES", "SPORTING_GOODS", "TAXICABS_AND_LIMOUSINES", "TICKET_SALES", "TOURISM", "TRAVEL_TOURISM", "VETERINARY_SERVICES", "WEB_DEV_DESIGN"])
-      unless validator.valid?(business_type)
-        fail ArgumentError, "invalid value for 'business_type', must be one of #{validator.allowable_values}."
-      end
-      @business_type = business_type
     end
 
     # Checks equality by comparing each attribute.

@@ -30,27 +30,6 @@ module SquareConnect
     # The entries included in this settlement.
     attr_accessor :entries
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -122,19 +101,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      status_validator = EnumAttributeValidator.new('String', ["FAILED", "SENT"])
-      return false unless status_validator.valid?(@status)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["FAILED", "SENT"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for 'status', must be one of #{validator.allowable_values}."
-      end
-      @status = status
     end
 
     # Checks equality by comparing each attribute.

@@ -24,27 +24,6 @@ module SquareConnect
     # Only used for ad hoc taxes. The percentage of the tax, as a string representation of a decimal number.  A value of `7.25` corresponds to a percentage of 7.25%. This value range between 0.0 up to 100.0
     attr_accessor :percentage
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -116,8 +95,6 @@ module SquareConnect
     def valid?
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@name.nil? && @name.to_s.length > 255
-      type_validator = EnumAttributeValidator.new('String', ["UNKNOWN_TAX", "ADDITIVE", "INCLUSIVE"])
-      return false unless type_validator.valid?(@type)
       return false if !@percentage.nil? && @percentage.to_s.length > 10
       return true
     end
@@ -142,16 +119,6 @@ module SquareConnect
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["UNKNOWN_TAX", "ADDITIVE", "INCLUSIVE"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Custom attribute writer method with validation

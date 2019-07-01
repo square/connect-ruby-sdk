@@ -54,27 +54,6 @@ module SquareConnect
     # If `false`, the Square Point of Sale app will present the [CatalogItem](#type-catalogitem)'s details screen immediately, allowing the merchant to choose [CatalogModifier](#type-catalogmodifier)s before adding the item to the cart.  This is the default behavior.  If `true`, the Square Point of Sale app will immediately add the item to the cart with the pre-selected modifiers, and merchants can edit modifiers by drilling down onto the item's details.  Third-party clients are encouraged to implement similar behaviors.
     attr_accessor :skip_modifier_screen
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -198,19 +177,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      product_type_validator = EnumAttributeValidator.new('String', ["REGULAR", "GIFT_CARD", "APPOINTMENTS_SERVICE", "RETAIL_ITEM", "RESTAURANT_ITEM"])
-      return false unless product_type_validator.valid?(@product_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product_type Object to be assigned
-    def product_type=(product_type)
-      validator = EnumAttributeValidator.new('String', ["REGULAR", "GIFT_CARD", "APPOINTMENTS_SERVICE", "RETAIL_ITEM", "RESTAURANT_ITEM"])
-      unless validator.valid?(product_type)
-        fail ArgumentError, "invalid value for 'product_type', must be one of #{validator.allowable_values}."
-      end
-      @product_type = product_type
     end
 
     # Checks equality by comparing each attribute.

@@ -46,9 +46,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling ReportingApi.list_additional_recipient_receivable_refunds" if location_id.nil?
-      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
-        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v2/locations/{location_id}/additional-recipient-receivable-refunds".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -65,7 +62,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters
@@ -116,9 +113,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling ReportingApi.list_additional_recipient_receivables" if location_id.nil?
-      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
-        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v2/locations/{location_id}/additional-recipient-receivables".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -135,7 +129,7 @@ module SquareConnect
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
       # HTTP header 'Content-Type'
       header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-      
+
       header_params['Square-Version'] = "2019-06-12"
 
       # form parameters

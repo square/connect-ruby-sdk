@@ -63,27 +63,6 @@ module SquareConnect
     # A creation source represents the method used to create the customer profile. See [CustomerCreationSource](#type-customercreationsource) for possible values
     attr_accessor :creation_source
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -238,19 +217,7 @@ module SquareConnect
       return false if @id.nil?
       return false if @created_at.nil?
       return false if @updated_at.nil?
-      creation_source_validator = EnumAttributeValidator.new('String', ["OTHER", "APPOINTMENTS", "COUPON", "DELETION_RECOVERY", "DIRECTORY", "EGIFTING", "EMAIL_COLLECTION", "FEEDBACK", "IMPORT", "INVOICES", "LOYALTY", "MARKETING", "MERGE", "ONLINE_STORE", "INSTANT_PROFILE", "TERMINAL", "THIRD_PARTY", "THIRD_PARTY_IMPORT", "UNMERGE_RECOVERY"])
-      return false unless creation_source_validator.valid?(@creation_source)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] creation_source Object to be assigned
-    def creation_source=(creation_source)
-      validator = EnumAttributeValidator.new('String', ["OTHER", "APPOINTMENTS", "COUPON", "DELETION_RECOVERY", "DIRECTORY", "EGIFTING", "EMAIL_COLLECTION", "FEEDBACK", "IMPORT", "INVOICES", "LOYALTY", "MARKETING", "MERGE", "ONLINE_STORE", "INSTANT_PROFILE", "TERMINAL", "THIRD_PARTY", "THIRD_PARTY_IMPORT", "UNMERGE_RECOVERY"])
-      unless validator.valid?(creation_source)
-        fail ArgumentError, "invalid value for 'creation_source', must be one of #{validator.allowable_values}."
-      end
-      @creation_source = creation_source
     end
 
     # Checks equality by comparing each attribute.

@@ -36,27 +36,6 @@ module SquareConnect
     # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
     attr_accessor :v2_id
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -138,31 +117,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      discount_type_validator = EnumAttributeValidator.new('String', ["FIXED", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
-      return false unless discount_type_validator.valid?(@discount_type)
-      color_validator = EnumAttributeValidator.new('String', ["9da2a6", "4ab200", "0b8000", "2952cc", "a82ee5", "e5457a", "b21212", "593c00", "e5BF00"])
-      return false unless color_validator.valid?(@color)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] discount_type Object to be assigned
-    def discount_type=(discount_type)
-      validator = EnumAttributeValidator.new('String', ["FIXED", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
-      unless validator.valid?(discount_type)
-        fail ArgumentError, "invalid value for 'discount_type', must be one of #{validator.allowable_values}."
-      end
-      @discount_type = discount_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] color Object to be assigned
-    def color=(color)
-      validator = EnumAttributeValidator.new('String', ["9da2a6", "4ab200", "0b8000", "2952cc", "a82ee5", "e5457a", "b21212", "593c00", "e5BF00"])
-      unless validator.valid?(color)
-        fail ArgumentError, "invalid value for 'color', must be one of #{validator.allowable_values}."
-      end
-      @color = color
     end
 
     # Checks equality by comparing each attribute.

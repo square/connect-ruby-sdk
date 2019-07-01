@@ -21,27 +21,6 @@ module SquareConnect
     # The end time of a business hours period, specified in local time using partial-time RFC3339 format.
     attr_accessor :end_local_time
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -93,19 +72,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      day_of_week_validator = EnumAttributeValidator.new('String', ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"])
-      return false unless day_of_week_validator.valid?(@day_of_week)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] day_of_week Object to be assigned
-    def day_of_week=(day_of_week)
-      validator = EnumAttributeValidator.new('String', ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"])
-      unless validator.valid?(day_of_week)
-        fail ArgumentError, "invalid value for 'day_of_week', must be one of #{validator.allowable_values}."
-      end
-      @day_of_week = day_of_week
     end
 
     # Checks equality by comparing each attribute.

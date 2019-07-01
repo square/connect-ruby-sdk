@@ -30,27 +30,6 @@ module SquareConnect
     # If the inventory quantity for the variation is less than or equal to this value and `inventory_alert_type` is `LOW_QUANTITY`, the variation displays an alert in the merchant dashboard.  This value is always an integer.
     attr_accessor :inventory_alert_threshold
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -120,31 +99,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      pricing_type_validator = EnumAttributeValidator.new('String', ["FIXED_PRICING", "VARIABLE_PRICING"])
-      return false unless pricing_type_validator.valid?(@pricing_type)
-      inventory_alert_type_validator = EnumAttributeValidator.new('String', ["NONE", "LOW_QUANTITY"])
-      return false unless inventory_alert_type_validator.valid?(@inventory_alert_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] pricing_type Object to be assigned
-    def pricing_type=(pricing_type)
-      validator = EnumAttributeValidator.new('String', ["FIXED_PRICING", "VARIABLE_PRICING"])
-      unless validator.valid?(pricing_type)
-        fail ArgumentError, "invalid value for 'pricing_type', must be one of #{validator.allowable_values}."
-      end
-      @pricing_type = pricing_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] inventory_alert_type Object to be assigned
-    def inventory_alert_type=(inventory_alert_type)
-      validator = EnumAttributeValidator.new('String', ["NONE", "LOW_QUANTITY"])
-      unless validator.valid?(inventory_alert_type)
-        fail ArgumentError, "invalid value for 'inventory_alert_type', must be one of #{validator.allowable_values}."
-      end
-      @inventory_alert_type = inventory_alert_type
     end
 
     # Checks equality by comparing each attribute.

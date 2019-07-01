@@ -24,27 +24,6 @@ module SquareConnect
     # A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Pagination](/basics/api101/pagination) for more information.
     attr_accessor :cursor
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -102,19 +81,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      sort_order_validator = EnumAttributeValidator.new('String', ["DESC", "ASC"])
-      return false unless sort_order_validator.valid?(@sort_order)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] sort_order Object to be assigned
-    def sort_order=(sort_order)
-      validator = EnumAttributeValidator.new('String', ["DESC", "ASC"])
-      unless validator.valid?(sort_order)
-        fail ArgumentError, "invalid value for 'sort_order', must be one of #{validator.allowable_values}."
-      end
-      @sort_order = sort_order
     end
 
     # Checks equality by comparing each attribute.
