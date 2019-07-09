@@ -21,27 +21,6 @@ module SquareConnect
     # Read-only display name assigned to the application (e.g. `\"Custom Application\"`, `\"Square POS 4.74 for Android\"`).
     attr_accessor :name
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -93,19 +72,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      product_validator = EnumAttributeValidator.new('String', ["SQUARE_POS", "EXTERNAL_API", "BILLING", "APPOINTMENTS", "INVOICES", "ONLINE_STORE", "PAYROLL", "DASHBOARD", "ITEM_LIBRARY_IMPORT", "OTHER"])
-      return false unless product_validator.valid?(@product)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product Object to be assigned
-    def product=(product)
-      validator = EnumAttributeValidator.new('String', ["SQUARE_POS", "EXTERNAL_API", "BILLING", "APPOINTMENTS", "INVOICES", "ONLINE_STORE", "PAYROLL", "DASHBOARD", "ITEM_LIBRARY_IMPORT", "OTHER"])
-      unless validator.valid?(product)
-        fail ArgumentError, "invalid value for 'product', must be one of #{validator.allowable_values}."
-      end
-      @product = product
     end
 
     # Checks equality by comparing each attribute.

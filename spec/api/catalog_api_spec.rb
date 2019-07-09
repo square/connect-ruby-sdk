@@ -337,7 +337,6 @@ describe 'CatalogApi' do
       expect(actual_coffee.item_data.modifier_list_info[0].min_selected_modifiers).to be_nil
       expect(actual_coffee.item_data.modifier_list_info[0].max_selected_modifiers).to be_nil
       expect(actual_coffee.item_data.modifier_list_info[0].enabled).to be_nil
-      expect(actual_coffee.item_data.image_url).to be_nil
 
       expect(actual_coffee.item_data.variations.size).to eq(2)
 

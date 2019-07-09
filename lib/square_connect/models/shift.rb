@@ -48,27 +48,6 @@ module SquareConnect
     # A read-only timestamp in RFC 3339 format; presented in UTC.
     attr_accessor :updated_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -201,8 +180,6 @@ module SquareConnect
       return false if @employee_id.to_s.length < 1
       return false if @start_at.nil?
       return false if @start_at.to_s.length < 1
-      status_validator = EnumAttributeValidator.new('String', ["OPEN", "CLOSED"])
-      return false unless status_validator.valid?(@status)
       return true
     end
 
@@ -243,16 +220,6 @@ module SquareConnect
       end
 
       @start_at = start_at
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] status Object to be assigned
-    def status=(status)
-      validator = EnumAttributeValidator.new('String', ["OPEN", "CLOSED"])
-      unless validator.valid?(status)
-        fail ArgumentError, "invalid value for 'status', must be one of #{validator.allowable_values}."
-      end
-      @status = status
     end
 
     # Checks equality by comparing each attribute.

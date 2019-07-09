@@ -21,27 +21,6 @@ module SquareConnect
     # Contains pickup-specific details. Required when fulfillment type is `PICKUP`.
     attr_accessor :pickup_details
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -93,31 +72,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["PICKUP"])
-      return false unless type_validator.valid?(@type)
-      state_validator = EnumAttributeValidator.new('String', ["PROPOSED", "RESERVED", "PREPARED", "COMPLETED", "CANCELED", "FAILED"])
-      return false unless state_validator.valid?(@state)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["PICKUP"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["PROPOSED", "RESERVED", "PREPARED", "COMPLETED", "CANCELED", "FAILED"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for 'state', must be one of #{validator.allowable_values}."
-      end
-      @state = state
     end
 
     # Checks equality by comparing each attribute.

@@ -60,27 +60,6 @@ module SquareConnect
     # A description of why the pickup was canceled. Max length is 100 characters.
     attr_accessor :cancel_reason
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -218,21 +197,9 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      schedule_type_validator = EnumAttributeValidator.new('String', ["SCHEDULED", "ASAP"])
-      return false unless schedule_type_validator.valid?(@schedule_type)
       return false if !@note.nil? && @note.to_s.length > 500
       return false if !@cancel_reason.nil? && @cancel_reason.to_s.length > 100
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] schedule_type Object to be assigned
-    def schedule_type=(schedule_type)
-      validator = EnumAttributeValidator.new('String', ["SCHEDULED", "ASAP"])
-      unless validator.valid?(schedule_type)
-        fail ArgumentError, "invalid value for 'schedule_type', must be one of #{validator.allowable_values}."
-      end
-      @schedule_type = schedule_type
     end
 
     # Custom attribute writer method with validation

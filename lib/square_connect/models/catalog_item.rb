@@ -42,9 +42,6 @@ module SquareConnect
     # A set of [CatalogItemModifierListInfo](#type-catalogitemmodifierlistinfo) objects representing the modifier lists that apply to this item, along with the overrides and min and max limits that are specific to this item. [CatalogModifierList](#type-catalogmodifierlist)s may also be added to or deleted from an item using `UpdateItemModifierLists`.
     attr_accessor :modifier_list_info
 
-    # __Deprecated__. The URL of an image representing this item. Deprecated in favor of `image_id` in [`CatalogObject`](#type-catalogobject).
-    attr_accessor :image_url
-
     # A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.  Maximum: 250 item variations
     attr_accessor :variations
 
@@ -54,27 +51,6 @@ module SquareConnect
     # If `false`, the Square Point of Sale app will present the [CatalogItem](#type-catalogitem)'s details screen immediately, allowing the merchant to choose [CatalogModifier](#type-catalogmodifier)s before adding the item to the cart.  This is the default behavior.  If `true`, the Square Point of Sale app will immediately add the item to the cart with the pre-selected modifiers, and merchants can edit modifiers by drilling down onto the item's details.  Third-party clients are encouraged to implement similar behaviors.
     attr_accessor :skip_modifier_screen
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -89,7 +65,6 @@ module SquareConnect
         :'category_id' => :'category_id',
         :'tax_ids' => :'tax_ids',
         :'modifier_list_info' => :'modifier_list_info',
-        :'image_url' => :'image_url',
         :'variations' => :'variations',
         :'product_type' => :'product_type',
         :'skip_modifier_screen' => :'skip_modifier_screen'
@@ -109,7 +84,6 @@ module SquareConnect
         :'category_id' => :'String',
         :'tax_ids' => :'Array<String>',
         :'modifier_list_info' => :'Array<CatalogItemModifierListInfo>',
-        :'image_url' => :'String',
         :'variations' => :'Array<CatalogObject>',
         :'product_type' => :'String',
         :'skip_modifier_screen' => :'BOOLEAN'
@@ -168,10 +142,6 @@ module SquareConnect
         end
       end
 
-      if attributes.has_key?(:'image_url')
-        self.image_url = attributes[:'image_url']
-      end
-
       if attributes.has_key?(:'variations')
         if (value = attributes[:'variations']).is_a?(Array)
           self.variations = value
@@ -198,19 +168,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      product_type_validator = EnumAttributeValidator.new('String', ["REGULAR", "GIFT_CARD", "APPOINTMENTS_SERVICE", "RETAIL_ITEM", "RESTAURANT_ITEM"])
-      return false unless product_type_validator.valid?(@product_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] product_type Object to be assigned
-    def product_type=(product_type)
-      validator = EnumAttributeValidator.new('String', ["REGULAR", "GIFT_CARD", "APPOINTMENTS_SERVICE", "RETAIL_ITEM", "RESTAURANT_ITEM"])
-      unless validator.valid?(product_type)
-        fail ArgumentError, "invalid value for 'product_type', must be one of #{validator.allowable_values}."
-      end
-      @product_type = product_type
     end
 
     # Checks equality by comparing each attribute.
@@ -228,7 +186,6 @@ module SquareConnect
           category_id == o.category_id &&
           tax_ids == o.tax_ids &&
           modifier_list_info == o.modifier_list_info &&
-          image_url == o.image_url &&
           variations == o.variations &&
           product_type == o.product_type &&
           skip_modifier_screen == o.skip_modifier_screen
@@ -243,7 +200,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, description, abbreviation, label_color, available_online, available_for_pickup, available_electronically, category_id, tax_ids, modifier_list_info, image_url, variations, product_type, skip_modifier_screen].hash
+      [name, description, abbreviation, label_color, available_online, available_for_pickup, available_electronically, category_id, tax_ids, modifier_list_info, variations, product_type, skip_modifier_screen].hash
     end
 
     # Builds the object from hash

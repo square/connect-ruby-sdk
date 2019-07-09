@@ -30,27 +30,6 @@ module SquareConnect
     # If `true`, the tax will be shown as enabled in the Square Point of Sale app.
     attr_accessor :enabled
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -120,31 +99,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      calculation_phase_validator = EnumAttributeValidator.new('String', ["TAX_SUBTOTAL_PHASE", "TAX_TOTAL_PHASE"])
-      return false unless calculation_phase_validator.valid?(@calculation_phase)
-      inclusion_type_validator = EnumAttributeValidator.new('String', ["ADDITIVE", "INCLUSIVE"])
-      return false unless inclusion_type_validator.valid?(@inclusion_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] calculation_phase Object to be assigned
-    def calculation_phase=(calculation_phase)
-      validator = EnumAttributeValidator.new('String', ["TAX_SUBTOTAL_PHASE", "TAX_TOTAL_PHASE"])
-      unless validator.valid?(calculation_phase)
-        fail ArgumentError, "invalid value for 'calculation_phase', must be one of #{validator.allowable_values}."
-      end
-      @calculation_phase = calculation_phase
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] inclusion_type Object to be assigned
-    def inclusion_type=(inclusion_type)
-      validator = EnumAttributeValidator.new('String', ["ADDITIVE", "INCLUSIVE"])
-      unless validator.valid?(inclusion_type)
-        fail ArgumentError, "invalid value for 'inclusion_type', must be one of #{validator.allowable_values}."
-      end
-      @inclusion_type = inclusion_type
     end
 
     # Checks equality by comparing each attribute.

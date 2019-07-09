@@ -63,33 +63,21 @@ module SquareConnect
     # Structured data for a [CatalogModifier](#type-catalogmodifier), set for CatalogObjects of type `MODIFIER`.
     attr_accessor :modifier_data
 
+    # Structured data for a [CatalogTimePeriod](#type-catalogtimeperiod), set for CatalogObjects of type `TIME_PERIOD`.
+    attr_accessor :time_period_data
+
+    # Structured data for a [CatalogProductSet](#type-catalogproductset), set for CatalogObjects of type `PRODUCT_SET`.
+    attr_accessor :product_set_data
+
+    # Structured data for a [CatalogPricingRule](#type-catalogpricingrule), set for CatalogObjects of type `PRICING_RULE`.
+    attr_accessor :pricing_rule_data
+
     # Structured data for a [CatalogImage](#type-catalogimage), set for CatalogObjects of type `IMAGE`.
     attr_accessor :image_data
 
     # Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.
     attr_accessor :measurement_unit_data
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -111,6 +99,9 @@ module SquareConnect
         :'discount_data' => :'discount_data',
         :'modifier_list_data' => :'modifier_list_data',
         :'modifier_data' => :'modifier_data',
+        :'time_period_data' => :'time_period_data',
+        :'product_set_data' => :'product_set_data',
+        :'pricing_rule_data' => :'pricing_rule_data',
         :'image_data' => :'image_data',
         :'measurement_unit_data' => :'measurement_unit_data'
       }
@@ -136,6 +127,9 @@ module SquareConnect
         :'discount_data' => :'CatalogDiscount',
         :'modifier_list_data' => :'CatalogModifierList',
         :'modifier_data' => :'CatalogModifier',
+        :'time_period_data' => :'CatalogTimePeriod',
+        :'product_set_data' => :'CatalogProductSet',
+        :'pricing_rule_data' => :'CatalogPricingRule',
         :'image_data' => :'CatalogImage',
         :'measurement_unit_data' => :'CatalogMeasurementUnit'
       }
@@ -223,6 +217,18 @@ module SquareConnect
         self.modifier_data = attributes[:'modifier_data']
       end
 
+      if attributes.has_key?(:'time_period_data')
+        self.time_period_data = attributes[:'time_period_data']
+      end
+
+      if attributes.has_key?(:'product_set_data')
+        self.product_set_data = attributes[:'product_set_data']
+      end
+
+      if attributes.has_key?(:'pricing_rule_data')
+        self.pricing_rule_data = attributes[:'pricing_rule_data']
+      end
+
       if attributes.has_key?(:'image_data')
         self.image_data = attributes[:'image_data']
       end
@@ -256,21 +262,9 @@ module SquareConnect
     # @return true if the model is valid
     def valid?
       return false if @type.nil?
-      type_validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER", "PRICING_RULE", "PRODUCT_SET", "TIME_PERIOD"])
-      return false unless type_validator.valid?(@type)
       return false if @id.nil?
       return false if @id.to_s.length < 1
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["ITEM", "IMAGE", "CATEGORY", "ITEM_VARIATION", "TAX", "DISCOUNT", "MODIFIER_LIST", "MODIFIER", "PRICING_RULE", "PRODUCT_SET", "TIME_PERIOD"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Custom attribute writer method with validation
@@ -309,6 +303,9 @@ module SquareConnect
           discount_data == o.discount_data &&
           modifier_list_data == o.modifier_list_data &&
           modifier_data == o.modifier_data &&
+          time_period_data == o.time_period_data &&
+          product_set_data == o.product_set_data &&
+          pricing_rule_data == o.pricing_rule_data &&
           image_data == o.image_data &&
           measurement_unit_data == o.measurement_unit_data
     end
@@ -322,7 +319,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, image_data, measurement_unit_data].hash
+      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, time_period_data, product_set_data, pricing_rule_data, image_data, measurement_unit_data].hash
     end
 
     # Builds the object from hash

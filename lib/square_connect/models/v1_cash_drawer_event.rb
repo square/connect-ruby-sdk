@@ -30,27 +30,6 @@ module SquareConnect
     # An optional description of the event, entered by the employee that created it.
     attr_accessor :description
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -120,19 +99,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ["NO_SALE", "CASH_TENDER_PAYMENT", "OTHER_TENDER_PAYMENT", "CASH_TENDER_CANCELED_PAYMENT", "OTHER_TENDER_CANCELED_PAYMENT", "CASH_TENDER_REFUND", "OTHER_TENDER_REFUND", "PAID_IN", "PAID_OUT"])
-      return false unless event_type_validator.valid?(@event_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] event_type Object to be assigned
-    def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ["NO_SALE", "CASH_TENDER_PAYMENT", "OTHER_TENDER_PAYMENT", "CASH_TENDER_CANCELED_PAYMENT", "OTHER_TENDER_CANCELED_PAYMENT", "CASH_TENDER_REFUND", "OTHER_TENDER_REFUND", "PAID_IN", "PAID_OUT"])
-      unless validator.valid?(event_type)
-        fail ArgumentError, "invalid value for 'event_type', must be one of #{validator.allowable_values}."
-      end
-      @event_type = event_type
     end
 
     # Checks equality by comparing each attribute.

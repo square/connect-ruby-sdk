@@ -18,7 +18,7 @@ module SquareConnect
     end
 
     # CaptureTransaction
-    # Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+    # Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a `delay_capture` value of `true`.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
     # @param location_id 
     # @param transaction_id 
     # @param [Hash] opts the optional parameters
@@ -29,7 +29,7 @@ module SquareConnect
     end
 
     # CaptureTransaction
-    # Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+    # Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
     # @param location_id 
     # @param transaction_id 
     # @param [Hash] opts the optional parameters
@@ -227,9 +227,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.list_refunds" if location_id.nil?
-      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
-        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v2/locations/{location_id}/refunds".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -297,9 +294,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling TransactionsApi.list_transactions" if location_id.nil?
-      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
-        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v2/locations/{location_id}/transactions".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -398,7 +392,7 @@ module SquareConnect
     end
 
     # VoidTransaction
-    # Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a `delay_capture` value of `true`.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+    # Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a `delay_capture` value of `true`.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
     # @param location_id 
     # @param transaction_id 
     # @param [Hash] opts the optional parameters
@@ -409,7 +403,7 @@ module SquareConnect
     end
 
     # VoidTransaction
-    # Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See [Delayed capture transactions](/payments/transactions/overview#delayed-capture) for more information.
+    # Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a &#x60;delay_capture&#x60; value of &#x60;true&#x60;.  See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
     # @param location_id 
     # @param transaction_id 
     # @param [Hash] opts the optional parameters

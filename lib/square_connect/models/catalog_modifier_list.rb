@@ -21,27 +21,6 @@ module SquareConnect
     # The options included in the [CatalogModifierList](#type-catalogmodifierlist). You must include at least one [CatalogModifier](#type-catalogmodifier). Each [CatalogObject](#type-catalogobject) must have type `MODIFIER` and contain [CatalogModifier](#type-catalogmodifier) data.
     attr_accessor :modifiers
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -95,19 +74,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      selection_type_validator = EnumAttributeValidator.new('String', ["SINGLE", "MULTIPLE"])
-      return false unless selection_type_validator.valid?(@selection_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] selection_type Object to be assigned
-    def selection_type=(selection_type)
-      validator = EnumAttributeValidator.new('String', ["SINGLE", "MULTIPLE"])
-      unless validator.valid?(selection_type)
-        fail ArgumentError, "invalid value for 'selection_type', must be one of #{validator.allowable_values}."
-      end
-      @selection_type = selection_type
     end
 
     # Checks equality by comparing each attribute.

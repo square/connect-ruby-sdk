@@ -268,12 +268,6 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: CustomersApi.list_customers ..."
       end
-      if opts[:'sort_field'] && !['DEFAULT', 'CREATED_AT'].include?(opts[:'sort_field'])
-        fail ArgumentError, 'invalid value for "sort_field", must be one of DEFAULT, CREATED_AT'
-      end
-      if opts[:'sort_order'] && !['DESC', 'ASC'].include?(opts[:'sort_order'])
-        fail ArgumentError, 'invalid value for "sort_order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v2/customers".sub('{format}','json')
 

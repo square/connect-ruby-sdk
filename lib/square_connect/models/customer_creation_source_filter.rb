@@ -18,27 +18,6 @@ module SquareConnect
     # Indicates whether a customer profile matching the filter criteria should be included in the result or excluded from the result. Default: `INCLUDE`. See [CustomerInclusionExclusion](#type-customerinclusionexclusion) for possible values
     attr_accessor :rule
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -86,19 +65,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      rule_validator = EnumAttributeValidator.new('String', ["INCLUDE", "EXCLUDE"])
-      return false unless rule_validator.valid?(@rule)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] rule Object to be assigned
-    def rule=(rule)
-      validator = EnumAttributeValidator.new('String', ["INCLUDE", "EXCLUDE"])
-      unless validator.valid?(rule)
-        fail ArgumentError, "invalid value for 'rule', must be one of #{validator.allowable_values}."
-      end
-      @rule = rule
     end
 
     # Checks equality by comparing each attribute.

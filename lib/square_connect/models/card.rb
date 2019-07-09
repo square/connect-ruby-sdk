@@ -36,27 +36,6 @@ module SquareConnect
     # A unique, Square-assigned ID that identifies the card across multiple locations and applications for a single Square account.
     attr_accessor :fingerprint
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -138,19 +117,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      card_brand_validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
-      return false unless card_brand_validator.valid?(@card_brand)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] card_brand Object to be assigned
-    def card_brand=(card_brand)
-      validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTERCARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
-      unless validator.valid?(card_brand)
-        fail ArgumentError, "invalid value for 'card_brand', must be one of #{validator.allowable_values}."
-      end
-      @card_brand = card_brand
     end
 
     # Checks equality by comparing each attribute.

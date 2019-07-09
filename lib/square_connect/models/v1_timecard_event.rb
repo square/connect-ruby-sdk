@@ -27,27 +27,6 @@ module SquareConnect
     # The time when the event was created, in ISO 8601 format.
     attr_accessor :created_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -111,19 +90,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      event_type_validator = EnumAttributeValidator.new('String', ["API_CREATE", "API_EDIT", "API_DELETE", "REGISTER_CLOCKIN", "REGISTER_CLOCKOUT", "DASHBOARD_SUPERVISOR_CLOSE", "DASHBOARD_EDIT", "DASHBOARD_DELETE"])
-      return false unless event_type_validator.valid?(@event_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] event_type Object to be assigned
-    def event_type=(event_type)
-      validator = EnumAttributeValidator.new('String', ["API_CREATE", "API_EDIT", "API_DELETE", "REGISTER_CLOCKIN", "REGISTER_CLOCKOUT", "DASHBOARD_SUPERVISOR_CLOSE", "DASHBOARD_EDIT", "DASHBOARD_DELETE"])
-      unless validator.valid?(event_type)
-        fail ArgumentError, "invalid value for 'event_type', must be one of #{validator.allowable_values}."
-      end
-      @event_type = event_type
     end
 
     # Checks equality by comparing each attribute.
