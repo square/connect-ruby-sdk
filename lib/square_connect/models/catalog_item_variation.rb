@@ -51,33 +51,9 @@ module SquareConnect
     # If the [CatalogItem](#type-catalogitem) that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).
     attr_accessor :service_duration
 
-    # Represents the unit used to measure a [CatalogItemVariation](#type-catalogitemvariation) and specifies the precision for decimal quantities.
-    attr_accessor :catalog_measurement_unit_id
-
     # ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity sold of this item variation. If left unset, the item will be sold in whole quantities.
     attr_accessor :measurement_unit_id
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -95,7 +71,6 @@ module SquareConnect
         :'inventory_alert_threshold' => :'inventory_alert_threshold',
         :'user_data' => :'user_data',
         :'service_duration' => :'service_duration',
-        :'catalog_measurement_unit_id' => :'catalog_measurement_unit_id',
         :'measurement_unit_id' => :'measurement_unit_id'
       }
     end
@@ -116,7 +91,6 @@ module SquareConnect
         :'inventory_alert_threshold' => :'Integer',
         :'user_data' => :'String',
         :'service_duration' => :'Integer',
-        :'catalog_measurement_unit_id' => :'String',
         :'measurement_unit_id' => :'String'
       }
     end
@@ -183,10 +157,6 @@ module SquareConnect
         self.service_duration = attributes[:'service_duration']
       end
 
-      if attributes.has_key?(:'catalog_measurement_unit_id')
-        self.catalog_measurement_unit_id = attributes[:'catalog_measurement_unit_id']
-      end
-
       if attributes.has_key?(:'measurement_unit_id')
         self.measurement_unit_id = attributes[:'measurement_unit_id']
       end
@@ -203,31 +173,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      pricing_type_validator = EnumAttributeValidator.new('String', ["FIXED_PRICING", "VARIABLE_PRICING"])
-      return false unless pricing_type_validator.valid?(@pricing_type)
-      inventory_alert_type_validator = EnumAttributeValidator.new('String', ["NONE", "LOW_QUANTITY"])
-      return false unless inventory_alert_type_validator.valid?(@inventory_alert_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] pricing_type Object to be assigned
-    def pricing_type=(pricing_type)
-      validator = EnumAttributeValidator.new('String', ["FIXED_PRICING", "VARIABLE_PRICING"])
-      unless validator.valid?(pricing_type)
-        fail ArgumentError, "invalid value for 'pricing_type', must be one of #{validator.allowable_values}."
-      end
-      @pricing_type = pricing_type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] inventory_alert_type Object to be assigned
-    def inventory_alert_type=(inventory_alert_type)
-      validator = EnumAttributeValidator.new('String', ["NONE", "LOW_QUANTITY"])
-      unless validator.valid?(inventory_alert_type)
-        fail ArgumentError, "invalid value for 'inventory_alert_type', must be one of #{validator.allowable_values}."
-      end
-      @inventory_alert_type = inventory_alert_type
     end
 
     # Checks equality by comparing each attribute.
@@ -248,7 +194,6 @@ module SquareConnect
           inventory_alert_threshold == o.inventory_alert_threshold &&
           user_data == o.user_data &&
           service_duration == o.service_duration &&
-          catalog_measurement_unit_id == o.catalog_measurement_unit_id &&
           measurement_unit_id == o.measurement_unit_id
     end
 
@@ -261,7 +206,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [item_id, name, sku, upc, ordinal, pricing_type, price_money, location_overrides, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, service_duration, catalog_measurement_unit_id, measurement_unit_id].hash
+      [item_id, name, sku, upc, ordinal, pricing_type, price_money, location_overrides, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, service_duration, measurement_unit_id].hash
     end
 
     # Builds the object from hash

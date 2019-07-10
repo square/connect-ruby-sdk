@@ -30,27 +30,6 @@ module SquareConnect
     # A read-only timestamp in RFC 3339 format; presented in UTC
     attr_accessor :updated_at
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -133,21 +112,9 @@ module SquareConnect
     # @return true if the model is valid
     def valid?
       return false if @start_of_week.nil?
-      start_of_week_validator = EnumAttributeValidator.new('String', ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"])
-      return false unless start_of_week_validator.valid?(@start_of_week)
       return false if @start_of_day_local_time.nil?
       return false if @start_of_day_local_time.to_s.length < 1
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] start_of_week Object to be assigned
-    def start_of_week=(start_of_week)
-      validator = EnumAttributeValidator.new('String', ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"])
-      unless validator.valid?(start_of_week)
-        fail ArgumentError, "invalid value for 'start_of_week', must be one of #{validator.allowable_values}."
-      end
-      @start_of_week = start_of_week
     end
 
     # Custom attribute writer method with validation

@@ -264,9 +264,6 @@ module SquareConnect
       end
       # verify the required parameter 'location_id' is set
       fail ArgumentError, "Missing the required parameter 'location_id' when calling V1EmployeesApi.list_cash_drawer_shifts" if location_id.nil?
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
-      end
       # resource path
       local_var_path = "/v1/{location_id}/cash-drawer-shifts".sub('{format}','json').sub('{' + 'location_id' + '}', location_id.to_s)
 
@@ -326,9 +323,6 @@ module SquareConnect
     def list_employee_roles_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_employee_roles ..."
-      end
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
       # resource path
       local_var_path = "/v1/me/roles".sub('{format}','json')
@@ -401,12 +395,6 @@ module SquareConnect
     def list_employees_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_employees ..."
-      end
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
-      end
-      if opts[:'status'] && !['ACTIVE', 'INACTIVE'].include?(opts[:'status'])
-        fail ArgumentError, 'invalid value for "status", must be one of ACTIVE, INACTIVE'
       end
       # resource path
       local_var_path = "/v1/me/employees".sub('{format}','json')
@@ -544,9 +532,6 @@ module SquareConnect
     def list_timecards_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: V1EmployeesApi.list_timecards ..."
-      end
-      if opts[:'order'] && !['DESC', 'ASC'].include?(opts[:'order'])
-        fail ArgumentError, 'invalid value for "order", must be one of DESC, ASC'
       end
       # resource path
       local_var_path = "/v1/me/timecards".sub('{format}','json')

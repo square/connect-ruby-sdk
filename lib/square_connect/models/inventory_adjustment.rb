@@ -33,7 +33,7 @@ module SquareConnect
     # The [CatalogObjectType](#type-catalogobjecttype) of the [CatalogObject](#type-catalogobject) being tracked. Tracking is only supported for the `ITEM_VARIATION` type.
     attr_accessor :catalog_object_type
 
-    # The number of items affected by the adjustment as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`. Read [Decimal Quantities (BETA)](/more-apis/inventory/overview#decimal-quantities-beta) for more information.
+    # The number of items affected by the adjustment as a decimal string. Can support up to 5 digits after the decimal point.  _Important_: The Point of Sale app and Dashboard do not currently support decimal quantities. If a Point of Sale app or Dashboard attempts to read a decimal quantity on inventory counts or adjustments, the quantity will be rounded down to the nearest integer. For example, `2.5` will become `2`, and `-2.5` will become `-3`.  Read [Decimal Quantities (BETA)](/orders-api/what-it-does#decimal-quantities) for more information.
     attr_accessor :quantity
 
     # The read-only total price paid for goods associated with the adjustment. Present if and only if `to_state` is `SOLD`. Always non-negative.
@@ -63,27 +63,6 @@ module SquareConnect
     # The read-only Square ID of the Square goods receipt that caused the adjustment. Only relevant for state transitions from the Square for Retail app.
     attr_accessor :goods_receipt_id
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -219,31 +198,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      from_state_validator = EnumAttributeValidator.new('String', ["CUSTOM", "IN_STOCK", "SOLD", "RETURNED_BY_CUSTOMER", "RESERVED_FOR_SALE", "SOLD_ONLINE", "ORDERED_FROM_VENDOR", "RECEIVED_FROM_VENDOR", "IN_TRANSIT_TO", "NONE", "WASTE", "UNLINKED_RETURN"])
-      return false unless from_state_validator.valid?(@from_state)
-      to_state_validator = EnumAttributeValidator.new('String', ["CUSTOM", "IN_STOCK", "SOLD", "RETURNED_BY_CUSTOMER", "RESERVED_FOR_SALE", "SOLD_ONLINE", "ORDERED_FROM_VENDOR", "RECEIVED_FROM_VENDOR", "IN_TRANSIT_TO", "NONE", "WASTE", "UNLINKED_RETURN"])
-      return false unless to_state_validator.valid?(@to_state)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] from_state Object to be assigned
-    def from_state=(from_state)
-      validator = EnumAttributeValidator.new('String', ["CUSTOM", "IN_STOCK", "SOLD", "RETURNED_BY_CUSTOMER", "RESERVED_FOR_SALE", "SOLD_ONLINE", "ORDERED_FROM_VENDOR", "RECEIVED_FROM_VENDOR", "IN_TRANSIT_TO", "NONE", "WASTE", "UNLINKED_RETURN"])
-      unless validator.valid?(from_state)
-        fail ArgumentError, "invalid value for 'from_state', must be one of #{validator.allowable_values}."
-      end
-      @from_state = from_state
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] to_state Object to be assigned
-    def to_state=(to_state)
-      validator = EnumAttributeValidator.new('String', ["CUSTOM", "IN_STOCK", "SOLD", "RETURNED_BY_CUSTOMER", "RESERVED_FOR_SALE", "SOLD_ONLINE", "ORDERED_FROM_VENDOR", "RECEIVED_FROM_VENDOR", "IN_TRANSIT_TO", "NONE", "WASTE", "UNLINKED_RETURN"])
-      unless validator.valid?(to_state)
-        fail ArgumentError, "invalid value for 'to_state', must be one of #{validator.allowable_values}."
-      end
-      @to_state = to_state
     end
 
     # Checks equality by comparing each attribute.

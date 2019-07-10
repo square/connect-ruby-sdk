@@ -42,9 +42,6 @@ module SquareConnect
       if @api_client.config.debugging
         @api_client.config.logger.debug "Calling API: EmployeesApi.list_employees ..."
       end
-      if opts[:'status'] && !['ACTIVE', 'INACTIVE'].include?(opts[:'status'])
-        fail ArgumentError, 'invalid value for "status", must be one of ACTIVE, INACTIVE'
-      end
       # resource path
       local_var_path = "/v2/employees".sub('{format}','json')
 

@@ -21,27 +21,6 @@ module SquareConnect
     # Location-specific timezones convert workdays to datetime filters. Every location included in the query must have a timezone, or this field must be provided as a fallback. Format: the IANA timezone database identifier for the relevant timezone.
     attr_accessor :default_timezone
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -93,19 +72,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      match_shifts_by_validator = EnumAttributeValidator.new('String', ["START_AT", "END_AT", "INTERSECTION"])
-      return false unless match_shifts_by_validator.valid?(@match_shifts_by)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] match_shifts_by Object to be assigned
-    def match_shifts_by=(match_shifts_by)
-      validator = EnumAttributeValidator.new('String', ["START_AT", "END_AT", "INTERSECTION"])
-      unless validator.valid?(match_shifts_by)
-        fail ArgumentError, "invalid value for 'match_shifts_by', must be one of #{validator.allowable_values}."
-      end
-      @match_shifts_by = match_shifts_by
     end
 
     # Checks equality by comparing each attribute.

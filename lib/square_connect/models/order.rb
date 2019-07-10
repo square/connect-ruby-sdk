@@ -84,27 +84,6 @@ module SquareConnect
     # The total amount of money collected in service charges for the order.  Note: `total_service_charge_money` is the sum of `applied_money` fields for each individual service charge. Therefore, `total_service_charge_money` will only include inclusive tax amounts, not additive tax amounts.  This field is read-only.
     attr_accessor :total_service_charge_money
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -313,8 +292,6 @@ module SquareConnect
       return false if @location_id.nil?
       return false if @location_id.to_s.length < 1
       return false if !@reference_id.nil? && @reference_id.to_s.length > 40
-      state_validator = EnumAttributeValidator.new('String', ["OPEN", "COMPLETED", "CANCELED"])
-      return false unless state_validator.valid?(@state)
       return true
     end
 
@@ -341,16 +318,6 @@ module SquareConnect
       end
 
       @reference_id = reference_id
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["OPEN", "COMPLETED", "CANCELED"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for 'state', must be one of #{validator.allowable_values}."
-      end
-      @state = state
     end
 
     # Checks equality by comparing each attribute.

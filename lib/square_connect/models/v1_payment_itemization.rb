@@ -54,27 +54,6 @@ module SquareConnect
     # All modifier options applied to this itemization.
     attr_accessor :modifiers
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -198,19 +177,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      itemization_type_validator = EnumAttributeValidator.new('String', ["ITEM", "CUSTOM_AMOUNT", "GIFT_CARD_ACTIVATION", "GIFT_CARD_RELOAD", "GIFT_CARD_UNKNOWN", "OTHER"])
-      return false unless itemization_type_validator.valid?(@itemization_type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] itemization_type Object to be assigned
-    def itemization_type=(itemization_type)
-      validator = EnumAttributeValidator.new('String', ["ITEM", "CUSTOM_AMOUNT", "GIFT_CARD_ACTIVATION", "GIFT_CARD_RELOAD", "GIFT_CARD_UNKNOWN", "OTHER"])
-      unless validator.valid?(itemization_type)
-        fail ArgumentError, "invalid value for 'itemization_type', must be one of #{validator.allowable_values}."
-      end
-      @itemization_type = itemization_type
     end
 
     # Checks equality by comparing each attribute.

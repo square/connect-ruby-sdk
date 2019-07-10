@@ -24,27 +24,6 @@ module SquareConnect
     # The amount of all Square fees associated with this settlement entry. This value is always negative or zero.
     attr_accessor :fee_money
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -102,19 +81,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["ADJUSTMENT", "BALANCE_CHARGE", "CHARGE", "FREE_PROCESSING", "HOLD_ADJUSTMENT", "PAID_SERVICE_FEE", "PAID_SERVICE_FEE_REFUND", "REDEMPTION_CODE", "REFUND", "RETURNED_PAYOUT", "SQUARE_CAPITAL_ADVANCE", "SQUARE_CAPITAL_PAYMENT", "SQUARE_CAPITAL_REVERSED_PAYMENT", "SUBSCRIPTION_FEE", "SUBSCRIPTION_FEE_REFUND", "OTHER", "INCENTED_PAYMENT", "RETURNED_ACH_ENTRY", "RETURNED_SQUARE_275", "SQUARE_275", "SQUARE_CARD"])
-      return false unless type_validator.valid?(@type)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["ADJUSTMENT", "BALANCE_CHARGE", "CHARGE", "FREE_PROCESSING", "HOLD_ADJUSTMENT", "PAID_SERVICE_FEE", "PAID_SERVICE_FEE_REFUND", "REDEMPTION_CODE", "REFUND", "RETURNED_PAYOUT", "SQUARE_CAPITAL_ADVANCE", "SQUARE_CAPITAL_PAYMENT", "SQUARE_CAPITAL_REVERSED_PAYMENT", "SUBSCRIPTION_FEE", "SUBSCRIPTION_FEE_REFUND", "OTHER", "INCENTED_PAYMENT", "RETURNED_ACH_ENTRY", "RETURNED_SQUARE_275", "SQUARE_275", "SQUARE_CARD"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
     end
 
     # Checks equality by comparing each attribute.

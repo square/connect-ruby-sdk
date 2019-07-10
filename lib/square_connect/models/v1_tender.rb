@@ -60,27 +60,6 @@ module SquareConnect
     # Indicates whether or not the tender is associated with an exchange. If is_exchange is true, the tender represents the value of goods returned in an exchange not the actual money paid. The exchange value reduces the tender amounts needed to pay for items purchased in the exchange.
     attr_accessor :is_exchange
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -210,43 +189,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["CREDIT_CARD", "CASH", "THIRD_PARTY_CARD", "NO_SALE", "SQUARE_WALLET", "SQUARE_GIFT_CARD", "UNKNOWN", "OTHER"])
-      return false unless type_validator.valid?(@type)
-      card_brand_validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTER_CARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
-      return false unless card_brand_validator.valid?(@card_brand)
-      entry_method_validator = EnumAttributeValidator.new('String', ["MANUAL", "SCANNED", "SQUARE_CASH", "SQUARE_WALLET", "SWIPED", "WEB_FORM", "OTHER"])
-      return false unless entry_method_validator.valid?(@entry_method)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["CREDIT_CARD", "CASH", "THIRD_PARTY_CARD", "NO_SALE", "SQUARE_WALLET", "SQUARE_GIFT_CARD", "UNKNOWN", "OTHER"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] card_brand Object to be assigned
-    def card_brand=(card_brand)
-      validator = EnumAttributeValidator.new('String', ["OTHER_BRAND", "VISA", "MASTER_CARD", "AMERICAN_EXPRESS", "DISCOVER", "DISCOVER_DINERS", "JCB", "CHINA_UNIONPAY", "SQUARE_GIFT_CARD"])
-      unless validator.valid?(card_brand)
-        fail ArgumentError, "invalid value for 'card_brand', must be one of #{validator.allowable_values}."
-      end
-      @card_brand = card_brand
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] entry_method Object to be assigned
-    def entry_method=(entry_method)
-      validator = EnumAttributeValidator.new('String', ["MANUAL", "SCANNED", "SQUARE_CASH", "SQUARE_WALLET", "SWIPED", "WEB_FORM", "OTHER"])
-      unless validator.valid?(entry_method)
-        fail ArgumentError, "invalid value for 'entry_method', must be one of #{validator.allowable_values}."
-      end
-      @entry_method = entry_method
     end
 
     # Checks equality by comparing each attribute.

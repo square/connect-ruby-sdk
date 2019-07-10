@@ -30,27 +30,6 @@ module SquareConnect
     # Reserved for API integrations that lack the ability to specify a real measurement unit See [MeasurementUnitGeneric](#type-measurementunitgeneric) for possible values
     attr_accessor :generic_unit
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -120,67 +99,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      area_unit_validator = EnumAttributeValidator.new('String', ["IMPERIAL_ACRE", "IMPERIAL_SQUARE_INCH", "IMPERIAL_SQUARE_FOOT", "IMPERIAL_SQUARE_YARD", "IMPERIAL_SQUARE_MILE", "METRIC_SQUARE_CENTIMETER", "METRIC_SQUARE_METER", "METRIC_SQUARE_KILOMETER"])
-      return false unless area_unit_validator.valid?(@area_unit)
-      length_unit_validator = EnumAttributeValidator.new('String', ["IMPERIAL_INCH", "IMPERIAL_FOOT", "IMPERIAL_YARD", "IMPERIAL_MILE", "METRIC_MILLIMETER", "METRIC_CENTIMETER", "METRIC_METER", "METRIC_KILOMETER"])
-      return false unless length_unit_validator.valid?(@length_unit)
-      volume_unit_validator = EnumAttributeValidator.new('String', ["GENERIC_FLUID_OUNCE", "GENERIC_SHOT", "GENERIC_CUP", "GENERIC_PINT", "GENERIC_QUART", "GENERIC_GALLON", "IMPERIAL_CUBIC_INCH", "IMPERIAL_CUBIC_FOOT", "IMPERIAL_CUBIC_YARD", "METRIC_MILLILITER", "METRIC_LITER"])
-      return false unless volume_unit_validator.valid?(@volume_unit)
-      weight_unit_validator = EnumAttributeValidator.new('String', ["IMPERIAL_WEIGHT_OUNCE", "IMPERIAL_POUND", "IMPERIAL_STONE", "METRIC_MILLIGRAM", "METRIC_GRAM", "METRIC_KILOGRAM"])
-      return false unless weight_unit_validator.valid?(@weight_unit)
-      generic_unit_validator = EnumAttributeValidator.new('String', ["INVALID_GENERIC_UNIT", "UNIT"])
-      return false unless generic_unit_validator.valid?(@generic_unit)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] area_unit Object to be assigned
-    def area_unit=(area_unit)
-      validator = EnumAttributeValidator.new('String', ["IMPERIAL_ACRE", "IMPERIAL_SQUARE_INCH", "IMPERIAL_SQUARE_FOOT", "IMPERIAL_SQUARE_YARD", "IMPERIAL_SQUARE_MILE", "METRIC_SQUARE_CENTIMETER", "METRIC_SQUARE_METER", "METRIC_SQUARE_KILOMETER"])
-      unless validator.valid?(area_unit)
-        fail ArgumentError, "invalid value for 'area_unit', must be one of #{validator.allowable_values}."
-      end
-      @area_unit = area_unit
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] length_unit Object to be assigned
-    def length_unit=(length_unit)
-      validator = EnumAttributeValidator.new('String', ["IMPERIAL_INCH", "IMPERIAL_FOOT", "IMPERIAL_YARD", "IMPERIAL_MILE", "METRIC_MILLIMETER", "METRIC_CENTIMETER", "METRIC_METER", "METRIC_KILOMETER"])
-      unless validator.valid?(length_unit)
-        fail ArgumentError, "invalid value for 'length_unit', must be one of #{validator.allowable_values}."
-      end
-      @length_unit = length_unit
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] volume_unit Object to be assigned
-    def volume_unit=(volume_unit)
-      validator = EnumAttributeValidator.new('String', ["GENERIC_FLUID_OUNCE", "GENERIC_SHOT", "GENERIC_CUP", "GENERIC_PINT", "GENERIC_QUART", "GENERIC_GALLON", "IMPERIAL_CUBIC_INCH", "IMPERIAL_CUBIC_FOOT", "IMPERIAL_CUBIC_YARD", "METRIC_MILLILITER", "METRIC_LITER"])
-      unless validator.valid?(volume_unit)
-        fail ArgumentError, "invalid value for 'volume_unit', must be one of #{validator.allowable_values}."
-      end
-      @volume_unit = volume_unit
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] weight_unit Object to be assigned
-    def weight_unit=(weight_unit)
-      validator = EnumAttributeValidator.new('String', ["IMPERIAL_WEIGHT_OUNCE", "IMPERIAL_POUND", "IMPERIAL_STONE", "METRIC_MILLIGRAM", "METRIC_GRAM", "METRIC_KILOGRAM"])
-      unless validator.valid?(weight_unit)
-        fail ArgumentError, "invalid value for 'weight_unit', must be one of #{validator.allowable_values}."
-      end
-      @weight_unit = weight_unit
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] generic_unit Object to be assigned
-    def generic_unit=(generic_unit)
-      validator = EnumAttributeValidator.new('String', ["INVALID_GENERIC_UNIT", "UNIT"])
-      unless validator.valid?(generic_unit)
-        fail ArgumentError, "invalid value for 'generic_unit', must be one of #{validator.allowable_values}."
-      end
-      @generic_unit = generic_unit
     end
 
     # Checks equality by comparing each attribute.

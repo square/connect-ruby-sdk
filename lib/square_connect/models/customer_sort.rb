@@ -18,27 +18,6 @@ module SquareConnect
     # Indicates the order in which results should be displayed based on the value of the sort field. String comparisons use standard alphabetic comparison to determine order. Strings representing numbers are sorted as strings. See [SortOrder](#type-sortorder) for possible values
     attr_accessor :order
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -84,31 +63,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      field_validator = EnumAttributeValidator.new('String', ["DEFAULT", "CREATED_AT"])
-      return false unless field_validator.valid?(@field)
-      order_validator = EnumAttributeValidator.new('String', ["DESC", "ASC"])
-      return false unless order_validator.valid?(@order)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] field Object to be assigned
-    def field=(field)
-      validator = EnumAttributeValidator.new('String', ["DEFAULT", "CREATED_AT"])
-      unless validator.valid?(field)
-        fail ArgumentError, "invalid value for 'field', must be one of #{validator.allowable_values}."
-      end
-      @field = field
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] order Object to be assigned
-    def order=(order)
-      validator = EnumAttributeValidator.new('String', ["DESC", "ASC"])
-      unless validator.valid?(order)
-        fail ArgumentError, "invalid value for 'order', must be one of #{validator.allowable_values}."
-      end
-      @order = order
     end
 
     # Checks equality by comparing each attribute.

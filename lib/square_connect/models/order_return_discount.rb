@@ -39,27 +39,6 @@ module SquareConnect
     # Indicates the level at which the discount applies. This field is set by the server. If set in a CreateOrder request, it will be ignored on write. See [OrderLineItemDiscountScope](#type-orderlineitemdiscountscope) for possible values
     attr_accessor :scope
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -171,11 +150,7 @@ module SquareConnect
       return false if !@source_discount_uid.nil? && @source_discount_uid.to_s.length > 60
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@name.nil? && @name.to_s.length > 255
-      type_validator = EnumAttributeValidator.new('String', ["UNKNOWN_DISCOUNT", "FIXED_PERCENTAGE", "FIXED_AMOUNT", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
-      return false unless type_validator.valid?(@type)
       return false if !@percentage.nil? && @percentage.to_s.length > 10
-      scope_validator = EnumAttributeValidator.new('String', ["OTHER_DISCOUNT_SCOPE", "LINE_ITEM", "ORDER"])
-      return false unless scope_validator.valid?(@scope)
       return true
     end
 
@@ -223,16 +198,6 @@ module SquareConnect
       @name = name
     end
 
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["UNKNOWN_DISCOUNT", "FIXED_PERCENTAGE", "FIXED_AMOUNT", "VARIABLE_PERCENTAGE", "VARIABLE_AMOUNT"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
     # Custom attribute writer method with validation
     # @param [Object] percentage Value to be assigned
     def percentage=(percentage)
@@ -242,16 +207,6 @@ module SquareConnect
       end
 
       @percentage = percentage
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] scope Object to be assigned
-    def scope=(scope)
-      validator = EnumAttributeValidator.new('String', ["OTHER_DISCOUNT_SCOPE", "LINE_ITEM", "ORDER"])
-      unless validator.valid?(scope)
-        fail ArgumentError, "invalid value for 'scope', must be one of #{validator.allowable_values}."
-      end
-      @scope = scope
     end
 
     # Checks equality by comparing each attribute.

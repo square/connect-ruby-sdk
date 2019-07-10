@@ -48,27 +48,6 @@ module SquareConnect
     # The taxes which apply to the service charge. Return-level taxes apply by default to service charge calculated in the `SUBTOTAL_PHASE` if the service charge is marked as taxable.
     attr_accessor :return_taxes
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -201,8 +180,6 @@ module SquareConnect
       return false if !@name.nil? && @name.to_s.length > 255
       return false if !@catalog_object_id.nil? && @catalog_object_id.to_s.length > 192
       return false if !@percentage.nil? && @percentage.to_s.length > 10
-      calculation_phase_validator = EnumAttributeValidator.new('String', ["SUBTOTAL_PHASE", "TOTAL_PHASE"])
-      return false unless calculation_phase_validator.valid?(@calculation_phase)
       return true
     end
 
@@ -259,16 +236,6 @@ module SquareConnect
       end
 
       @percentage = percentage
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] calculation_phase Object to be assigned
-    def calculation_phase=(calculation_phase)
-      validator = EnumAttributeValidator.new('String', ["SUBTOTAL_PHASE", "TOTAL_PHASE"])
-      unless validator.valid?(calculation_phase)
-        fail ArgumentError, "invalid value for 'calculation_phase', must be one of #{validator.allowable_values}."
-      end
-      @calculation_phase = calculation_phase
     end
 
     # Checks equality by comparing each attribute.

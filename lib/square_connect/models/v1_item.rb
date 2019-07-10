@@ -63,27 +63,6 @@ module SquareConnect
     # The ID of the CatalogObject in the Connect v2 API. Objects that are shared across multiple locations share the same v2 ID.
     attr_accessor :v2_id
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -225,43 +204,7 @@ module SquareConnect
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ["NORMAL", "GIFT_CARD", "OTHER"])
-      return false unless type_validator.valid?(@type)
-      color_validator = EnumAttributeValidator.new('String', ["9da2a6", "4ab200", "0b8000", "2952cc", "a82ee5", "e5457a", "b21212", "593c00", "e5BF00"])
-      return false unless color_validator.valid?(@color)
-      visibility_validator = EnumAttributeValidator.new('String', ["PUBLIC", "PRIVATE"])
-      return false unless visibility_validator.valid?(@visibility)
       return true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] type Object to be assigned
-    def type=(type)
-      validator = EnumAttributeValidator.new('String', ["NORMAL", "GIFT_CARD", "OTHER"])
-      unless validator.valid?(type)
-        fail ArgumentError, "invalid value for 'type', must be one of #{validator.allowable_values}."
-      end
-      @type = type
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] color Object to be assigned
-    def color=(color)
-      validator = EnumAttributeValidator.new('String', ["9da2a6", "4ab200", "0b8000", "2952cc", "a82ee5", "e5457a", "b21212", "593c00", "e5BF00"])
-      unless validator.valid?(color)
-        fail ArgumentError, "invalid value for 'color', must be one of #{validator.allowable_values}."
-      end
-      @color = color
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] visibility Object to be assigned
-    def visibility=(visibility)
-      validator = EnumAttributeValidator.new('String', ["PUBLIC", "PRIVATE"])
-      unless validator.valid?(visibility)
-        fail ArgumentError, "invalid value for 'visibility', must be one of #{validator.allowable_values}."
-      end
-      @visibility = visibility
     end
 
     # Checks equality by comparing each attribute.
