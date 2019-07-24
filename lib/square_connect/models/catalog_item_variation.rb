@@ -51,6 +51,9 @@ module SquareConnect
     # If the [CatalogItem](#type-catalogitem) that owns this item variation is of type `APPOINTMENTS_SERVICE`, then this is the duration of the service in milliseconds. For example, a 30 minute appointment would have the value `1800000`, which is equal to 30 (minutes) * 60 (seconds per minute) * 1000 (milliseconds per second).
     attr_accessor :service_duration
 
+    # List of item option values associated with this item variation. Listed in the same order as the item options of the parent item.
+    attr_accessor :item_option_values
+
     # ID of the ‘CatalogMeasurementUnit’ that is used to measure the quantity sold of this item variation. If left unset, the item will be sold in whole quantities.
     attr_accessor :measurement_unit_id
 
@@ -71,6 +74,7 @@ module SquareConnect
         :'inventory_alert_threshold' => :'inventory_alert_threshold',
         :'user_data' => :'user_data',
         :'service_duration' => :'service_duration',
+        :'item_option_values' => :'item_option_values',
         :'measurement_unit_id' => :'measurement_unit_id'
       }
     end
@@ -91,6 +95,7 @@ module SquareConnect
         :'inventory_alert_threshold' => :'Integer',
         :'user_data' => :'String',
         :'service_duration' => :'Integer',
+        :'item_option_values' => :'Array<CatalogItemOptionValueForItemVariation>',
         :'measurement_unit_id' => :'String'
       }
     end
@@ -157,6 +162,12 @@ module SquareConnect
         self.service_duration = attributes[:'service_duration']
       end
 
+      if attributes.has_key?(:'item_option_values')
+        if (value = attributes[:'item_option_values']).is_a?(Array)
+          self.item_option_values = value
+        end
+      end
+
       if attributes.has_key?(:'measurement_unit_id')
         self.measurement_unit_id = attributes[:'measurement_unit_id']
       end
@@ -194,6 +205,7 @@ module SquareConnect
           inventory_alert_threshold == o.inventory_alert_threshold &&
           user_data == o.user_data &&
           service_duration == o.service_duration &&
+          item_option_values == o.item_option_values &&
           measurement_unit_id == o.measurement_unit_id
     end
 
@@ -206,7 +218,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [item_id, name, sku, upc, ordinal, pricing_type, price_money, location_overrides, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, service_duration, measurement_unit_id].hash
+      [item_id, name, sku, upc, ordinal, pricing_type, price_money, location_overrides, track_inventory, inventory_alert_type, inventory_alert_threshold, user_data, service_duration, item_option_values, measurement_unit_id].hash
     end
 
     # Builds the object from hash

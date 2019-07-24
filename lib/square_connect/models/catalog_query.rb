@@ -33,6 +33,12 @@ module SquareConnect
     # A query that returns all [CatalogItem](#type-catalogitem)s that have any of the given [CatalogModifierList](#type-catalogmodifierlist)s enabled.
     attr_accessor :items_for_modifier_list_query
 
+    # A query that returns all [CatalogItem](#type-catalogitem)s that have all of the given [CatalogItemOption](#type-catalogitemoption)s.
+    attr_accessor :items_for_item_options_query
+
+    # A query that returns all [CatalogItemVariation](#type-catalogitemvariations)s that have all of the given [CatalogItemOption](#type-catalogitemoption) values.
+    attr_accessor :item_variations_for_item_option_values_query
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -43,7 +49,9 @@ module SquareConnect
         :'range_query' => :'range_query',
         :'text_query' => :'text_query',
         :'items_for_tax_query' => :'items_for_tax_query',
-        :'items_for_modifier_list_query' => :'items_for_modifier_list_query'
+        :'items_for_modifier_list_query' => :'items_for_modifier_list_query',
+        :'items_for_item_options_query' => :'items_for_item_options_query',
+        :'item_variations_for_item_option_values_query' => :'item_variations_for_item_option_values_query'
       }
     end
 
@@ -56,7 +64,9 @@ module SquareConnect
         :'range_query' => :'CatalogQueryRange',
         :'text_query' => :'CatalogQueryText',
         :'items_for_tax_query' => :'CatalogQueryItemsForTax',
-        :'items_for_modifier_list_query' => :'CatalogQueryItemsForModifierList'
+        :'items_for_modifier_list_query' => :'CatalogQueryItemsForModifierList',
+        :'items_for_item_options_query' => :'CatalogQueryItemsForItemOptions',
+        :'item_variations_for_item_option_values_query' => :'CatalogQueryItemVariationsForItemOptionValues'
       }
     end
 
@@ -96,6 +106,14 @@ module SquareConnect
         self.items_for_modifier_list_query = attributes[:'items_for_modifier_list_query']
       end
 
+      if attributes.has_key?(:'items_for_item_options_query')
+        self.items_for_item_options_query = attributes[:'items_for_item_options_query']
+      end
+
+      if attributes.has_key?(:'item_variations_for_item_option_values_query')
+        self.item_variations_for_item_option_values_query = attributes[:'item_variations_for_item_option_values_query']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -122,7 +140,9 @@ module SquareConnect
           range_query == o.range_query &&
           text_query == o.text_query &&
           items_for_tax_query == o.items_for_tax_query &&
-          items_for_modifier_list_query == o.items_for_modifier_list_query
+          items_for_modifier_list_query == o.items_for_modifier_list_query &&
+          items_for_item_options_query == o.items_for_item_options_query &&
+          item_variations_for_item_option_values_query == o.item_variations_for_item_option_values_query
     end
 
     # @see the `==` method
@@ -134,7 +154,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [sorted_attribute_query, exact_query, prefix_query, range_query, text_query, items_for_tax_query, items_for_modifier_list_query].hash
+      [sorted_attribute_query, exact_query, prefix_query, range_query, text_query, items_for_tax_query, items_for_modifier_list_query, items_for_item_options_query, item_variations_for_item_option_values_query].hash
     end
 
     # Builds the object from hash

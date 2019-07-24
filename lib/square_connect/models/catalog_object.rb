@@ -78,6 +78,12 @@ module SquareConnect
     # Structured data for a [CatalogMeasurementUnit](#type-catalogmeasurementunit), set for CatalogObjects of type `MEASUREMENT_UNIT`.
     attr_accessor :measurement_unit_data
 
+    # Structured data for a [CatalogItemOption](#type-catalogitemoption), set for CatalogObjects of type `ITEM_OPTION`.
+    attr_accessor :item_option_data
+
+    # Structured data for a [CatalogItemOptionValue](#type-catalogitemoptionvalue), set for CatalogObjects of type `ITEM_OPTION_VAL`.
+    attr_accessor :item_option_value_data
+
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -103,7 +109,9 @@ module SquareConnect
         :'product_set_data' => :'product_set_data',
         :'pricing_rule_data' => :'pricing_rule_data',
         :'image_data' => :'image_data',
-        :'measurement_unit_data' => :'measurement_unit_data'
+        :'measurement_unit_data' => :'measurement_unit_data',
+        :'item_option_data' => :'item_option_data',
+        :'item_option_value_data' => :'item_option_value_data'
       }
     end
 
@@ -131,7 +139,9 @@ module SquareConnect
         :'product_set_data' => :'CatalogProductSet',
         :'pricing_rule_data' => :'CatalogPricingRule',
         :'image_data' => :'CatalogImage',
-        :'measurement_unit_data' => :'CatalogMeasurementUnit'
+        :'measurement_unit_data' => :'CatalogMeasurementUnit',
+        :'item_option_data' => :'CatalogItemOption',
+        :'item_option_value_data' => :'CatalogItemOptionValue'
       }
     end
 
@@ -237,6 +247,14 @@ module SquareConnect
         self.measurement_unit_data = attributes[:'measurement_unit_data']
       end
 
+      if attributes.has_key?(:'item_option_data')
+        self.item_option_data = attributes[:'item_option_data']
+      end
+
+      if attributes.has_key?(:'item_option_value_data')
+        self.item_option_value_data = attributes[:'item_option_value_data']
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -307,7 +325,9 @@ module SquareConnect
           product_set_data == o.product_set_data &&
           pricing_rule_data == o.pricing_rule_data &&
           image_data == o.image_data &&
-          measurement_unit_data == o.measurement_unit_data
+          measurement_unit_data == o.measurement_unit_data &&
+          item_option_data == o.item_option_data &&
+          item_option_value_data == o.item_option_value_data
     end
 
     # @see the `==` method
@@ -319,7 +339,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, time_period_data, product_set_data, pricing_rule_data, image_data, measurement_unit_data].hash
+      [type, id, updated_at, version, is_deleted, catalog_v1_ids, present_at_all_locations, present_at_location_ids, absent_at_location_ids, image_id, item_data, category_data, item_variation_data, tax_data, discount_data, modifier_list_data, modifier_data, time_period_data, product_set_data, pricing_rule_data, image_data, measurement_unit_data, item_option_data, item_option_value_data].hash
     end
 
     # Builds the object from hash
