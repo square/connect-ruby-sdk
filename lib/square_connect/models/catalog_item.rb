@@ -45,11 +45,14 @@ module SquareConnect
     # A list of [CatalogObject](#type-catalogobject)s containing the [CatalogItemVariation](#type-catalogitemvariation)s for this item.  Maximum: 250 item variations
     attr_accessor :variations
 
-    # The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
+    # The product type of the item. May not be changed once an item has been created.  Only items of product type `REGULAR` or `APPOINTMENTS_SERVICE` may be created by this API; items with other product types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
     attr_accessor :product_type
 
     # If `false`, the Square Point of Sale app will present the [CatalogItem](#type-catalogitem)'s details screen immediately, allowing the merchant to choose [CatalogModifier](#type-catalogmodifier)s before adding the item to the cart.  This is the default behavior.  If `true`, the Square Point of Sale app will immediately add the item to the cart with the pre-selected modifiers, and merchants can edit modifiers by drilling down onto the item's details.  Third-party clients are encouraged to implement similar behaviors.
     attr_accessor :skip_modifier_screen
+
+    # List of item options IDs for this item. Used to manage and group item variations in a specified order.  Maximum: 6 item options.
+    attr_accessor :item_options
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -67,7 +70,8 @@ module SquareConnect
         :'modifier_list_info' => :'modifier_list_info',
         :'variations' => :'variations',
         :'product_type' => :'product_type',
-        :'skip_modifier_screen' => :'skip_modifier_screen'
+        :'skip_modifier_screen' => :'skip_modifier_screen',
+        :'item_options' => :'item_options'
       }
     end
 
@@ -86,7 +90,8 @@ module SquareConnect
         :'modifier_list_info' => :'Array<CatalogItemModifierListInfo>',
         :'variations' => :'Array<CatalogObject>',
         :'product_type' => :'String',
-        :'skip_modifier_screen' => :'BOOLEAN'
+        :'skip_modifier_screen' => :'BOOLEAN',
+        :'item_options' => :'Array<CatalogItemOptionForItem>'
       }
     end
 
@@ -156,6 +161,12 @@ module SquareConnect
         self.skip_modifier_screen = attributes[:'skip_modifier_screen']
       end
 
+      if attributes.has_key?(:'item_options')
+        if (value = attributes[:'item_options']).is_a?(Array)
+          self.item_options = value
+        end
+      end
+
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -188,7 +199,8 @@ module SquareConnect
           modifier_list_info == o.modifier_list_info &&
           variations == o.variations &&
           product_type == o.product_type &&
-          skip_modifier_screen == o.skip_modifier_screen
+          skip_modifier_screen == o.skip_modifier_screen &&
+          item_options == o.item_options
     end
 
     # @see the `==` method
@@ -200,7 +212,7 @@ module SquareConnect
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [name, description, abbreviation, label_color, available_online, available_for_pickup, available_electronically, category_id, tax_ids, modifier_list_info, variations, product_type, skip_modifier_screen].hash
+      [name, description, abbreviation, label_color, available_online, available_for_pickup, available_electronically, category_id, tax_ids, modifier_list_info, variations, product_type, skip_modifier_screen, item_options].hash
     end
 
     # Builds the object from hash

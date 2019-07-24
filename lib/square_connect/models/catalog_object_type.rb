@@ -23,6 +23,9 @@ module SquareConnect
     PRICING_RULE = "PRICING_RULE".freeze
     PRODUCT_SET = "PRODUCT_SET".freeze
     TIME_PERIOD = "TIME_PERIOD".freeze
+    MEASUREMENT_UNIT = "MEASUREMENT_UNIT".freeze
+    ITEM_OPTION = "ITEM_OPTION".freeze
+    ITEM_OPTION_VAL = "ITEM_OPTION_VAL".freeze
   end
 
 end
