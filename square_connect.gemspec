@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.email       = ["developers@squareup.com"]
   s.homepage    = "https://github.com/square/connect-ruby-sdk"
   s.summary     = "Square Connect API Ruby Gem"
-  s.description = "Ruby client library for the Square Connect API"
+  s.description = "The Square Connect Ruby SDK is retired. Please migrate to the new Square gem: https://github.com/square/square-ruby-sdk"
   s.license     = "Apache-2.0"
   s.required_ruby_version = ">= 1.9"
 
